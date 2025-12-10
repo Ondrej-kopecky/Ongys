@@ -43,7 +43,9 @@ async function fetchVisitorCount() {
         if (response.ok) {
             const data = await response.json();
             if (data.count !== undefined && data.count !== null) {
-                updateVisitorDisplay(formatNumber(data.count));
+                // data.count je string, převedeme na číslo
+                const count = parseInt(data.count, 10);
+                updateVisitorDisplay(formatNumber(count));
                 return;
             }
         }
