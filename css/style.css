@@ -580,8 +580,9 @@ a {
 
 .coming-badge {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: auto;
     padding: 0.25rem 0.75rem;
+    padding-top: calc(1rem + 0.25rem);
     background: rgba(46, 232, 196, 0.1);
     color: var(--electric-teal);
     border-radius: 20px;
@@ -645,6 +646,8 @@ a {
     border: 1px solid var(--card-border);
     transition: var(--transition-normal);
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .frost-card:hover {
