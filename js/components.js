@@ -40,6 +40,15 @@ const footerHTML = `
             <span class="logo-hex">⬡</span>
         </div>
         <p class="footer-text">© 2025 ongy.cz | Vytvořeno s ❤️ a trochou filamentu</p>
+        <div class="footer-stats">
+            <span class="visitor-count" title="Počet návštěv">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span id="visitor-count-number">–</span>
+            </span>
+        </div>
         <div class="footer-links">
             <a href="https://github.com/Ondrej-kopecky" target="_blank" rel="noopener">GitHub</a>
             <a href="https://www.linkedin.com/in/ond%C5%99ej-kopeck%C3%BD-1322b162/" target="_blank" rel="noopener">LinkedIn</a>

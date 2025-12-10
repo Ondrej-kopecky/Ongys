@@ -1472,6 +1472,42 @@ a {
    Footer Links
    ======================================== */
 
+.footer-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.visitor-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: var(--transition-normal);
+}
+
+.visitor-count:hover {
+    border-color: var(--electric-teal);
+    color: var(--electric-teal);
+}
+
+.visitor-count svg {
+    width: 16px;
+    height: 16px;
+}
+
+#visitor-count-number {
+    font-family: var(--font-mono);
+    color: var(--electric-teal);
+    font-weight: 500;
+}
+
 .footer-links {
     display: flex;
     justify-content: center;
