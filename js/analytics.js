@@ -4,7 +4,7 @@
 // ========================================
 
 // GoatCounter konfigurace
-const GOATCOUNTER_URL = 'https://ongy.goatcounter.com/count';
+const GOATCOUNTER_CODE = 'ongy';
 
 // Inicializace GoatCounter
 (function() {
@@ -15,49 +15,59 @@ const GOATCOUNTER_URL = 'https://ongy.goatcounter.com/count';
         return;
     }
 
-    // Načíst GoatCounter skript (oficiální způsob)
+    // Nastavit goatcounter objekt před načtením skriptu
+    window.goatcounter = {
+        endpoint: `https://${GOATCOUNTER_CODE}.goatcounter.com/count`,
+        allow_local: false
+    };
+
+    // Načíst GoatCounter skript
     const script = document.createElement('script');
     script.async = true;
-    script.src = '//gc.zgo.at/count.js';
-    script.dataset.goatcounter = GOATCOUNTER_URL;
+    script.src = `https://${GOATCOUNTER_CODE}.goatcounter.com/count.js`;
+    script.dataset.goatcounter = `https://${GOATCOUNTER_CODE}.goatcounter.com/count`;
     document.head.appendChild(script);
 
-    // Načíst počet návštěv po malém zpoždění
-    setTimeout(fetchVisitorCount, 1000);
+    // Pro počet návštěv: GoatCounter vyžaduje zapnutí "Allow public access to counter API"
+    // v Settings. Pokud není zapnuto, zobrazí se "–"
+    setTimeout(fetchVisitorCount, 1500);
 })();
 
 // Funkce pro načtení počtu návštěv z GoatCounter API
 async function fetchVisitorCount() {
     try {
-        // GoatCounter poskytuje endpoint pro počet návštěv
-        const response = await fetch(`https://ongy.goatcounter.com/counter/${encodeURIComponent(window.location.pathname)}.json`);
+        // GoatCounter veřejný counter endpoint (musí být zapnutý v Settings)
+        const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/${encodeURIComponent(window.location.pathname)}.json`);
         
         if (response.ok) {
             const data = await response.json();
-            updateVisitorDisplay(formatNumber(data.count));
-        } else {
-            // Fallback - zkusit celkový počet
-            fetchTotalCount();
+            if (data.count !== undefined) {
+                updateVisitorDisplay(formatNumber(data.count));
+                return;
+            }
         }
+        // Fallback - zkusit celkový počet
+        await fetchTotalCount();
     } catch (error) {
-        console.log('GoatCounter: Nepodařilo se načíst počet návštěv');
-        // Zkusit alternativní způsob
-        fetchTotalCount();
+        console.log('GoatCounter: Counter API není veřejně přístupné (zapněte v Settings → Allow public access to counter API)');
+        updateVisitorDisplay('✓');
     }
 }
 
 // Alternativní způsob - celkový počet návštěv
 async function fetchTotalCount() {
     try {
-        const response = await fetch('https://ongy.goatcounter.com/counter/TOTAL.json');
+        const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`);
         if (response.ok) {
             const data = await response.json();
-            updateVisitorDisplay(formatNumber(data.count));
-        } else {
-            updateVisitorDisplay('–');
+            if (data.count !== undefined) {
+                updateVisitorDisplay(formatNumber(data.count));
+                return;
+            }
         }
+        updateVisitorDisplay('✓');
     } catch (error) {
-        updateVisitorDisplay('–');
+        updateVisitorDisplay('✓');
     }
 }
 
