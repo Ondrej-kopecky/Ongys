@@ -37,37 +37,43 @@ const GOATCOUNTER_CODE = 'ongy';
 async function fetchVisitorCount() {
     try {
         // GoatCounter veřejný counter endpoint (musí být zapnutý v Settings)
-        const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/${encodeURIComponent(window.location.pathname)}.json`);
+        // Settings → "Allow using the visitor counter" musí být ON
+        const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`);
         
         if (response.ok) {
             const data = await response.json();
-            if (data.count !== undefined) {
+            if (data.count !== undefined && data.count !== null) {
                 updateVisitorDisplay(formatNumber(data.count));
                 return;
             }
         }
-        // Fallback - zkusit celkový počet
-        await fetchTotalCount();
+        
+        // Pokud API vrátí 403, counter není zapnutý
+        if (response.status === 403) {
+            console.log('GoatCounter: Zapni "Allow using the visitor counter" v Settings');
+        }
+        
+        // Skrýt counter pokud nefunguje
+        hideVisitorCounter();
     } catch (error) {
-        console.log('GoatCounter: Counter API není veřejně přístupné (zapněte v Settings → Allow public access to counter API)');
-        updateVisitorDisplay('✓');
+        console.log('GoatCounter: Counter API není dostupné');
+        hideVisitorCounter();
     }
 }
 
-// Alternativní způsob - celkový počet návštěv
-async function fetchTotalCount() {
-    try {
-        const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`);
-        if (response.ok) {
-            const data = await response.json();
-            if (data.count !== undefined) {
-                updateVisitorDisplay(formatNumber(data.count));
-                return;
-            }
+// Skrýt counter element pokud API nefunguje
+function hideVisitorCounter() {
+    const updateElement = () => {
+        const counter = document.querySelector('.visitor-count');
+        if (counter) {
+            counter.style.display = 'none';
         }
-        updateVisitorDisplay('✓');
-    } catch (error) {
-        updateVisitorDisplay('✓');
+    };
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateElement);
+    } else {
+        updateElement();
     }
 }
 
