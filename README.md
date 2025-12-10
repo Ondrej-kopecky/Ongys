@@ -37,14 +37,17 @@ ongy.cz/
 ## 🚀 Lokální vývoj
 
 ### Možnost 1: VS Code Live Server (doporučeno)
+
 1. Nainstaluj rozšíření **Live Server**
 2. Pravý klik na `index.html` → **Open with Live Server**
 3. Web se automaticky obnoví při změnách
 
 ### Možnost 2: Python server
+
 ```bash
 python -m http.server 8000
 ```
+
 Otevři `http://localhost:8000`
 
 ## 📤 Deploy
@@ -63,22 +66,22 @@ Změny se automaticky nasadí na GitHub Pages.
 2. Pro galerii použij strukturu:
    ```html
    <div class="gallery-item" data-category="3d-print">
-       <img src="../assets/images/gallery/nazev.jpg" alt="Popis" loading="lazy">
-       <div class="gallery-overlay">
-           <span class="gallery-caption">Název fotky</span>
-       </div>
+     <img src="../assets/images/gallery/nazev.jpg" alt="Popis" loading="lazy" />
+     <div class="gallery-overlay">
+       <span class="gallery-caption">Název fotky</span>
+     </div>
    </div>
    ```
 
 ## 🎨 Barevná paleta
 
-| Barva | Hex | Použití |
-|-------|-----|---------|
-| Deep Indigo | `#1E1B3A` | Primární tmavá |
-| Electric Teal | `#2EE8C4` | Akcent, odkazy |
-| Warm Amber | `#FFA94D` | Sekundární akcent |
-| Midnight | `#121212` | Pozadí |
-| Soft White | `#F2F2F2` | Text |
+| Barva         | Hex       | Použití           |
+| ------------- | --------- | ----------------- |
+| Deep Indigo   | `#1E1B3A` | Primární tmavá    |
+| Electric Teal | `#2EE8C4` | Akcent, odkazy    |
+| Warm Amber    | `#FFA94D` | Sekundární akcent |
+| Midnight      | `#121212` | Pozadí            |
+| Soft White    | `#F2F2F2` | Text              |
 
 ## 📝 Fonty
 
