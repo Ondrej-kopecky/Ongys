@@ -1085,9 +1085,12 @@ a {
 
 .printer-image {
     height: 250px;
+    min-height: 250px;
+    max-height: 250px;
     background: var(--deep-indigo);
     overflow: hidden;
     position: relative;
+    flex-shrink: 0;
 }
 
 .printer-image img {
@@ -1095,6 +1098,7 @@ a {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .printer-card:hover .printer-image img {

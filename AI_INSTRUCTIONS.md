@@ -43,25 +43,28 @@ c:\ongy.cz\
 ## 🎨 Design systém
 
 ### Barvy (CSS proměnné)
+
 ```css
---deep-indigo: #1E1B3A;      /* Tmavě fialová */
---electric-teal: #2EE8C4;    /* Hlavní akcent - tyrkysová */
---warm-amber: #FFA94D;       /* Sekundární akcent - oranžová */
---midnight: #121212;         /* Pozadí */
---soft-white: #F2F2F2;       /* Text */
---text-muted: #94a3b8;       /* Šedý text */
---card-bg: #1a1a2e;          /* Pozadí karet */
+--deep-indigo: #1e1b3a; /* Tmavě fialová */
+--electric-teal: #2ee8c4; /* Hlavní akcent - tyrkysová */
+--warm-amber: #ffa94d; /* Sekundární akcent - oranžová */
+--midnight: #121212; /* Pozadí */
+--soft-white: #f2f2f2; /* Text */
+--text-muted: #94a3b8; /* Šedý text */
+--card-bg: #1a1a2e; /* Pozadí karet */
 --card-border: rgba(46, 232, 196, 0.1);
 --glow-teal: rgba(46, 232, 196, 0.3);
 --glow-amber: rgba(255, 169, 77, 0.3);
 ```
 
 ### Fonty (Google Fonts)
+
 - **Montserrat** (600, 700, 800) - nadpisy
 - **Inter** (400, 500, 600) - tělo textu
 - **JetBrains Mono** (400, 500) - kód, čísla
 
 ### Vizuální styl
+
 - Dark mode
 - Neon glow efekty (box-shadow s glow-teal/amber)
 - Hover animace (transform, color transitions)
@@ -73,16 +76,19 @@ c:\ongy.cz\
 ## 🔧 Technické detaily
 
 ### Navigace & Patička
+
 - Generovány JavaScriptem v `components.js`
 - Automaticky detekuje podstránky a upravuje cesty
 - Mobilní hamburger menu (onclick="toggleMenu()")
 
 ### Analytics
+
 - **GoatCounter** (ongy.goatcounter.com)
 - Skript v `analytics.js`
 - Počítadlo návštěv v patičce
 
 ### Git workflow
+
 ```powershell
 # Standardní push
 git add -A; git commit -m "Popis změny"; git push
@@ -92,14 +98,14 @@ git add -A; git commit -m "Popis změny"; git push
 
 ## 📝 Sekce webu
 
-| Sekce | Soubor | Popis |
-|-------|--------|-------|
-| Home | index.html | Hero, karty sekcí, O mně |
-| 3D Print Lab | pages/3d-print.html | Tiskárny, projekty, tipy, stahování |
-| AI Playground | pages/ai.html | AI experimenty |
-| Frosthaven Forge | pages/frosthaven.html | Deskovka, 3D modely, kampaň |
-| Ongy Notes | pages/blog.html | Blog/zápisky |
-| Ongy Eye | pages/gallery.html | Fotogalerie s lightboxem |
+| Sekce            | Soubor                | Popis                               |
+| ---------------- | --------------------- | ----------------------------------- |
+| Home             | index.html            | Hero, karty sekcí, O mně            |
+| 3D Print Lab     | pages/3d-print.html   | Tiskárny, projekty, tipy, stahování |
+| AI Playground    | pages/ai.html         | AI experimenty                      |
+| Frosthaven Forge | pages/frosthaven.html | Deskovka, 3D modely, kampaň         |
+| Ongy Notes       | pages/blog.html       | Blog/zápisky                        |
+| Ongy Eye         | pages/gallery.html    | Fotogalerie s lightboxem            |
 
 ---
 
@@ -133,21 +139,26 @@ git add -A; git commit -m "Popis změny"; git push
 ## 🚀 Časté úkoly
 
 ### Přidat novou stránku
+
 1. Vytvořit HTML v `pages/`
 2. Přidat odkaz do `components.js` (navigace)
 3. Použít stejnou strukturu jako ostatní stránky
 
 ### Přidat fotky do galerie
+
 1. Nahrát na Cloudinary (viz sekce Obrázky)
 2. Přidat `<div class="gallery-item">` do `gallery.html`
 
 ### Přidat fotku tiskárny/projektu
+
 ```html
 <!-- Místo placeholder -->
 <div class="printer-image">
-    <img src="https://res.cloudinary.com/CLOUD-NAME/image/upload/w_800,q_auto,f_auto/fotka.jpg" 
-         alt="Popis fotky" 
-         loading="lazy">
+  <img
+    src="https://res.cloudinary.com/CLOUD-NAME/image/upload/w_800,q_auto,f_auto/fotka.jpg"
+    alt="Popis fotky"
+    loading="lazy"
+  />
 </div>
 ```
 
@@ -159,30 +170,36 @@ git add -A; git commit -m "Popis změny"; git push
 **Dashboard:** https://cloudinary.com/console
 
 ### URL formát
+
 ```
 https://res.cloudinary.com/CLOUD-NAME/image/upload/TRANSFORMACE/NAZEV.jpg
 ```
 
 ### Doporučené transformace
-| Použití | Transformace | Výsledek |
-|---------|--------------|----------|
-| Tiskárny | `w_800,q_auto,f_auto` | 800px šířka, auto kvalita |
-| Projekty | `w_600,q_auto,f_auto` | 600px šířka |
-| Galerie thumb | `w_400,h_400,c_fill,q_auto,f_auto` | 400x400 čtverec |
-| Galerie full | `w_1600,q_auto,f_auto` | 1600px pro lightbox |
+
+| Použití       | Transformace                       | Výsledek                  |
+| ------------- | ---------------------------------- | ------------------------- |
+| Tiskárny      | `w_800,q_auto,f_auto`              | 800px šířka, auto kvalita |
+| Projekty      | `w_600,q_auto,f_auto`              | 600px šířka               |
+| Galerie thumb | `w_400,h_400,c_fill,q_auto,f_auto` | 400x400 čtverec           |
+| Galerie full  | `w_1600,q_auto,f_auto`             | 1600px pro lightbox       |
 
 ### Příklad použití
+
 ```html
-<img src="https://res.cloudinary.com/dxyz1234/image/upload/w_800,q_auto,f_auto/bambu-x1c.jpg" 
-     alt="Bambu Lab X1 Carbon" 
-     loading="lazy">
+<img
+  src="https://res.cloudinary.com/dxyz1234/image/upload/w_800,q_auto,f_auto/bambu-x1c.jpg"
+  alt="Bambu Lab X1 Carbon"
+  loading="lazy"
+/>
 ```
 
 ### Upravit styly
+
 - Vše v `css/style.css`
 - Používej CSS proměnné pro barvy
 - Media queries pro responsive na konci souboru
 
 ---
 
-*Poslední aktualizace: 10. prosince 2025*
+_Poslední aktualizace: 10. prosince 2025_
