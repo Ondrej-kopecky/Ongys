@@ -885,27 +885,46 @@ a {
 @media (max-width: 768px) {
     .nav-toggle {
         display: flex;
+        z-index: 1001;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
     
     .nav-links {
         position: fixed;
-        top: 60px;
+        top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
         background: rgba(18, 18, 18, 0.98);
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding: 2rem;
-        gap: 1.5rem;
-        transform: translateY(-100%);
+        gap: 2rem;
         opacity: 0;
+        visibility: hidden;
         transition: var(--transition-normal);
-        pointer-events: none;
+        z-index: 1000;
     }
     
     .nav-links.active {
-        transform: translateY(0);
         opacity: 1;
-        pointer-events: auto;
+        visibility: visible;
+    }
+    
+    .nav-links a {
+        font-size: 1.5rem;
     }
     
     .hero-content {
