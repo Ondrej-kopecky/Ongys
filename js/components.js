@@ -14,12 +14,12 @@ const navHTML = `
         <span class="logo-text">Ong<span class="logo-y">y</span></span>
         <span class="logo-hex">⬡</span>
     </a>
-    <button class="nav-toggle" aria-label="Menu">
+    <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
         <li><a href="${basePath}/index.html">Home</a></li>
         <li><a href="${basePath}/pages/3d-print.html">3D Print</a></li>
         <li><a href="${basePath}/pages/ai.html">AI</a></li>
@@ -30,6 +30,15 @@ const navHTML = `
     </ul>
 </nav>
 `;
+
+// Global toggle function
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    const navToggle = document.querySelector('.nav-toggle');
+    navLinks.classList.toggle('active');
+    navToggle.classList.toggle('active');
+}
+window.toggleMenu = toggleMenu;
 
 // Footer HTML
 const footerHTML = `
@@ -76,10 +85,16 @@ function initNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
+    console.log('initNavigation called', navToggle, navLinks);
+    
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Toggle clicked!');
             navLinks.classList.toggle('active');
             navToggle.classList.toggle('active');
+            console.log('nav-links classes:', navLinks.className);
         });
     }
     
