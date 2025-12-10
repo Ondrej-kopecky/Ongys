@@ -35,47 +35,31 @@ const GOATCOUNTER_CODE = 'ongy';
 
 // Funkce pro načtení počtu návštěv z GoatCounter API
 async function fetchVisitorCount() {
+    console.log('GoatCounter: Načítám počet návštěv...');
+    
     try {
-        // GoatCounter veřejný counter endpoint (musí být zapnutý v Settings)
-        // Settings → "Allow using the visitor counter" musí být ON
         const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`);
+        console.log('GoatCounter: Response status:', response.status);
         
-        if (response.ok) {
-            const data = await response.json();
-            if (data.count !== undefined && data.count !== null) {
-                // data.count je string, převedeme na číslo
-                const count = parseInt(data.count, 10);
-                updateVisitorDisplay(formatNumber(count));
-                return; // Úspěch - končíme
-            }
-        } else if (response.status === 403) {
-            // Pokud API vrátí 403, counter není zapnutý
-            console.log('GoatCounter: Zapni "Allow using the visitor counter" v Settings');
-            hideVisitorCounter();
+        if (!response.ok) {
+            console.log('GoatCounter: Response not OK');
+            updateVisitorDisplay('–');
             return;
         }
         
-        // Jiná chyba - zobrazíme pomlčku místo skrytí
-        updateVisitorDisplay('–');
-    } catch (error) {
-        console.log('GoatCounter: Counter API není dostupné', error);
-        updateVisitorDisplay('–');
-    }
-}
-
-// Skrýt counter element pokud API nefunguje
-function hideVisitorCounter() {
-    const updateElement = () => {
-        const counter = document.querySelector('.visitor-count');
-        if (counter) {
-            counter.style.display = 'none';
+        const data = await response.json();
+        console.log('GoatCounter: Data:', data);
+        
+        if (data.count) {
+            const count = parseInt(data.count, 10);
+            console.log('GoatCounter: Zobrazuji:', count);
+            updateVisitorDisplay(count);
+        } else {
+            updateVisitorDisplay('–');
         }
-    };
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', updateElement);
-    } else {
-        updateElement();
+    } catch (error) {
+        console.log('GoatCounter: Chyba:', error);
+        updateVisitorDisplay('–');
     }
 }
 
