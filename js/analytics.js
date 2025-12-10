@@ -46,20 +46,20 @@ async function fetchVisitorCount() {
                 // data.count je string, převedeme na číslo
                 const count = parseInt(data.count, 10);
                 updateVisitorDisplay(formatNumber(count));
-                return;
+                return; // Úspěch - končíme
             }
-        }
-        
-        // Pokud API vrátí 403, counter není zapnutý
-        if (response.status === 403) {
+        } else if (response.status === 403) {
+            // Pokud API vrátí 403, counter není zapnutý
             console.log('GoatCounter: Zapni "Allow using the visitor counter" v Settings');
+            hideVisitorCounter();
+            return;
         }
         
-        // Skrýt counter pokud nefunguje
-        hideVisitorCounter();
+        // Jiná chyba - zobrazíme pomlčku místo skrytí
+        updateVisitorDisplay('–');
     } catch (error) {
-        console.log('GoatCounter: Counter API není dostupné');
-        hideVisitorCounter();
+        console.log('GoatCounter: Counter API není dostupné', error);
+        updateVisitorDisplay('–');
     }
 }
 
