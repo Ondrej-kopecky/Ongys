@@ -35,31 +35,33 @@ const GOATCOUNTER_CODE = 'ongy';
 
 // Funkce pro načtení počtu návštěv z GoatCounter API
 async function fetchVisitorCount() {
-    console.log('GoatCounter: Načítám počet návštěv...');
-    
     try {
         const response = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`);
-        console.log('GoatCounter: Response status:', response.status);
         
         if (!response.ok) {
-            console.log('GoatCounter: Response not OK');
-            updateVisitorDisplay('–');
+            hideCounter();
             return;
         }
         
         const data = await response.json();
-        console.log('GoatCounter: Data:', data);
         
         if (data.count) {
             const count = parseInt(data.count, 10);
-            console.log('GoatCounter: Zobrazuji:', count);
             updateVisitorDisplay(count);
         } else {
-            updateVisitorDisplay('–');
+            hideCounter();
         }
     } catch (error) {
-        console.log('GoatCounter: Chyba:', error);
-        updateVisitorDisplay('–');
+        // AdBlocker nebo jiná chyba - skrýt counter
+        hideCounter();
+    }
+}
+
+// Skrýt counter (pro AdBlocker uživatele)
+function hideCounter() {
+    const counter = document.querySelector('.visitor-count');
+    if (counter) {
+        counter.style.display = 'none';
     }
 }
 
