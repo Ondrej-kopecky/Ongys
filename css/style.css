@@ -1081,8 +1081,21 @@ a {
 }
 
 .printer-image {
-    height: 200px;
+    height: 250px;
     background: var(--deep-indigo);
+    overflow: hidden;
+    position: relative;
+}
+
+.printer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.printer-card:hover .printer-image img {
+    transform: scale(1.05);
 }
 
 .image-placeholder {
@@ -1105,6 +1118,25 @@ a {
     border: 2px dashed var(--card-border);
     margin: 1rem;
     border-radius: 8px;
+}
+
+/* Project images */
+.project-image {
+    height: 200px;
+    background: var(--deep-indigo);
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .printer-info {
