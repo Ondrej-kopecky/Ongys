@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ongy Eye - galerie fotek z 3D tisku, figurek, dronu a dalších">
+    <title>Galerie | Ongy.cz</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬡</text></svg>">
+</head>
+<body>
+    <main>
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <span class="page-icon">📸</span>
+                <h1>Ongy Eye</h1>
+                <p class="page-subtitle">Vizuální střípky z dílny i ze světa</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="gallery-categories">
+                <button class="gallery-tag active" data-filter="all">Vše</button>
+                <button class="gallery-tag" data-filter="3d-print">3D Tisk</button>
+                <button class="gallery-tag" data-filter="miniatures">Figurky</button>
+                <button class="gallery-tag" data-filter="drone">Dron</button>
+                <button class="gallery-tag" data-filter="discgolf">Discgolf</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Gallery items will be here -->
+                <!-- Example structure: -->
+                <!--
+                <div class="gallery-item" data-category="3d-print">
+                    <img src="../assets/images/gallery/photo1.jpg" alt="Popis fotky" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Název / popis</span>
+                    </div>
+                </div>
+                -->
+            </div>
+
+            <div class="gallery-placeholder">
+                <div class="gallery-icon">🖼️</div>
+                <p>Galerie se připravuje...</p>
+                <span>Brzy zde budou fotky z 3D tisku, figurky, dron záběry a více</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox for fullscreen images -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="" class="lightbox-image">
+        <div class="lightbox-caption"></div>
+        <button class="lightbox-prev">&#10094;</button>
+        <button class="lightbox-next">&#10095;</button>
+    </div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/gallery.js"></script>
+</body>
+</html>

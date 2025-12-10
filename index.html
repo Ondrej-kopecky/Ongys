@@ -5,34 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ongy – digitální dílna jednoho IT mistra. 3D tisk, AI experimenty, Frosthaven a více.">
     <title>Ongy.cz | Digitální dílna</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬡</text></svg>">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="/" class="logo">
-            <span class="logo-text">Ong<span class="logo-y">y</span></span>
-            <span class="logo-hex">⬡</span>
-        </a>
-        <button class="nav-toggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#print-lab">3D Print</a></li>
-            <li><a href="#ai">AI</a></li>
-            <li><a href="#frosthaven">Frosthaven</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#gallery">Galerie</a></li>
-            <li><a href="#about">O mně</a></li>
-        </ul>
-    </nav>
+    <!-- Navigation is injected by components.js -->
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -45,7 +25,7 @@
                 <p class="hero-description">
                     3D tisk · AI experimenty · Frosthaven · a trocha toho kódu
                 </p>
-                <a href="#print-lab" class="btn btn-primary">
+                <a href="pages/3d-print.html" class="btn btn-primary">
                     <span>Vstoupit do dílny</span>
                     <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -71,7 +51,7 @@
 
     <!-- Main Sections Cards -->
     <section class="sections-grid">
-        <a href="#print-lab" class="section-card card-print">
+        <a href="pages/3d-print.html" class="section-card card-print">
             <div class="card-icon">
                 <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                     <rect x="8" y="24" width="32" height="20" rx="2"/>
@@ -86,7 +66,7 @@
             <span class="card-arrow">→</span>
         </a>
 
-        <a href="#ai" class="section-card card-ai">
+        <a href="pages/ai.html" class="section-card card-ai">
             <div class="card-icon">
                 <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                     <circle cx="24" cy="24" r="4"/>
@@ -107,7 +87,7 @@
             <span class="card-arrow">→</span>
         </a>
 
-        <a href="#frosthaven" class="section-card card-frost">
+        <a href="pages/frosthaven.html" class="section-card card-frost">
             <div class="card-icon">
                 <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M24 4v40M4 24h40"/>
@@ -121,160 +101,6 @@
             <p class="card-desc">Kampaň, 3D organizéry, figurky, tipy</p>
             <span class="card-arrow">→</span>
         </a>
-    </section>
-
-    <!-- 3D Print Lab Section -->
-    <section id="print-lab" class="content-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">🛠️</span>
-                3D Print Lab
-            </h2>
-            <p class="section-subtitle">Ongy Print Lab – kde se digitální sny mění v plast</p>
-        </div>
-
-        <div class="subsection-grid">
-            <div class="subsection-card">
-                <div class="subsection-icon">🖨️</div>
-                <h3>Moje tiskárny</h3>
-                <p>Bambu Lab X1C, Anycubic Photon Mono X2 – setup, profily, zkušenosti</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="subsection-card">
-                <div class="subsection-icon">🎨</div>
-                <h3>Co tisknu</h3>
-                <p>Galerie projektů – organizéry, figurky, funkční díly</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="subsection-card">
-                <div class="subsection-icon">💡</div>
-                <h3>Tipy & Triky</h3>
-                <p>Praktické poznámky z tiskového bojiště</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="subsection-card">
-                <div class="subsection-icon">📥</div>
-                <h3>Ke stažení</h3>
-                <p>Moje modely a doporučené odkazy</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Section -->
-    <section id="ai" class="content-section section-alt">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">🤖</span>
-                AI Playground
-            </h2>
-            <p class="section-subtitle">Ongy+AI – experimenty na hranici možností</p>
-        </div>
-
-        <div class="experiments-grid">
-            <div class="experiment-card">
-                <div class="experiment-number">01</div>
-                <h3>AI v každodenním životě</h3>
-                <p>Jak používám AI nástroje pro práci i zábavu</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="experiment-card">
-                <div class="experiment-number">02</div>
-                <h3>Home Assistant + AI</h3>
-                <p>Chytrá domácnost s pomocí strojového učení</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="experiment-card">
-                <div class="experiment-number">03</div>
-                <h3>Nástroje & Workflow</h3>
-                <p>Moje oblíbené nástroje a jak je propojuji</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Frosthaven Section -->
-    <section id="frosthaven" class="content-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">🎲</span>
-                Frosthaven Forge
-            </h2>
-            <p class="section-subtitle">Kde se tisknou artefakty pro severní dobrodružství</p>
-        </div>
-
-        <div class="frost-grid">
-            <div class="frost-card">
-                <div class="frost-icon">⚔️</div>
-                <h3>Naše kampaň</h3>
-                <p>Zápisky z hraní – žádné spoilery, jen atmosféra</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="frost-card">
-                <div class="frost-icon">🗿</div>
-                <h3>3D modely</h3>
-                <p>Organizéry, inserty, figurky, tokeny</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="frost-card">
-                <div class="frost-icon">📋</div>
-                <h3>Organizace hry</h3>
-                <p>Co se nám osvědčilo – praktické rady</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-            <div class="frost-card frost-card-archive">
-                <div class="frost-icon">📜</div>
-                <h3>Gloomhaven Archives</h3>
-                <p>Dohráno, uložené, ale věčně v srdci ❤️</p>
-                <span class="coming-badge">Připravuji</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="content-section section-alt">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">💡</span>
-                Ongy Notes
-            </h2>
-            <p class="section-subtitle">Krátké zápisky bez tlaku</p>
-        </div>
-
-        <div class="blog-grid">
-            <article class="blog-note">
-                <span class="note-date">Prosinec 2025</span>
-                <h3>Web je live! 🎉</h3>
-                <p>První verze ongy.cz je na světě. Postupně budu přidávat obsah...</p>
-            </article>
-            <div class="blog-placeholder">
-                <span>Další zápisky brzy...</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="content-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">📸</span>
-                Ongy Eye
-            </h2>
-            <p class="section-subtitle">Vizuální střípky z dílny i ze světa</p>
-        </div>
-
-        <div class="gallery-categories">
-            <span class="gallery-tag">3D Tisk</span>
-            <span class="gallery-tag">Figurky</span>
-            <span class="gallery-tag">Dron</span>
-            <span class="gallery-tag">Discgolf</span>
-        </div>
-
-        <div class="gallery-placeholder">
-            <div class="gallery-icon">🖼️</div>
-            <p>Galerie se připravuje...</p>
-            <span>Brzy zde budou fotky z 3D tisku, figurky, dron záběry a více</span>
-        </div>
     </section>
 
     <!-- About Section -->
@@ -311,17 +137,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <span class="logo-text">Ong<span class="logo-y">y</span></span>
-                <span class="logo-hex">⬡</span>
-            </div>
-            <p class="footer-text">© 2025 ongy.cz | Vytvořeno s ❤️ a trochou filamentu</p>
-        </div>
-    </footer>
+    <!-- Footer is injected by components.js -->
 
-    <script src="script.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

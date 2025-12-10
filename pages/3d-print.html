@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ongy 3D Print Lab - Bambu Lab X1C, Anycubic Photon Mono X2, tisky, tipy a triky">
+    <title>3D Print Lab | Ongy.cz</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬡</text></svg>">
+</head>
+<body>
+    <!-- Navigation is injected by components.js -->
+    
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <span class="page-icon">🛠️</span>
+                <h1>3D Print Lab</h1>
+                <p class="page-subtitle">Kde se digitální sny mění v plast</p>
+            </div>
+        </section>
+
+        <!-- Printers Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">🖨️</span>
+                    Moje tiskárny
+                </h2>
+            </div>
+
+            <div class="printer-grid">
+                <div class="printer-card">
+                    <div class="printer-image">
+                        <div class="image-placeholder">
+                            <span>📷</span>
+                            <p>Foto připravuji</p>
+                        </div>
+                    </div>
+                    <div class="printer-info">
+                        <h3>Bambu Lab X1 Carbon</h3>
+                        <span class="printer-type">FDM / Filament</span>
+                        <p>Hlavní pracant na funkční díly, organizéry a větší projekty. AMS systém pro multicolor tisky.</p>
+                        <ul class="printer-specs">
+                            <li>Build: 256×256×256 mm</li>
+                            <li>Rychlost: až 500 mm/s</li>
+                            <li>Materiály: PLA, PETG, ABS, TPU...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="printer-card">
+                    <div class="printer-image">
+                        <div class="image-placeholder">
+                            <span>📷</span>
+                            <p>Foto připravuji</p>
+                        </div>
+                    </div>
+                    <div class="printer-info">
+                        <h3>Anycubic Photon Mono X2</h3>
+                        <span class="printer-type">MSLA / Resin</span>
+                        <p>Pro detailní figurky, miniatury a přesné modely. Neskutečný detail.</p>
+                        <ul class="printer-specs">
+                            <li>Build: 196×122×200 mm</li>
+                            <li>Rozlišení: 4K+ mono LCD</li>
+                            <li>Materiály: Standard, ABS-like, Flex...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">🎨</span>
+                    Co tisknu
+                </h2>
+                <p class="section-subtitle">Výběr z mých projektů</p>
+            </div>
+
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">Vše</button>
+                <button class="filter-btn" data-filter="functional">Funkční</button>
+                <button class="filter-btn" data-filter="boardgames">Deskovky</button>
+                <button class="filter-btn" data-filter="miniatures">Figurky</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project Card Template -->
+                <div class="project-card" data-category="boardgames">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <span>📷</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Frosthaven Organizer</h3>
+                        <span class="project-tag">Deskovky</span>
+                        <p>Kompletní organizér pro Frosthaven box</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="functional">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <span>📷</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Držák na klíče</h3>
+                        <span class="project-tag">Funkční</span>
+                        <p>Praktický věšák do předsíně</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="miniatures">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <span>📷</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Resin figurka</h3>
+                        <span class="project-tag">Figurky</span>
+                        <p>Detailní miniatura z Photonu</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder for more projects -->
+                <div class="project-card project-placeholder">
+                    <div class="project-image">
+                        <div class="image-placeholder dashed">
+                            <span>➕</span>
+                            <p>Další projekty brzy...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">💡</span>
+                    Tipy & Triky
+                </h2>
+                <p class="section-subtitle">Poznámky z tiskového bojiště</p>
+            </div>
+
+            <div class="tips-grid">
+                <article class="tip-card">
+                    <span class="tip-number">01</span>
+                    <h3>Bed adhesion pro PETG</h3>
+                    <p>PETG miluje čistý bed. Používám IPA před každým tiskem a teplotu bedu 70°C...</p>
+                    <span class="coming-badge">Připravuji</span>
+                </article>
+
+                <article class="tip-card">
+                    <span class="tip-number">02</span>
+                    <h3>Resin post-processing</h3>
+                    <p>Workflow pro čištění a vytvrzování resinových tisků...</p>
+                    <span class="coming-badge">Připravuji</span>
+                </article>
+
+                <article class="tip-card">
+                    <span class="tip-number">03</span>
+                    <h3>Multicolor s AMS</h3>
+                    <p>Jak nastavit Bambu Slicer pro čisté barevné přechody...</p>
+                    <span class="coming-badge">Připravuji</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">📥</span>
+                    Ke stažení
+                </h2>
+                <p class="section-subtitle">Moje modely a doporučené zdroje</p>
+            </div>
+
+            <div class="downloads-grid">
+                <a href="#" class="download-card">
+                    <span class="download-icon">📦</span>
+                    <h3>Moje modely</h3>
+                    <p>Původní návrhy na Printables/Thingiverse</p>
+                    <span class="coming-badge">Brzy</span>
+                </a>
+
+                <a href="#" class="download-card">
+                    <span class="download-icon">⚙️</span>
+                    <h3>Slicer profily</h3>
+                    <p>Moje osvědčené profily pro Bambu Slicer</p>
+                    <span class="coming-badge">Brzy</span>
+                </a>
+
+                <a href="https://www.printables.com" target="_blank" class="download-card external">
+                    <span class="download-icon">🔗</span>
+                    <h3>Printables</h3>
+                    <p>Oblíbený zdroj modelů</p>
+                    <span class="external-badge">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer is injected by components.js -->
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
