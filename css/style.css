@@ -580,9 +580,8 @@ a {
 
 .coming-badge {
     display: inline-block;
-    margin-top: auto;
-    padding: 0.25rem 0.75rem;
-    padding-top: calc(1rem + 0.25rem);
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
     background: rgba(46, 232, 196, 0.1);
     color: var(--electric-teal);
     border-radius: 20px;
