@@ -1843,13 +1843,6 @@ a {
     gap: 0.5rem;
 }
 
-.ha-device-category h3 svg {
-    width: 24px;
-    height: 24px;
-    color: var(--electric-teal);
-    flex-shrink: 0;
-}
-
 .ha-automation h3 {
     font-family: var(--font-heading);
     font-size: 1.1rem;
