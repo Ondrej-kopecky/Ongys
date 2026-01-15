@@ -48,6 +48,7 @@ Osobní portfolio website postavený na vanilla JS, HTML a CSS. Hostováno na Gi
 **Vizuální styl:**
 
 - Dark mode only
+- **Mobile-first přístup** – vždy testovat a optimalizovat pro mobilní zařízení
 - Neon glow efekty na hover: `box-shadow: 0 0 20px var(--glow-teal)`
 - Hexagon/⬡ motiv napříč designem
 - SVG ikony konzistentně použity v kartách a navigaci
