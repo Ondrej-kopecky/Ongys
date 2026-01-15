@@ -2006,6 +2006,13 @@ a {
     border-radius: 12px;
     border: 1px solid var(--card-border);
     cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.carousel-slide img:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 0 20px var(--glow-teal);
+    transform: scale(1.01);
 }
 
 .carousel-caption {
