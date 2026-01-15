@@ -145,9 +145,10 @@ Filtry: `data-filter` atribut na tagových tlačítkách, `data-category` na ite
 
 **Odkazy a cesty:**
 
-- Interní odkazy: relativní (`pages/3d-print.html`, `../index.html`)
-- Assety: vždy relativní z aktuální stránky (`../assets/images/...` z pages/)
+- Interní odkazy: relativní (`pages/3d-print/`, `../../index.html`)
+- Assety: vždy relativní z aktuální stránky (`../../assets/images/...` z pages/*/)
 - Detekce podstránky: `window.location.pathname.includes('/pages/')`
+- Struktura: každá stránka v složce jako `index.html` (čisté URL bez .html)
 
 **SEO a meta:**
 
@@ -163,15 +164,15 @@ Filtry: `data-filter` atribut na tagových tlačítkách, `data-category` na ite
 
 ## Sekce webu
 
-| Sekce            | Soubor                   | Popis                               |
-| ---------------- | ------------------------ | ----------------------------------- |
-| Home             | index.html               | Hero, karty sekcí, O mně            |
-| 3D Print Lab     | pages/3d-print.html      | Tiskárny, projekty, tipy, stahování |
-| Home Assistant   | pages/homeassistant.html | Chytrá domácnost, automatizace, AI  |
-| AI Playground    | pages/ai.html            | AI experimenty                      |
-| Frosthaven Forge | pages/frosthaven.html    | Deskovka, 3D modely, kampaň         |
-| Ongy Notes       | pages/blog.html          | Blog/zápisky                        |
-| Ongy Eye         | pages/gallery.html       | Fotogalerie s lightboxem            |
+| Sekce            | Soubor                          | Popis                               |
+| ---------------- | ------------------------------- | ----------------------------------- |
+| Home             | index.html                      | Hero, karty sekcí, O mně            |
+| 3D Print Lab     | pages/3d-print/index.html       | Tiskárny, projekty, tipy, stahování |
+| Home Assistant   | pages/homeassistant/index.html  | Chytrá domácnost, automatizace, AI  |
+| AI Playground    | pages/ai/index.html             | AI experimenty                      |
+| Frosthaven Forge | pages/frosthaven/index.html     | Deskovka, 3D modely, kampaň         |
+| Ongy Notes       | pages/blog/index.html           | Blog/zápisky                        |
+| Ongy Eye         | pages/gallery/index.html        | Fotogalerie s lightboxem            |
 
 ## Tiskárny majitele
 

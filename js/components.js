@@ -3,14 +3,16 @@
 // Header & Footer pro všechny stránky
 // ========================================
 
-// Zjistíme jestli jsme v podsložce nebo root
-const isSubpage = window.location.pathname.includes('/pages/');
-const basePath = isSubpage ? '..' : '.';
+// Zjistíme hloubku podle cesty
+// Root: /index.html nebo /
+// Subpage: /pages/nazev/ (složka s index.html)
+const pathDepth = window.location.pathname.split('/').filter(p => p && !p.includes('.')).length;
+const basePath = pathDepth >= 2 ? '../..' : (pathDepth === 1 ? '..' : '.');
 
-// Navigation HTML
+// Navigation HTML - čisté URL bez .html
 const navHTML = `
 <nav class="navbar">
-    <a href="${basePath}/index.html" class="logo">
+    <a href="${basePath}/" class="logo">
         <span class="logo-text">Ong<span class="logo-y">y</span></span>
         <span class="logo-hex">⬡</span>
     </a>
@@ -20,14 +22,14 @@ const navHTML = `
         <span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-        <li><a href="${basePath}/index.html">Home</a></li>
-        <li><a href="${basePath}/pages/3d-print.html">3D Print</a></li>
-        <li><a href="${basePath}/pages/homeassistant.html">Home Assistant</a></li>
-        <li><a href="${basePath}/pages/ai.html">AI</a></li>
-        <li><a href="${basePath}/pages/frosthaven.html">Frosthaven</a></li>
-        <li><a href="${basePath}/pages/blog.html">Blog</a></li>
-        <li><a href="${basePath}/pages/gallery.html">Galerie</a></li>
-        <li><a href="${basePath}/index.html#about">O mně</a></li>
+        <li><a href="${basePath}/">Home</a></li>
+        <li><a href="${basePath}/pages/3d-print/">3D Print</a></li>
+        <li><a href="${basePath}/pages/homeassistant/">Home Assistant</a></li>
+        <li><a href="${basePath}/pages/ai/">AI</a></li>
+        <li><a href="${basePath}/pages/frosthaven/">Frosthaven</a></li>
+        <li><a href="${basePath}/pages/blog/">Blog</a></li>
+        <li><a href="${basePath}/pages/gallery/">Galerie</a></li>
+        <li><a href="${basePath}/#about">O mně</a></li>
     </ul>
 </nav>
 `;
