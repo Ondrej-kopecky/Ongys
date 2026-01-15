@@ -233,7 +233,9 @@ https://res.cloudinary.com/CLOUD-NAME/image/upload/TRANSFORMACE/NAZEV.jpg
     loading="lazy"
     style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);"
   />
-  <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">
+  <p
+    style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;"
+  >
     Popisek
   </p>
 </div>

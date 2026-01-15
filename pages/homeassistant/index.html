@@ -476,37 +476,38 @@
                 </div>
             </div>
 
-            <!-- Grafana Screenshots Gallery -->
+            <!-- Grafana Screenshots Carousel -->
             <div style="margin-top: 2rem;">
                 <h3 style="font-family: var(--font-heading); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
                     <svg style="width: 24px; height: 24px; color: #F46800;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg> 
                     Grafana Dashboards
                 </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231434_fwnlxv.png" 
-                             alt="Grafana - Spotřeba Energie" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Spotřeba Energie</p>
+                <div class="screenshot-carousel" id="grafanaCarousel">
+                    <div class="carousel-container" id="grafanaContainer">
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231434_fwnlxv.png" 
+                                 alt="Grafana - Spotřeba Energie" loading="lazy">
+                            <div class="carousel-caption"><strong>Spotřeba Energie</strong> – PC, TV, kuchyň, lednice</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231422_bnwrf3.png" 
+                                 alt="Grafana - Teploty a Vlhkost" loading="lazy">
+                            <div class="carousel-caption"><strong>Teploty a Vlhkost</strong> – Xiaomi senzory v bytě</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231506_hmgqwv.png" 
+                                 alt="Grafana - Bambu Lab X1C" loading="lazy">
+                            <div class="carousel-caption"><strong>Bambu Lab X1C</strong> – 3D tisk statistiky</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231448_eacxza.png" 
+                                 alt="Grafana - Raspberry Pi 5" loading="lazy">
+                            <div class="carousel-caption"><strong>Raspberry Pi 5</strong> – System monitoring</div>
+                        </div>
                     </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231422_bnwrf3.png" 
-                             alt="Grafana - Teploty a Vlhkost" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Teploty a Vlhkost</p>
-                    </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231506_hmgqwv.png" 
-                             alt="Grafana - Bambu Lab X1C" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Bambu Lab X1C</p>
-                    </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231448_eacxza.png" 
-                             alt="Grafana - Raspberry Pi 5" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Raspberry Pi 5</p>
-                    </div>
+                    <button class="carousel-nav carousel-prev" onclick="moveGrafanaCarousel(-1)">&#10094;</button>
+                    <button class="carousel-nav carousel-next" onclick="moveGrafanaCarousel(1)">&#10095;</button>
+                    <div class="carousel-dots" id="grafanaDots"></div>
                 </div>
             </div>
         </section>
@@ -531,44 +532,43 @@
             </div>
 
             <div class="ha-dashboard-preview">
-                <!-- Main Dashboard Screenshot -->
-                <div class="ha-screenshot-main">
-                    <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231349_ugqdk7.png" 
-                         alt="Home Assistant - Home Dashboard" 
-                         loading="lazy"
-                         style="width: 100%; border-radius: 12px; border: 1px solid var(--card-border);">
+                <!-- Screenshot Carousel -->
+                <div class="screenshot-carousel" id="screenshotCarousel">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231349_ugqdk7.png" 
+                                 alt="Home Assistant - Přehled dashboardů" loading="lazy">
+                            <div class="carousel-caption"><strong>Přehled</strong> – Hlavní dashboard s kartami sekcí</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231403_v69kcw.png" 
+                                 alt="3D Tisk Dashboard - Bambu Lab X1C" loading="lazy">
+                            <div class="carousel-caption"><strong>3D Tisk</strong> – Bambu Lab X1C monitoring</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231633_dsemvj.png" 
+                                 alt="Darth Sider - Vysavač Dashboard" loading="lazy">
+                            <div class="carousel-caption"><strong>Darth Sider</strong> – Xiaomi X20 Pro vysavač</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231616_ojmhjh.png" 
+                                 alt="ONGY Gaming PC Dashboard" loading="lazy">
+                            <div class="carousel-caption"><strong>Gaming PC</strong> – HASS.Agent monitoring</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231521_uuakal.png" 
+                                 alt="Filamenty - Mobilní view" loading="lazy">
+                            <div class="carousel-caption"><strong>Filamenty</strong> – Mobilní view s teplotami</div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#10095;</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
                 </div>
+
                 <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(46, 232, 196, 0.1); border-radius: 8px; text-align: center;">
                     <strong style="color: var(--electric-teal);">Stack:</strong>
                     <span style="color: var(--text-muted);"> Frosted Glass theme · Mushroom cards · mini-graph-card · Sections layout</span>
-                </div>
-
-                <!-- Dashboard Gallery -->
-                <div class="ha-screenshots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231403_v69kcw.png" 
-                             alt="3D Tisk Dashboard - Bambu Lab X1C" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">3D Tisk – Bambu Lab X1C</p>
-                    </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231633_dsemvj.png" 
-                             alt="Darth Sider - Vysavač Dashboard" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Darth Sider – Vysavač</p>
-                    </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231616_ojmhjh.png" 
-                             alt="ONGY Gaming PC Dashboard" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">ONGY Gaming PC</p>
-                    </div>
-                    <div class="ha-screenshot-item">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231521_uuakal.png" 
-                             alt="Filamenty - Mobilní view" loading="lazy"
-                             style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Filamenty (mobilní)</p>
-                    </div>
                 </div>
             </div>
 
@@ -670,6 +670,7 @@
     <script src="../../js/icons.js"></script>
     <script src="../../js/components.js"></script>
     <script src="../../js/main.js"></script>
+    <script src="../../js/carousel.js"></script>
     <script src="../../js/ha-lightbox.js"></script>
     <script src="../../js/analytics.js"></script>
 </body>

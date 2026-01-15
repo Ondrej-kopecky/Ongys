@@ -17,8 +17,8 @@ function initHALightbox() {
     const prevBtn = lightbox.querySelector('.lightbox-prev');
     const nextBtn = lightbox.querySelector('.lightbox-next');
 
-    // Najdi všechny screenshoty na stránce
-    const screenshots = document.querySelectorAll('.ha-screenshot-item img, .ha-screenshot-main img');
+    // Najdi všechny screenshoty na stránce (grid i carousel)
+    const screenshots = document.querySelectorAll('.ha-screenshot-item img, .ha-screenshot-main img, .carousel-slide img');
     let currentIndex = 0;
     let visibleItems = [];
 
@@ -33,14 +33,17 @@ function initHALightbox() {
     });
 
     function openLightbox(img) {
-        // Použij větší verzi obrázku pro lightbox (w_1600 místo w_600)
+        // Použij větší verzi obrázku pro lightbox (w_1600 místo w_600/w_1200)
         let fullSrc = img.src.replace(/w_600/, 'w_1600').replace(/w_1200/, 'w_1600');
         lightboxImage.src = fullSrc;
         lightboxImage.alt = img.alt;
         
-        // Najdi caption z parent elementu
-        const parent = img.closest('.ha-screenshot-item');
-        const captionEl = parent ? parent.querySelector('p') : null;
+        // Najdi caption - buď z carousel-caption nebo z parent elementu
+        const carouselSlide = img.closest('.carousel-slide');
+        const captionEl = carouselSlide 
+            ? carouselSlide.querySelector('.carousel-caption')
+            : img.closest('.ha-screenshot-item')?.querySelector('p');
+        
         lightboxCaption.textContent = captionEl ? captionEl.textContent : img.alt;
         
         lightbox.classList.add('active');
