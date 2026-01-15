@@ -50,6 +50,7 @@ Osobní portfolio website postavený na vanilla JS, HTML a CSS. Hostováno na Gi
 - Neon glow efekty na hover: `box-shadow: 0 0 20px var(--glow-teal)`
 - Hexagon/⬡ motiv napříč designem
 - SVG ikony konzistentně použity v kartách a navigaci
+- **NEPOUŽÍVAT emoji jako ikony** – vždy použít SVG ikony ve stylu webu (stroke-based, 24x24 viewBox)
 
 ## Development workflow
 
