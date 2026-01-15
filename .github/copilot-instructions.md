@@ -163,15 +163,15 @@ Filtry: `data-filter` atribut na tagových tlačítkách, `data-category` na ite
 
 ## Sekce webu
 
-| Sekce            | Soubor                    | Popis                                  |
-| ---------------- | ------------------------- | -------------------------------------- |
-| Home             | index.html                | Hero, karty sekcí, O mně               |
-| 3D Print Lab     | pages/3d-print.html       | Tiskárny, projekty, tipy, stahování    |
-| Home Assistant   | pages/homeassistant.html  | Chytrá domácnost, automatizace, AI     |
-| AI Playground    | pages/ai.html             | AI experimenty                         |
-| Frosthaven Forge | pages/frosthaven.html     | Deskovka, 3D modely, kampaň            |
-| Ongy Notes       | pages/blog.html           | Blog/zápisky                           |
-| Ongy Eye         | pages/gallery.html        | Fotogalerie s lightboxem               |
+| Sekce            | Soubor                   | Popis                               |
+| ---------------- | ------------------------ | ----------------------------------- |
+| Home             | index.html               | Hero, karty sekcí, O mně            |
+| 3D Print Lab     | pages/3d-print.html      | Tiskárny, projekty, tipy, stahování |
+| Home Assistant   | pages/homeassistant.html | Chytrá domácnost, automatizace, AI  |
+| AI Playground    | pages/ai.html            | AI experimenty                      |
+| Frosthaven Forge | pages/frosthaven.html    | Deskovka, 3D modely, kampaň         |
+| Ongy Notes       | pages/blog.html          | Blog/zápisky                        |
+| Ongy Eye         | pages/gallery.html       | Fotogalerie s lightboxem            |
 
 ## Tiskárny majitele
 
