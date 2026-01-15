@@ -1814,7 +1814,40 @@ a {
 }
 
 .ha-automation-icon {
-    font-size: 1.5rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--warm-amber);
+}
+
+.ha-automation-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Inline icons for headings and links */
+.ha-inline-icon {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    color: var(--electric-teal);
+}
+
+.ha-device-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ha-device-category h3 svg {
+    width: 24px;
+    height: 24px;
+    color: var(--electric-teal);
+    flex-shrink: 0;
 }
 
 .ha-automation h3 {
