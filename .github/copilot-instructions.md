@@ -20,9 +20,10 @@ Osobní portfolio website postavený na vanilla JS, HTML a CSS. Hostováno na Gi
 **Klíčové soubory:**
 
 - [index.html](../index.html) - hlavní stránka s hero sekcí a kartami sekcí
-- [css/style.css](../css/style.css) - monolitický CSS (~1600 řádků), všechny styly v jednom souboru
+- [css/style.css](../css/style.css) - monolitický CSS (~2000 řádků), všechny styly v jednom souboru
 - [js/main.js](../js/main.js) - univerzální interaktivity (scroll, navigation, observers)
 - [js/gallery.js](../js/gallery.js) - lightbox a filtrovací logika pro galerii
+- [js/ha-lightbox.js](../js/ha-lightbox.js) - lightbox pro screenshoty na HA stránce
 - [js/analytics.js](../js/analytics.js) - GoatCounter tracking + visitor count display
 
 ## Design systém
@@ -146,7 +147,7 @@ Filtry: `data-filter` atribut na tagových tlačítkách, `data-category` na ite
 **Odkazy a cesty:**
 
 - Interní odkazy: relativní (`pages/3d-print/`, `../../index.html`)
-- Assety: vždy relativní z aktuální stránky (`../../assets/images/...` z pages/*/)
+- Assety: vždy relativní z aktuální stránky (`../../assets/images/...` z pages/\*/)
 - Detekce podstránky: `window.location.pathname.includes('/pages/')`
 - Struktura: každá stránka v složce jako `index.html` (čisté URL bez .html)
 
@@ -164,15 +165,15 @@ Filtry: `data-filter` atribut na tagových tlačítkách, `data-category` na ite
 
 ## Sekce webu
 
-| Sekce            | Soubor                          | Popis                               |
-| ---------------- | ------------------------------- | ----------------------------------- |
-| Home             | index.html                      | Hero, karty sekcí, O mně            |
-| 3D Print Lab     | pages/3d-print/index.html       | Tiskárny, projekty, tipy, stahování |
-| Home Assistant   | pages/homeassistant/index.html  | Chytrá domácnost, automatizace, AI  |
-| AI Playground    | pages/ai/index.html             | AI experimenty                      |
-| Frosthaven Forge | pages/frosthaven/index.html     | Deskovka, 3D modely, kampaň         |
-| Ongy Notes       | pages/blog/index.html           | Blog/zápisky                        |
-| Ongy Eye         | pages/gallery/index.html        | Fotogalerie s lightboxem            |
+| Sekce            | Soubor                         | Popis                               |
+| ---------------- | ------------------------------ | ----------------------------------- |
+| Home             | index.html                     | Hero, karty sekcí, O mně            |
+| 3D Print Lab     | pages/3d-print/index.html      | Tiskárny, projekty, tipy, stahování |
+| Home Assistant   | pages/homeassistant/index.html | Chytrá domácnost, automatizace, AI  |
+| AI Playground    | pages/ai/index.html            | AI experimenty                      |
+| Frosthaven Forge | pages/frosthaven/index.html    | Deskovka, 3D modely, kampaň         |
+| Ongy Notes       | pages/blog/index.html          | Blog/zápisky                        |
+| Ongy Eye         | pages/gallery/index.html       | Fotogalerie s lightboxem            |
 
 ## Tiskárny majitele
 
@@ -212,14 +213,33 @@ https://res.cloudinary.com/CLOUD-NAME/image/upload/TRANSFORMACE/NAZEV.jpg
 
 **Přidat novou stránku:**
 
-1. Vytvořit HTML v `pages/` (zkopírovat pattern z [pages/ai.html](../pages/ai.html))
-2. Přidat odkaz do [js/components.js](../js/components.js) (navigace)
-3. Použít stejnou strukturu (.page-hero + .content-section)
+1. Vytvořit složku v `pages/` s `index.html` (např. `pages/nova-sekce/index.html`)
+2. Zkopírovat pattern z existující stránky (např. [pages/ai/index.html](../pages/ai/index.html))
+3. Přidat odkaz do [js/components.js](../js/components.js) (navigace)
+4. Cesty k assetům: `../../css/style.css`, `../../js/main.js`
 
 **Přidat fotky do galerie:**
 
 1. Nahrát na Cloudinary (transformace `w_400,h_400,c_fill,q_auto,f_auto` pro thumb)
-2. Přidat `<div class="gallery-item" data-category="...">` do [pages/gallery.html](../pages/gallery.html)
+2. Přidat `<div class="gallery-item" data-category="...">` do [pages/gallery/index.html](../pages/gallery/index.html)
+
+**Přidat screenshot s lightboxem (HA stránka):**
+
+```html
+<div class="ha-screenshot-item">
+  <img
+    src="https://res.cloudinary.com/.../w_600,q_auto,f_auto/screenshot.png"
+    alt="Popis"
+    loading="lazy"
+    style="width: 100%; border-radius: 8px; border: 1px solid var(--card-border);"
+  />
+  <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">
+    Popisek
+  </p>
+</div>
+```
+
+Lightbox automaticky zvětší na w_1600 verzi.
 
 **Přidat fotku tiskárny/projektu:**
 
@@ -239,4 +259,10 @@ https://res.cloudinary.com/CLOUD-NAME/image/upload/TRANSFORMACE/NAZEV.jpg
 - **Nikdy** nevytvářet package.json nebo build config
 - Všechen obsah **v češtině** (UI texty, alt texty, komentáře v HTML)
 - JavaScript komentáře mohou být česky i anglicky
-- Pro nové sekce: zkopírovat pattern z existujících pages (např. [pages/ai.html](../pages/ai.html))
+- Pro nové sekce: zkopírovat pattern z existujících pages (např. [pages/ai/index.html](../pages/ai/index.html))
+
+## Cloudinary účet
+
+**Cloud name:** `dwuteqscm`
+
+Aktuální screenshoty HA dashboardů jsou v rootu Cloudinary účtu.
