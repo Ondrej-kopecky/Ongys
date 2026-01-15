@@ -414,12 +414,15 @@ a {
 
 /* Card Variants */
 .card-print:hover { border-color: var(--electric-teal); }
+.card-ha:hover { border-color: #18bc9c; }
 .card-ai:hover { border-color: var(--warm-amber); }
 .card-frost:hover { border-color: #88c8ff; }
 
+.card-ha .card-icon { color: #18bc9c; }
 .card-ai .card-icon { color: var(--warm-amber); }
 .card-frost .card-icon { color: #88c8ff; }
 
+.card-ha:hover .card-arrow { color: #18bc9c; }
 .card-ai:hover .card-arrow { color: var(--warm-amber); }
 .card-frost:hover .card-arrow { color: #88c8ff; }
 
@@ -1604,6 +1607,325 @@ a {
 }
 
 /* ========================================
+   Home Assistant Page Styles
+   ======================================== */
+
+.page-hero-ha {
+    background: 
+        radial-gradient(ellipse at 50% 50%, rgba(24, 188, 156, 0.15) 0%, transparent 50%),
+        var(--midnight);
+}
+
+/* Intro */
+.ha-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* Stats */
+.ha-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+
+.ha-stat {
+    text-align: center;
+}
+
+.ha-stat-number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--electric-teal);
+    text-shadow: 0 0 20px var(--glow-teal);
+}
+
+.ha-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hardware Grid */
+.ha-hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-card {
+    padding: 2rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+}
+
+.ha-card:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 0 20px var(--glow-teal);
+}
+
+.ha-card-main {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(46, 232, 196, 0.1), rgba(18, 18, 18, 0.5));
+}
+
+.ha-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--electric-teal);
+}
+
+.ha-card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ha-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ha-card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ha-specs {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.ha-specs li {
+    padding: 0.25rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.ha-specs li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--electric-teal);
+}
+
+/* Print Link in HA cards */
+.ha-print-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(46, 232, 196, 0.1);
+    color: var(--electric-teal);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition-normal);
+}
+
+.ha-print-link:hover {
+    background: rgba(46, 232, 196, 0.2);
+    box-shadow: 0 0 15px var(--glow-teal);
+    transform: translateY(-2px);
+}
+
+/* Devices Grid */
+.ha-devices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-device-category {
+    padding: 1.5rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+}
+
+.ha-device-category h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.ha-device-category ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.ha-device-category li {
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.ha-device-category li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--electric-teal);
+}
+
+/* Automations */
+.ha-automations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-automation {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+}
+
+.ha-automation:hover {
+    border-color: var(--warm-amber);
+    box-shadow: 0 0 20px var(--glow-amber);
+}
+
+.ha-automation-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.ha-automation-icon {
+    font-size: 1.5rem;
+}
+
+.ha-automation h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.ha-automation p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ha-automation-trigger {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.trigger-label {
+    color: var(--warm-amber);
+    font-weight: 500;
+}
+
+.trigger-value {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+/* AI Cards */
+.ha-ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-ai-card {
+    padding: 2rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+    text-align: center;
+}
+
+.ha-ai-card:hover {
+    border-color: var(--warm-amber);
+    box-shadow: 0 0 20px var(--glow-amber);
+}
+
+.ha-ai-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    color: var(--warm-amber);
+}
+
+.ha-ai-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ha-ai-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ha-ai-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Dashboard Preview */
+.ha-dashboard-preview {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ha-dashboard-placeholder {
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 2px dashed var(--card-border);
+    text-align: center;
+}
+
+.ha-dashboard-placeholder .gallery-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+    color: var(--text-muted);
+}
+
+.ha-dashboard-placeholder p {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.ha-dashboard-placeholder span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
    Responsive - Subpages
    ======================================== */
 
@@ -1618,5 +1940,13 @@ a {
     
     .printer-card {
         flex-direction: column;
+    }
+    
+    .ha-stats {
+        gap: 1.5rem;
+    }
+    
+    .ha-stat-number {
+        font-size: 2rem;
     }
 }

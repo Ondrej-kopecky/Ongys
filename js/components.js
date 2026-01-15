@@ -22,6 +22,7 @@ const navHTML = `
     <ul class="nav-links" id="nav-links">
         <li><a href="${basePath}/index.html">Home</a></li>
         <li><a href="${basePath}/pages/3d-print.html">3D Print</a></li>
+        <li><a href="${basePath}/pages/homeassistant.html">Home Assistant</a></li>
         <li><a href="${basePath}/pages/ai.html">AI</a></li>
         <li><a href="${basePath}/pages/frosthaven.html">Frosthaven</a></li>
         <li><a href="${basePath}/pages/blog.html">Blog</a></li>
