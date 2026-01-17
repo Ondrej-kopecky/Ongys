@@ -9,3 +9,6 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Brain memory (local only)
+.brain/
