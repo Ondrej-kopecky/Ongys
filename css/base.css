@@ -1,0 +1,146 @@
+/* ========================================
+   ONGY.CZ - Base Styles
+   Proměnné, reset, fonty, základní elementy
+   ======================================== */
+
+:root {
+    /* Hlavní barvy */
+    --deep-indigo: #1E1B3A;
+    --electric-teal: #2EE8C4;
+    --warm-amber: #FFA94D;
+    --midnight: #121212;
+    --soft-white: #F2F2F2;
+
+    /* Doplňkové */
+    --text-muted: #94a3b8;
+    --card-bg: #1a1a2e;
+    --card-border: rgba(46, 232, 196, 0.1);
+    --glow-teal: rgba(46, 232, 196, 0.3);
+    --glow-amber: rgba(255, 169, 77, 0.3);
+
+    /* Fonty */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Přechody */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--midnight);
+    color: var(--soft-white);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ========================================
+   SVG Icon System
+   ======================================== */
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-sm { font-size: 1rem; }
+.icon-md { font-size: 1.5rem; }
+.icon-lg { font-size: 2rem; }
+.icon-xl { font-size: 2.5rem; }
+.icon-hero { font-size: 4rem; }
+
+.icon-teal { color: var(--electric-teal); }
+.icon-amber { color: var(--warm-amber); }
+.icon-muted { color: var(--text-muted); }
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition-normal);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--electric-teal), #1fb89f);
+    color: var(--midnight);
+    box-shadow: 0 4px 20px var(--glow-teal);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px var(--glow-teal);
+}
+
+.btn-arrow {
+    width: 20px;
+    height: 20px;
+    transition: var(--transition-fast);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ========================================
+   Scroll Animations
+   ======================================== */
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 1; height: 40px; }
+    50% { opacity: 0.5; height: 30px; }
+}

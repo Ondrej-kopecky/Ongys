@@ -1,0 +1,708 @@
+/* ========================================
+   ONGY.CZ - Page Specific Styles
+   Styly pro jednotlivé sekce webu
+   ======================================== */
+
+/* ========================================
+   3D Print - Printer Cards
+   ======================================== */
+
+.printer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.printer-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.printer-card:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 10px 40px rgba(46, 232, 196, 0.1);
+}
+
+.printer-image {
+    height: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    background: var(--deep-indigo);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.printer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.printer-card:hover .printer-image img {
+    transform: scale(1.05);
+}
+
+.printer-info {
+    padding: 1.5rem;
+}
+
+.printer-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.printer-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(46, 232, 196, 0.1);
+    color: var(--electric-teal);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.printer-info p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.printer-specs {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.printer-specs li {
+    padding: 0.25rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.printer-specs li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--electric-teal);
+}
+
+/* ========================================
+   3D Print - Projects Grid
+   ======================================== */
+
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--electric-teal);
+    color: var(--electric-teal);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.project-card:hover {
+    border-color: var(--electric-teal);
+    transform: translateY(-5px);
+}
+
+.project-image {
+    height: 180px;
+    background: var(--deep-indigo);
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 1.25rem;
+}
+
+.project-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    background: rgba(46, 232, 196, 0.1);
+    color: var(--electric-teal);
+    border-radius: 10px;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-info p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.project-placeholder {
+    opacity: 0.5;
+    border-style: dashed;
+}
+
+/* ========================================
+   3D Print - Tips Grid
+   ======================================== */
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.tip-card {
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+}
+
+.tip-card:hover {
+    border-color: var(--electric-teal);
+}
+
+.tip-number {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--electric-teal);
+    opacity: 0.5;
+}
+
+.tip-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.tip-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   Downloads Grid
+   ======================================== */
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.download-card {
+    display: block;
+    padding: 2rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.download-card:hover {
+    border-color: var(--electric-teal);
+    transform: translateY(-3px);
+}
+
+.download-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.download-icon-svg {
+    width: 48px;
+    height: 48px;
+    color: var(--electric-teal);
+    margin-bottom: 1rem;
+    transition: var(--transition-normal);
+}
+
+.download-card:hover .download-icon-svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--glow-teal));
+}
+
+.download-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.download-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.external-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* ========================================
+   Blog List
+   ======================================== */
+
+.blog-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-post {
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border-left: 3px solid var(--electric-teal);
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.post-tag {
+    padding: 0.15rem 0.5rem;
+    background: rgba(46, 232, 196, 0.1);
+    color: var(--electric-teal);
+    border-radius: 10px;
+    font-size: 0.7rem;
+}
+
+.blog-post h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.blog-post p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   Home Assistant Page
+   ======================================== */
+
+/* Intro */
+.ha-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* Stats */
+.ha-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+
+.ha-stat {
+    text-align: center;
+}
+
+.ha-stat-number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--electric-teal);
+    text-shadow: 0 0 20px var(--glow-teal);
+}
+
+.ha-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hardware Grid */
+.ha-hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-card {
+    padding: 2rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+}
+
+.ha-card:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 0 20px var(--glow-teal);
+}
+
+.ha-card-main {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(46, 232, 196, 0.1), rgba(18, 18, 18, 0.5));
+}
+
+.ha-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--electric-teal);
+}
+
+.ha-card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ha-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ha-card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ha-specs {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.ha-specs li {
+    padding: 0.25rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.ha-specs li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--electric-teal);
+}
+
+/* Print Link in HA cards */
+.ha-print-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(46, 232, 196, 0.1);
+    color: var(--electric-teal);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition-normal);
+}
+
+.ha-print-link:hover {
+    background: rgba(46, 232, 196, 0.2);
+    box-shadow: 0 0 15px var(--glow-teal);
+    transform: translateY(-2px);
+}
+
+/* Devices Grid */
+.ha-devices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-device-category {
+    padding: 1.5rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+}
+
+.ha-device-category h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ha-device-category ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.ha-device-category li {
+    padding: 0.35rem 0;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.ha-device-category li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--electric-teal);
+}
+
+/* Automations */
+.ha-automations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-automation {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+}
+
+.ha-automation:hover {
+    border-color: var(--warm-amber);
+    box-shadow: 0 0 20px var(--glow-amber);
+}
+
+.ha-automation-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.ha-automation-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--warm-amber);
+}
+
+.ha-automation-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Inline icons for headings and links */
+.ha-inline-icon {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    color: var(--electric-teal);
+}
+
+.ha-automation h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.ha-automation p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ha-automation-trigger {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.trigger-label {
+    color: var(--warm-amber);
+    font-weight: 500;
+}
+
+.trigger-value {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+/* AI Cards */
+.ha-ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ha-ai-card {
+    padding: 2rem;
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-normal);
+    text-align: center;
+}
+
+.ha-ai-card:hover {
+    border-color: var(--warm-amber);
+    box-shadow: 0 0 20px var(--glow-amber);
+}
+
+.ha-ai-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    color: var(--warm-amber);
+}
+
+.ha-ai-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ha-ai-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ha-ai-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Dashboard Preview */
+.ha-dashboard-preview {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ha-dashboard-placeholder {
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 2px dashed var(--card-border);
+    text-align: center;
+}
+
+.ha-dashboard-placeholder .gallery-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+    color: var(--text-muted);
+}
+
+.ha-dashboard-placeholder p {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.ha-dashboard-placeholder span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   Responsive - Pages
+   ======================================== */
+
+@media (max-width: 768px) {
+    .printer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .printer-card {
+        flex-direction: column;
+    }
+
+    .ha-stats {
+        gap: 1.5rem;
+    }
+
+    .ha-stat-number {
+        font-size: 2rem;
+    }
+}
