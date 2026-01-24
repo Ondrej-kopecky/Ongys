@@ -21,10 +21,10 @@ const GOATCOUNTER_CODE = 'ongy';
         allow_local: false
     };
 
-    // Načíst GoatCounter skript
+    // Načíst GoatCounter skript (oficiální URL)
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://${GOATCOUNTER_CODE}.goatcounter.com/count.js`;
+    script.src = 'https://gc.zgo.at/count.js';
     script.dataset.goatcounter = `https://${GOATCOUNTER_CODE}.goatcounter.com/count`;
     document.head.appendChild(script);
 
