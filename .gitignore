@@ -12,3 +12,6 @@ Thumbs.db
 
 # Brain memory (local only)
 .brain/
+
+# Planning docs
+HA_WEBSITE_STRUCTURE.md
