@@ -560,3 +560,21 @@
         justify-content: center;
     }
 }
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.breadcrumb a {
+    color: var(--electric-teal);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--warm-amber);
+    text-decoration: underline;
+}

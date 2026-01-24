@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monitoring Home Assistant - Grafana dashboardy, InfluxDB, Node-RED měsíční reporty">
+    <title>Monitoring | Home Assistant | Ongy.cz</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬡</text></svg>">
+</head>
+<body>
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero page-hero-ha">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="M18 9l-5 5-4-4-3 3"/>
+                </svg>
+                <h1>Data & Monitoring</h1>
+                <p class="page-subtitle">Grafana, InfluxDB, Node-RED</p>
+                <p class="breadcrumb">
+                    <a href="../">Home Assistant</a> / Monitoring
+                </p>
+            </div>
+        </section>
+
+        <!-- Stack Overview -->
+        <section class="content-section">
+            <div class="ha-hardware-grid">
+                <div class="ha-card ha-card-main">
+                    <div class="ha-card-icon" style="color: #F2931E;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/>
+                            <path d="M7 14l4-4 4 4 5-5"/>
+                        </svg>
+                    </div>
+                    <h3>Grafana</h3>
+                    <p class="ha-card-desc">9 dashboardů pro vizualizaci historických dat</p>
+                    <ul class="ha-specs">
+                        <li>📊 Spotřeba energie (PC, TV, kuchyň, lednice)</li>
+                        <li>🖨️ 3D tisk (teploty, časy, filament)</li>
+                        <li>🌡️ Teploty místností + filament boxy</li>
+                        <li>🤖 Vysavač statistiky</li>
+                        <li>🔋 Baterie zařízení</li>
+                        <li>🖥️ Raspberry Pi 5 monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="ha-card">
+                    <div class="ha-card-icon" style="color: #22ADF6;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                        </svg>
+                    </div>
+                    <h3>InfluxDB</h3>
+                    <p class="ha-card-desc">Time-series databáze pro dlouhodobé ukládání senzorů</p>
+                    <ul class="ha-specs">
+                        <li>Teploty, vlhkost, spotřeba</li>
+                        <li>3D tisk metriky</li>
+                        <li>Integrace s HA Recorder</li>
+                    </ul>
+                </div>
+
+                <div class="ha-card">
+                    <div class="ha-card-icon" style="color: #EF4444;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="6" cy="6" r="3"/>
+                            <circle cx="18" cy="18" r="3"/>
+                            <path d="M6 21V9a9 9 0 009 9h6"/>
+                        </svg>
+                    </div>
+                    <h3>Node-RED</h3>
+                    <p class="ha-card-desc">Flow-based automatizace a měsíční reporty</p>
+                    <ul class="ha-specs">
+                        <li>Měsíční HTML report na email</li>
+                        <li>Energie: PC, TV, kuchyň, lednice</li>
+                        <li>3D tisk: počet, filament, čas</li>
+                        <li>Vysavač: plocha, úklidy</li>
+                        <li>Klima: průměry + max vlhkost</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Report Preview -->
+        <section class="content-section section-alt">
+            <div class="ha-report-preview" style="padding: 2rem; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border);">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg style="width: 24px; height: 24px; color: var(--electric-teal);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Měsíční Report
+                </h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Každý 1. den v měsíci v 8:00 mi přijde automaticky vygenerovaný HTML email s přehledem:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div style="padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; text-align: center;">
+                        <svg style="width: 32px; height: 32px; color: #10b981; margin-bottom: 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <div style="color: #10b981; font-weight: 600;">Energie</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">kWh × 12.41 Kč</div>
+                    </div>
+                    <div style="padding: 1rem; background: rgba(139, 92, 246, 0.1); border-radius: 8px; text-align: center;">
+                        <svg style="width: 32px; height: 32px; color: #8b5cf6; margin-bottom: 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18h12M12 6v8M8 10l4-4 4 4"/></svg>
+                        <div style="color: #8b5cf6; font-weight: 600;">3D Tisk</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">počet, filament, čas</div>
+                    </div>
+                    <div style="padding: 1rem; background: rgba(6, 182, 212, 0.1); border-radius: 8px; text-align: center;">
+                        <svg style="width: 32px; height: 32px; color: #06b6d4; margin-bottom: 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+                        <div style="color: #06b6d4; font-weight: 600;">Vysavač</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">úklidy, plocha, díly</div>
+                    </div>
+                    <div style="padding: 1rem; background: rgba(249, 115, 22, 0.1); border-radius: 8px; text-align: center;">
+                        <svg style="width: 32px; height: 32px; color: #f97316; margin-bottom: 0.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+                        <div style="color: #f97316; font-weight: 600;">Klima</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">průměry + max vlhkost</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grafana Dashboards Carousel -->
+        <section class="content-section">
+            <div style="margin-top: 2rem;">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg style="width: 24px; height: 24px; color: #F46800;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg>
+                    Grafana Dashboards
+                </h3>
+                <div class="screenshot-carousel" id="grafanaCarousel">
+                    <div class="carousel-container" id="grafanaContainer">
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231434_fwnlxv.png"
+                                 alt="Grafana - Spotřeba Energie" loading="lazy">
+                            <div class="carousel-caption"><strong>Spotřeba Energie</strong> – PC, TV, kuchyň, lednice</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231422_bnwrf3.png"
+                                 alt="Grafana - Teploty a Vlhkost" loading="lazy">
+                            <div class="carousel-caption"><strong>Teploty a Vlhkost</strong> – Xiaomi senzory v bytě</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231506_hmgqwv.png"
+                                 alt="Grafana - Bambu Lab X1C" loading="lazy">
+                            <div class="carousel-caption"><strong>Bambu Lab X1C</strong> – 3D tisk statistiky</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231448_eacxza.png"
+                                 alt="Grafana - Raspberry Pi 5" loading="lazy">
+                            <div class="carousel-caption"><strong>Raspberry Pi 5</strong> – System monitoring</div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-prev" onclick="moveGrafanaCarousel(-1)">&#10094;</button>
+                    <button class="carousel-nav carousel-next" onclick="moveGrafanaCarousel(1)">&#10095;</button>
+                    <div class="carousel-dots" id="grafanaDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Main -->
+        <section class="content-section section-alt">
+            <div style="text-align: center;">
+                <a href="../" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--electric-teal); color: var(--midnight); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                    ← Zpět na Home Assistant
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../../../js/icons.js"></script>
+    <script src="../../../js/components.js"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/carousel.js"></script>
+    <script src="../../../js/analytics.js"></script>
+</body>
+</html>

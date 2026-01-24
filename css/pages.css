@@ -526,6 +526,71 @@
     color: var(--electric-teal);
 }
 
+/* Section Cards (for navigation) */
+.ha-section-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.ha-section-link:hover {
+    transform: translateY(-4px);
+}
+
+.ha-section-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ha-section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--electric-teal), var(--warm-amber));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.ha-section-link:hover .ha-section-card::before {
+    transform: scaleX(1);
+}
+
+.ha-section-link:hover .ha-section-card {
+    border-color: var(--electric-teal);
+    box-shadow: 0 0 20px rgba(46, 232, 196, 0.2);
+}
+
+.ha-section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.75rem;
+    color: var(--electric-teal);
+}
+
+.ha-section-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.ha-section-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.ha-section-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
 /* Automations */
 .ha-automations-grid {
     display: grid;
