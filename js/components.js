@@ -6,8 +6,9 @@
 // Zjistíme hloubku podle cesty
 // Root: /index.html nebo /
 // Subpage: /pages/nazev/ (složka s index.html)
+// Sub-subpage: /pages/nazev/subpage/ (např. /pages/ai/brain/)
 const pathDepth = window.location.pathname.split('/').filter(p => p && !p.includes('.')).length;
-const basePath = pathDepth >= 2 ? '../..' : (pathDepth === 1 ? '..' : '.');
+const basePath = pathDepth >= 3 ? '../../..' : (pathDepth === 2 ? '../..' : (pathDepth === 1 ? '..' : '.'));
 
 // Navigation HTML - čisté URL bez .html
 const navHTML = `

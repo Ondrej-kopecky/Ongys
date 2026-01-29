@@ -191,6 +191,34 @@
     font-size: 0.9rem;
 }
 
+.experiment-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.experiment-card-link:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 0 20px var(--glow-teal);
+}
+
+.experiment-card-link .experiment-number {
+    color: var(--electric-teal);
+    opacity: 0.8;
+}
+
+.active-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(46, 232, 196, 0.2);
+    color: var(--electric-teal);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--electric-teal);
+}
+
 /* ========================================
    Frost Cards
    ======================================== */
