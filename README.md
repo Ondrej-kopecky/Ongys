@@ -1,6 +1,6 @@
 # ongy.cz
 
-Osobní web – digitální dílna jednoho IT mistra.
+Osobní web – digitální dílna
 
 🌐 **Live:** [https://www.ongy.cz](https://www.ongy.cz)
 
