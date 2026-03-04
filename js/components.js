@@ -52,7 +52,7 @@ const footerHTML = `
             <span class="logo-text">Ong<span class="logo-y">y</span></span>
             <span class="logo-hex">⬡</span>
         </div>
-        <p class="footer-text">© 2025 ongy.cz | Vytvořeno s ❤️ a trochou filamentu</p>
+        <p class="footer-text">© 2025–2026 ongy.cz | Vytvořeno s ❤️ a trochou filamentu</p>
         <div class="footer-stats">
             <span class="visitor-count" title="Počet návštěv">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
