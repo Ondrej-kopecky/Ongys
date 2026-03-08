@@ -106,6 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Console easter egg
     console.log('%c⬡ Ongy.cz', 'color: #2EE8C4; font-size: 24px; font-weight: bold;');
-    console.log('%cDigitální dílna jednoho IT mistra', 'color: #94a3b8; font-size: 14px;');
+    console.log('%cDigitální dílna jednoho IT nadšence', 'color: #94a3b8; font-size: 14px;');
     console.log('%c3D tisk · AI · Frosthaven · Kód', 'color: #FFA94D; font-size: 12px;');
 });
