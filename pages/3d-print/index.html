@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="description" content="Ongy 3D Print Lab - Bambu Lab X1C, Anycubic Photon Mono X2, tisky, tipy a triky">
     <title>3D Print Lab | Ongy.cz</title>
     <link rel="stylesheet" href="../../css/style.css">
@@ -280,7 +283,7 @@
                     <span class="coming-badge">Brzy</span>
                 </a>
 
-                <a href="https://www.printables.com" target="_blank" class="download-card external">
+                <a href="https://www.printables.com" target="_blank" rel="noopener noreferrer" class="download-card external">
                     <svg class="download-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
                         <polyline points="15 3 21 3 21 9"/>
