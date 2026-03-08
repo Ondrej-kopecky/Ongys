@@ -64,18 +64,6 @@
                 <div class="frost-card">
                     <div class="frost-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
-                        </svg>
-                    </div>
-                    <h3>3D organizéry</h3>
-                    <p>Vytištěné inserty, tokeny a komponenty pro lepší organizaci hry</p>
-                    <span class="coming-badge">Připravuji</span>
-                </div>
-                <div class="frost-card">
-                    <div class="frost-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M8 21h12a2 2 0 002-2v-2H10v2a2 2 0 01-2 2z"/>
                             <path d="M6 3h12a2 2 0 012 2v12H6V5a2 2 0 00-2 2v12a2 2 0 002 2"/>
                             <path d="M10 9h6"/>
@@ -85,6 +73,56 @@
                     <h3>Archiv kampaně</h3>
                     <p>Naše cesta Gloomhavenem – jak jsme hráli a co jsme se naučili</p>
                     <span class="coming-badge">Připravuji</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D tištěné hexy -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </span>
+                    </span>
+                    3D tištěné herní pole
+                </h2>
+                <p class="section-subtitle">Modulární hexový dungeon z Bambu Lab X1C</p>
+            </div>
+
+            <div class="ha-card ha-card-main" style="margin-bottom: 2rem;">
+                <p class="ha-card-desc">
+                    Místo papírových dílků hrajeme na 3D tištěném modulárním poli. Hexy jsou spojené magnety,
+                    takže se dají skládat do libovolných scénářů. Zdi, dveře a překážky mají taky magnety
+                    a drží přesně tam kde mají. Všechno vytištěno na Bambu Lab X1C.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="ha-card" style="padding: 0; overflow: hidden;">
+                    <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20240612_095821_m1nizk"
+                         alt="Modulární hexové pole na magnety"
+                         loading="lazy"
+                         style="width: 100%; aspect-ratio: 16/10; object-fit: cover; cursor: pointer;">
+                    <div style="padding: 1rem;">
+                        <p style="color: var(--soft-white); font-weight: 600; margin-bottom: 0.25rem;">Modulární hexové pole</p>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Hexy na magnety – skládají se do libovolných tvarů. Zdi a překážky drží magneticky.</p>
+                    </div>
+                </div>
+                <div class="ha-card" style="padding: 0; overflow: hidden;">
+                    <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20250913_172803_l88ltd"
+                         alt="Hra na 3D tištěném hexovém dungeonu"
+                         loading="lazy"
+                         style="width: 100%; aspect-ratio: 16/10; object-fit: cover; cursor: pointer;">
+                    <div style="padding: 1rem;">
+                        <p style="color: var(--soft-white); font-weight: 600; margin-bottom: 0.25rem;">Hra v akci</p>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Scénář s figurkami, tokeny a kompletním 3D polem. Úplně jiný zážitek než papírové dílky.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -147,9 +185,19 @@
         </section>
     </main>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&#10094;</button>
+        <button class="lightbox-next">&#10095;</button>
+        <img class="lightbox-image" src="" alt="">
+        <div class="lightbox-caption"></div>
+    </div>
+
     <script src="../../js/icons.js"></script>
     <script src="../../js/components.js"></script>
     <script src="../../js/main.js"></script>
+    <script src="../../js/ha-lightbox.js"></script>
     <script src="../../js/analytics.js"></script>
 </body>
 </html>

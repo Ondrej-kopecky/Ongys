@@ -18,7 +18,7 @@ function initHALightbox() {
     const nextBtn = lightbox.querySelector('.lightbox-next');
 
     // Najdi všechny screenshoty na stránce (grid i carousel)
-    const screenshots = document.querySelectorAll('.ha-screenshot-item img, .ha-screenshot-main img, .carousel-slide img');
+    const screenshots = document.querySelectorAll('.ha-screenshot-item img, .ha-screenshot-main img, .carousel-slide img, .ha-card img');
     let currentIndex = 0;
     let visibleItems = [];
 
