@@ -202,6 +202,78 @@
             </div>
         </section>
 
+        <!-- YAML Example -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Ukázka: Chytré vysávání
+                </h2>
+                <p class="section-subtitle">Reálný YAML z mého Home Assistanta</p>
+            </div>
+
+            <div class="ha-card ha-card-main" style="margin-bottom: 2rem;">
+                <h3>Když &rarr; Pak</h3>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <p style="color: var(--warm-amber); font-weight: 600; margin-bottom: 0.5rem;">Podmínky:</p>
+                        <ul class="ha-specs">
+                            <li>Je 10:30</li>
+                            <li>Nejsem doma min. 30 minut</li>
+                            <li>Baterie vysavače &gt; 40%</li>
+                            <li>Vysavač je v dokovací stanici</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                        <p style="color: var(--electric-teal); font-weight: 600; margin-bottom: 0.5rem;">Akce:</p>
+                        <ul class="ha-specs">
+                            <li>Nastav režim: Sweep + Mop, Strong</li>
+                            <li>Spusť vysávání + mopování</li>
+                            <li>Pošli notifikaci na telefon</li>
+                            <li>Tlačítka: Stop / Odložit 2h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ha-card ha-card-main">
+                <h3>YAML</h3>
+                <div style="margin-top: 1rem; padding: 1.25rem; background: rgba(0,0,0,0.4); border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; line-height: 1.6;">
+                    <div><span style="color: var(--electric-teal);">trigger:</span></div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">trigger:</span> time</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">at:</span> <span style="color: var(--text-muted);">"10:30:00"</span></div>
+                    <div style="margin-top: 0.75rem;"><span style="color: var(--electric-teal);">conditions:</span></div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">condition:</span> state</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> person.ongy_io</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">state:</span> not_home</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">for:</span> <span style="color: var(--text-muted);">"00:30:00"</span></div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">condition:</span> numeric_state</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> sensor.xiaomi_d102gl_b71e_battery_level</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">above:</span> 40</div>
+                    <div style="margin-top: 0.75rem;"><span style="color: var(--electric-teal);">actions:</span></div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> select.select_option</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">target:</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> select.xiaomi_d102gl_b71e_sweep_mop_type</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">data:</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">option:</span> <span style="color: var(--text-muted);">"Sweep Mop"</span></div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> button.press</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">target:</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> button.xiaomi_d102gl_b71e_start_sweep_mop</div>
+                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> notify.mobile_app_sm_s911b</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">data:</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">title:</span> <span style="color: var(--text-muted);">"Automatický úklid zahájen"</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">message:</span> <span style="color: var(--text-muted);">"Darth Sider vyjel na mise"</span></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Back to Main -->
         <section class="content-section section-alt">
             <div style="text-align: center;">

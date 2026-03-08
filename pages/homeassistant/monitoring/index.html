@@ -155,8 +155,8 @@
                             <div class="carousel-caption"><strong>Raspberry Pi 5</strong> – System monitoring</div>
                         </div>
                     </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveGrafanaCarousel(-1)">&#10094;</button>
-                    <button class="carousel-nav carousel-next" onclick="moveGrafanaCarousel(1)">&#10095;</button>
+                    <button class="carousel-nav carousel-prev" data-carousel="grafana" data-dir="-1">&#10094;</button>
+                    <button class="carousel-nav carousel-next" data-carousel="grafana" data-dir="1">&#10095;</button>
                     <div class="carousel-dots" id="grafanaDots"></div>
                 </div>
             </div>
@@ -173,10 +173,20 @@
 
     </main>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&#10094;</button>
+        <button class="lightbox-next">&#10095;</button>
+        <img class="lightbox-image" src="" alt="">
+        <div class="lightbox-caption"></div>
+    </div>
+
     <script src="../../../js/icons.js"></script>
     <script src="../../../js/components.js"></script>
     <script src="../../../js/main.js"></script>
     <script src="../../../js/carousel.js"></script>
+    <script src="../../../js/ha-lightbox.js"></script>
     <script src="../../../js/analytics.js"></script>
 </body>
 </html>

@@ -6,9 +6,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializace Dashboard carousel
     initCarousel('carouselContainer', 'carouselDots', 'screenshot');
-    
+
     // Inicializace Grafana carousel
     initCarousel('grafanaContainer', 'grafanaDots', 'grafana');
+
+    // Event listeners pro carousel nav buttony (místo inline onclick)
+    document.querySelectorAll('.carousel-nav[data-carousel]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.carousel;
+            const dir = parseInt(btn.dataset.dir, 10);
+            if (name === 'grafana') {
+                moveCarouselGeneric('grafana', 'grafanaContainer', 'grafanaDots', dir);
+            } else if (name === 'screenshot') {
+                moveCarouselGeneric('screenshot', 'carouselContainer', 'carouselDots', dir);
+            }
+        });
+    });
 });
 
 // Globální stav carouselů
@@ -34,6 +47,21 @@ function initCarousel(containerId, dotsId, carouselName) {
         dotsContainer.appendChild(dot);
     });
     
+    // Autoplay - posun každých 5 sekund, pauza při hoveru
+    let autoplayTimer = setInterval(() => {
+        moveCarouselGeneric(carouselName, containerId, dotsId, 1);
+    }, 5000);
+
+    const carouselEl = container.closest('.screenshot-carousel');
+    if (carouselEl) {
+        carouselEl.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+        carouselEl.addEventListener('mouseleave', () => {
+            autoplayTimer = setInterval(() => {
+                moveCarouselGeneric(carouselName, containerId, dotsId, 1);
+            }, 5000);
+        });
+    }
+
     // Touch/swipe support
     let touchStartX = 0;
     let touchEndX = 0;

@@ -17,7 +17,7 @@ const navHTML = `
         <span class="logo-text">Ong<span class="logo-y">y</span></span>
         <span class="logo-hex">⬡</span>
     </a>
-    <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
+    <button class="nav-toggle" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
