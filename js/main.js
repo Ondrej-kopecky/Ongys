@@ -85,6 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Project filter buttons (3D Print page)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (filterBtns.length && projectCards.length) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
     // Console easter egg
     console.log('%c⬡ Ongy.cz', 'color: #2EE8C4; font-size: 24px; font-weight: bold;');
     console.log('%cDigitální dílna jednoho IT nadšence', 'color: #94a3b8; font-size: 14px;');
