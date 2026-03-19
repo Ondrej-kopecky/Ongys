@@ -407,12 +407,6 @@
     background: rgba(18, 18, 18, 0.5);
     border-radius: 12px;
     border: 1px solid var(--card-border);
-    transition: var(--transition-normal);
-}
-
-.ha-card:hover {
-    border-color: var(--electric-teal);
-    box-shadow: 0 0 20px var(--glow-teal);
 }
 
 .ha-card-main {
@@ -486,8 +480,28 @@
 /* Devices Grid */
 .ha-devices-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+}
+
+.ha-devices-grid .ha-section-link {
+    height: 100%;
+}
+
+.ha-devices-grid .ha-section-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ha-devices-grid .ha-section-card p {
+    margin-top: auto;
+}
+
+@media (max-width: 600px) {
+    .ha-devices-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .ha-device-category {
@@ -543,6 +557,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border-color: rgba(46, 232, 196, 0.25);
 }
 
 .ha-section-card::before {
@@ -553,7 +568,8 @@
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--electric-teal), var(--warm-amber));
-    transform: scaleX(0);
+    transform: scaleX(0.3);
+    transform-origin: left;
     transition: transform 0.3s ease;
 }
 
@@ -584,6 +600,17 @@
 .ha-section-card h3 {
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
+}
+
+.ha-section-card h3::after {
+    content: ' \2192';
+    color: var(--electric-teal);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.ha-section-link:hover .ha-section-card h3::after {
+    opacity: 1;
 }
 
 .ha-section-card p {
