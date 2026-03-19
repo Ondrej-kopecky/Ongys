@@ -89,16 +89,12 @@ function initNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    console.log('initNavigation called', navToggle, navLinks);
-    
     if (navToggle && navLinks) {
         navToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Toggle clicked!');
             navLinks.classList.toggle('active');
             navToggle.classList.toggle('active');
-            console.log('nav-links classes:', navLinks.className);
         });
     }
     
