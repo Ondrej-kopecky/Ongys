@@ -14,8 +14,14 @@ const basePath = pathDepth >= 3 ? '../../..' : (pathDepth === 2 ? '../..' : (pat
 const navHTML = `
 <nav class="navbar">
     <a href="${basePath}/" class="logo">
-        <span class="logo-text">Ong<span class="logo-y">y</span></span>
-        <span class="logo-hex">⬡</span>
+        <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,0 90,25 90,75 50,100 10,75 10,25" stroke="#2EE8C4" fill="none" stroke-width="4"/>
+            <rect x="40" y="30" width="20" height="8" fill="#2EE8C4"/>
+            <rect x="35" y="40" width="30" height="20" fill="#2EE8C4"/>
+            <polygon points="38,60 62,60 55,75 45,75" fill="#2EE8C4"/>
+            <circle cx="50" cy="85" r="3" fill="#2EE8C4"/>
+        </svg>
+        <span class="logo-text">ongy</span>
     </a>
     <button class="nav-toggle" aria-label="Menu">
         <span></span>
@@ -49,8 +55,14 @@ const footerHTML = `
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <span class="logo-text">Ong<span class="logo-y">y</span></span>
-            <span class="logo-hex">⬡</span>
+            <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,0 90,25 90,75 50,100 10,75 10,25" stroke="#2EE8C4" fill="none" stroke-width="4"/>
+                <rect x="40" y="30" width="20" height="8" fill="#2EE8C4"/>
+                <rect x="35" y="40" width="30" height="20" fill="#2EE8C4"/>
+                <polygon points="38,60 62,60 55,75 45,75" fill="#2EE8C4"/>
+                <circle cx="50" cy="85" r="3" fill="#2EE8C4"/>
+            </svg>
+            <span class="logo-text">ongy</span>
         </div>
         <p class="footer-text">© 2025–2026 ongy.cz | Vytvořeno s ❤️ a trochou filamentu</p>
         <div class="footer-stats">

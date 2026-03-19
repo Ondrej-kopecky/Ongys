@@ -25,24 +25,25 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 8px rgba(46, 232, 196, 0.4));
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
 }
 
 .logo-text {
     color: var(--soft-white);
-}
-
-.logo-y {
-    color: var(--electric-teal);
-}
-
-.logo-hex {
-    color: var(--electric-teal);
-    font-size: 0.8em;
-    margin-left: 2px;
+    letter-spacing: 0.5px;
 }
 
 .nav-toggle {
@@ -240,7 +241,7 @@
    ======================================== */
 
 .page-hero {
-    min-height: 40vh;
+    min-height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,7 +306,7 @@
    ======================================== */
 
 .content-section {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     opacity: 0;
@@ -337,7 +338,7 @@
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 }
 
 .section-title {
@@ -397,7 +398,7 @@
 .footer-logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 800;

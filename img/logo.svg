@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+  <defs>
+    <style>
+      .bg { fill: #121212; }
+      .text { fill: #ffffff; font-family: Inter, Arial, sans-serif; font-weight: 600; }
+      .accent { stroke: #2EE8C4; fill: none; stroke-width: 4; }
+      .accent-fill { fill: #2EE8C4; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="800" height="200" rx="16"/>
+
+  <!-- Icon -->
+  <g transform="translate(60,50)">
+    <polygon class="accent" points="50,0 90,25 90,75 50,100 10,75 10,25"/>
+
+    <!-- minimal nozzle -->
+    <rect x="40" y="30" width="20" height="8" class="accent-fill"/>
+    <rect x="35" y="40" width="30" height="20" class="accent-fill"/>
+    <polygon points="38,60 62,60 55,75 45,75" class="accent-fill"/>
+    <circle cx="50" cy="85" r="3" class="accent-fill"/>
+  </g>
+
+  <!-- Text -->
+  <text x="160" y="120" font-size="64" class="text">ongy</text>
+</svg>
