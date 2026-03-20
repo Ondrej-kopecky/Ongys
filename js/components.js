@@ -35,7 +35,6 @@ const navHTML = `
         <li><a href="${basePath}/pages/ai/">AI</a></li>
         <li><a href="${basePath}/pages/deskovky/">Deskovky</a></li>
         <li><a href="${basePath}/pages/blog/">Blog</a></li>
-        <li><a href="${basePath}/pages/gallery/">Galerie</a></li>
         <li><a href="${basePath}/pages/about/">O mně</a></li>
     </ul>
 </nav>
