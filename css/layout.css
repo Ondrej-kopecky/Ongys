@@ -542,6 +542,10 @@
         display: none;
     }
 
+    body.menu-open {
+        overflow: hidden;
+    }
+
     .scroll-indicator {
         position: relative;
         bottom: auto;

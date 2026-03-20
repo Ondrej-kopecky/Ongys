@@ -47,6 +47,7 @@ function toggleMenu() {
     const navToggle = document.querySelector('.nav-toggle');
     navLinks.classList.toggle('active');
     navToggle.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
 }
 window.toggleMenu = toggleMenu;
 
