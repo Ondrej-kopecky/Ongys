@@ -14,3 +14,4 @@ Thumbs.db
 # Planning docs
 HA_WEBSITE_STRUCTURE.md
 reform.md
+.playwright-cli/
