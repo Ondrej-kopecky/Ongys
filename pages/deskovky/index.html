@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>Deskovky | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260320v">
+    <link rel="stylesheet" href="../../css/style.css?v=20260320x">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -41,9 +41,9 @@
         <!-- Gloomhaven -->
         <section class="content-section">
             <div class="section-header">
-                <h2 class="section-title" style="color: #ffa94d;">
+                <h2 class="section-title section-title-amber">
                     <span class="title-icon">
-                        <span class="icon icon-lg" style="color: #ffa94d;">
+                        <span class="icon icon-lg icon-amber">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14.5 17.5L3 6V3h3l11.5 11.5"/>
                                 <path d="M13 19l6-6"/><path d="M16 16l4 4"/><path d="M19 21l2-2"/>
@@ -55,46 +55,44 @@
                 <p class="section-subtitle">Původní kampaň — dohráno s jednou partou, rozjíždíme znovu s druhou</p>
             </div>
 
-            <!-- Hlavní karta: Tracker -->
-            <a href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener" style="display: block; background: var(--card-bg); border-radius: 16px; border: 2px solid #ffa94d; padding: 2rem; text-decoration: none; margin-bottom: 2rem; transition: all 0.3s ease;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,169,77,0.12); display: flex; align-items: center; justify-content: center; color: #ffa94d;">
+            <a href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener" class="tracker-card tracker-card-amber">
+                <div class="tracker-header">
+                    <div class="tracker-icon tracker-icon-amber">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
                     <div>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #ffa94d;">Gloomhaven Campaign Tracker</h3>
-                        <span style="color: var(--electric-teal); font-size: 0.8rem; font-weight: 600;">gloomhaven.ongy.cz →</span>
+                        <h3 class="tracker-title tracker-title-amber">Gloomhaven Campaign Tracker</h3>
+                        <span class="tracker-link">gloomhaven.ongy.cz →</span>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+                <p class="tracker-desc">
                     Webová appka pro sledování kampaně v češtině. Interaktivní flowchart scénářů
                     s pinch-to-zoom, tracking postav a achievementů. Mobilní verze s bottom sheet,
                     login s email verifikací a automatická synchronizace kampaní do cloudu.
                 </p>
             </a>
 
-            <!-- Features pod trackerem -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #ffa94d; margin-bottom: 0.5rem;">
+            <div class="feature-grid">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-amber">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">Mobilní verze</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Touch gesta, bottom sheet, responzivní</p>
+                    <strong>Mobilní verze</strong>
+                    <p>Touch gesta, bottom sheet, responzivní</p>
                 </div>
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #ffa94d; margin-bottom: 0.5rem;">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-amber">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">Login & Cloud sync</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Email verifikace, auto-sync kampaní</p>
+                    <strong>Login & Cloud sync</strong>
+                    <p>Email verifikace, auto-sync kampaní</p>
                 </div>
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #ffa94d; margin-bottom: 0.5rem;">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-amber">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">Flowchart scénářů</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Interaktivní mapa, pinch-to-zoom</p>
+                    <strong>Flowchart scénářů</strong>
+                    <p>Interaktivní mapa, pinch-to-zoom</p>
                 </div>
             </div>
         </section>
@@ -102,9 +100,9 @@
         <!-- Frosthaven -->
         <section class="content-section section-alt">
             <div class="section-header">
-                <h2 class="section-title" style="color: #7dd3fc;">
+                <h2 class="section-title section-title-ice">
                     <span class="title-icon">
-                        <span class="icon icon-lg" style="color: #7dd3fc;">
+                        <span class="icon icon-lg icon-ice">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2v20M2 12h20"/><path d="M12 2l3 3M12 2l-3 3"/><path d="M12 22l3-3M12 22l-3-3"/><path d="M2 12l3 3M2 12l3-3"/><path d="M22 12l-3 3M22 12l-3-3"/>
                             </svg>
@@ -115,48 +113,46 @@
                 <p class="section-subtitle">Aktuální kampaň — hrajeme od podzimu 2025</p>
             </div>
 
-            <!-- Hlavní karta: Tracker ve vývoji -->
-            <div style="background: var(--card-bg); border-radius: 16px; border: 2px solid #7dd3fc; padding: 2rem; margin-bottom: 2rem;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(125,211,252,0.12); display: flex; align-items: center; justify-content: center; color: #7dd3fc;">
+            <div class="tracker-card tracker-card-ice">
+                <div class="tracker-header">
+                    <div class="tracker-icon tracker-icon-ice">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
                     <div>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #7dd3fc;">Frosthaven Campaign Tracker</h3>
-                        <span style="background: rgba(125,211,252,0.15); color: #7dd3fc; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Ve vývoji</span>
+                        <h3 class="tracker-title tracker-title-ice">Frosthaven Campaign Tracker</h3>
+                        <span class="tracker-badge">Ve vývoji</span>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+                <p class="tracker-desc">
                     Nový tracker pro Frosthaven kampaň — stejný koncept jako Gloomhaven, nový ledový svět.
                     Samostatná appka s vlastním přihlášením a flowchartem scénářů.
                 </p>
             </div>
 
-            <!-- Budoucí features -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #7dd3fc; margin-bottom: 0.5rem;">
+            <div class="feature-grid">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-ice">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="M16 16l4 4"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">Naše kampaň</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Zápisky z hraní — žádné spoilery</p>
-                    <span style="color: #7dd3fc; font-size: 0.7rem; font-weight: 600;">Brzy</span>
+                    <strong>Naše kampaň</strong>
+                    <p>Zápisky z hraní — žádné spoilery</p>
+                    <span class="badge-brzy">Brzy</span>
                 </div>
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #7dd3fc; margin-bottom: 0.5rem;">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-ice">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">3D modely</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Organizéry, inserty, figurky</p>
-                    <span style="color: #7dd3fc; font-size: 0.7rem; font-weight: 600;">Brzy</span>
+                    <strong>3D modely</strong>
+                    <p>Organizéry, inserty, figurky</p>
+                    <span class="badge-brzy">Brzy</span>
                 </div>
-                <div style="background: var(--card-bg); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--card-border);">
-                    <div style="color: #7dd3fc; margin-bottom: 0.5rem;">
+                <div class="feature-mini">
+                    <div class="feature-mini-icon feature-mini-icon-ice">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
                     </div>
-                    <strong style="font-size: 0.9rem;">Organizace hry</strong>
-                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Praktické rady z praxe</p>
-                    <span style="color: #7dd3fc; font-size: 0.7rem; font-weight: 600;">Brzy</span>
+                    <strong>Organizace hry</strong>
+                    <p>Praktické rady z praxe</p>
+                    <span class="badge-brzy">Brzy</span>
                 </div>
             </div>
         </section>
@@ -179,31 +175,21 @@
                 <p class="section-subtitle">Modulární hexový dungeon z Bambu Lab X1C</p>
             </div>
 
-            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 2rem; text-align: center; line-height: 1.7;">
+            <p class="ha-intro" style="margin-bottom: 2rem;">
                 Místo papírových dílků hrajeme na 3D tištěném modulárním poli. Hexy spojené magnety,
                 zdi a překážky drží magneticky. Všechno vytištěno na Bambu Lab X1C.
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <div class="ha-card" style="padding: 0; overflow: hidden;">
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="filament-photo">
                     <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20240612_095821_m1nizk"
-                         alt="Modulární hexové pole na magnety"
-                         loading="lazy"
-                         style="width: 100%; aspect-ratio: 16/10; object-fit: cover; cursor: pointer;">
-                    <div style="padding: 1rem;">
-                        <p style="color: var(--soft-white); font-weight: 600; margin-bottom: 0.25rem;">Modulární hexové pole</p>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Hexy na magnety — skládají se do libovolných tvarů.</p>
-                    </div>
+                         alt="Modulární hexové pole na magnety" loading="lazy">
+                    <span class="photo-caption">Modulární hexové pole — hexy na magnety</span>
                 </div>
-                <div class="ha-card" style="padding: 0; overflow: hidden;">
+                <div class="filament-photo">
                     <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20250913_172803_l88ltd"
-                         alt="Hra na 3D tištěném hexovém dungeonu"
-                         loading="lazy"
-                         style="width: 100%; aspect-ratio: 16/10; object-fit: cover; cursor: pointer;">
-                    <div style="padding: 1rem;">
-                        <p style="color: var(--soft-white); font-weight: 600; margin-bottom: 0.25rem;">Hra v akci</p>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Scénář s figurkami, tokeny a kompletním 3D polem.</p>
-                    </div>
+                         alt="Hra na 3D tištěném hexovém dungeonu" loading="lazy">
+                    <span class="photo-caption">Hra v akci — figurky, tokeny, kompletní 3D pole</span>
                 </div>
             </div>
         </section>

@@ -936,6 +936,138 @@
     font-family: var(--font-mono);
 }
 
+/* ========================================
+   Homepage Highlights
+   ======================================== */
+
+.highlights-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.highlight-amber { border-left: 4px solid #ffa94d; }
+.highlight-teal { border-left: 4px solid var(--electric-teal); }
+.highlight-purple { border-left: 4px solid #a78bfa; }
+
+.highlight-amber strong { color: #ffa94d; }
+.highlight-teal strong { color: var(--electric-teal); }
+.highlight-purple strong { color: #a78bfa; }
+
+.highlight-item p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+
+.highlight-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-icon-amber { background: rgba(255, 169, 77, 0.12); color: #ffa94d; }
+.highlight-icon-teal { background: rgba(46, 232, 196, 0.12); color: var(--electric-teal); }
+.highlight-icon-purple { background: rgba(167, 139, 250, 0.12); color: #a78bfa; }
+
+.highlight-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-left: auto;
+}
+
+/* ========================================
+   Deskovky - Tracker Cards
+   ======================================== */
+
+.tracker-card {
+    display: block;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.tracker-card-amber { border: 2px solid #ffa94d; }
+.tracker-card-ice { border: 2px solid #7dd3fc; }
+
+.tracker-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tracker-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tracker-icon-amber { background: rgba(255, 169, 77, 0.12); color: #ffa94d; }
+.tracker-icon-ice { background: rgba(125, 211, 252, 0.12); color: #7dd3fc; }
+
+.tracker-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; }
+.tracker-title-amber { color: #ffa94d; }
+.tracker-title-ice { color: #7dd3fc; }
+
+.tracker-link { font-size: 0.8rem; font-weight: 600; color: var(--electric-teal); }
+.tracker-badge {
+    background: rgba(125, 211, 252, 0.15);
+    color: #7dd3fc;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tracker-desc { color: var(--text-muted); line-height: 1.6; }
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.feature-mini {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid var(--card-border);
+}
+
+.feature-mini-icon { margin-bottom: 0.5rem; }
+.feature-mini-icon-amber { color: #ffa94d; }
+.feature-mini-icon-ice { color: #7dd3fc; }
+
+.feature-mini strong { font-size: 0.9rem; }
+.feature-mini p { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem; }
+
+.feature-mini .badge-brzy { color: #7dd3fc; font-size: 0.7rem; font-weight: 600; }
+
 /* About Teaser (homepage) */
 .about-teaser {
     display: flex;

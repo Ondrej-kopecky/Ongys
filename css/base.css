@@ -83,7 +83,11 @@ a {
 
 .icon-teal { color: var(--electric-teal); }
 .icon-amber { color: var(--warm-amber); }
+.icon-ice { color: #7dd3fc; }
 .icon-muted { color: var(--text-muted); }
+
+.section-title-amber { color: var(--warm-amber); }
+.section-title-ice { color: #7dd3fc; }
 
 /* ========================================
    Buttons
