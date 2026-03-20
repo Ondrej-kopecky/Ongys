@@ -960,10 +960,12 @@
 }
 
 .highlight-amber { border-left: 4px solid #ffa94d; }
+.highlight-ice { border-left: 4px solid #7dd3fc; }
 .highlight-teal { border-left: 4px solid var(--electric-teal); }
 .highlight-purple { border-left: 4px solid #a78bfa; }
 
 .highlight-amber strong { color: #ffa94d; }
+.highlight-ice strong { color: #7dd3fc; }
 .highlight-teal strong { color: var(--electric-teal); }
 .highlight-purple strong { color: #a78bfa; }
 
@@ -984,6 +986,7 @@
 }
 
 .highlight-icon-amber { background: rgba(255, 169, 77, 0.12); color: #ffa94d; }
+.highlight-icon-ice { background: rgba(125, 211, 252, 0.12); color: #7dd3fc; }
 .highlight-icon-teal { background: rgba(46, 232, 196, 0.12); color: var(--electric-teal); }
 .highlight-icon-purple { background: rgba(167, 139, 250, 0.12); color: #a78bfa; }
 
