@@ -543,7 +543,10 @@
     }
 
     .scroll-indicator {
-        display: none;
+        position: relative;
+        bottom: auto;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     .section-title {
