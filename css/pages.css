@@ -311,10 +311,50 @@
 
 .blog-post {
     padding: 2rem;
+    padding-left: 5.5rem;
     background: var(--card-bg);
     border-radius: 12px;
     border-left: 3px solid var(--electric-teal);
     margin-bottom: 2rem;
+    position: relative;
+}
+
+.blog-post-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.blog-post-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.blog-post-icon.tag-deskovky {
+    background: rgba(255, 169, 77, 0.12);
+    color: #ffa94d;
+}
+
+.blog-post-icon.tag-ai {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+}
+
+.blog-post-icon.tag-ha {
+    background: rgba(46, 232, 196, 0.12);
+    color: var(--electric-teal);
+}
+
+.blog-post-icon.tag-web {
+    background: rgba(255, 107, 107, 0.12);
+    color: #ff6b6b;
 }
 
 .post-meta {
