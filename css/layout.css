@@ -410,6 +410,14 @@
     font-size: 0.9rem;
 }
 
+.footer-hex {
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    display: inline;
+    filter: drop-shadow(0 0 4px rgba(46, 232, 196, 0.4));
+}
+
 .footer-stats {
     display: flex;
     justify-content: center;
