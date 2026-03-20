@@ -859,6 +859,35 @@
     line-height: 1.7;
 }
 
+/* About Teaser (homepage) */
+.about-teaser {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-teaser-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.about-teaser-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.about-teaser-text p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
 /* Interest Cards */
 .about-interests {
     display: grid;
@@ -1036,6 +1065,11 @@
 
     .ha-stat-number {
         font-size: 2rem;
+    }
+
+    .about-teaser {
+        flex-direction: column;
+        text-align: center;
     }
 
     .about-hero {
