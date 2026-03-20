@@ -917,7 +917,8 @@
 
 .filament-photo img {
     width: 100%;
-    height: auto;
+    max-height: 250px;
+    object-fit: cover;
     display: block;
 }
 
