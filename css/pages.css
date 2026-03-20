@@ -920,6 +920,11 @@
     max-height: 250px;
     object-fit: cover;
     display: block;
+    cursor: pointer;
+}
+
+.filament-photo a {
+    display: block;
 }
 
 .photo-caption {
