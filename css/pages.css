@@ -818,6 +818,206 @@
 }
 
 /* ========================================
+   About Page
+   ======================================== */
+
+.about-hero {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-avatar {
+    flex-shrink: 0;
+}
+
+.about-avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+}
+
+.about-intro h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.about-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.about-intro > p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Interest Cards */
+.about-interests {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.interest-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+    transition: var(--transition-normal);
+}
+
+.interest-card:hover {
+    border-color: var(--electric-teal);
+    box-shadow: 0 5px 25px rgba(46, 232, 196, 0.08);
+}
+
+.interest-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.interest-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.interest-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.interest-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Work Items */
+.about-work {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.work-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+}
+
+.work-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+    background: rgba(46, 232, 196, 0.12);
+    color: var(--electric-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.work-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.work-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Timeline */
+.about-timeline {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.about-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--card-border);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.25rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--card-border);
+    border: 2px solid var(--deep-indigo);
+}
+
+.timeline-item.active::before {
+    background: var(--electric-teal);
+    box-shadow: 0 0 10px rgba(46, 232, 196, 0.4);
+}
+
+.timeline-year {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--electric-teal);
+    margin-bottom: 0.25rem;
+}
+
+.timeline-content h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ========================================
    Responsive - Pages
    ======================================== */
 
@@ -836,5 +1036,26 @@
 
     .ha-stat-number {
         font-size: 2rem;
+    }
+
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-hero .about-links {
+        justify-content: center;
+    }
+
+    .about-interests {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-post {
+        padding-left: 2rem;
+    }
+
+    .blog-post-icon {
+        display: none;
     }
 }
