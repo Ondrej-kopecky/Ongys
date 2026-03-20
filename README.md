@@ -1,302 +1,115 @@
 # ongy.cz
 
-Osobní web – digitální dílna
+Osobní digitální dílna — kde se kód mění v automatizace a filament ve skutečné věci.
 
-🌐 **Live:** [https://www.ongy.cz](https://www.ongy.cz)
+🌐 **Live:** [https://ongy.cz](https://ongy.cz)
 
 ---
 
-## 📁 Struktura projektu
+## 📁 Struktura
 
 ```
 ongy.cz/
-├── index.html              # Hlavní stránka
-├── CNAME                   # Vlastní doména pro GitHub Pages
-│
+├── index.html              # Homepage (hero, 5 karet, highlights, O mně teaser)
 ├── css/
-│   ├── style.css           # Hlavní import
-│   ├── base.css            # Reset, variables, typography
-│   ├── layout.css          # Grid, flex, responsive
-│   ├── components.css      # Buttons, cards, nav
-│   └── pages.css           # Page-specific styles
-│
+│   ├── style.css           # Import hub
+│   ├── base.css            # Proměnné, reset, scroll-reveal animace
+│   ├── layout.css          # Navigace, footer, hero, grid
+│   ├── components.css      # Karty, lightbox, about styly
+│   └── pages.css           # Page-specific (printer, blog, filament, about, timeline)
 ├── js/
-│   ├── components.js       # Sdílené komponenty (nav, footer)
-│   ├── main.js             # Hlavní JavaScript
-│   ├── gallery.js          # Funkcionalita galerie
-│   ├── ha-lightbox.js      # Lightbox pro HA screenshoty
-│   ├── analytics.js        # GoatCounter tracking
+│   ├── components.js       # Nav + footer (injected)
+│   ├── main.js             # Filtry, interakce
+│   ├── reveal.js           # Scroll-reveal animace (Intersection Observer)
+│   ├── ha-lightbox.js      # Lightbox pro fotky
+│   ├── gallery.js          # Galerie
+│   ├── analytics.js        # GoatCounter
 │   └── icons.js            # SVG ikony
-│
 ├── pages/
-│   ├── 3d-print/           # 3D Print Lab
-│   ├── homeassistant/      # Home Assistant (9 podstránek)
-│   │   ├── index.html      # Hlavní navigace
-│   │   ├── hardware/       # Hardware & Setup
-│   │   ├── devices/        # Zařízení
-│   │   ├── automations/    # Automatizace
-│   │   ├── monitoring/     # Grafana, InfluxDB
-│   │   ├── advanced/       # Pokročilé (AI, templates)
-│   │   ├── guides/         # Návody
-│   │   ├── troubleshooting/# FAQ & troubleshooting
-│   │   └── resources/      # Downloads & odkazy
-│   ├── ai/                 # AI Playground
-│   ├── frosthaven/         # Frosthaven Forge
-│   ├── blog/               # Ongy Notes (blog)
-│   └── gallery/            # Ongy Eye (galerie)
-│
-├── assets/
-│   └── images/             # Lokální obrázky (většina na Cloudinary)
-│
-└── .brain/                 # 🧠 Brain System - Project memory
-    └── memory/
-        ├── NEXT_SESSION_TODO.md  # Co dělat příště
-        ├── context/              # Project docs
-        └── changelog/            # Historie změn
+│   ├── 3d-print/           # Tiskárny, filament skladování, projekty, tipy
+│   ├── homeassistant/      # 50+ zařízení, 35+ automatizací
+│   │   ├── devices/        # Zařízení & hardware (wall tablet, Zigbee, F1)
+│   │   ├── automations/    # Automatizace (8 kategorií)
+│   │   ├── monitoring/     # Grafana (9 dashboardů), InfluxDB, Node-RED
+│   │   └── tips/           # AI integrace, šablony, tipy
+│   ├── ai/                 # AI v praxi (workflow, Brain System, nástroje)
+│   │   └── brain/          # Brain System v2.0 dokumentace
+│   ├── deskovky/           # Gloomhaven (amber) + Frosthaven (ledově modrá)
+│   ├── about/              # O mně (avatar, zájmy, práce, 3D tisk timeline)
+│   ├── blog/               # Ongy Notes (7 článků, SVG ikony podle kategorie)
+│   └── gallery/            # Galerie (odkaz na 3D Print)
+├── assets/images/
+│   ├── avatar.jpg          # Stylizovaný avatar (hex rám)
+│   ├── og-image.jpg        # Open Graph náhled (1200x630)
+│   ├── wall-tablet.jpg     # HA wall tablet fotka
+│   └── 3d-print/           # Lokální fotky tiskáren + filament
+│       ├── bambu-x1c.avif
+│       ├── anycubic-photon-mono-x2.png
+│       ├── filament-storage.jpg
+│       ├── silica-gel-box.jpg
+│       └── grafana-filament.jpg
+├── img/
+│   ├── logo.svg            # Hex + tryska logo
+│   └── favicon.svg         # Favicon
+└── .brain/memory/          # Brain System v2.0
 ```
-
----
-
-## 🚀 Lokální vývoj
-
-### Možnost 1: VS Code Live Server (doporučeno)
-
-1. Nainstaluj rozšíření **Live Server**
-2. Pravý klik na `index.html` → **Open with Live Server**
-3. Web se automaticky obnoví při změnách
-
-### Možnost 2: Python server
-
-```bash
-python -m http.server 8000
-```
-
-Otevři `http://localhost:8000`
-
----
-
-## 📤 Deploy do produkce
-
-```powershell
-git add .
-git commit -m "Popis změny"
-git push
-```
-
-Změny se **automaticky nasadí** na GitHub Pages během 1-2 minut.
-
-**Live URL:** https://www.ongy.cz
-
----
-
-## 🧠 Brain System
-
-Projekt používá **Brain System** pro udržení kontextu a paměti.
-
-### Co je Brain?
-
-`.brain/memory/` obsahuje:
-- **context/** - Dokumentace projektu (architecture, design system, plány)
-- **changelog/** - Historie změn z každé session
-- **NEXT_SESSION_TODO.md** - Co dělat příště
-
-### Proč Brain?
-
-- 📝 Uchovává full kontext projektu
-- 🎯 Jasné TODO pro další session
-- 📊 Historie všech změn
-- 🔄 Konzistence napříč sessions
 
 ---
 
 ## 🎨 Design System
 
-### Barevná paleta
+| Barva | Hex | Použití |
+|-------|-----|---------|
+| Electric Teal | `#2EE8C4` | Primární akcent |
+| Warm Amber | `#FFA94D` | Sekundární, Gloomhaven |
+| Ice Blue | `#7DD3FC` | Frosthaven |
+| Soft Purple | `#A78BFA` | AI |
+| Coral Red | `#FF6B6B` | Web/kód |
+| Deep Indigo | `#1E1B3A` | Karty |
+| Midnight | `#121212` | Pozadí |
 
-| Barva         | Hex       | Použití           |
-| ------------- | --------- | ----------------- |
-| Electric Teal | `#2EE8C4` | Akcent, odkazy    |
-| Warm Amber    | `#FFA94D` | Sekundární akcent |
-| Deep Indigo   | `#1E1B3A` | Karty             |
-| Midnight      | `#121212` | Pozadí            |
-| Soft White    | `#F2F2F2` | Text              |
+**Fonty:** Montserrat (nadpisy), Inter (text), JetBrains Mono (kód)
 
-### Fonty
-
-- **Montserrat** (600, 700, 800) – nadpisy
-- **Inter** (400, 500, 600) – běžný text
-- **JetBrains Mono** – kód, čísla
-
-### Důležitá pravidla
-
-- ✅ **Vždy SVG ikony** (nikdy emoji ❌)
-- ✅ **Mobile-first** přístup
-- ✅ **Dark mode** pouze
-- ✅ **Český obsah** (UI, alt texty, HTML komentáře)
-- ✅ `loading="lazy"` na všech obrázcích
+**Pravidla:**
+- Dark mode only, mobile-first
+- SVG ikony (ne emoji)
+- Český obsah
+- `loading="lazy"` na obrázcích
+- Cache-bust: `?v=YYYYMMDD` na CSS/JS při změnách (Cloudflare CDN)
 
 ---
 
-## 🖼️ Přidávání obrázků
+## 🚀 Deploy
 
-### Cloudinary Setup
-
-**Cloud Name:** `dwuteqscm`
-
-**URL format:**
-```
-https://res.cloudinary.com/dwuteqscm/image/upload/TRANSFORM/nazev.jpg
+```bash
+git push  # → GitHub Pages auto-deploy za 1-2 min
 ```
 
-### Doporučené transformace
-
-| Použití       | Transformace                          | Výsledek         |
-| ------------- | ------------------------------------- | ---------------- |
-| Tiskárny      | `w_800,q_auto,f_auto`                 | 800px šířka      |
-| Projekty      | `w_600,q_auto,f_auto`                 | 600px šířka      |
-| Gallery thumb | `w_400,h_400,c_fill,q_auto,f_auto`    | 400x400 čtverec  |
-| Gallery full  | `w_1600,q_auto,f_auto`                | 1600px lightbox  |
-| HA screenshot | `w_600,q_auto,f_auto` (thumb)         | 600px            |
-|               | `w_1600,q_auto,f_auto` (lightbox)     | 1600px           |
-
-### Příklad použití
-
-```html
-<img
-  src="https://res.cloudinary.com/dwuteqscm/image/upload/w_800,q_auto,f_auto/bambu-x1c.jpg"
-  alt="Bambu Lab X1 Carbon"
-  loading="lazy"
-/>
-```
+**Hosting:** GitHub Pages + Cloudflare
+**Repo:** `Ondrej-kopecky/Ongys`
 
 ---
 
-## 📊 Analytics - GoatCounter
+## 📊 Features
 
-**Účet:** https://ongy.goatcounter.com
-**Code:** `ongy`
-
-### Konfigurace
-
-Tracking probíhá automaticky přes `js/analytics.js`:
-- ✅ Auto-skip na localhost/127.0.0.1
-- ✅ Počítadlo návštěv v patičce
-- ✅ Privacy-friendly (bez cookies)
-
-### Požadavky v GoatCounter Settings:
-
-1. **Sites that can embed GoatCounter:** `*.ongy.cz`
-2. **Allow public access to counter API:** ✅ Zapnuto
+- **Scroll reveal animace** — fade-in při scrollu (Intersection Observer)
+- **Open Graph tagy** — hezké náhledy při sdílení na sociálních sítích
+- **Lightbox** — klikatelné fotky na fullscreen
+- **Hex-heart footer** — custom SVG ikona
+- **Responzivní** — mobil, tablet, desktop
+- **Hamburger menu** — scroll lock při otevření
+- **GoatCounter** — privacy-friendly analytics
 
 ---
 
-## 🏠 Home Assistant Sekce
+## 🔗 Propojené projekty
 
-### Struktura (9 podstránek)
-
-| Stránka          | Path                    | Status | Popis                                   |
-| ---------------- | ----------------------- | ------ | --------------------------------------- |
-| Hlavní           | homeassistant/          | ✅      | Navigační stránka s 8 kartami           |
-| Hardware         | homeassistant/hardware/ | ✅      | RPi5, Zigbee, rozpočet, jak začít       |
-| Devices          | homeassistant/devices/  | ✅      | 40+ zařízení v 6 kategoriích            |
-| Automations      | homeassistant/automations/ | ✅   | 28 automatizací v 6 kategoriích         |
-| Monitoring       | homeassistant/monitoring/ | ✅    | Grafana, InfluxDB, Node-RED             |
-| Advanced         | homeassistant/advanced/ | ✅      | AI, templates, custom integrace         |
-| Guides           | homeassistant/guides/   | 📝     | Step-by-step tutoriály (připraveno)     |
-| Troubleshooting  | homeassistant/troubleshooting/ | ✅ | FAQ & řešení problémů                   |
-| Resources        | homeassistant/resources/| 📝     | Downloads, odkazy (připraveno)          |
-
-### Stats
-
-- **40+** zařízení
-- **28** automatizací
-- **9** Grafana dashboardů
-- **100%** lokálně (bez cloudu)
+| Projekt | URL | Popis |
+|---------|-----|-------|
+| Gloomhaven Tracker | [gloomhaven.ongy.cz](https://gloomhaven.ongy.cz) | Campaign tracker v češtině |
+| Frosthaven Tracker | *Ve vývoji* | Samostatná appka |
+| Home Assistant | Z:\ (SMB) | 50+ zařízení, RPi5 |
 
 ---
 
-## ⚙️ Tech Stack
-
-### Frontend
-
-- **HTML5, CSS3, Vanilla JavaScript** (ES6+)
-- **ŽÁDNÉ frameworks** (React ❌, Vue ❌, jQuery ❌)
-- **ŽÁDNÝ build proces** (webpack ❌, vite ❌, npm install ❌)
-
-### Integrace
-
-- **Cloudinary** - Hosting obrázků (`dwuteqscm`)
-- **GoatCounter** - Analytics (`ongy.goatcounter.com`)
-- **GitHub Pages** - Hosting & deployment
-
-### Deployment
-
-- **Git push** → automatické nasazení za 1-2 minuty
-- **CNAME:** `www.ongy.cz`
-- **Repo:** `Ondrej-kopecky/Ongys`
-
----
-
-## ✅ Aktuální TODO
-
-**High Priority:**
-- [ ] 📸 Přidat fotky tiskáren (Bambu X1C, Photon Mono X2)
-- [ ] 🖼️ Přidat projekty do galerie (Cloudinary ready)
-- [ ] 📝 Napsat první blog posty do Ongy Notes
-- [ ] 🎮 Přidat Frosthaven zápisky a fotky
-- [ ] 🏠 Dodat obsah do HA Guides a Resources podstránek
-
-**Hotovo:**
-- ✅ Home Assistant rozděleno na 9 podstránek
-- ✅ Brain systém implementován
-- ✅ CSS refaktoring (rozděleno do modulů)
-- ✅ GoatCounter analytics setup
-- ✅ Cloudinary integrace
-- ✅ Responsive design pro všechny stránky
-
----
-
-## 🚨 DŮLEŽITÁ PRAVIDLA
-
-### ❌ NIKDY
-
-- Nepoužívat frameworks (React, Vue, jQuery)
-- Nevytvářet package.json nebo build config
-- Nepoužívat emoji jako ikony (vždy SVG)
-- Nezapomenout na mobile-first přístup
-- Nepsát obsah v angličtině (vždy česky)
-
-### ✅ VŽDY
-
-- Testovat na mobilních zařízeních
-- Používat relativní cesty pro assets
-- Přidávat `loading="lazy"` k obrázkům
-- Následovat existující patterns z jiných stránek
-- Používat Cloudinary pro obrázky
-- Kontrolovat Brain memory před začátkem práce
-
----
-
-## 📞 Kontakt
-
-**Autor:** Ondřej Kopecký
-**Email:** o.kopecky@seznam.cz
-**GitHub:** [Ondrej-kopecky](https://github.com/Ondrej-kopecky)
-**LinkedIn:** [Ondřej Kopecký](https://www.linkedin.com/in/ond%C5%99ej-kopeck%C3%BD-1322b162/)
-
----
-
-## 📝 Changelog
-
-**2026-01-24:**
-- ✅ GoatCounter script URL fix
-- ✅ Brain systém přidán do projektu
-- ✅ .gitignore aktualizován
-
-**2026-01-24 (dříve):**
-- ✅ Home Assistant rozděleno na 9 samostatných podstránek
-- ✅ CSS refaktoring (monolith → moduly)
-
----
-
-**Vytvořeno s ❤️ a trochou filamentu** | © 2025 ongy.cz
+**Vytvořeno s 🔷 trochou filamentu a chutí stavět nové věci** | © 2025–2026 ongy.cz
