@@ -542,6 +542,10 @@
         display: none;
     }
 
+    .scroll-indicator {
+        display: none;
+    }
+
     .section-title {
         font-size: 2rem;
     }
