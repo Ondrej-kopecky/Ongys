@@ -8,7 +8,7 @@
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="description" content="Ongy AI Playground - experimenty s umělou inteligencí, nástroje a workflow">
     <title>AI Playground | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260320k">
+    <link rel="stylesheet" href="../../css/style.css?v=20260320m">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -30,32 +30,222 @@
             </div>
         </section>
 
+        <!-- Intro -->
         <section class="content-section">
+            <div class="ha-intro">
+                <p class="intro-text">
+                    AI není budoucnost — je to teď. Používám ji denně ve všech projektech.
+                    Od vývoje tohoto webu přes konfiguraci Home Assistantu až po 3D tisk workflow.
+                    Tenhle web je z velké části vytvořený s Claude Code.
+                </p>
+            </div>
+        </section>
+
+        <!-- Jak používám AI -->
+        <section class="content-section section-alt">
             <div class="section-header">
-                <h2 class="section-title">Experimenty</h2>
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/><path d="M9 14h6"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Jak používám AI
+                </h2>
             </div>
 
-            <div class="experiments-grid">
-                <a href="brain/" class="experiment-card experiment-card-link">
-                    <div class="experiment-number">01</div>
-                    <h3>Brain System v2.0</h3>
-                    <p>Persistentní paměť pro Claude Code s dual-brain architekturou. 9 projektů napojených na centrální vault, automatické skills a lifecycle management.</p>
-                    <span class="active-badge">Aktivní</span>
-                </a>
-                <div class="experiment-card">
-                    <div class="experiment-number">02</div>
-                    <h3>AI v každodenním životě</h3>
-                    <p>Claude Code jako hlavní vývojový nástroj — od tohoto webu po Home Assistant konfigurace. Copilot pro code review, ChatGPT pro brainstorming nápadů a rychlé prototypy.</p>
+            <div class="about-interests">
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <h3>Vývoj & Kódování</h3>
+                    <p>
+                        Claude Code je můj hlavní vývojový nástroj. Tento web, Gloomhaven Tracker,
+                        Home Assistant konfigurace — všechno vzniká v dialogu s AI. Není to copy-paste,
+                        je to spolupráce kde AI rozumí kontextu celého projektu.
+                    </p>
                 </div>
-                <div class="experiment-card">
-                    <div class="experiment-number">03</div>
-                    <h3>Home Assistant + AI</h3>
-                    <p>Extended OpenAI Conversation integrace v HA — hlasové ovládání, automatické generování automatizací z popisu a AI-powered notifikace na základě senzorových dat.</p>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
+                        </svg>
+                    </div>
+                    <h3>Multi-Agent Orchestrace</h3>
+                    <p>
+                        Nepoužívám jen jednoho agenta. Pracuji s více agenty současně — jeden
+                        researchuje, druhý kóduje, třetí validuje. Synchronizace přes Brain System
+                        zajišťuje, že všichni sdílejí kontext.
+                    </p>
                 </div>
-                <div class="experiment-card">
-                    <div class="experiment-number">04</div>
-                    <h3>Nástroje & Workflow</h3>
-                    <p>Claude Code + Brain System pro vývoj, Bambu Studio + MakerWorld pro 3D tisk, GitHub Actions pro deploy, Cloudflare Tunnel pro hosting. Vše propojené a automatizované.</p>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
+                        </svg>
+                    </div>
+                    <h3>Smart Home + AI</h3>
+                    <p>
+                        Extended OpenAI Conversation v Home Assistantu — AI rozumí senzorům
+                        a může ovládat zařízení. Automatické generování automatizací z popisu,
+                        AI notifikace na základě dat.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>AI na mobilu</h3>
+                    <p>
+                        Claude a ChatGPT na telefonu — brainstorming na cestě, rychlé odpovědi,
+                        generování obrázků (avatar na tomhle webu je z ChatGPT).
+                        AI je vždy po ruce.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brain System -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Brain System v2.0
+                </h2>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Každý projekt má vlastní <code>.brain/</code> složku — persistentní paměť,
+                        která přežívá mezi sessions. AI si pamatuje co jsme dělali, jaká rozhodnutí
+                        jsme udělali a proč, a kde jsme skončili.
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Changelog & Kontext</strong>
+                                <p>Automatický log co se v každé session udělalo. Kontextové soubory s architekturou a rozhodnutími.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Skills & Automatizace</strong>
+                                <p>Custom slash příkazy pro opakované úkoly — /commit, /brain-status, /brain-finish. Šetří čas a tokenový budget.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>9+ projektů propojených</strong>
+                                <p>ongy.cz, Home Assistant, Gloomhaven Tracker, brain-vault a další — všechny sdílí stejný Brain System.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="brain/" class="cta-button">Detaily Brain System →</a>
+                    </div>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); line-height: 1.8;">
+                        <span style="color: var(--electric-teal);">.brain/</span><br>
+                        ├── memory/<br>
+                        │   ├── changelog/<br>
+                        │   │   └── <span style="color: #ffa94d;">2026-03.md</span><br>
+                        │   ├── context/<br>
+                        │   │   ├── <span style="color: #ffa94d;">DEVICES.md</span><br>
+                        │   │   └── <span style="color: #ffa94d;">DASHBOARD.md</span><br>
+                        │   ├── tasks/<br>
+                        │   │   └── <span style="color: #a78bfa;">tablet_kiosk.md</span><br>
+                        │   ├── learned/<br>
+                        │   │   └── <span style="color: #a78bfa;">GRAFANA_TIME.md</span><br>
+                        │   └── <span style="color: #2EE8C4;">NEXT_SESSION_TODO.md</span><br>
+                        └── <span style="color: #2EE8C4;">CLAUDE.md</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nástroje -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Nástroje & Stack
+                </h2>
+            </div>
+
+            <div class="ha-hardware-grid">
+                <div class="ha-card">
+                    <h3>Claude Code</h3>
+                    <ul class="ha-specs">
+                        <li>Hlavní vývojový nástroj</li>
+                        <li>Brain System v každém projektu</li>
+                        <li>Multi-agent orchestrace</li>
+                        <li>Custom skills & hooks</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>ChatGPT</h3>
+                    <ul class="ha-specs">
+                        <li>Brainstorming & nápady</li>
+                        <li>Generování obrázků (DALL-E)</li>
+                        <li>Rychlé prototypy</li>
+                        <li>Mobilní asistent</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>GitHub Copilot</h3>
+                    <ul class="ha-specs">
+                        <li>Code completion</li>
+                        <li>Code review</li>
+                        <li>Inline suggestions</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Automatizace</h3>
+                    <ul class="ha-specs">
+                        <li>GitHub Actions (CI/CD)</li>
+                        <li>Cloudflare Tunnel (hosting)</li>
+                        <li>Node-RED (HA reporty)</li>
+                        <li>MakerWorld (3D tisk profily)</li>
+                    </ul>
                 </div>
             </div>
         </section>
