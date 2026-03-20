@@ -64,7 +64,7 @@ const footerHTML = `
             </svg>
             <span class="logo-text">ongy</span>
         </div>
-        <p class="footer-text">© 2025–2026 ongy.cz | Vytvořeno s <svg class="footer-hex" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" fill="#2EE8C4"/></svg> a trochou filamentu</p>
+        <p class="footer-text">© 2025–2026 ongy.cz | Vytvořeno s <svg style="width:14px;height:14px;vertical-align:-2px;filter:drop-shadow(0 0 4px rgba(46,232,196,0.4))" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7" fill="#2EE8C4"/></svg> a trochou filamentu</p>
         <div class="footer-stats">
             <span class="visitor-count" title="Počet návštěv">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
