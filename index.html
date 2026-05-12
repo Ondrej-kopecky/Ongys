@@ -6,224 +6,239 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Ongy – digitální dílna jednoho IT nadšence. 3D tisk, AI experimenty, deskovky a více.">
-    <meta property="og:title" content="Ongy.cz | Digitální dílna">
-    <meta property="og:description" content="3D tisk, Home Assistant, AI experimenty a deskovky. Osobní projekty jednoho IT nadšence z Prahy.">
+    <meta name="description" content="Ongy – osobní digitální dílna. QA tester z Prahy. 3D tisk, Home Assistant, AI v praxi, deskovky a vlastní trackery na Gloomhaven a Frosthaven.">
+    <meta name="theme-color" content="#0f0f12">
+    <meta property="og:title" content="ongy.cz — osobní dílna">
+    <meta property="og:description" content="Ongy — QA tester z Prahy. Ve dne hledám bugy, večer si stavím věci, které budou mít vlastní bugy. 3D tisk, Home Assistant, AI v praxi, deskovky.">
     <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <meta property="og:url" content="https://ongy.cz">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ongy.cz | Digitální dílna">
-    <meta name="twitter:description" content="3D tisk, Home Assistant, AI experimenty a deskovky.">
+    <meta name="twitter:title" content="ongy.cz — osobní dílna">
+    <meta name="twitter:description" content="Ongy — QA tester z Prahy. Ve dne hledám bugy, večer si stavím věci, které budou mít vlastní bugy.">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <title>Ongy.cz | Digitální dílna</title>
-    <link rel="stylesheet" href="css/style.css?v=20260320y">
+    <title>ongy.cz — osobní dílna</title>
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/redesign.css?v=20260512">
 </head>
 <body>
-    <!-- Navigation is injected by components.js -->
 
-    <!-- Hero Section -->
-    <section id="home" class="hero hero-compact">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-line">Ong<span class="highlight-y">y</span></span>
-                    <span class="title-sub">kde se kód mění v automatizace a filament ve skutečné věci</span>
-                </h1>
-                <p class="hero-description">
-                    Tohle je moje osobní digitální dílna — místo, kde spojuju 3D tisk,
-                    chytrou domácnost, AI a deskovky do projektů, které mají reálné využití.
-                    Bez hype, jen praxe.
-                </p>
-                <a href="#sections" class="btn btn-primary">
-                    <span>Prozkoumat projekty</span>
-                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="hero-visual">
-                <div class="hex-grid">
-                    <div class="hex hex-1"></div>
-                    <div class="hex hex-2"></div>
-                    <div class="hex hex-3"></div>
-                    <div class="hex hex-4"></div>
-                    <div class="hex hex-5"></div>
-                    <div class="hex hex-center"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+<!-- ───────────────── nav ───────────────── -->
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="/" aria-label="ongy.cz — domů">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,2 91,26 91,74 50,98 9,74 9,26" fill="none" stroke="#2EE8C4" stroke-width="6"/>
+        <rect x="40" y="30" width="20" height="8" fill="#2EE8C4"/>
+        <rect x="35" y="40" width="30" height="20" fill="#2EE8C4"/>
+        <polygon points="38,60 62,60 55,75 45,75" fill="#2EE8C4"/>
+        <circle cx="50" cy="86" r="3.5" fill="#2EE8C4"/>
+      </svg>
+      <span>ong<span class="y">y</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="pages/3d-print/">3D tisk</a></li>
+      <li><a href="pages/homeassistant/">Home Assistant</a></li>
+      <li><a href="pages/ai/">AI</a></li>
+      <li><a href="pages/deskovky/">Deskovky</a></li>
+      <li><a href="pages/blog/">Blog</a></li>
+      <li><a href="pages/about/">O mně</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- Main Sections Cards -->
-    <section id="sections" class="sections-grid">
-        <a href="pages/3d-print/" class="section-card card-print">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="8" y="24" width="32" height="20" rx="2"/>
-                    <rect x="12" y="28" width="24" height="12" rx="1"/>
-                    <path d="M14 24V8a2 2 0 012-2h16a2 2 0 012 2v16"/>
-                    <path d="M20 34h8"/>
-                    <circle cx="24" cy="16" r="4"/>
-                </svg>
-            </div>
-            <h2 class="card-title">3D Print Lab</h2>
-            <p class="card-desc">Kde se digitální modely mění v reálné věci. Bambu Lab X1C, resin workflow, praktické výtisky.</p>
-            <span class="card-arrow">→</span>
-        </a>
+<!-- ───────────────── hero ───────────────── -->
+<header class="hero wrap">
+  <h1 class="hello">
+    Jsem <span class="teal">Ongy</span>. Ve dne hledám bugy,<br>
+    večer si stavím věci, které budou mít <span class="amber">vlastní bugy</span>.
+  </h1>
+  <p class="hero-meta">
+    <span class="live"><span class="live-dot"></span> Tiskárna&nbsp;běží</span>
+    <span class="sep">·</span><span>QA&nbsp;tester</span>
+    <span class="sep">·</span><span>Praha</span>
+    <span class="sep">·</span><span>od&nbsp;2025</span>
+  </p>
+</header>
 
-        <a href="pages/homeassistant/" class="section-card card-ha">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M6 18l18-14 18 14v22a4 4 0 01-4 4H10a4 4 0 01-4-4z"/>
-                    <polyline points="18 44 18 24 30 24 30 44"/>
-                    <circle cx="24" cy="16" r="2" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Home Assistant</h2>
-            <p class="card-desc">Chytrá domácnost, která dává smysl a funguje lokálně. Automatizace, dashboardy, monitoring.</p>
-            <span class="card-arrow">→</span>
-        </a>
+<!-- ───────────────── na stole leží ───────────────── -->
+<section class="wrap" data-reveal>
+  <div class="desk">
+    <div class="desk-row">
+      <div class="desk-cat teal">Tisk</div>
+      <div class="desk-text">
+        Hex <span class="teal">#24 ze 36</span> pro magnetický Gloomhaven dungeon.
+        <small>Bambu X1C · PLA Matte Black · zbývá ~8&nbsp;h filamentu</small>
+      </div>
+      <div class="desk-when">právě teď</div>
+    </div>
+    <div class="desk-row">
+      <div class="desk-cat ice">Beta</div>
+      <div class="desk-text">
+        Frosthaven tracker — testuju ability karty pro <span class="quiet">Banner Spear</span>.
+        <small>frosthaven.ongy.cz · PWA · lokální storage · žádný cloud</small>
+      </div>
+      <div class="desk-when">tento týden</div>
+    </div>
+    <div class="desk-row">
+      <div class="desk-cat amber">AI</div>
+      <div class="desk-text">
+        Píšu si <span class="amber">Brain System v2</span> — jak donutit Claude třídit moje poznámky.
+        <small>Markdown frontmatter · lokální skripty · žádné chatboty na frontendu</small>
+      </div>
+      <div class="desk-when">průběžně</div>
+    </div>
+    <div class="desk-row">
+      <div class="desk-cat">Čtu</div>
+      <div class="desk-text">
+        <span class="quiet">„The Practice of System and Network Administration"</span> — pomalu, mezi automatizacemi.
+      </div>
+      <div class="desk-when">vedle postele</div>
+    </div>
+  </div>
+</section>
 
-        <a href="pages/ai/" class="section-card card-ai">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="24" cy="24" r="4"/>
-                    <circle cx="12" cy="12" r="3"/>
-                    <circle cx="36" cy="12" r="3"/>
-                    <circle cx="12" cy="36" r="3"/>
-                    <circle cx="36" cy="36" r="3"/>
-                    <path d="M14 14l7 7M34 14l-7 7M14 34l7-7M34 34l-7-7"/>
-                    <circle cx="24" cy="8" r="2"/>
-                    <circle cx="24" cy="40" r="2"/>
-                    <circle cx="8" cy="24" r="2"/>
-                    <circle cx="40" cy="24" r="2"/>
-                    <path d="M24 10v10M24 28v10M10 24h10M28 24h10"/>
-                </svg>
-            </div>
-            <h2 class="card-title">AI v praxi</h2>
-            <p class="card-desc">Ne teorie, ne buzzwordy. Konkrétní použití AI v práci i doma — co pomáhá a co je hype.</p>
-            <span class="card-arrow">→</span>
-        </a>
+<!-- ───────────────── hex board — mapa projektů ───────────────── -->
+<section id="mapa" class="wrap map">
+  <div class="map-head" data-reveal>
+    <h2>Mapa <span class="teal">dílny</span></h2>
+    <p>Každý hex je jedna sekce. Klikni a jsi uvnitř.</p>
+  </div>
 
-        <a href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener" class="section-card card-frost">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="24" cy="24" r="18"/>
-                    <path d="M24 12v12l8 4"/>
-                    <circle cx="24" cy="24" r="3" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Gloomhaven Tracker</h2>
-            <p class="card-desc">Tracker kampaně v5.4 — Forgotten Circles DLC, ability karty s českými názvy, achievement stickery, 150 událostí, PWA, cloud sync.</p>
-            <span class="card-arrow">→</span>
-        </a>
+  <div class="hex-board">
+    <a href="pages/3d-print/" class="hex h-teal hex-1">
+      <span class="hex-num">01</span>
+      <span class="hex-rise">
+        <span class="hex-tag">aktivní</span>
+        <span class="hex-title">3D tisk</span>
+        <span class="hex-desc">Bambu X1C, resin, hex dungeon pro Gloomhaven, věci na míru.</span>
+      </span>
+    </a>
 
-        <a href="https://frosthaven.ongy.cz" target="_blank" rel="noopener" class="section-card card-frost">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M24 4v40M4 24h40"/><path d="M24 4l6 6M24 4l-6 6"/><path d="M24 44l6-6M24 44l-6-6"/><path d="M4 24l6 6M4 24l6-6"/><path d="M44 24l-6 6M44 24l-6-6"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Frosthaven Tracker</h2>
-            <p class="card-desc">Tracker pro ledovou kampaň — beta verze live.</p>
-            <span class="card-arrow">→</span>
-        </a>
+    <a href="pages/homeassistant/" class="hex h-teal hex-2">
+      <span class="hex-num">02</span>
+      <span class="hex-rise">
+        <span class="hex-tag">vše lokálně</span>
+        <span class="hex-title">Home Assistant</span>
+        <span class="hex-desc">50+ zařízení, RPi5, automatizace, dashboardy. Bez cloudu.</span>
+      </span>
+    </a>
 
-        <a href="pages/deskovky/" class="section-card card-frost">
-            <div class="card-icon">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="6" y="6" width="36" height="36" rx="3"/>
-                    <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
-                    <circle cx="32" cy="16" r="2.5" fill="currentColor"/>
-                    <circle cx="16" cy="32" r="2.5" fill="currentColor"/>
-                    <circle cx="32" cy="32" r="2.5" fill="currentColor"/>
-                    <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
-                </svg>
-            </div>
-            <h2 class="card-title">Deskovky</h2>
-            <p class="card-desc">Strategie, kampaně a vlastní nástroje. Gloomhaven, Frosthaven a hry s hloubkou.</p>
-            <span class="card-arrow">→</span>
-        </a>
-    </section>
+    <a href="pages/ai/" class="hex h-amber hex-3">
+      <span class="hex-num">03</span>
+      <span class="hex-rise">
+        <span class="hex-tag">brain v2</span>
+        <span class="hex-title">AI v praxi</span>
+        <span class="hex-desc">Co mi reálně šetří čas a co je jen buzzword.</span>
+      </span>
+    </a>
 
-    <!-- Highlights -->
-    <section class="content-section section-alt">
-        <div class="section-header">
-            <h2 class="section-title">Na čem teď dělám</h2>
-        </div>
-        <div class="highlights-list">
-            <a href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener" class="highlight-item highlight-amber">
-                <div class="highlight-icon highlight-icon-amber">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                </div>
-                <div>
-                    <strong>Gloomhaven Tracker</strong>
-                    <p>Verze 5.4 — Forgotten Circles DLC, české ability karty pro 17 tříd, achievement stickery na mapě, autentické herní ikony. 105 testů.</p>
-                </div>
-                <span class="highlight-arrow">→</span>
-            </a>
-            <a href="https://frosthaven.ongy.cz" target="_blank" rel="noopener" class="highlight-item highlight-ice">
-                <div class="highlight-icon highlight-icon-ice">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 2v20M2 12h20"/><path d="M12 2l3 3M12 2l-3 3"/><path d="M12 22l3-3M12 22l-3-3"/></svg>
-                </div>
-                <div>
-                    <strong>Frosthaven Tracker</strong>
-                    <p>Tracker pro ledovou kampaň — beta verze live.</p>
-                </div>
-                <span class="highlight-arrow">→</span>
-            </a>
-            <div class="highlight-item highlight-teal">
-                <div class="highlight-icon highlight-icon-teal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/></svg>
-                </div>
-                <div>
-                    <strong>HA: 50+ zařízení, 0% cloud</strong>
-                    <p>Celý byt na RPi5 — automatizace, wall tablet, Grafana dashboardy. Vše lokálně.</p>
-                </div>
-            </div>
-            <div class="highlight-item highlight-purple">
-                <div class="highlight-icon highlight-icon-purple">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
-                </div>
-                <div>
-                    <strong>3D magnetické hexové pole</strong>
-                    <p>Modulární dungeon pro Gloomhaven — hexy na magnety, vytištěno na X1C.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <a href="https://gloomhaven.ongy.cz" class="hex h-amber hex-4">
+      <span class="hex-num">04</span>
+      <span class="hex-rise">
+        <span class="hex-tag">live · v5.4</span>
+        <span class="hex-title">Gloomhaven Tracker</span>
+        <span class="hex-desc">České ability karty, eventy, achievement stickery, PWA.</span>
+      </span>
+    </a>
 
-    <!-- About Section (teaser) -->
-    <section id="about" class="content-section section-alt">
-        <div class="about-teaser">
-            <img src="assets/images/avatar.jpg" alt="Ongy avatar" class="about-teaser-avatar">
-            <div class="about-teaser-text">
-                <h3>Ahoj, jsem <span class="highlight">Ongy</span></h3>
-                <p>
-                    QA tester, maker a člověk, kterého baví technologie, co mají skutečný smysl.
-                    ongy.cz není portfolio — je to prostor pro projekty a experimenty, které stojí za to sdílet.
-                </p>
-                <a href="pages/about/" class="cta-button">Více o mně →</a>
-            </div>
-        </div>
-    </section>
+    <a href="https://frosthaven.ongy.cz" class="hex h-ice hex-5">
+      <span class="hex-num">05</span>
+      <span class="hex-rise">
+        <span class="hex-tag">beta</span>
+        <span class="hex-title">Frosthaven Tracker</span>
+        <span class="hex-desc">Studenější kampaň. Vlastní appka — flowchart, mapa, alchymie.</span>
+      </span>
+    </a>
 
-    <!-- Footer is injected by components.js -->
+    <a href="pages/deskovky/" class="hex h-purple hex-6">
+      <span class="hex-num">06</span>
+      <span class="hex-rise">
+        <span class="hex-tag">sbírka</span>
+        <span class="hex-title">Deskovky</span>
+        <span class="hex-desc">Police přerůstá. Strategie, kampaně, hry s hloubkou.</span>
+      </span>
+    </a>
+  </div>
+</section>
 
-    <script src="js/icons.js"></script>
-    <script src="js/components.js?v=20260320n"></script>
-    <script src="js/main.js"></script>
-    <script src="js/reveal.js"></script>
-    <script src="js/analytics.js"></script>
+<!-- ───────────────── o mně (text) ───────────────── -->
+<section id="oMne" class="about">
+  <div class="narrow" data-reveal>
+    <p>
+      Tenhle web je moje osobní dílna. Není to portfolio a není to firma — jen místo,
+      kam ukládám <span class="teal">věci, co mě po práci baví</span> a co mi přijde, že stojí za sdílení.
+    </p>
+    <p>
+      Najdeš tu detaily o mém tiskovém setupu, fotky filamentového skladu, dashboardy z Grafany,
+      konkrétní automatizace v Home Assistantu a kompletně český tracker na Gloomhaven.
+    </p>
+    <p>
+      <span class="quiet">Nedělám tu marketing a nemám newsletter.
+      Jen občas přibude nová věc do blogu a něco se mezitím tiskne.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ───────────────── poslední z blogu ───────────────── -->
+<section id="blog" class="wrap notes">
+  <h3 data-reveal>Poslední z blogu</h3>
+  <ul class="note-list" data-reveal>
+    <li class="note"><a href="pages/blog/">
+      <span class="note-date">24. 03. 2026</span>
+      <span class="note-title">Gloomhaven Tracker v5.4: Forgotten Circles DLC a 379 českých ability karet</span>
+      <span class="note-cat amber">Deskovky</span>
+    </a></li>
+    <li class="note"><a href="pages/blog/">
+      <span class="note-date">22. 03. 2026</span>
+      <span class="note-title">Příběhy, security a SEO — co přinesl Gloomhaven Tracker v4.0</span>
+      <span class="note-cat amber">Deskovky</span>
+    </a></li>
+    <li class="note"><a href="pages/blog/">
+      <span class="note-date">20. 03. 2026</span>
+      <span class="note-title">Filament ve vakuových boxech: jak skladuji PLA, PETG a co na to vlhkoměr</span>
+      <span class="note-cat teal">3D tisk</span>
+    </a></li>
+    <li class="note"><a href="pages/blog/">
+      <span class="note-date">19. 02. 2026</span>
+      <span class="note-title">50+ zařízení na RPi5: jak vypadá můj Home Assistant po roce</span>
+      <span class="note-cat teal">Home Assistant</span>
+    </a></li>
+    <li class="note"><a href="pages/blog/">
+      <span class="note-date">11. 12. 2025</span>
+      <span class="note-title">Brain System: jak jsem donutil Claude udržovat moji paměť napříč projekty</span>
+      <span class="note-cat amber">AI</span>
+    </a></li>
+  </ul>
+</section>
+
+<!-- ───────────────── footer ───────────────── -->
+<footer class="footer">
+  <div class="wrap footer-row" data-reveal>
+    <div>ongy.cz · 2025 — 2026</div>
+    <span class="visitor-count" title="Počet návštěv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span id="visitor-count-number">–</span>
+    </span>
+    <div class="footer-social">
+      <a href="https://github.com/Ondrej-kopecky" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+      <a href="https://www.youtube.com/@bonggy23" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="https://www.instagram.com/_ongy_/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+      <a href="https://www.linkedin.com/in/ond%C5%99ej-kopeck%C3%BD-1322b162/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail" title="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    </div>
+    <div class="colophon">Fraunces · Hanken Grotesk · JetBrains&nbsp;Mono — žádné cookies, žádný newsletter</div>
+  </div>
+</footer>
+
+<script src="js/redesign.js?v=20260512"></script>
+<script src="js/analytics.js"></script>
 </body>
 </html>
