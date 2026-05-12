@@ -108,7 +108,7 @@ git push  # → GitHub Pages auto-deploy za 1-2 min
 |---------|-----|-------|
 | Gloomhaven Tracker | [gloomhaven.ongy.cz](https://gloomhaven.ongy.cz) | Campaign tracker v češtině |
 | Frosthaven Tracker | *Ve vývoji* | Samostatná appka |
-| Home Assistant | Z:\ (SMB) | 50+ zařízení, RPi5 |
+| Home Assistant | xx | 50+ zařízení, RPi5 |
 
 ---
 
