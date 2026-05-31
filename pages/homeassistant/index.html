@@ -20,6 +20,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Klíčové vlastnosti — 4 karty v řadě (bez schodu) */
+        .feature-grid { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 1100px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
+        /* Prozkoumej Setup — 4 dlaždice vedle sebe + responsive */
+        .ha-devices-grid.setup-grid { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 1100px) { .ha-devices-grid.setup-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .ha-devices-grid.setup-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
     <main>
@@ -84,7 +94,7 @@
                 </h2>
             </div>
 
-            <div class="ha-hardware-grid">
+            <div class="ha-hardware-grid feature-grid">
                 <div class="ha-card">
                     <div class="ha-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -150,7 +160,7 @@
                 <p class="section-subtitle">Klikni na sekci, která tě zajímá</p>
             </div>
 
-            <div class="ha-devices-grid">
+            <div class="ha-devices-grid setup-grid">
                 <a href="devices/" class="ha-section-link">
                     <div class="ha-device-category ha-section-card">
                         <div class="ha-section-icon">

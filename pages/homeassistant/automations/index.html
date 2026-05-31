@@ -34,11 +34,11 @@
         <section class="content-section">
             <div class="ha-stats">
                 <div class="ha-stat">
-                    <span class="ha-stat-number">28</span>
+                    <span class="ha-stat-number">32</span>
                     <span class="ha-stat-label">Celkem automatizací</span>
                 </div>
                 <div class="ha-stat">
-                    <span class="ha-stat-number">6</span>
+                    <span class="ha-stat-number">7</span>
                     <span class="ha-stat-label">Kategorií</span>
                 </div>
                 <div class="ha-stat">
@@ -120,6 +120,18 @@
                     <div class="ha-automation-trigger">
                         <span class="trigger-label">Trigger:</span>
                         <span class="trigger-value">zha_event device_ieee</span>
+                    </div>
+                </div>
+
+                <div class="ha-automation">
+                    <div class="ha-automation-header">
+                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18M3 12h18M3 16h18"/></svg></span>
+                        <h3>Žaluzie: stínění</h3>
+                    </div>
+                    <p>Venkovní žaluzie Aluprof přes vlastní ESP32 + CC1101. Zatáhnou na komfort při zapnutí klimy, anti-glare při TV + slunci, večer samy vyjedou. <a href="../zaluzie/" style="color: var(--electric-teal);">Celý návod →</a></p>
+                    <div class="ha-automation-trigger">
+                        <span class="trigger-label">Trigger:</span>
+                        <span class="trigger-value">climate / media_player / sun</span>
                     </div>
                 </div>
             </div>
@@ -215,6 +227,16 @@
                     <ul>
                         <li>Safety Car → žlutá světla</li>
                         <li>Red Flag → blikající červená</li>
+                    </ul>
+                </div>
+
+                <div class="ha-device-category">
+                    <h3>🪟 Žaluzie (4)</h3>
+                    <ul>
+                        <li>Klima zapnutá → zastínit na komfort (25 %)</li>
+                        <li>TV + slunce z jihu → anti-glare</li>
+                        <li>Večer (slunce &lt; 10°) → roztáhnout</li>
+                        <li>Zigbee tlačítko: nahoru / stop / dolů</li>
                     </ul>
                 </div>
             </div>

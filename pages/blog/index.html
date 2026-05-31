@@ -37,6 +37,31 @@
         <section class="content-section">
             <div class="blog-list">
                 <article class="blog-post">
+                    <div class="blog-post-icon tag-ha">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
+                        </svg>
+                    </div>
+                    <div class="post-meta">
+                        <span class="post-date">31. května 2026</span>
+                        <span class="post-tag">Home Assistant</span>
+                    </div>
+                    <h2>Aluprof žaluzie do Home Assistant přes vlastní ESP32 + CC1101</h2>
+                    <p>
+                        Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta
+                        do Home Assistantu prakticky neexistuje. Postavil jsem si vlastní RF most z ESP32
+                        a čipu CC1101 — zachytil RF protokol původního ovladače, přehrál ho a v ESPHome
+                        z toho udělal plnohodnotnou <em>cover</em> entitu s posuvníkem polohy. Řeší to
+                        spousta lidí v ČR úplně stejně.
+                    </p>
+                    <p>
+                        Sepsal jsem celý postup jako samostatný návod — zapojení, odposlech protokolu,
+                        ESPHome konfiguraci, kalibraci i tři automatizace (stínění podle slunce, večerní
+                        roztažení, anti-glare na TV): <a href="../homeassistant/zaluzie/">Aluprof žaluzie přes ESP32 + CC1101 →</a>.
+                    </p>
+                </article>
+
+                <article class="blog-post">
                     <div class="blog-post-icon tag-deskovky">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>

@@ -13,6 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Hardware — 4 dlaždice vedle sebe + responsive */
+        .ha-hardware-grid.hw4 { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 1100px) { .ha-hardware-grid.hw4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .ha-hardware-grid.hw4 { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
     <main>
@@ -51,7 +57,7 @@
                     <span class="ha-stat-label">Tapo zásuvky</span>
                 </div>
                 <div class="ha-stat">
-                    <span class="ha-stat-number">~9100</span>
+                    <span class="ha-stat-number">~9600</span>
                     <span class="ha-stat-label">CZK setup</span>
                 </div>
             </div>
@@ -75,7 +81,7 @@
                 </h2>
             </div>
 
-            <div class="ha-hardware-grid">
+            <div class="ha-hardware-grid hw4">
                 <div class="ha-card ha-card-main">
                     <div class="ha-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -120,6 +126,25 @@
                     <h3>LocalTuya</h3>
                     <p class="ha-card-desc">TP-Link zásuvky, Tuya LED pásky – lokální ovládání bez cloudu</p>
                 </div>
+
+                <div class="ha-card">
+                    <div class="ha-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="7" y="7" width="10" height="10" rx="1"/>
+                            <path d="M9 1v3M12 1v3M15 1v3M9 20v3M12 20v3M15 20v3M1 9h3M1 12h3M1 15h3M20 9h3M20 12h3M20 15h3"/>
+                        </svg>
+                    </div>
+                    <h3>ESP32 + CC1101 <span style="color: var(--electric-teal); font-size: 0.6em;">DIY</span></h3>
+                    <p class="ha-card-desc">Vlastní RF most na 433 MHz pro venkovní žaluzie Aluprof (Dooya) – lokálně, bez originálního mostu</p>
+                    <ul class="ha-specs">
+                        <li>ESP32 NodeMCU-32S + CC1101 (EBYTE E07)</li>
+                        <li>SMA anténa 2 dBi, ESPHome firmware</li>
+                        <li>Odposlech a přehrání Dooya protokolu</li>
+                    </ul>
+                    <a href="../zaluzie/" class="ha-print-link">
+                        <svg class="ha-inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Celý návod, jak na to
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -139,42 +164,79 @@
                 </h2>
             </div>
 
-            <div class="ha-card ha-card-main">
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid var(--card-border);">
-                                <th style="text-align: left; padding: 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Komponenta</th>
-                                <th style="text-align: right; padding: 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Cena (CZK)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 0.75rem;">Raspberry Pi 5 4GB</td>
-                                <td style="text-align: right; padding: 0.75rem; font-family: var(--font-mono);">~3,000</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 0.75rem;">SSD 256GB</td>
-                                <td style="text-align: right; padding: 0.75rem; font-family: var(--font-mono);">~800</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 0.75rem;">Sonoff Zigbee Dongle</td>
-                                <td style="text-align: right; padding: 0.75rem; font-family: var(--font-mono);">~600</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 0.75rem;">3D tištěné pouzdro</td>
-                                <td style="text-align: right; padding: 0.75rem; font-family: var(--font-mono);">~200</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 0.75rem;">Xiaomi Redmi Pad 2 (wall tablet)</td>
-                                <td style="text-align: right; padding: 0.75rem; font-family: var(--font-mono);">~4,500</td>
-                            </tr>
-                            <tr style="border-top: 2px solid var(--electric-teal);">
-                                <td style="padding: 0.75rem; font-weight: 700; color: var(--electric-teal);">CELKEM</td>
-                                <td style="text-align: right; padding: 0.75rem; font-weight: 700; color: var(--electric-teal); font-family: var(--font-mono); font-size: 1.1rem;">~9,100</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="ha-hardware-grid">
+                <!-- Rozpočet: základní HA setup -->
+                <div class="ha-card ha-card-main">
+                    <h3>Základní HA setup</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--card-border);">
+                                    <th style="text-align: left; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Komponenta</th>
+                                    <th style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Cena (CZK)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">Raspberry Pi 5 4GB</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~3,000</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">SSD 256GB</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~800</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">Sonoff Zigbee Dongle</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~600</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">3D tištěné pouzdro</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~200</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">Xiaomi Redmi Pad 2 (wall tablet)</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~4,500</td>
+                                </tr>
+                                <tr style="border-top: 2px solid var(--electric-teal);">
+                                    <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal);">CELKEM</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal); font-family: var(--font-mono); font-size: 1.1rem;">~9,100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Rozpočet: DIY žaluzie ESP32 -->
+                <div class="ha-card ha-card-main">
+                    <h3>DIY žaluzie (ESP32 + CC1101)</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--card-border);">
+                                    <th style="text-align: left; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Komponenta</th>
+                                    <th style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Cena (CZK)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">ESP32 Development Board</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">249</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">CC1101 modul 433 MHz</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">195</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 0.6rem 0.75rem;">Waveshare LPWA anténa 2 dBi</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">79</td>
+                                </tr>
+                                <tr style="border-top: 2px solid var(--electric-teal);">
+                                    <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal);">CELKEM</td>
+                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal); font-family: var(--font-mono); font-size: 1.1rem;">523</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>
@@ -196,6 +258,54 @@
             </div>
 
             <div class="ha-devices-grid">
+                <div class="ha-device-category">
+                    <h3>Klimatizace <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
+                    <ul>
+                        <li>Midea – lokální ovládání přes LAN</li>
+                        <li>Bez cloudu, plná kontrola z HA</li>
+                        <li>Spolupracuje se žaluziemi (stínění)</li>
+                    </ul>
+                </div>
+
+                <div class="ha-device-category">
+                    <h3>Venkovní žaluzie <span style="color: var(--electric-teal); font-size: 0.7em;">DIY · novinka</span></h3>
+                    <ul>
+                        <li>Aluprof / Dooya, 433 MHz</li>
+                        <li>Vlastní RF most: ESP32 + CC1101</li>
+                        <li>Stínění podle slunce a TV, komfort pozice</li>
+                    </ul>
+                    <a href="../zaluzie/" class="ha-print-link">
+                        <svg class="ha-inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Celý návod, jak na to
+                    </a>
+                </div>
+
+                <div class="ha-device-category">
+                    <h3>Čistička vzduchu <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
+                    <ul>
+                        <li>Philips PureProtect 2200 (lokální CoAP)</li>
+                        <li>PM2.5 a index alergenů</li>
+                        <li>Hlídání životnosti filtrů</li>
+                    </ul>
+                </div>
+
+                <div class="ha-device-category">
+                    <h3>Zvlhčovač <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
+                    <ul>
+                        <li>Ložnice – řízení podle vlhkosti vzduchu</li>
+                        <li>Noční / tichý režim</li>
+                        <li>Upozornění na prázdnou nádržku</li>
+                    </ul>
+                </div>
+
+                <div class="ha-device-category">
+                    <h3>Chytrá váha <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
+                    <ul>
+                        <li>Tělesné složení: váha, BMI, tuk, voda, svaly</li>
+                        <li>Integrace bodymiscale → data do HA</li>
+                        <li>Dlouhodobé trendy v Grafaně</li>
+                    </ul>
+                </div>
+
                 <div class="ha-device-category">
                     <h3>Osvětlení</h3>
                     <ul>

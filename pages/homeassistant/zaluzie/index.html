@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="description" content="Návod, jak dostat venkovní žaluzie Aluprof (motor Dooya, 433 MHz) do Home Assistant bez oficiálního mostu — vlastní ESP32 s CC1101, odposlech RF protokolu, ESPHome konfigurace a automatizace. Řeší to spousta lidí v ČR.">
+    <title>Aluprof žaluzie do Home Assistant přes ESP32 + CC1101 | Ongy.cz</title>
+    <link rel="stylesheet" href="../../../css/style.css?v=20260320y">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        .zal-lead { font-size: 1.1rem; line-height: 1.7; }
+        .zal-card p { line-height: 1.75; margin-bottom: 1rem; }
+        .zal-card p:last-child { margin-bottom: 0; }
+        .zal-card ul { margin: 0.5rem 0 1rem 1.25rem; line-height: 1.7; }
+        .zal-card li { margin-bottom: 0.4rem; }
+        .zal-card h3 { margin: 1.5rem 0 0.6rem; font-family: var(--font-heading); }
+        .zal-card h3:first-child { margin-top: 0; }
+        .zal-spec { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem; }
+        .zal-spec span {
+            border: 1px solid var(--card-border);
+            border-radius: 100px;
+            padding: 0.3rem 0.85rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .zal-code {
+            background: #0d1117;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1.1rem 1.3rem;
+            overflow-x: auto;
+            margin: 1.2rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: #c7d0dd;
+            white-space: pre;
+        }
+        .zal-inline {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--electric-teal);
+            background: rgba(46,232,196,0.08);
+            border-radius: 5px;
+            padding: 0.1em 0.35em;
+        }
+        .zal-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 0.5rem; }
+        .zal-table th, .zal-table td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--card-border); }
+        .zal-table th { font-family: var(--font-heading); color: var(--electric-teal); }
+        .zal-table td { font-family: var(--font-mono); font-size: 0.85rem; }
+        .zal-note {
+            border-left: 3px solid var(--electric-teal);
+            background: rgba(46,232,196,0.05);
+            border-radius: 8px;
+            padding: 0.9rem 1.15rem;
+            margin: 1.2rem 0;
+            line-height: 1.65;
+        }
+        .zal-note--warn { border-left-color: #ff9800; background: rgba(255,152,0,0.06); }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero page-hero-ha">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="1"/>
+                    <line x1="3" y1="8" x2="21" y2="8"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="16" x2="21" y2="16"/>
+                </svg>
+                <h1>Aluprof žaluzie do Home Assistant</h1>
+                <p class="page-subtitle">Vlastní RF most z ESP32 + CC1101 místo originálního mostu</p>
+                <p class="breadcrumb">
+                    <a href="../">Home Assistant</a> / Venkovní žaluzie
+                </p>
+            </div>
+        </section>
+
+        <!-- Intro -->
+        <section class="content-section">
+            <div class="ha-card ha-card-main">
+                <p class="zal-lead">Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta do Home Assistantu prakticky neexistuje. Tady je, jak jsem si je rozjel přes vlastní ESP32 s čipem CC1101 — odposlech RF protokolu, ESPHome konfigurace a tři automatizace, které mi reálně šetří klimatizaci. Píšu to schválně podrobně, protože tohle řeší spousta lidí v Česku úplně stejně.</p>
+                <div class="zal-spec" style="margin-top: 1.25rem;">
+                    <span>ESP32 (NodeMCU-32S)</span>
+                    <span>CC1101 @ 433,92 MHz</span>
+                    <span>ESPHome</span>
+                    <span>Dooya protokol</span>
+                    <span>~300 Kč HW</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problém -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">Problém: žaluzie, co „neumí“ do HA</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>Mám venkovní žaluzie Aluprof. Pohon je <strong>Dooya</strong> (Aluprof ho prodává pod svým jménem) a komunikuje rádiem na <strong>433,92&nbsp;MHz</strong>. K tomu dostanete nástěnný/ruční vysílač a tím to končí — žádné Wi-Fi, žádný Zigbee, žádná oficiální integrace do Home Assistant.</p>
+                <p>Možností je pár a žádná se mi nelíbila: koupit drahý univerzální RF most, předělat motory, nebo se smířit s tím, že rolety prostě „nejsou chytré“. Klasická situace, do které se v ČR dostane každý druhý majitel Aluprofu. Tak jsem si to postavil sám — plně lokálně, za pár stovek a bez cloudu.</p>
+            </div>
+        </section>
+
+        <!-- Hardware -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Hardware: ESP32 + CC1101</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <div class="filament-photo" style="margin-bottom: 1.25rem;">
+                    <img src="../../../assets/images/aluprof-esp32.jpg"
+                         alt="ESP32 s CC1101 modulem a SMA anténou, vedle originální ovladač Aluprof DC305A"
+                         loading="lazy">
+                    <span class="photo-caption">Reálný setup: ESP32 + CC1101 (s anténou) propojené dupont vodiči — vlevo originální ovladač Aluprof, ze kterého se odposlechl protokol</span>
+                </div>
+                <p>Srdcem je obyčejné <span class="zal-inline">ESP32</span> a k němu RF modul <span class="zal-inline">CC1101</span>, který umí vysílat i přijímat na 433&nbsp;MHz (na rozdíl od levných pevně laděných modulů). Použil jsem modul EBYTE E07-M1101D se SMA anténou. Propojení je přes SPI:</p>
+                <table class="zal-table">
+                    <thead><tr><th>CC1101</th><th>ESP32 GPIO</th></tr></thead>
+                    <tbody>
+                        <tr><td>VCC</td><td>3V3 (NE 5V!)</td></tr>
+                        <tr><td>GND</td><td>GND</td></tr>
+                        <tr><td>SCK</td><td>GPIO18</td></tr>
+                        <tr><td>MISO</td><td>GPIO19</td></tr>
+                        <tr><td>MOSI</td><td>GPIO23</td></tr>
+                        <tr><td>CSN</td><td>GPIO5</td></tr>
+                        <tr><td>GDO0</td><td>GPIO13</td></tr>
+                    </tbody>
+                </table>
+                <div class="zal-note zal-note--warn"><strong>Pozor na napájení:</strong> CC1101 není 5V tolerantní. Napájejte ho z 3,3&nbsp;V pinu ESP32, ne z 5&nbsp;V, jinak ho odpálíte.</div>
+            </div>
+        </section>
+
+        <!-- Protokol -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">Odposlech protokolu</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>Tohle je jádro celé věci. Dooya nepoužívá žádný standardní kód, který by ESPHome znal z krabice — je to <strong>proprietární protokol</strong>. Mimochodem: Aluprof <strong>není</strong> Somfy ani „Enjoy“ — párování přes tyhle protokoly nikdy nesedlo, právě protože pod kapotou je Dooya.</p>
+                <p>Postup: přepnout CC1101 do RX režimu, zmáčkat na originálním ovladači nahoru / stop / dolů a z průběhů vytáhnout strukturu rámce:</p>
+                <ul>
+                    <li><strong>Frekvence:</strong> 433,92&nbsp;MHz, modulace OOK/ASK</li>
+                    <li><strong>Délka kódu:</strong> 40 bitů = 24-bit adresa + 8-bit kanál + 4-bit příkaz + 4-bit kontrola</li>
+                    <li><strong>Příkazy:</strong> UP / STOP / DOWN se liší jen v nibble příkazu (u mě 1 / 5 / 3, kde příkaz = kontrola)</li>
+                    <li><strong>Časování:</strong> preamble ~4820&nbsp;µs, sync ~1470&nbsp;µs, dlouhý puls ~720&nbsp;µs / krátký ~360&nbsp;µs; rámec se opakuje několikrát</li>
+                </ul>
+                <div class="zal-note"><strong>Důležité:</strong> každý ovladač má vlastní 24-bit adresu (ID) a kanál — moje vám k ničemu nebude, musíte si zachytit to svoje. Dobrá zpráva: Dooya je <strong>statický kód</strong> (žádný rolling code), takže zachycený rámec stačí jen přehrávat. Ověřeno tím, že rámce byly napříč stisky identické.</div>
+            </div>
+        </section>
+
+        <!-- ESPHome -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">ESPHome konfigurace</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>Dnes je to nejjednodušší přes oficiální <span class="zal-inline">cc1101</span> komponentu v ESPHome (od verze 2026.5) — na capturu <span class="zal-inline">remote_receiver</span> s dumpem Dooya, na ovládání <span class="zal-inline">remote_transmitter</span>. Cover entitu dělá <span class="zal-inline">time_based</span>, která z času jízdy dopočítává polohu 0–100&nbsp;%:</p>
+                <div class="zal-code">cover:
+  - platform: time_based
+    name: "Žaluzie obývák"
+    id: zaluzie_obyvak
+    device_class: shutter
+    has_built_in_endstop: true
+    open_action:
+      - lambda: 'transmit_dooya(UP);'
+    open_duration: 21330ms      # naměřená doba úplného vyjetí
+    close_action:
+      - lambda: 'transmit_dooya(DOWN);'
+    close_duration: 19000ms     # dolů to jede o kus rychleji
+    stop_action:
+      - lambda: 'transmit_dooya(STOP);'</div>
+                <p>Všimněte si, že <span class="zal-inline">open_duration</span> a <span class="zal-inline">close_duration</span> se liší — motor má jiný rozjezd/dojezd nahoru a dolů. Tohle je potřeba opravdu změřit stopkami.</p>
+                <div class="zal-note zal-note--warn"><strong>Dvě pasti, co mě zdržely:</strong> ESP nešel do download módu sám — při flashi je potřeba <strong>držet tlačítko BOOT</strong>. A na Windows je nutné mít <span class="zal-inline">PYTHONUTF8=1</span> a kompilovat z lokálního disku (ne ze síťového share), jinak build padá.</div>
+            </div>
+        </section>
+
+        <!-- Kalibrace -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">Kalibrace a „komfort“ pozice</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>U <span class="zal-inline">time_based</span> krytu se poloha počítá z času, takže při opakovaném popojíždění se procenta pomalu rozcházejí s realitou (drift). Řešení: <span class="zal-inline">has_built_in_endstop: true</span> a občas dojet úplně na doraz (0 nebo 100&nbsp;%), čímž se počítadlo srovná.</p>
+                <p>Druhá vychytávka je vlastní <strong>komfortní poloha 25&nbsp;%</strong>. Za roletou mám vývod klimatizace, takže žaluzie <strong>nikdy nesmí dojet úplně dolů</strong> — nechávám ~10&nbsp;cm mezeru. Místo „zavřít na 0&nbsp;%“ proto všechny akce volají skript, který jede na <span class="zal-inline">set_cover_position: 25</span>.</p>
+            </div>
+        </section>
+
+        <!-- Automatizace -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Tři automatizace, co to dělají užitečným</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>Samotné ovládání z appky je hezké, ale smysl to dostane až automatizacemi. Obývák je na jih, takže solární zisk je velký a stínění dává smysl:</p>
+                <ul>
+                    <li><strong>Klima + slunce → zastínit:</strong> když naskočí klimatizace, žaluzie se stáhnou na komfortní pozici a pomůžou jí chladit.</li>
+                    <li><strong>Večerní roztažení:</strong> když slunce klesne pod 10° (samo se to posouvá podle ročního období), rolety vyjedou nahoru — a protože jedou na doraz, resetuje se tím drift.</li>
+                    <li><strong>Anti-glare na TV:</strong> zapnu televizi a venku svítí slunce z jihu? Žaluzie se přivřou, ať na obrazovce nejsou odlesky. (Lux čidlo z tabletu bylo nestabilní, rozhoduju podle počasí + polohy slunce.)</li>
+                </ul>
+                <p>Bonus: na rolety jsem namapoval i fyzické Zigbee tlačítko (Sonoff SNZB-01P) — krátký stisk dolů, dvojklik stop, dlouhý stisk nahoru. A jeden ESP32 + CC1101 zvládne obsloužit klidně všechny rolety v domě — stačí zachytit kód každé z nich a přidat další <span class="zal-inline">cover</span>.</p>
+            </div>
+        </section>
+
+        <!-- Závěr -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">Co to dalo</h2>
+            </div>
+            <div class="ha-card zal-card">
+                <p>Venkovní žaluzie Aluprof se chovají v Home Assistantu jako plnohodnotné chytré rolety — posuvník polohy, hlasové ovládání, scény i automatizace — a to celé <strong>lokálně, bez cloudu a bez originálního mostu</strong>, za cenu jednoho ESP a RF modulu.</p>
+                <p>Kdybyste řešili to samé (a podle dotazů, co dostávám, vás je dost), nejtěžší část je odposlech protokolu — zbytek je už jen poskládání ESPHome konfigurace. Klidně se ozvěte, rád poradím.</p>
+            </div>
+        </section>
+
+        <!-- Back -->
+        <section class="content-section">
+            <div style="text-align: center;">
+                <a href="../" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--electric-teal); color: var(--midnight); border-radius: 8px; text-decoration: none; font-weight: 600;">
+                    ← Zpět na Home Assistant
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&#10094;</button>
+        <button class="lightbox-next">&#10095;</button>
+        <img class="lightbox-image" src="" alt="">
+        <div class="lightbox-caption"></div>
+    </div>
+
+    <script src="../../../js/icons.js"></script>
+    <script src="../../../js/components.js?v=20260320n"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/reveal.js"></script>
+    <script src="../../../js/ha-lightbox.js?v=3"></script>
+    <script src="../../../js/analytics.js"></script>
+</body>
+</html>
