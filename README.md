@@ -33,7 +33,8 @@ ongy.cz/
 │   │   ├── monitoring/     # Grafana (9 dashboardů), InfluxDB, Node-RED
 │   │   └── tips/           # AI integrace, šablony, tipy
 │   ├── ai/                 # AI v praxi (workflow, Brain System, nástroje)
-│   │   └── brain/          # Brain System v2.0 dokumentace
+│   │   ├── brain/          # Brain System v2.0 dokumentace
+│   │   └── coach/          # AI Coach — osobní trenér v Telegramu (Claude)
 │   ├── deskovky/           # Gloomhaven (amber) + Frosthaven (ledově modrá)
 │   ├── about/              # O mně (avatar, zájmy, práce, 3D tisk timeline)
 │   ├── blog/               # Ongy Notes (7 článků, SVG ikony podle kategorie)

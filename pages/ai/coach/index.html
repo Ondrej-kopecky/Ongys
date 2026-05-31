@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="description" content="AI Coach - osobní trenér v Telegramu. Foto jídla → odhad kalorií přes Claude vision, hlasovky, sledování cvičení a váhy automaticky z chytré váhy přes Home Assistant.">
+    <meta property="og:title" content="AI Coach | AI Playground | Ongy.cz">
+    <meta property="og:description" content="Osobní trenér v kapse — foto jídla na kalorie, hlasovky, cvičení a automatické vážení přes Home Assistant. Postavený na Claude API.">
+    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://ongy.cz/pages/ai/coach/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <title>AI Coach | AI Playground | Ongy.cz</title>
+    <link rel="stylesheet" href="../../../css/style.css?v=20260531a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero page-hero-ai">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <h1>AI Coach</h1>
+                <p class="page-subtitle">Osobní trenér v kapse — postavený na Claude API</p>
+                <p class="breadcrumb">
+                    <a href="../">AI Playground</a> / AI Coach
+                </p>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="content-section">
+            <div class="ha-card ha-card-main">
+                <h3>Co je AI Coach?</h3>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--warm-amber);">Problém:</strong> Hubnutí a pravidelné cvičení padá na otravné
+                    ruční zapisování. Počítat kalorie z hlavy, vést tabulky, pamatovat si vážení — po týdnu to každý vzdá.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--electric-teal);">Řešení:</strong> Telegram bot, který funguje jako osobní trenér.
+                    Vyfotíš jídlo, on odhadne kalorie a makra. Řekneš do mikrofonu „dal jsem si oběd" a je to zapsané.
+                    Ráno a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9;">
+                    <strong style="color: var(--soft-purple);">Výsledek:</strong> Žádné tabulky, žádná aplikace navíc.
+                    Jen napíšeš nebo vyfotíš do chatu, který stejně používáš každý den — a o zbytek se postará AI.
+                    Cvičení i jídelníček navíc respektují zdravotní omezení a doporučení od lékaře.
+                </p>
+            </div>
+
+            <div class="coach-stats">
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--electric-teal); background: rgba(46,232,196,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--electric-teal);">2</span>
+                    <span class="coach-stat-label">AI modely<br><span class="coach-stat-sub">vision + intent</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--warm-amber); background: rgba(255,169,77,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--warm-amber);">3</span>
+                    <span class="coach-stat-label">vstupy<br><span class="coach-stat-sub">foto · hlas · text</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--soft-purple); background: rgba(167,139,250,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--soft-purple);">2×</span>
+                    <span class="coach-stat-label">push denně<br><span class="coach-stat-sub">ráno + večer</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: #ff6b6b; background: rgba(255,107,107,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: #ff6b6b;">auto</span>
+                    <span class="coach-stat-label">vážení<br><span class="coach-stat-sub">přes Home Assistant</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Jak to funguje
+                </h2>
+                <p class="section-subtitle">Od fotky v chatu po zápis v databázi</p>
+            </div>
+
+            <div class="ha-card ha-card-main">
+                <svg viewBox="0 0 800 360" style="width: 100%; height: auto; max-width: 800px; margin: 0 auto; display: block;">
+                    <!-- Telegram (top) -->
+                    <rect x="290" y="10" width="220" height="64" rx="12" fill="rgba(46,232,196,0.15)" stroke="#2ee8c4" stroke-width="2"/>
+                    <text x="400" y="38" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="16" font-weight="700">Telegram</text>
+                    <text x="400" y="58" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">foto · hlasovka · text</text>
+
+                    <!-- arrow down -->
+                    <line x1="400" y1="74" x2="400" y2="120" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+                    <!-- Bot core (center) -->
+                    <rect x="270" y="120" width="260" height="76" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="2"/>
+                    <text x="400" y="148" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="15" font-weight="700">Coach Bot</text>
+                    <text x="400" y="170" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono, monospace" font-size="11">Python · python-telegram-bot</text>
+                    <text x="400" y="186" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">Docker · scheduler ráno/večer</text>
+
+                    <!-- Claude API (left) -->
+                    <line x1="270" y1="158" x2="150" y2="230" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="30" y="230" width="240" height="92" rx="12" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+                    <text x="150" y="256" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Claude API</text>
+                    <text x="150" y="278" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Opus — vision (kalorie z foto)</text>
+                    <text x="150" y="296" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Sonnet — intent &amp; Q&amp;A</text>
+                    <text x="150" y="313" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">+ Whisper na přepis hlasovek</text>
+
+                    <!-- SQLite (center bottom) -->
+                    <line x1="400" y1="196" x2="400" y2="230" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="300" y="230" width="200" height="92" rx="12" fill="rgba(46,232,196,0.1)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="400" y="256" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">SQLite</text>
+                    <text x="400" y="278" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">jídla · cvičení · váha</text>
+                    <text x="400" y="296" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">složení těla · nápady</text>
+                    <text x="400" y="313" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">denní záloha na Google Drive</text>
+
+                    <!-- Home Assistant (right) -->
+                    <line x1="530" y1="158" x2="650" y2="230" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="530" y="230" width="240" height="92" rx="12" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="1.5"/>
+                    <text x="650" y="256" text-anchor="middle" fill="#ff6b6b" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Home Assistant</text>
+                    <text x="650" y="278" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">chytrá váha přes Bluetooth</text>
+                    <text x="650" y="296" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">váha · tuk · svaly · voda</text>
+                    <text x="650" y="313" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">bot čte z HA history API</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Co Coach umí -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Co Coach umí
+                </h2>
+                <p class="section-subtitle">Funkce, které používám denně</p>
+            </div>
+
+            <div class="about-interests">
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Foto jídla → kalorie</h3>
+                    <p>
+                        Vyfotíš talíř a Coach odhadne kalorie a makra (bílkoviny, tuky, nasycené tuky, cholesterol).
+                        Popisek u fotky má přednost před odhadem. Nesedí to? Odpovíš na zprávu s opravou a model
+                        přepočítá s tvým upřesněním.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
+                        </svg>
+                    </div>
+                    <h3>Hlasovka i text</h3>
+                    <p>
+                        „Zapiš jedno pivo" stačí říct do mikrofonu — Whisper to přepíše, AI rozpozná záměr
+                        a zapíše. Funguje stejně i napsané textem. Žádné formuláře, mluvíš na bota jako na trenéra.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6.5 6.5l11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M6 18l-4 4"/><path d="M14.5 9.5l-5 5"/>
+                        </svg>
+                    </div>
+                    <h3>Cvičení ráno i večer</h3>
+                    <p>
+                        Dvakrát denně přijde připomínka na cvičení s konkrétní sestavou. Cviky jsou vybrané
+                        s ohledem na zdravotní omezení — žádné kontraindikované pohyby. Splněno / přeskočeno
+                        zaznamenáš jedním tapnutím, omyl jde vrátit.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/>
+                        </svg>
+                    </div>
+                    <h3>Váha & složení těla</h3>
+                    <p>
+                        Stoupneš na chytrou váhu a hotovo — hodnota doputuje přes Home Assistant rovnou do bota.
+                        Sleduje nejen váhu, ale i tělesný tuk, svaly, vodu a viscerální tuk. Ranní report ukáže
+                        trend, aniž bys cokoli zapsal.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Denní souhrn</h3>
+                    <p>
+                        Přehled dne v jednom příkazu: kolik kalorií, jak na tom jsi s makry a jak ti sedí
+                        nasycené tuky a cholesterol vůči cíli — barevně rozlišené (zelená / žlutá / červená).
+                        Vidíš okamžitě, jestli máš ještě prostor, nebo už brzdit.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Nápady inbox</h3>
+                    <p>
+                        Napadne tě vylepšení? Pošleš <code>/napad</code> a uloží se do fronty. Při příští
+                        vývojové session je projdeme a zapracujeme. Bot sám se tak postupně vyvíjí podle
+                        toho, jak ho reálně používám.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/>
+                        </svg>
+                    </div>
+                    <h3>Léky a doplňky</h3>
+                    <p>
+                        Coach hlídá pravidelné připomínky — kdy vzít léky a doplňky stravy. Stačí potvrdit,
+                        že jsi je vzal, a zaznamená se to. Nic důležitého ti tak neuteče i ve frmolu dne.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                    </div>
+                    <h3>Nedělní report na e-mail</h3>
+                    <p>
+                        Každou neděli dorazí do e-mailu týdenní souhrn — jak šly kalorie a makra, váha a její
+                        trend, splněná cvičení. Přehled celého týdne na jednom místě, bez listování v chatu.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proč dva AI modely -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Proč dva různé AI modely
+                </h2>
+                <p class="section-subtitle">Lekce z reálného provozu</p>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Nejdřív běžel celý bot na jednom, levnějším modelu. Jenže u odhadu kalorií z fotek
+                        systematicky <strong>podhodnocoval české porce o čtvrtinu</strong> — řízek s bramborem
+                        hlásil jako lehký salát. Pro nástroj na hubnutí je to fatální.
+                    </p>
+                    <p>
+                        Řešení bylo rozdělit práci mezi dva modely podle toho, co je kde potřeba:
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Claude Opus — jen na odhad porcí</strong>
+                                <p>Vision úloha, kde záleží na přesnosti množství. Dražší, ale u pár fotek denně je rozdíl v ceně zanedbatelný oproti správným číslům.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Claude Sonnet — intent, klasifikace, Q&A</strong>
+                                <p>Rozpoznat, jestli je zpráva jídlo / cvik / nápad, a odpovídat na dotazy. Levnější a rychlejší — a na přesnost porcí se tu nehraje.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Korekce přes odpověď = pojistka</strong>
+                                <p>Když i Opus jednou za čas přestřelí, oprava v odpovědi to srovná. Kolikrát opravuju, je zároveň barometr přesnosti modelu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
+                        <span style="color: var(--soft-purple);">foto&nbsp;›</span> řízek + brambor<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">Coach&nbsp;›</span> Vepřový řízek + brambory<br>
+                        ~<span style="color: #ffa94d;">920 kcal</span> · B 45 g · T 52 g<br>
+                        nasycené tuky <span style="color: #ff6b6b;">14 g — moc</span><br>
+                        <br>
+                        <span style="color: var(--text-muted);">odpověď&nbsp;› „byly dva řízky"</span><br>
+                        <br>
+                        <span style="color: var(--electric-teal);">Coach&nbsp;›</span> přepočítáno<br>
+                        ~<span style="color: #ffa94d;">1480 kcal</span> · B 78 g · T 89 g
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack & Tech -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Stack &amp; Tech
+                </h2>
+            </div>
+
+            <div class="ha-hardware-grid">
+                <div class="ha-card">
+                    <h3>Jádro bota</h3>
+                    <ul class="ha-specs">
+                        <li>Python + python-telegram-bot</li>
+                        <li>Běží v Dockeru na home serveru</li>
+                        <li>Scheduler — ranní a večerní push</li>
+                        <li>Brain System pro vývoj</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>AI vrstva</h3>
+                    <ul class="ha-specs">
+                        <li>Claude Opus — vision na kalorie</li>
+                        <li>Claude Sonnet — intent &amp; Q&amp;A</li>
+                        <li>Whisper — přepis hlasovek</li>
+                        <li>Prompty laděné na české porce</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Data</h3>
+                    <ul class="ha-specs">
+                        <li>SQLite — jídla, cvičení, váha</li>
+                        <li>Složení těla a nápady</li>
+                        <li>Migrace s ochranou proti chybám</li>
+                        <li>Denní záloha na Google Drive</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Integrace váhy</h3>
+                    <ul class="ha-specs">
+                        <li>Chytrá váha přes Bluetooth</li>
+                        <li>Home Assistant na Raspberry Pi</li>
+                        <li>Bot čte z HA history API</li>
+                        <li>Váha, tuk, svaly, voda, viscerální</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soukromí -->
+        <section class="content-section section-alt">
+            <div class="ha-card ha-card-main">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--electric-teal); flex-shrink: 0;">
+                        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    Kde žijí moje data
+                </h3>
+                <p class="ha-card-desc" style="font-size: 1.1rem; line-height: 1.9;">
+                    Coach je čistě <strong>osobní nástroj</strong> — běží na mém vlastním home serveru, ne v cloudu.
+                    Veškerá data o jídle, cvičení a váze jsou v lokální SQLite databázi u mě doma. Do Claude API jdou
+                    jen fotky a texty potřebné pro odhad, zálohy jsou šifrované na můj Google Drive. Tahle stránka
+                    popisuje, <em>jak je bot postavený</em> — žádná konkrétní zdravotní čísla tu nenajdeš.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../../js/icons.js"></script>
+    <script src="../../../js/components.js?v=20260320n"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/reveal.js"></script>
+    <script src="../../../js/analytics.js"></script>
+</body>
+</html>

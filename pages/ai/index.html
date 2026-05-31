@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>AI Playground | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260320y">
+    <link rel="stylesheet" href="../../css/style.css?v=20260531a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -204,8 +204,83 @@
             </div>
         </section>
 
-        <!-- Nástroje -->
+        <!-- AI Coach -->
         <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </span>
+                    </span>
+                    AI Coach
+                </h2>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Telegram bot, který funguje jako <strong>osobní trenér v kapse</strong>. Vyfotíš jídlo
+                        a Claude vision odhadne kalorie a makra. Řekneš do mikrofonu, co jsi jedl, a je to zapsané.
+                        Ráno a večer připomene cvičení, váhu i složení těla si bere sám z chytré váhy přes Home Assistant.
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Foto → kalorie</strong>
+                                <p>Opus vision odhadne porci a makra, oprava jde přes odpověď na zprávu.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Hlasovka i text</strong>
+                                <p>Whisper přepíše, Sonnet rozpozná záměr — mluvíš na bota jako na trenéra.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Automatické vážení</strong>
+                                <p>Chytrá váha přes Bluetooth → Home Assistant → bot. Žádné ruční zapisování.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
+                        <span style="color: var(--soft-purple);">foto jídla&nbsp;›</span> kalorie + makra<br>
+                        <span style="color: var(--soft-purple);">hlasovka&nbsp;›</span> zápis<br>
+                        <span style="color: var(--soft-purple);">7:00 / 19:00&nbsp;›</span> cvičení<br>
+                        <span style="color: var(--soft-purple);">chytrá váha&nbsp;›</span> trend<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">Opus</span> vision · <span style="color: #ffa94d;">Sonnet</span> intent · <span style="color: #ff6b6b;">SQLite</span>
+                    </div>
+                    <a href="coach/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
+                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🏋️ AI Coach — jak je postavený</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Architektura, modely, funkce, integrace váhy →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nástroje -->
+        <section class="content-section">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-icon">

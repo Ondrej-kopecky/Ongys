@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>Blog | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260320y">
+    <link rel="stylesheet" href="../../css/style.css?v=20260531a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -36,6 +36,32 @@
 
         <section class="content-section">
             <div class="blog-list">
+                <article class="blog-post">
+                    <div class="blog-post-icon tag-ai">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div class="post-meta">
+                        <span class="post-date">31. května 2026</span>
+                        <span class="post-tag">AI</span>
+                    </div>
+                    <h2>AI Coach: osobní trenér v Telegramu postavený na Claude</h2>
+                    <p>
+                        Postavil jsem si Telegram bota, který funguje jako osobní trenér. Vyfotíš jídlo a Claude
+                        vision odhadne kalorie a makra, řekneš do mikrofonu co jsi jedl a je to zapsané, ráno
+                        a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy přes
+                        Home Assistant — žádné ruční zapisování.
+                    </p>
+                    <p>
+                        Zajímavá byla lekce z provozu: levnější model systematicky podhodnocoval české porce
+                        o čtvrtinu, tak teď běží na dvou modelech — <strong>Opus</strong> na přesný odhad jídla
+                        z fotek a <strong>Sonnet</strong> na rozpoznání záměru a dotazy. Jak je celý bot
+                        postavený jsem sepsal samostatně:
+                        <a href="../ai/coach/">AI Coach — architektura, modely a funkce →</a>.
+                    </p>
+                </article>
+
                 <article class="blog-post">
                     <div class="blog-post-icon tag-ha">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
