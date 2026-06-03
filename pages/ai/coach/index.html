@@ -20,6 +20,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Módy — vždy 4 vedle sebe (jinak se 4. karta láme dolů samotná) */
+        .coach-modes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        /* Funkce — flex se zarovnáním na střed, aby poslední neúplná řada
+           nezůstala osamocená vlevo (10 karet by jinak dalo 3+3+3+1) */
+        .coach-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .coach-features .interest-card {
+            flex: 0 1 250px;
+        }
+        @media (max-width: 1024px) {
+            .coach-modes { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .coach-modes { grid-template-columns: 1fr; }
+            .coach-features .interest-card { flex-basis: 100%; }
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -173,7 +203,7 @@
                 <p class="section-subtitle">Funkce, které používám denně</p>
             </div>
 
-            <div class="about-interests">
+            <div class="about-interests coach-features">
                 <div class="interest-card">
                     <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -282,6 +312,34 @@
                         trend, splněná cvičení. Přehled celého týdne na jednom místě, bez listování v chatu.
                     </p>
                 </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="6"/><polyline points="12 10 12 12 13 13"/><path d="M9 4.5 8.5 2h7L15 4.5M9 19.5 8.5 22h7l-.5-2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Chytré hodinky</h3>
+                    <p>
+                        Galaxy Watch posílá přes Home Assistant kroky, tep, klidový tep, HRV i spálené kalorie.
+                        V denním přehledu tak vidím nejen <em>co</em> jsem snědl, ale i <em>kolik</em> jsem se
+                        reálně nahýbal — strana výdeje energie, ne jen příjmu.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/>
+                        </svg>
+                    </div>
+                    <h3>Grafy na vyžádání</h3>
+                    <p>
+                        <code>/graf vaha</code>, <code>kroky</code> nebo <code>kcal</code> vykreslí trend rovnou
+                        do chatu jako obrázek. Hned vidím křivku za posledních pár týdnů, aniž bych otevíral
+                        další appku nebo tabulku.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -364,6 +422,151 @@
             </div>
         </section>
 
+        <!-- Adaptivní koučink -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Kouč, který mění tón
+                </h2>
+                <p class="section-subtitle">Podle toho, jak se mi zrovna daří</p>
+            </div>
+
+            <div class="ha-card ha-card-main" style="margin-bottom: 2rem;">
+                <p class="ha-card-desc" style="font-size: 1.12rem; line-height: 1.9;">
+                    Coach nečte jen čísla — sleduje i to, jestli cvičím a jestli mě něco nebolí. Podle
+                    posledních 7 dní si sám vybere <strong>mód</strong>, který určí tón ranních i večerních
+                    pushů a koučovacích hlášek (<code>/motivace</code>). Škála jede od klidného povzbuzení až
+                    po kopanec do zadku — ale nikdy neshazuje ani neuráží.
+                </p>
+            </div>
+
+            <div class="coach-modes">
+                <div class="interest-card" style="border-color: rgba(46, 232, 196, 0.35);">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>🟢 Pohodový</h3>
+                    <p>
+                        Všechno klape — cvičím, váha drží směr. Bot jen klidně povzbudí a nechá mě jet
+                        po svém. Žádné tlačení, žádné zbytečné kecy.
+                    </p>
+                </div>
+
+                <div class="interest-card" style="border-color: rgba(255, 211, 77, 0.35);">
+                    <div class="interest-icon" style="background: rgba(255, 211, 77, 0.12); color: #ffd34d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.5 4h-5L4 9.5v5L9.5 20h5l5.5-5.5v-5z"/><path d="M9 9l6 6M15 9l-6 6"/>
+                        </svg>
+                    </div>
+                    <h3>🟡 Šťouchavý</h3>
+                    <p>
+                        Jednou dvakrát za týden jsem cvičení vynechal. Bot to nenechá být — jemný empatický
+                        šťouch ve stylu „dnes to dáme, jo?" a návrh jednoho malého kroku.
+                    </p>
+                </div>
+
+                <div class="interest-card" style="border-color: rgba(255, 169, 77, 0.4);">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>🟠 Přísný</h3>
+                    <p>
+                        Tři a víc vynechání v týdnu a bot přitvrdí: „Dnes minimum 10 minut, žádné výmluvy."
+                        Pořád motivační kopanec do zadku, ale konec hlazení.
+                    </p>
+                </div>
+
+                <div class="interest-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l1.5 1.5 1.5-1.5a5 5 0 0 1 7 7l-7 7a2 2 0 0 1-3 0z"/>
+                        </svg>
+                    </div>
+                    <h3>🔴 Opatrný</h3>
+                    <p>
+                        Nahlásím, že mě něco bolí, a bot sám vyřadí rizikové cviky na pár dní a přepne na
+                        lehčí verzi. Když bolest hlásím opakovaně, připomene, že je čas zajít na odbornou
+                        kontrolu. Zdraví má přednost před výkonem.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Co mě to stojí -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Co mě to celé stojí
+                </h2>
+                <p class="section-subtitle">Bot si účtuje sám — každé volání Claude API se loguje</p>
+            </div>
+
+            <div class="ha-card ha-card-main">
+                <p class="ha-card-desc" style="font-size: 1.12rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                    Coach má tenký obal kolem Anthropic klienta, který u <strong>každého</strong> volání zapíše
+                    model, tokeny a cenu do databáze. Příkazem <code>/usage</code> tak kdykoli vidím reálnou
+                    útratu a kolik mi zbývá z kreditu. Žádný odhad — spočítané z účtu:
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); margin: 0 auto 1.5rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--card-border);">
+                            <th style="text-align: left; padding: 0.7rem 1rem; color: var(--text-muted); font-weight: 600;"></th>
+                            <th style="text-align: right; padding: 0.7rem 1rem; color: var(--soft-purple); font-weight: 600;">USD</th>
+                            <th style="text-align: right; padding: 0.7rem 1rem; color: var(--warm-amber); font-weight: 600;">CZK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 0.7rem 1rem; color: var(--text-secondary);">Denně</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--text-primary);">~$0,11</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--warm-amber);">~2,5 Kč</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 0.7rem 1rem; color: var(--text-secondary);">Měsíčně</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--text-primary);">~$3,20</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--warm-amber); font-weight: 600;">~75 Kč</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.7rem 1rem; color: var(--text-secondary);">Ročně</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--text-primary);">~$38</td>
+                            <td style="text-align: right; padding: 0.7rem 1rem; color: var(--warm-amber);">~900 Kč</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <p class="ha-card-desc" style="line-height: 1.9;">
+                    Hlavní náklad je <strong>focení jídla</strong> — Opus vision stojí ~$0,02 za jeden talíř.
+                    Klidné dny jsou v haléřích, vývojové a testovací dny logicky dražší. Čistě moje běžné
+                    používání tak vyjde spíš na <strong>~60 Kč měsíčně</strong> — levnější než jedno kafe. ☕
+                </p>
+                <p class="ha-card-desc" style="color: var(--text-muted); font-size: 0.92rem; margin-top: 1rem;">
+                    Přepočet kurzem ~23,5 Kč/$. Ceny modelů jsou ověřené křížově proti Admin API
+                    (naúčtovaná částka ÷ tokeny).
+                </p>
+            </div>
+        </section>
+
         <!-- Stack & Tech -->
         <section class="content-section">
             <div class="section-header">
@@ -408,10 +611,10 @@
                     </ul>
                 </div>
                 <div class="ha-card">
-                    <h3>Integrace váhy</h3>
+                    <h3>Integrace přes HA</h3>
                     <ul class="ha-specs">
                         <li>Chytrá váha přes Bluetooth</li>
-                        <li>Home Assistant na Raspberry Pi</li>
+                        <li>Galaxy Watch — kroky, tep, HRV</li>
                         <li>Bot čte z HA history API</li>
                         <li>Váha, tuk, svaly, voda, viscerální</li>
                     </ul>
