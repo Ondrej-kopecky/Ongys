@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>AI Coach | AI Playground | Ongy.cz</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260531a">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260626e">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -48,6 +48,16 @@
         @media (max-width: 560px) {
             .coach-modes { grid-template-columns: 1fr; }
             .coach-features .interest-card { flex-basis: 100%; }
+        }
+        /* Stack & Tech — vždy 4 vedle sebe (auto-fit jinak láme 4. kartu dolů) */
+        .ha-hardware-grid.coach-stack {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: 1024px) {
+            .ha-hardware-grid.coach-stack { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .ha-hardware-grid.coach-stack { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -582,7 +592,7 @@
                 </h2>
             </div>
 
-            <div class="ha-hardware-grid">
+            <div class="ha-hardware-grid coach-stack">
                 <div class="ha-card">
                     <h3>Jádro bota</h3>
                     <ul class="ha-specs">
@@ -642,7 +652,7 @@
     </main>
 
     <script src="../../../js/icons.js"></script>
-    <script src="../../../js/components.js?v=20260320n"></script>
+    <script src="../../../js/components.js?v=20260626e"></script>
     <script src="../../../js/main.js"></script>
     <script src="../../../js/reveal.js"></script>
     <script src="../../../js/analytics.js"></script>

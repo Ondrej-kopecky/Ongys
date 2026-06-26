@@ -105,6 +105,103 @@
 }
 
 /* ========================================
+   Navigation - Dropdown (podkategorie)
+   ======================================== */
+
+.has-dropdown {
+    position: relative;
+}
+
+.nav-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-caret {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-muted);
+    transition: transform 0.25s ease, color var(--transition-fast);
+}
+
+.nav-caret svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+
+.has-dropdown:hover .nav-caret {
+    color: var(--electric-teal);
+    transform: rotate(180deg);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    min-width: 215px;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    background: rgba(18, 18, 18, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1002;
+}
+
+/* neviditelný most, ať hover nepadá při přejezdu na dropdown */
+.nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+.has-dropdown:hover .nav-dropdown,
+.has-dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.nav-dropdown a {
+    display: block;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.nav-dropdown a::after {
+    display: none;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a.active {
+    color: var(--electric-teal);
+    background: rgba(46, 232, 196, 0.08);
+}
+
+/* ========================================
    Hero Section (Homepage)
    ======================================== */
 
@@ -532,6 +629,87 @@
 
     .nav-links a:hover {
         color: var(--electric-teal);
+    }
+
+    /* Menu na celou výšku — kdyby se podmenu nevešla, lze scrollovat */
+    .nav-links {
+        gap: 1.25rem;
+        overflow-y: auto;
+        padding: 5rem 2rem 2rem;
+        justify-content: flex-start;
+    }
+
+    /* Každá položka přes celou šířku, ať se širší podmenu nevysune mimo */
+    .nav-links > li {
+        width: 100%;
+    }
+
+    /* Dropdown na mobilu = accordion */
+    .nav-row {
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .nav-caret {
+        padding: 0.4rem;
+        color: var(--soft-white);
+    }
+
+    .nav-caret svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .has-dropdown .nav-dropdown {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: hidden;
+        pointer-events: none;
+        display: none;
+        width: 100%;
+        min-width: 0;
+        margin: 0.75rem 0 0;
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        gap: 0.4rem;
+    }
+
+    /* Na mobilu se podmenu NEřídí hoverem/focusem (desktop pravidla by ho
+       posunula translateX(-50%) mimo obrazovku) — jen třídou .open */
+    .has-dropdown:hover .nav-dropdown,
+    .has-dropdown:focus-within .nav-dropdown {
+        transform: none;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .has-dropdown:hover .nav-caret {
+        transform: none;
+    }
+
+    .has-dropdown.open .nav-dropdown {
+        display: flex;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .has-dropdown.open .nav-caret {
+        transform: rotate(180deg);
+        color: var(--electric-teal);
+    }
+
+    .nav-dropdown a {
+        font-size: 1.1rem;
+        text-align: center;
+        color: var(--text-muted);
+        padding: 0.35rem 1rem;
     }
 
     .hero-content {

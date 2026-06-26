@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="description" content="GDPR Broker Bot - Python automatizace, která posílá data brokerům žádosti o přístup (čl. 15) a výmaz (čl. 17), čte odpovědi, řetězí příjemce přes Claude a eskaluje na ÚOOÚ. Bez externích knihoven.">
+    <meta property="og:title" content="GDPR Broker Bot | AI Playground | Ongy.cz">
+    <meta property="og:description" content="Bot, který za mě bojuje s data brokery — automatické GDPR žádosti čl. 15+17, čtení odpovědí, řetězení příjemců přes Claude a eskalace na ÚOOÚ. Čistá Python stdlib.">
+    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://ongy.cz/pages/ai/gdpr/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <title>GDPR Broker Bot | AI Playground | Ongy.cz</title>
+    <link rel="stylesheet" href="../../../css/style.css?v=20260626e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Funkce — flex se zarovnáním na střed, aby poslední neúplná řada
+           nezůstala osamocená vlevo */
+        .gdpr-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .gdpr-features .interest-card {
+            flex: 0 1 250px;
+        }
+        @media (max-width: 560px) {
+            .gdpr-features .interest-card { flex-basis: 100%; }
+        }
+
+        /* Stack & Tech — vždy 4 vedle sebe (auto-fit jinak láme 4. kartu dolů) */
+        .ha-hardware-grid.gdpr-stack {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: 1024px) {
+            .ha-hardware-grid.gdpr-stack { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .ha-hardware-grid.gdpr-stack { grid-template-columns: 1fr; }
+        }
+
+        /* Diagram — klik pro zvětšení */
+        .zoomable-diagram { position: relative; }
+        .zoomable-diagram::after {
+            content: '⤢ klikni pro zvětšení';
+            position: absolute;
+            top: 0.85rem;
+            right: 0.85rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.45);
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .diagram-zoom-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.93);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            cursor: zoom-out;
+            overflow: auto;
+        }
+        .diagram-zoom-inner {
+            width: 100%;
+            max-width: 1400px;
+        }
+        .diagram-zoom-inner svg {
+            width: 100%;
+            height: auto;
+        }
+        .diagram-zoom-hint {
+            margin-top: 1.25rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero page-hero-ai">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+                </svg>
+                <h1>GDPR Broker Bot</h1>
+                <p class="page-subtitle">Bot, který za mě vymáhá moje data zpět</p>
+                <p class="breadcrumb">
+                    <a href="../">AI Playground</a> / GDPR Broker Bot
+                </p>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="content-section">
+            <div class="ha-card ha-card-main">
+                <h3>O co jde?</h3>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--warm-amber);">Problém:</strong> Existují stovky <em>data brokerů</em> —
+                    firem, které tiše sbírají, agregují a přeprodávají osobní data. Nikde neexistuje seznam „kdo má
+                    zrovna ta moje". Ručně obeslat desítky firem, hlídat zákonné lhůty a vést si přehled je práce na
+                    týdny — kterou nikdo neudělá.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--electric-teal);">Řešení:</strong> Python bot, který tu otravnou práci
+                    dělá za mě. Rozešle GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>,
+                    čte příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. A co je nejlepší —
+                    z odpovědí sám zjišťuje, komu broker data prodal dál.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9;">
+                    <strong style="color: var(--soft-purple);">Princip:</strong> Žádost podle čl. 15 není dotaz „prosím",
+                    je to páka. Správce <em>musí</em> přiznat, odkud data má (zdroj) a komu je předal (příjemci). Výmaz je
+                    pak průběžná údržba, ne jednorázový úklid. Bot dělá z práva nástroj a z nástroje rutinu.
+                </p>
+            </div>
+
+            <div class="coach-stats">
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--electric-teal); background: rgba(46,232,196,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--electric-teal);">80+</span>
+                    <span class="coach-stat-label">brokerů<br><span class="coach-stat-sub">v hledáčku</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--warm-amber); background: rgba(255,169,77,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 7l-10 5L2 7"/><path d="M2 7v10a2 2 0 002 2h16a2 2 0 002-2V7l-10 5z"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--warm-amber);">25</span>
+                    <span class="coach-stat-label">žádostí<br><span class="coach-stat-sub">v terénu</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--soft-purple); background: rgba(167,139,250,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--soft-purple);">0</span>
+                    <span class="coach-stat-label">závislostí<br><span class="coach-stat-sub">čistá stdlib</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: #ff6b6b; background: rgba(255,107,107,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: #ff6b6b;">30</span>
+                    <span class="coach-stat-label">dní lhůta<br><span class="coach-stat-sub">hlídá ji bot</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Jak to funguje
+                </h2>
+                <p class="section-subtitle">Od žádosti po eskalaci — a zpátky k novým cílům</p>
+            </div>
+
+            <div class="ha-card ha-card-main zoomable-diagram">
+                <svg viewBox="0 0 800 380" style="width: 100%; height: auto; max-width: 800px; margin: 0 auto; display: block;">
+                    <!-- Telegram (top) -->
+                    <rect x="290" y="10" width="220" height="64" rx="12" fill="rgba(46,232,196,0.15)" stroke="#2ee8c4" stroke-width="2"/>
+                    <text x="400" y="38" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="16" font-weight="700">Telegram</text>
+                    <text x="400" y="58" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">schválení dávky — „ANO / NE"</text>
+
+                    <!-- arrow down -->
+                    <line x1="400" y1="74" x2="400" y2="120" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+                    <!-- Bot core (center) -->
+                    <rect x="270" y="120" width="260" height="76" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="2"/>
+                    <text x="400" y="148" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="15" font-weight="700">Broker Bot</text>
+                    <text x="400" y="170" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono, monospace" font-size="11">Python 3.12 · jen stdlib</text>
+                    <text x="400" y="186" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">cron · approval gate · žádné pip install</text>
+
+                    <!-- Gmail SMTP/IMAP (left) -->
+                    <line x1="270" y1="158" x2="150" y2="240" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="30" y="240" width="240" height="96" rx="12" fill="rgba(46,232,196,0.1)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="150" y="266" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">E-mail (SMTP + IMAP)</text>
+                    <text x="150" y="288" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">odešle žádosti čl. 15 + 17</text>
+                    <text x="150" y="306" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">stáhne a spáruje odpovědi</text>
+                    <text x="150" y="324" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">pozná potvrzení i bounce</text>
+
+                    <!-- Claude (right) -->
+                    <line x1="530" y1="158" x2="650" y2="240" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="530" y="240" width="240" height="96" rx="12" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+                    <text x="650" y="266" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Claude Sonnet</text>
+                    <text x="650" y="288" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">přečte odpověď brokera</text>
+                    <text x="650" y="306" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">vytáhne příjemce + zdroj</text>
+                    <text x="650" y="324" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">→ noví brokeři do fronty</text>
+
+                    <!-- SQLite (center bottom) -->
+                    <line x1="400" y1="196" x2="400" y2="240" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="300" y="240" width="200" height="96" rx="12" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="1.5"/>
+                    <text x="400" y="266" text-anchor="middle" fill="#ff6b6b" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">SQLite</text>
+                    <text x="400" y="288" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">brokeři · žádosti</text>
+                    <text x="400" y="306" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">odpovědi · lhůty</text>
+                    <text x="400" y="324" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">stav každé žádosti</text>
+
+                    <!-- feedback loop note -->
+                    <text x="400" y="362" text-anchor="middle" fill="#a78bfa" font-family="Inter, sans-serif" font-size="11" font-style="italic">přiznaní příjemci se sami vrací jako nové cíle ↺</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Co bot umí -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Co bot umí
+                </h2>
+                <p class="section-subtitle">Celá smyčka od žádosti po stížnost</p>
+            </div>
+
+            <div class="about-interests gdpr-features">
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 7l-10 5L2 7"/><path d="M2 7v10a2 2 0 002 2h16a2 2 0 002-2V7l-10 5z"/>
+                        </svg>
+                    </div>
+                    <h3>Žádosti čl. 15 + 17</h3>
+                    <p>
+                        Pro každého brokera sestaví dopis — žádost o <strong>přístup</strong> (jaká data o mně máte,
+                        odkud a komu jste je dali) i o <strong>výmaz</strong>. U klíčových brokerů používá ručně
+                        psané, na míru šité dopisy; pro ostatní univerzální šablonu.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Approval gate</h3>
+                    <p>
+                        Bot nikdy nepošle nic naslepo. Připraví dávku, pošle její souhrn do Telegramu a <strong>čeká
+                        na moje „ANO"</strong>. Teprve pak odesílá. Mám tak vždy poslední slovo nad tím, co odejde
+                        mým jménem.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4v6h6"/><path d="M3.5 10a9 9 0 109-9 9 9 0 00-9 9z" opacity="0"/><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/>
+                        </svg>
+                    </div>
+                    <h3>Čte odpovědi</h3>
+                    <p>
+                        IMAP stahuje příchozí poštu, páruje ji k odeslané žádosti podle Message-ID a klasifikuje:
+                        potvrzení, věcná odpověď, nebo <strong>nedoručení (bounce)</strong>. Bounce i potvrzení
+                        rovnou hlásí do Telegramu.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
+                        </svg>
+                    </div>
+                    <h3>Řetězení příjemců</h3>
+                    <p>
+                        Tady nastupuje Claude. Sonnet přečte odpověď a vytáhne, <strong>komu broker data předal</strong>.
+                        Každou přiznanou firmu bot sám přidá jako nový cíl ke schválení — síť žádostí se tak rozrůstá
+                        bez mého zásahu.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Hlídá lhůty</h3>
+                    <p>
+                        Správce má na odpověď <strong>30 dní</strong>. Bot u každé žádosti počítá deadline, a když
+                        vyprší bez věcné odpovědi, označí ji jako po lhůtě a připraví <strong>urgenci (follow-up)</strong>.
+                        Potvrzení „máme to" lhůtu nezastaví.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Eskalace na ÚOOÚ</h3>
+                    <p>
+                        Když broker mlčí i po urgenci, bot připraví <strong>draft stížnosti na Úřad pro ochranu
+                        osobních údajů</strong>. Tenhle krok ale zůstává <strong>výhradně ruční</strong> — žádná
+                        stížnost neodejde automaticky.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/>
+                        </svg>
+                    </div>
+                    <h3>Report „kdo drží data"</h3>
+                    <p>
+                        Z databáze sestaví přehledový <code>report.md</code> — kdo odpověděl, kdo přiznal, že data
+                        má, komu je prodal a kdo mlčí. Konečně vidím černé na bílém, kudy moje data tečou.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><path d="M21 3v5h-5" opacity="0"/>
+                        </svg>
+                    </div>
+                    <h3>Běží sám přes cron</h3>
+                    <p>
+                        Každé ráno stáhne odpovědi, vyřetězí nové příjemce a aktualizuje report. V pondělí navíc
+                        zkontroluje lhůty a připraví follow-upy. Já jen otevřu Telegram a schválím, co má odejít.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Samorozšiřující se síť -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Síť, která se rozrůstá sama
+                </h2>
+                <p class="section-subtitle">Nejchytřejší část — a jediná, kde hraje roli AI</p>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Neexistuje master-seznam „kdo má moje data". Klíčový trik je proto v tom, že GDPR nutí každého
+                        správce přiznat své <strong>příjemce</strong> — komu data předal nebo prodal. A přesně tohle bot
+                        využívá k tomu, aby se sám rozrůstal:
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 7l-10 5L2 7"/><path d="M2 7v10a2 2 0 002 2h16a2 2 0 002-2V7l-10 5z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>1 · Broker odpoví</strong>
+                                <p>„Vaše data jsme získali od firmy A a předali jsme je firmám B a C." Přesně to po něm čl. 15 vyžaduje.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>2 · Claude vytáhne příjemce</strong>
+                                <p>Sonnet přečte volný text odpovědi a vrátí strukturovaný seznam: zdroj, příjemci, jestli firma data drží. Žádné ruční čtení desítek mailů.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>3 · Noví brokeři do fronty</strong>
+                                <p>Firmy B a C se samy přidají jako nové cíle (ke schválení) a do Telegramu přijde upozornění. Příští dávka jde i na ně.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.25rem;">
+                        Je to jediná část celého bota, která sahá na AI — a běží na <strong>mém vlastním Anthropic
+                        klíči</strong>. Claude dostane jen text odpovědi brokera, nic víc. Zbytek (odesílání, párování,
+                        lhůty) je čistá Python logika, která jede zadarmo.
+                    </p>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
+                        <span style="color: var(--soft-purple);">odpověď brokera ›</span><br>
+                        „data jsme získali od <span style="color: #ffa94d;">A</span>,<br>
+                        &nbsp;předali firmám <span style="color: #ff6b6b;">B</span>, <span style="color: #ff6b6b;">C</span>"<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">Sonnet ›</span> { zdroj: <span style="color: #ffa94d;">A</span>,<br>
+                        &nbsp;&nbsp;příjemci: [<span style="color: #ff6b6b;">B</span>, <span style="color: #ff6b6b;">C</span>] }<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">+ 2 noví brokeři</span> → fronta<br>
+                        <span style="color: var(--text-muted);">Telegram › „přibyli B, C"</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack & Tech -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Stack &amp; Tech
+                </h2>
+            </div>
+
+            <div class="ha-hardware-grid gdpr-stack">
+                <div class="ha-card">
+                    <h3>Jádro bota</h3>
+                    <ul class="ha-specs">
+                        <li>Python 3.12 — <strong>jen stdlib</strong></li>
+                        <li>smtplib · imaplib · sqlite3</li>
+                        <li>Žádné <code>pip install</code></li>
+                        <li>Vlastní mini <code>.env</code> loader</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>E-mail vrstva</h3>
+                    <ul class="ha-specs">
+                        <li><strong>Samostatná schránka</strong> jen na GDPR</li>
+                        <li>SMTP — odesílání žádostí</li>
+                        <li>IMAP — čtení odpovědí</li>
+                        <li>Párování přes Message-ID</li>
+                        <li>Detekce bounce i potvrzení</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>AI vrstva</h3>
+                    <ul class="ha-specs">
+                        <li>Claude Sonnet — řetězení</li>
+                        <li>Structured output (příjemci)</li>
+                        <li>Můj vlastní Anthropic klíč</li>
+                        <li>Jediné místo, kde běží AI</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Provoz &amp; data</h3>
+                    <ul class="ha-specs">
+                        <li>SQLite — brokeři, žádosti, lhůty</li>
+                        <li>Cron — denně + pondělní kontrola</li>
+                        <li>Telegram approval gate</li>
+                        <li>Report <code>report.md</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soukromí -->
+        <section class="content-section section-alt">
+            <div class="ha-card ha-card-main">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--electric-teal); flex-shrink: 0;">
+                        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    Soukromí a bezpečnost
+                </h3>
+                <p class="ha-card-desc" style="font-size: 1.1rem; line-height: 1.9;">
+                    Bot běží čistě <strong>lokálně na mém home serveru</strong>. Všechna data — seznam brokerů,
+                    odeslané žádosti i jejich odpovědi — jsou v lokální SQLite databázi u mě doma. Přihlašovací
+                    údaje (e-mail, klíče, token) jsou mimo verzování a nikdy se nedostanou do gitu. Do Claude API
+                    putuje jen samotný text odpovědí brokerů kvůli vytažení příjemců — nic dalšího. A protože jde
+                    o <strong>vymáhání mých vlastních práv</strong>, posílá bot ven jen to, co podle GDPR sám smím
+                    žádat. Tahle stránka popisuje, <em>jak je bot postavený</em> — žádné konkrétní osobní údaje ani
+                    seznam firem tu nenajdeš.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.1rem; line-height: 1.9; margin-top: 1rem;">
+                    Pro celou komunikaci jsem navíc založil <strong>úplně samostatnou e-mailovou schránku</strong>
+                    určenou jen pro tyhle GDPR žádosti. Veškerá pošta s brokery (odeslané žádosti, odpovědi,
+                    bounce, urgence) tak teče přes ni — moje osobní schránka zůstává <strong>čistá</strong> a
+                    nepřijdou mi do ní desítky automatických odpovědí. Zároveň mám korespondenci pěkně pohromadě
+                    na jednom místě, kdyby došlo na stížnost k ÚOOÚ.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../../js/icons.js"></script>
+    <script src="../../../js/components.js?v=20260626e"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/reveal.js"></script>
+    <script src="../../../js/diagram-zoom.js"></script>
+    <script src="../../../js/analytics.js"></script>
+</body>
+</html>

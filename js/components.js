@@ -10,6 +10,46 @@
 const pathDepth = window.location.pathname.split('/').filter(p => p && !p.includes('.')).length;
 const basePath = pathDepth >= 3 ? '../../..' : (pathDepth === 2 ? '../..' : (pathDepth === 1 ? '..' : '.'));
 
+// Navigace - struktura (kategorie + podstránky pro přímý přístup)
+const navItems = [
+    { label: 'Home', href: `${basePath}/` },
+    { label: '3D Print', href: `${basePath}/pages/3d-print/` },
+    { label: 'Home Assistant', href: `${basePath}/pages/homeassistant/`, children: [
+        { label: 'Zařízení & Hardware', href: `${basePath}/pages/homeassistant/devices/` },
+        { label: 'Automatizace', href: `${basePath}/pages/homeassistant/automations/` },
+        { label: 'Data & Monitoring', href: `${basePath}/pages/homeassistant/monitoring/` },
+        { label: 'Tipy & Triky', href: `${basePath}/pages/homeassistant/tips/` },
+        { label: 'Aluprof žaluzie', href: `${basePath}/pages/homeassistant/zaluzie/` },
+    ] },
+    { label: 'AI', href: `${basePath}/pages/ai/`, children: [
+        { label: 'Brain System', href: `${basePath}/pages/ai/brain/` },
+        { label: 'AI Coach', href: `${basePath}/pages/ai/coach/` },
+        { label: 'GDPR Bot', href: `${basePath}/pages/ai/gdpr/` },
+    ] },
+    { label: 'Deskovky', href: `${basePath}/pages/deskovky/` },
+    { label: 'Blog', href: `${basePath}/pages/blog/` },
+    { label: 'O mně', href: `${basePath}/pages/about/` },
+];
+
+function renderNavItem(item) {
+    if (!item.children) {
+        return `<li><a href="${item.href}">${item.label}</a></li>`;
+    }
+    const subItems = item.children.map(
+        (c) => `<li><a href="${c.href}">${c.label}</a></li>`
+    ).join('');
+    return `
+        <li class="has-dropdown">
+            <div class="nav-row">
+                <a href="${item.href}">${item.label}</a>
+                <button class="nav-caret" aria-label="Rozbalit ${item.label}" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+            </div>
+            <ul class="nav-dropdown">${subItems}</ul>
+        </li>`;
+}
+
 // Navigation HTML - čisté URL bez .html
 const navHTML = `
 <nav class="navbar">
@@ -29,13 +69,7 @@ const navHTML = `
         <span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-        <li><a href="${basePath}/">Home</a></li>
-        <li><a href="${basePath}/pages/3d-print/">3D Print</a></li>
-        <li><a href="${basePath}/pages/homeassistant/">Home Assistant</a></li>
-        <li><a href="${basePath}/pages/ai/">AI</a></li>
-        <li><a href="${basePath}/pages/deskovky/">Deskovky</a></li>
-        <li><a href="${basePath}/pages/blog/">Blog</a></li>
-        <li><a href="${basePath}/pages/about/">O mně</a></li>
+        ${navItems.map(renderNavItem).join('')}
     </ul>
 </nav>
 `;
@@ -132,14 +166,42 @@ function initNavigation() {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             navToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
         });
     });
-    
-    // Mark active page in navigation
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Dropdown caret toggle (mobil) — rozbalí/sbalí podmenu, neproklikne na stránku
+    document.querySelectorAll('.nav-caret').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const li = btn.closest('.has-dropdown');
+            const open = li.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+
+    // Mark active page in navigation (porovnání normalizovaných cest)
+    const normalize = (p) => p.replace(/index\.html$/, '').replace(/\/+$/, '/');
+    const here = normalize(window.location.pathname);
+
     document.querySelectorAll('.nav-links a').forEach(link => {
-        if (link.getAttribute('href').includes(currentPage)) {
+        if (normalize(link.pathname) === here) {
             link.classList.add('active');
+        }
+    });
+
+    // Zvýrazni rodičovskou kategorii, když jsem na její podstránce.
+    // Přidá i .open → na MOBILU se podmenu rozbalí (vidím, kde jsem),
+    // na DESKTOPU je .open neúčinné (tam se řídí jen hoverem) → zůstane sbalené.
+    document.querySelectorAll('.has-dropdown').forEach(li => {
+        const parentLink = li.querySelector('.nav-row > a');
+        const pp = normalize(parentLink.pathname);
+        if (pp !== '/' && here.startsWith(pp)) {
+            parentLink.classList.add('active');
+            li.classList.add('open');
+            const caret = li.querySelector('.nav-caret');
+            if (caret) caret.setAttribute('aria-expanded', 'true');
         }
     });
     
