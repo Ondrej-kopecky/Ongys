@@ -26,6 +26,7 @@ const navItems = [
         { label: 'AI Coach', href: `${basePath}/pages/ai/coach/` },
         { label: 'GDPR Bot', href: `${basePath}/pages/ai/gdpr/` },
     ] },
+    { label: 'Projects', href: `${basePath}/pages/projects/` },
     { label: 'Deskovky', href: `${basePath}/pages/deskovky/` },
     { label: 'Blog', href: `${basePath}/pages/blog/` },
     { label: 'O mně', href: `${basePath}/pages/about/` },

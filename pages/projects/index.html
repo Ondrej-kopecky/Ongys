@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="description" content="Projects – přehled projektů Ongyho: AI Coach, GDPR Agent, Brain System, Home Assistant, Gloomhaven Tracker a další. Status, technologie a poslední update u každého.">
+    <meta property="og:title" content="Projects | Ongy.cz">
+    <meta property="og:description" content="Co stavím — lokální AI systémy, chytrá domácnost a open-source nástroje. Status, technologie a poslední update u každého projektu.">
+    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://ongy.cz/pages/projects/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <title>Projects | Ongy.cz</title>
+    <link rel="stylesheet" href="../../css/style.css?v=20260626f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        @media (max-width: 760px) { .proj-grid { grid-template-columns: 1fr; } }
+        .proj-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 3px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .proj-card.s-run  { border-top-color: #2EE8C4; }
+        .proj-card.s-dev  { border-top-color: #ffa94d; }
+        .proj-card.s-idea { border-top-color: #a78bfa; }
+        .proj-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        .proj-head h3 { margin: 0; font-size: 1.2rem; font-family: var(--font-heading); }
+        .proj-status {
+            font-family: var(--font-mono); font-size: 0.68rem;
+            padding: 0.2rem 0.6rem; border-radius: 999px; white-space: nowrap;
+        }
+        .st-run  { color: #2EE8C4; border: 1px solid rgba(46,232,196,0.4); }
+        .st-dev  { color: #ffa94d; border: 1px solid rgba(255,169,77,0.4); }
+        .proj-desc { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; flex: 1; margin: 0; }
+        .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .proj-tag {
+            font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);
+            background: rgba(255,255,255,0.04); border: 1px solid var(--card-border);
+            padding: 0.2rem 0.55rem; border-radius: 6px;
+        }
+        .proj-foot {
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            border-top: 1px solid var(--card-border); padding-top: 0.85rem;
+        }
+        .proj-update { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.76rem; }
+        .proj-link { color: var(--electric-teal); text-decoration: none; font-weight: 600; font-size: 0.88rem; white-space: nowrap; }
+        .proj-link:hover { text-decoration: underline; }
+        .proj-legend {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
+            margin: 0 auto 2.25rem; color: var(--text-muted); font-size: 0.85rem;
+        }
+        .proj-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <h1>Projects</h1>
+                <p class="page-subtitle">Co stavím — status, technologie a poslední update u každého</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="proj-legend">
+                <span><span class="dot" style="background:#2EE8C4;"></span> běží v provozu</span>
+                <span><span class="dot" style="background:#ffa94d;"></span> vyvíjím</span>
+                <span><span class="dot" style="background:#a78bfa;"></span> nápad / roadmap</span>
+            </div>
+
+            <div class="proj-grid">
+                <!-- AI Coach -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>AI Coach</h3>
+                        <span class="proj-status st-run">✅ běží</span>
+                    </div>
+                    <p class="proj-desc">Osobní trenér v Telegramu. Vyfotíš jídlo → Claude vision odhadne kalorie a makra, hlasovky, připomínky cvičení a léků, váhu i složení těla bere z chytré váhy přes Home Assistant.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Python</span><span class="proj-tag">Claude Opus</span><span class="proj-tag">Claude Sonnet</span><span class="proj-tag">Whisper</span><span class="proj-tag">SQLite</span><span class="proj-tag">Home Assistant</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: červen 2026</span>
+                        <a class="proj-link" href="../ai/coach/">Detail →</a>
+                    </div>
+                </div>
+
+                <!-- GDPR Agent -->
+                <div class="proj-card s-dev">
+                    <div class="proj-head">
+                        <h3>GDPR Agent</h3>
+                        <span class="proj-status st-dev">🚧 v provozu</span>
+                    </div>
+                    <p class="proj-desc">Lokální agent, který mapuje, kdo drží moje data. Posílá žádosti čl. 15 + 17 data brokerům, řetězí příjemce přes Claude, počítá skóre rizika a skládá důkazní balíček pro stížnost na ÚOOÚ. Bez externích knihoven.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Python stdlib</span><span class="proj-tag">Claude Sonnet</span><span class="proj-tag">SQLite</span><span class="proj-tag">SMTP/IMAP</span><span class="proj-tag">Telegram</span><span class="proj-tag">cron</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: 26. 6. 2026</span>
+                        <a class="proj-link" href="../ai/gdpr/">Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Brain System -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>Brain System</h3>
+                        <span class="proj-status st-run">✅ framework</span>
+                    </div>
+                    <p class="proj-desc">Vlastní paměťový framework pro AI workflow — persistentní paměť, která přežívá mezi sessions. Changelog, kontext, rozhodnutí, skills. Není to jeden projekt, je to základ, na kterém staví všechno ostatní (9+ projektů).</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Claude Code</span><span class="proj-tag">Markdown</span><span class="proj-tag">skills</span><span class="proj-tag">hooks</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: průběžně</span>
+                        <a class="proj-link" href="../ai/brain/">Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Home Assistant -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>Home Assistant</h3>
+                        <span class="proj-status st-run">✅ běží</span>
+                    </div>
+                    <p class="proj-desc">Celá domácnost na Raspberry Pi 5 — 50+ zařízení, 35+ automatizací, 9 dashboardů, Grafana, wall tablet. 100 % lokálně, bez cloudu. Včetně vlastního RF mostu na venkovní žaluzie přes ESP32 + CC1101.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Raspberry Pi 5</span><span class="proj-tag">ESPHome</span><span class="proj-tag">ESP32</span><span class="proj-tag">Node-RED</span><span class="proj-tag">Grafana</span><span class="proj-tag">Zigbee</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: červen 2026</span>
+                        <a class="proj-link" href="../homeassistant/">Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Gloomhaven Tracker -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>Gloomhaven Tracker</h3>
+                        <span class="proj-status st-run">✅ běží</span>
+                    </div>
+                    <p class="proj-desc">Tracker kampaně Gloomhaven (v5.4) — Forgotten Circles DLC, ability karty s českými názvy pro 17 tříd, achievement stickery, 150 událostí, sdílení kampaně, PWA a cloud sync. 105 testů.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Vue 3</span><span class="proj-tag">FastAPI</span><span class="proj-tag">SQLite</span><span class="proj-tag">PWA</span><span class="proj-tag">JWT</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">v5.4</span>
+                        <a class="proj-link" href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener">Otevřít →</a>
+                    </div>
+                </div>
+
+                <!-- Frosthaven Tracker -->
+                <div class="proj-card s-dev">
+                    <div class="proj-head">
+                        <h3>Frosthaven Tracker</h3>
+                        <span class="proj-status st-dev">🚧 beta</span>
+                    </div>
+                    <p class="proj-desc">Tracker pro ledovou kampaň Frosthaven — sourozenec Gloomhaven trackeru s vlastním backendem. Beta verze je živá, obsah se průběžně doplňuje.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Vue 3</span><span class="proj-tag">FastAPI</span><span class="proj-tag">SQLite</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">beta</span>
+                        <a class="proj-link" href="https://frosthaven.ongy.cz" target="_blank" rel="noopener">Otevřít →</a>
+                    </div>
+                </div>
+
+                <!-- ongy.cz -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>ongy.cz</h3>
+                        <span class="proj-status st-run">✅ běží</span>
+                    </div>
+                    <p class="proj-desc">Tenhle web — osobní digitální dílna. Statický HTML/CSS/JS bez frameworku, servírovaný přímo z home serveru přes Caddy + Cloudflare Tunnel. Z velké části napsaný v dialogu s Claude Code.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Caddy</span><span class="proj-tag">Cloudflare</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: 26. 6. 2026</span>
+                        <a class="proj-link" href="../../">Domů →</a>
+                    </div>
+                </div>
+
+                <!-- Home server infra -->
+                <div class="proj-card s-run">
+                    <div class="proj-head">
+                        <h3>Home server &amp; infra</h3>
+                        <span class="proj-status st-run">✅ běží</span>
+                    </div>
+                    <p class="proj-desc">Páteř všeho — Dell Latitude jako 24/7 server. Docker, Caddy reverse proxy, Cloudflare Tunnel (skrytá domácí IP), Tailscale pro vzdálený přístup, monitoring a šifrované zálohy do cloudu.</p>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Docker</span><span class="proj-tag">Caddy</span><span class="proj-tag">Cloudflare Tunnel</span><span class="proj-tag">Tailscale</span><span class="proj-tag">Uptime Kuma</span><span class="proj-tag">Restic</span>
+                    </div>
+                    <div class="proj-foot">
+                        <span class="proj-update">update: průběžně</span>
+                        <a class="proj-link" href="../homeassistant/monitoring/">Monitoring →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../js/icons.js"></script>
+    <script src="../../js/components.js?v=20260626f"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/reveal.js"></script>
+    <script src="../../js/analytics.js"></script>
+</body>
+</html>
