@@ -1,0 +1,41 @@
+# robots.txt — ongy.cz
+# Platí POUZE pro hostname ongy.cz (subdomény mají vlastní pravidla).
+
+Sitemap: https://ongy.cz/sitemap.xml
+
+# --- Výchozí: všichni roboti smí číst celý web ---
+User-agent: *
+Allow: /
+# API nemá smysl crawlovat (JSON, žádný obsah pro lidi)
+Disallow: /api/
+
+# --- AI crawleři výslovně vítáni (ať web čtou a citují) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
