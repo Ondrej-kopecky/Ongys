@@ -39,6 +39,34 @@
                 <article class="blog-post">
                     <div class="blog-post-icon tag-ai">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="post-meta">
+                        <span class="post-date">26. června 2026</span>
+                        <span class="post-tag">AI</span>
+                    </div>
+                    <h2>Postavil jsem si bota, který za mě vymáhá moje data od data brokerů</h2>
+                    <p>
+                        Existují stovky <em>data brokerů</em> — firem, co tiše sbírají a přeprodávají osobní data —
+                        a nikde není seznam „kdo má zrovna ta moje". Tak jsem si napsal Python bota, který rozesílá
+                        GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte
+                        příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. Nic neodejde
+                        bez mého „ANO" — bot pošle souhrn dávky do Telegramu a čeká na schválení.
+                    </p>
+                    <p>
+                        Nejhezčí část je <strong>samorozšiřování</strong>: žádost podle čl. 15 nutí brokera přiznat,
+                        komu data prodal dál. Tu odpověď přečte <strong>Claude (Sonnet)</strong>, vytáhne příjemce
+                        a každou přiznanou firmu sám přidá jako nový cíl — síť žádostí se tak rozrůstá bez mého
+                        zásahu. Celé to běží <strong>bez jediné externí knihovny</strong>, čistá Python stdlib.
+                        Jak je bot postavený jsem sepsal samostatně:
+                        <a href="../ai/gdpr/">GDPR Broker Bot — architektura, řetězení a eskalace →</a>.
+                    </p>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-icon tag-ai">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                         </svg>
                     </div>
