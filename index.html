@@ -23,6 +23,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Ekosystém diagram — klik pro zvětšení */
+        .zoomable-diagram { position: relative; }
+        .zoomable-diagram::after {
+            content: '⤢ klikni pro zvětšení';
+            position: absolute; top: 0.85rem; right: 0.85rem;
+            font-size: 0.72rem; color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.45); padding: 0.25rem 0.65rem;
+            border-radius: 999px; pointer-events: none;
+        }
+        .diagram-zoom-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0, 0, 0, 0.93);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 1.25rem; cursor: zoom-out; overflow: auto;
+        }
+        .diagram-zoom-inner { width: 100%; max-width: 1400px; }
+        .diagram-zoom-inner svg { width: 100%; height: auto; }
+        .diagram-zoom-hint {
+            margin-top: 1.25rem; color: #94a3b8;
+            font-size: 0.85rem; font-family: var(--font-mono); text-align: center;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation is injected by components.js -->
@@ -182,6 +205,80 @@
         </div>
     </section>
 
+    <!-- Ekosystém -->
+    <section class="content-section section-alt">
+        <div class="section-header">
+            <h2 class="section-title">Jeden ekosystém, ne hromada gadgetů</h2>
+            <p class="section-subtitle">Jak do sebe všechno zapadá</p>
+        </div>
+        <div class="ha-card ha-card-main zoomable-diagram" style="max-width: 920px; margin: 0 auto;">
+            <svg viewBox="0 0 880 580" style="width: 100%; height: auto; display: block;">
+                <!-- Zařízení & senzory (top) -->
+                <rect x="180" y="18" width="520" height="58" rx="12" fill="rgba(46,232,196,0.08)" stroke="#2ee8c4" stroke-width="1.5"/>
+                <text x="440" y="44" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="15" font-weight="700">Chytrá zařízení &amp; senzory</text>
+                <text x="440" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">váha · Galaxy Watch · teploměry · světla · zásuvky · 3D tiskárna</text>
+
+                <!-- devices -> HA -->
+                <line x1="440" y1="76" x2="440" y2="116" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+                <!-- Home Assistant hub -->
+                <rect x="320" y="116" width="240" height="68" rx="12" fill="rgba(46,232,196,0.16)" stroke="#2ee8c4" stroke-width="2"/>
+                <text x="440" y="146" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="16" font-weight="700">Home Assistant</text>
+                <text x="440" y="167" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">domácí mozek · RPi 5 · 100 % lokálně</text>
+
+                <!-- HA -> Grafana -->
+                <line x1="560" y1="150" x2="700" y2="150" stroke="#ffa94d" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <rect x="700" y="118" width="160" height="64" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="1.5"/>
+                <text x="780" y="146" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Grafana</text>
+                <text x="780" y="165" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">dashboardy</text>
+
+                <!-- HA -> agents (tree) -->
+                <line x1="440" y1="184" x2="440" y2="204" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <line x1="275" y1="204" x2="605" y2="204" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <line x1="275" y1="204" x2="275" y2="224" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <line x1="605" y1="204" x2="605" y2="224" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+                <!-- AI agents -->
+                <rect x="150" y="224" width="250" height="72" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="1.5"/>
+                <text x="275" y="252" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="15" font-weight="700">AI Coach</text>
+                <text x="275" y="272" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">foto → kalorie · váha z HA</text>
+                <text x="275" y="288" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">připomínky cvičení a léků</text>
+
+                <rect x="480" y="224" width="250" height="72" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="1.5"/>
+                <text x="605" y="252" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="15" font-weight="700">GDPR Agent</text>
+                <text x="605" y="272" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">mapuje, kdo drží moje data</text>
+                <text x="605" y="288" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">vymáhá přístup a výmaz</text>
+
+                <!-- agents -> shared layer -->
+                <line x1="275" y1="296" x2="275" y2="346" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <line x1="605" y1="296" x2="605" y2="346" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+                <!-- shared services band -->
+                <rect x="110" y="346" width="200" height="66" rx="12" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+                <text x="210" y="374" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Claude API</text>
+                <text x="210" y="393" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Opus vision · Sonnet</text>
+
+                <rect x="340" y="346" width="200" height="66" rx="12" fill="rgba(46,232,196,0.10)" stroke="#2ee8c4" stroke-width="1.5"/>
+                <text x="440" y="374" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Telegram</text>
+                <text x="440" y="393" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">ovládání · approval</text>
+
+                <rect x="570" y="346" width="200" height="66" rx="12" fill="rgba(255,107,107,0.10)" stroke="#ff6b6b" stroke-width="1.5"/>
+                <text x="670" y="374" text-anchor="middle" fill="#ff6b6b" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">SQLite</text>
+                <text x="670" y="393" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">lokální data · žádný cloud</text>
+
+                <!-- Brain System foundation -->
+                <line x1="275" y1="412" x2="275" y2="448" stroke="#636e7b" stroke-width="1.5" stroke-dasharray="3,4"/>
+                <line x1="605" y1="412" x2="605" y2="448" stroke="#636e7b" stroke-width="1.5" stroke-dasharray="3,4"/>
+                <rect x="150" y="448" width="580" height="60" rx="12" fill="rgba(167,139,250,0.07)" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <text x="440" y="475" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Brain System + Claude Code</text>
+                <text x="440" y="494" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">paměť a vývoj, který staví a propojuje všechno výše</text>
+
+                <!-- bottom note -->
+                <text x="440" y="540" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="11" font-style="italic">všechno běží na jednom home serveru — Docker · Caddy · Cloudflare Tunnel — a dokumentuju to tady na ongy.cz</text>
+            </svg>
+        </div>
+    </section>
+
     <!-- Highlights -->
     <section class="content-section section-alt">
         <div class="section-header">
@@ -303,6 +400,7 @@
     <script src="js/components.js?v=20260626e"></script>
     <script src="js/main.js"></script>
     <script src="js/reveal.js"></script>
+    <script src="js/diagram-zoom.js"></script>
     <script src="js/analytics.js"></script>
 </body>
 </html>
