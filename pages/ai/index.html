@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>AI Lab | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260626f">
+    <link rel="stylesheet" href="../../css/style.css?v=20260818b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -216,8 +216,86 @@
             </div>
         </section>
 
-        <!-- AI Coach -->
+        <!-- ai-hotkey -->
         <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3.5"/><path d="M12 2v6.5M12 15.5V22M2 12h6.5M15.5 12H22"/>
+                            </svg>
+                        </span>
+                    </span>
+                    ai-hotkey
+                </h2>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Malá aplikace pro Windows: označíš text kdekoli, stiskneš <code>Ctrl+Shift+Space</code>
+                        a u kurzoru vyskočí <strong>kolečko AI akcí</strong> — opravit gramatiku, přeložit, shrnout,
+                        vysvětlit, upravit styl nebo cokoli vlastního. Výsledek přijde do panelu s porovnáním „před / po"
+                        a teprve po odsouhlasení nahradí původní text. AI běží <strong>u mě doma na grafice</strong>,
+                        jen na překlady si přepnu Claude.
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Jedna zkratka, jakýkoli program</strong>
+                                <p>Funguje v prohlížeči, v editoru i v chatu — appka si text vezme přes schránku, takže nepotřebuje s ničím spolupracovat.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>AI doma, ne v cloudu</strong>
+                                <p>Model Gemma 4 běží na mé grafické kartě — zadarmo, bez internetu, nic neodchází. Claude jen na překlady, přepnutí jedním kliknutím.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Porovnání a potvrzení</strong>
+                                <p>Barevně vidím, co AI změnila — nic se nepřepíše, dokud to neodsouhlasím.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
+                        <span style="color: var(--soft-purple);">výběr&nbsp;›</span> „…šetřit cas… misto v cloudu…"<br>
+                        <span style="color: var(--soft-purple);">Ctrl+Shift+Space&nbsp;›</span> kolečko<br>
+                        <span style="color: var(--electric-teal);">Gemma 4&nbsp;›</span> <span style="color: #ff6b6b; text-decoration: line-through;">cas</span> časem · <span style="color: #ff6b6b; text-decoration: line-through;">misto</span> místo<br>
+                        <span style="color: #ffa94d;">Sonnet 5&nbsp;›</span> „…save time… instead of the cloud…"<br>
+                        <span style="color: var(--soft-purple);">Enter&nbsp;›</span> nahradit výběr<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">Tauri v2</span> · <span style="color: #ffa94d;">Rust</span> · <span style="color: #ff6b6b;">Ollama</span> · <span style="color: var(--electric-teal);">Claude</span>
+                    </div>
+                    <a href="hotkey/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
+                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🎯 ai-hotkey — jak je postavený</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Jak to funguje, proč zrovna takhle a na co jsem narazil →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Coach -->
+        <section class="content-section">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-icon">
@@ -292,7 +370,7 @@
         </section>
 
         <!-- GDPR Broker Bot -->
-        <section class="content-section">
+        <section class="content-section section-alt">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-icon">
@@ -370,7 +448,7 @@
         </section>
 
         <!-- Nástroje -->
-        <section class="content-section section-alt">
+        <section class="content-section">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-icon">
