@@ -352,7 +352,8 @@
     color: var(--electric-teal);
 }
 
-.blog-post-icon.tag-web {
+.blog-post-icon.tag-web,
+.blog-post-icon.tag-net {
     background: rgba(255, 107, 107, 0.12);
     color: #ff6b6b;
 }

@@ -18,7 +18,7 @@
     <meta name="twitter:description" content="3D tisk, Home Assistant, AI experimenty a deskovky.">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>Ongy.cz | Digitální dílna</title>
-    <link rel="stylesheet" href="css/style.css?v=20260626f">
+    <link rel="stylesheet" href="css/style.css?v=20260912a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
                 </h1>
                 <p class="hero-description">
                     <strong>Stavím lokální AI systémy, chytrou domácnost a open-source nástroje, které řeší skutečné problémy.</strong>
-                    Tohle je moje osobní digitální dílna — 3D tisk, Home Assistant, AI a deskovky v projektech
+                    Tohle je moje osobní digitální dílna — 3D tisk, Home Assistant, AI, domácí síť a deskovky v projektech
                     s reálným využitím. Bez hype, jen praxe.
                 </p>
                 <a href="#sections" class="btn btn-primary">
@@ -135,6 +135,21 @@
             </div>
             <h2 class="card-title">AI v praxi</h2>
             <p class="card-desc">Ne teorie, ne buzzwordy. Konkrétní použití AI v práci i doma — co pomáhá a co je hype.</p>
+            <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/server/" class="section-card card-net">
+            <div class="card-icon">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="6" y="6" width="36" height="14" rx="3"/>
+                    <rect x="6" y="28" width="36" height="14" rx="3"/>
+                    <circle cx="13" cy="13" r="2" fill="currentColor"/>
+                    <circle cx="13" cy="35" r="2" fill="currentColor"/>
+                    <path d="M20 13h16M20 35h16"/>
+                </svg>
+            </div>
+            <h2 class="card-title">Server &amp; síť</h2>
+            <p class="card-desc">Home server ze starého notebooku, DNS filtr pro celý byt, IoT síť a VPN. Soukromí doma, které se dá měřit.</p>
             <span class="card-arrow">→</span>
         </a>
 
@@ -285,6 +300,16 @@
             <h2 class="section-title">Na čem teď dělám</h2>
         </div>
         <div class="highlights-list">
+            <a href="pages/server/adguard/" class="highlight-item highlight-teal">
+                <div class="highlight-icon highlight-icon-teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
+                <div>
+                    <strong>AdGuard Home: DNS pro celý byt</strong>
+                    <p>360 tisíc dotazů za týden, pětina blokovaná, nula rozbitých zařízení. Co posílají zásuvky, mobil i televize.</p>
+                </div>
+                <span class="highlight-arrow">→</span>
+            </a>
             <a href="https://gloomhaven.ongy.cz" target="_blank" rel="noopener" class="highlight-item highlight-amber">
                 <div class="highlight-icon highlight-icon-amber">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -354,6 +379,11 @@
                 <div style="flex: 1;"><strong>Gloomhaven Tracker</strong><span style="color: var(--text-muted); font-size: 0.9rem;"> — v5.4, PWA, cloud sync, 105 testů</span></div>
                 <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #2EE8C4; border: 1px solid rgba(46,232,196,0.4); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap;">běží</span>
             </div>
+            <div style="display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1.2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid #2EE8C4; border-radius: 10px;">
+                <span style="font-size: 1.05rem;">✅</span>
+                <div style="flex: 1;"><strong>AdGuard Home + domácí síť</strong><span style="color: var(--text-muted); font-size: 0.9rem;"> — DNS filtr pro celý byt, IoT síť, Tailscale; ~18 % dotazů blokováno</span></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #2EE8C4; border: 1px solid rgba(46,232,196,0.4); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap;">běží</span>
+            </div>
             <!-- Vyvíjím -->
             <div style="display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1.2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid #ffa94d; border-radius: 10px;">
                 <span style="font-size: 1.05rem;">🚧</span>
@@ -369,6 +399,11 @@
                 <span style="font-size: 1.05rem;">🚧</span>
                 <div style="flex: 1;"><strong>Frosthaven Tracker</strong><span style="color: var(--text-muted); font-size: 0.9rem;"> — beta verze live</span></div>
                 <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #ffa94d; border: 1px solid rgba(255,169,77,0.4); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap;">vyvíjím</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1.2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid #ffa94d; border-radius: 10px;">
+                <span style="font-size: 1.05rem;">🚧</span>
+                <div style="flex: 1;"><strong>Server &amp; síť na webu</strong><span style="color: var(--text-muted); font-size: 0.9rem;"> — další díly: router a IoT síť, Tailscale, zálohy, bezpečnostní audit</span></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #ffa94d; border: 1px solid rgba(255,169,77,0.4); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap;">píšu</span>
             </div>
             <!-- Nápady -->
             <div style="display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1.2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid #a78bfa; border-radius: 10px;">
@@ -402,7 +437,7 @@
     <!-- Footer is injected by components.js -->
 
     <script src="js/icons.js"></script>
-    <script src="js/components.js?v=20260626f"></script>
+    <script src="js/components.js?v=20260912a"></script>
     <script src="js/main.js"></script>
     <script src="js/reveal.js"></script>
     <script src="js/diagram-zoom.js"></script>

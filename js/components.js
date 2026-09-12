@@ -25,8 +25,11 @@ const navItems = [
         { label: 'Brain System', href: `${basePath}/pages/ai/brain/` },
         { label: 'AI Coach', href: `${basePath}/pages/ai/coach/` },
         { label: 'GDPR Bot', href: `${basePath}/pages/ai/gdpr/` },
+        { label: 'ai-hotkey', href: `${basePath}/pages/ai/hotkey/` },
     ] },
-    { label: 'Projects', href: `${basePath}/pages/projects/` },
+    { label: 'Server & síť', href: `${basePath}/pages/server/`, children: [
+        { label: 'AdGuard Home (DNS)', href: `${basePath}/pages/server/adguard/` },
+    ] },
     { label: 'Deskovky', href: `${basePath}/pages/deskovky/` },
     { label: 'Blog', href: `${basePath}/pages/blog/` },
     { label: 'O mně', href: `${basePath}/pages/about/` },

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="description" content="AdGuard Home jako DNS pro celý byt: co moje zařízení posílají domů, jak jsem to bez rozbití chytré domácnosti utnul, a na jaké pasti jsem po cestě narazil. Šifrované DNS, filtrování telemetrie, pravidla per zařízení, IoT síť, přístup zvenku přes Tailscale.">
+    <meta property="og:title" content="AdGuard Home — co moje zařízení posílají domů | Server & síť | Ongy.cz">
+    <meta property="og:description" content="Týden provozu DNS filtru pro celý byt: 360 000 dotazů, pětina blokovaná, nula rozbitých zařízení. Co jsem zjistil o Tapo zásuvkách, mobilu, televizi i Jiře.">
+    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://ongy.cz/pages/server/adguard/">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
+    <title>AdGuard Home — co moje zařízení posílají domů | Server & síť | Ongy.cz</title>
+    <link rel="stylesheet" href="../../../css/style.css?v=20260912a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Zjištění — flex se zarovnáním na střed */
+        .ag-findings {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .ag-findings .interest-card { flex: 0 1 340px; }
+        @media (max-width: 560px) {
+            .ag-findings .interest-card { flex-basis: 100%; }
+        }
+
+        /* Stack — vždy 4 vedle sebe */
+        .ha-hardware-grid.ag-stack { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 1024px) { .ha-hardware-grid.ag-stack { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .ha-hardware-grid.ag-stack { grid-template-columns: 1fr; } }
+
+        /* Lekce */
+        .ag-lesson { display: flex; gap: 1rem; margin-bottom: 1.4rem; }
+        .ag-lesson:last-child { margin-bottom: 0; }
+        .ag-lesson-icon {
+            flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 107, 107, 0.12); color: #ff6b6b;
+        }
+        .ag-lesson-icon svg { width: 18px; height: 18px; }
+        .ag-lesson strong { color: var(--electric-teal); font-size: 1.05rem; }
+        .ag-tech {
+            line-height: 1.7; margin-top: 0.4rem;
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);
+        }
+
+        /* Tabulka „co bylo blokováno“ */
+        .ag-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        .ag-table th, .ag-table td { padding: 0.65rem 0.8rem; text-align: left; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+        .ag-table th { color: var(--text-muted); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .ag-table td:first-child { color: var(--electric-teal); font-weight: 600; white-space: nowrap; }
+        .ag-table code { font-size: 0.8rem; }
+        .ag-table-wrap { overflow-x: auto; }
+
+        /* Diagram — klik pro zvětšení */
+        .zoomable-diagram { position: relative; }
+        .zoomable-diagram::after {
+            content: '⤢ klikni pro zvětšení';
+            position: absolute; top: 0.85rem; right: 0.85rem;
+            font-size: 0.72rem; color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.45); padding: 0.25rem 0.65rem;
+            border-radius: 999px; pointer-events: none;
+        }
+        .diagram-zoom-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0, 0, 0, 0.93);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 1.25rem; cursor: zoom-out; overflow: auto;
+        }
+        .diagram-zoom-inner { width: 100%; max-width: 1400px; }
+        .diagram-zoom-inner svg { width: 100%; height: auto; }
+        .diagram-zoom-hint { margin-top: 1.25rem; color: #94a3b8; font-size: 0.85rem; font-family: var(--font-mono); text-align: center; }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Hero -->
+        <section class="page-hero page-hero-net">
+            <div class="page-hero-content">
+                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 12h8M12 8v8"/>
+                </svg>
+                <h1>AdGuard Home</h1>
+                <p class="page-subtitle">Co moje zařízení posílají domů — a jak jsem to utnul, aniž by přestala fungovat</p>
+                <p class="breadcrumb">
+                    <a href="../">Server &amp; síť</a> / AdGuard Home
+                </p>
+            </div>
+        </section>
+
+        <!-- Intro -->
+        <section class="content-section">
+            <div class="ha-card ha-card-main">
+                <h3>O co jde?</h3>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--warm-amber);">Problém:</strong> Doma mám přes padesát chytrých krabiček —
+                    zásuvky, světla, čističku, tiskárnu, televizi, tablet na zdi. Každá z nich má někde svůj cloud a každá
+                    do něj něco posílá. Nikdy jsem přesně nevěděl <em>co</em>, <em>jak často</em> a <em>komu</em>. Na mobilu
+                    a počítači je to totéž, jen s víc aplikacemi. A adblock v prohlížeči tohle nevidí — reklamy a telemetrie
+                    z aplikací a zařízení chodí mimo něj.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1rem;">
+                    <strong style="color: var(--electric-teal);">Řešení:</strong> Každé zařízení se před spojením musí zeptat
+                    „kde je server <code>xyz.com</code>?“ — to je DNS. Když tuhle otázku odpovídá <strong>můj vlastní server
+                    doma</strong>, vidím v jednom logu úplně všechno, co se v bytě ptá, a můžu rozhodnout, na co odpovím
+                    „takový server neexistuje“. Přesně to dělá <strong>AdGuard Home</strong>: běží v Dockeru na mém home
+                    serveru, router ho nabízí jako DNS celé síti a ven se ptá <strong>šifrovaně</strong>, takže ani poskytovatel
+                    internetu už nevidí, na co se doma ptáme.
+                </p>
+                <p class="ha-card-desc" style="font-size: 1.15rem; line-height: 1.9;">
+                    <strong style="color: var(--soft-purple);">Výsledek:</strong> Po týdnu provozu blokuju zhruba pětinu
+                    všech DNS dotazů — reklamní sítě, sledovací skripty a telemetrii — a <strong>nic doma nepřestalo
+                    fungovat</strong>. Bonus, který jsem nečekal: konečně vím, která krabička je ukecaná. Některá zjištění
+                    stojí za to sepsat.
+                </p>
+            </div>
+
+            <div class="coach-stats">
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--electric-teal); background: rgba(46,232,196,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--electric-teal);">360k</span>
+                    <span class="coach-stat-label">DNS dotazů<br><span class="coach-stat-sub">za první týden</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: #ff6b6b; background: rgba(255,107,107,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M4.9 4.9l14.2 14.2"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: #ff6b6b;">~18 %</span>
+                    <span class="coach-stat-label">blokováno<br><span class="coach-stat-sub">reklamy, tracking, telemetrie</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--warm-amber); background: rgba(255,169,77,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--warm-amber);">4,6 ms</span>
+                    <span class="coach-stat-label">průměrná odpověď<br><span class="coach-stat-sub">93 % z cache</span></span>
+                </div>
+                <div class="coach-stat">
+                    <span class="coach-stat-icon" style="color: var(--soft-purple); background: rgba(167,139,250,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/>
+                        </svg>
+                    </span>
+                    <span class="coach-stat-num" style="color: var(--soft-purple);">0</span>
+                    <span class="coach-stat-label">rozbitých zařízení<br><span class="coach-stat-sub">z 13 v IoT síti</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagram -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Jak to funguje
+                </h2>
+                <p class="section-subtitle">Jedna otázka „kde je server?“ a kudy prochází</p>
+            </div>
+
+            <div class="ha-card ha-card-main zoomable-diagram">
+                <svg viewBox="0 0 860 470" style="width: 100%; height: auto; max-width: 860px; margin: 0 auto; display: block;">
+                    <!-- Klienti (top row) -->
+                    <rect x="20" y="20" width="150" height="58" rx="12" fill="rgba(46,232,196,0.10)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="95" y="45" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">PC, mobil, tablet</text>
+                    <text x="95" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">hlavní Wi-Fi</text>
+
+                    <rect x="190" y="20" width="150" height="58" rx="12" fill="rgba(46,232,196,0.10)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="265" y="45" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Televize</text>
+                    <text x="265" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">vlastní pravidla</text>
+
+                    <rect x="360" y="20" width="150" height="58" rx="12" fill="rgba(255,169,77,0.12)" stroke="#ffa94d" stroke-width="1.5"/>
+                    <text x="435" y="45" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">IoT síť</text>
+                    <text x="435" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">zásuvky, světla, tiskárna</text>
+
+                    <rect x="530" y="20" width="150" height="58" rx="12" fill="rgba(46,232,196,0.10)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="605" y="45" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Tablet na zdi</text>
+                    <text x="605" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">smí jen Home Assistant</text>
+
+                    <rect x="700" y="20" width="140" height="58" rx="12" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.5"/>
+                    <text x="770" y="45" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Venku</text>
+                    <text x="770" y="64" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">mobil přes Tailscale VPN</text>
+
+                    <!-- lines from clients to AdGuard -->
+                    <line x1="95" y1="78" x2="380" y2="150" stroke="#2ee8c4" stroke-width="1.2" stroke-dasharray="5,4"/>
+                    <line x1="265" y1="78" x2="400" y2="150" stroke="#2ee8c4" stroke-width="1.2" stroke-dasharray="5,4"/>
+                    <line x1="435" y1="78" x2="430" y2="150" stroke="#ffa94d" stroke-width="1.2" stroke-dasharray="5,4"/>
+                    <line x1="605" y1="78" x2="460" y2="150" stroke="#2ee8c4" stroke-width="1.2" stroke-dasharray="5,4"/>
+                    <line x1="770" y1="78" x2="490" y2="150" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+                    <!-- AdGuard core -->
+                    <rect x="280" y="150" width="300" height="96" rx="14" fill="rgba(255,107,107,0.12)" stroke="#ff6b6b" stroke-width="2"/>
+                    <text x="430" y="180" text-anchor="middle" fill="#ff6b6b" font-family="Montserrat, sans-serif" font-size="17" font-weight="700">AdGuard Home</text>
+                    <text x="430" y="202" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Docker na home serveru · log + statistiky</text>
+                    <text x="430" y="220" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">4 blokovací seznamy · vlastní pravidla per zařízení</text>
+                    <text x="430" y="236" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">DNSSEC · ochrana proti malware · cache</text>
+
+                    <!-- blocked branch (left) -->
+                    <line x1="280" y1="198" x2="170" y2="198" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="20" y="168" width="150" height="60" rx="12" fill="rgba(255,107,107,0.08)" stroke="#ff6b6b" stroke-width="1.2"/>
+                    <text x="95" y="192" text-anchor="middle" fill="#ff6b6b" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Blokováno</text>
+                    <text x="95" y="211" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">reklamy · tracking · telemetrie</text>
+                    <text x="95" y="246" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10" font-style="italic">odpověď: „neexistuje“, ~18 %</text>
+
+                    <!-- upstream branch (down) -->
+                    <line x1="430" y1="246" x2="430" y2="296" stroke="#2ee8c4" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="230" y="296" width="400" height="72" rx="12" fill="rgba(46,232,196,0.10)" stroke="#2ee8c4" stroke-width="1.5"/>
+                    <text x="430" y="322" text-anchor="middle" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="14" font-weight="600">Šifrované DNS (DoH) — Cloudflare + Google paralelně</text>
+                    <text x="430" y="342" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">poskytovatel internetu vidí jen šifrovaný provoz, ne dotazy</text>
+                    <text x="430" y="358" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10">odpověď obvykle ~10 ms · většina se stejně vrací z cache</text>
+
+                    <!-- fallback (right) -->
+                    <line x1="580" y1="198" x2="690" y2="198" stroke="#ffa94d" stroke-width="1.5" stroke-dasharray="6,4"/>
+                    <rect x="690" y="168" width="150" height="60" rx="12" fill="rgba(255,169,77,0.08)" stroke="#ffa94d" stroke-width="1.2"/>
+                    <text x="765" y="192" text-anchor="middle" fill="#ffa94d" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Záloha</text>
+                    <text x="765" y="211" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">obyčejné DNS po 3 s</text>
+                    <text x="765" y="246" text-anchor="middle" fill="#636e7b" font-family="Inter, sans-serif" font-size="10" font-style="italic">když DoH vypadne, internet jede dál</text>
+
+                    <!-- monitoring note -->
+                    <rect x="230" y="396" width="400" height="48" rx="12" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="5,4"/>
+                    <text x="430" y="416" text-anchor="middle" fill="#a78bfa" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Hlídání: Uptime Kuma → Telegram</text>
+                    <text x="430" y="434" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">každou minutu testovací dotaz · když DNS spadne, vím to do minuty</text>
+                    <line x1="430" y1="368" x2="430" y2="396" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="3,4"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Co jsem zjistil -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Co jsem zjistil
+                </h2>
+                <p class="section-subtitle">Nejzajímavější část — kdo doma mluví nejvíc a s kým</p>
+            </div>
+
+            <div class="about-interests ag-findings">
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v6"/><path d="M8 8h8v4a4 4 0 01-8 0z"/><path d="M12 16v6"/>
+                        </svg>
+                    </div>
+                    <h3>Chytré zásuvky hlásí každých 20 minut</h3>
+                    <p>
+                        Čtyři zásuvky Tapo posílají „telemetrii“ na server výrobce zhruba <strong>75× denně každá</strong>.
+                        Ovládání přitom jde přes úplně jinou adresu. Tu telemetrickou jsem zablokoval, ovládání i měření spotřeby
+                        v Home Assistantu běží dál. Za týden je to 2 000 dotazů, které nikam nešly.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>Launcher na mobilu volal domů každou minutu</h3>
+                    <p>
+                        Nejčastěji blokovaná doména vůbec: analytika, na kterou se můj mobil ptal <strong>každých 61 sekund,
+                        i v noci</strong> — 1 400× za den. Odchycením provozu na mobilu jsem zjistil, že to dělá spouštěč aplikací
+                        (Nova Launcher), který od převzetí novým majitelem sbírá data a nejde to vypnout. Teď dostává „neexistuje“.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+                        </svg>
+                    </div>
+                    <h3>Televize sbírá logy, Prime Video sleduje</h3>
+                    <p>
+                        Samsung TV kromě reklam (ty chytí obecné seznamy) posílá i logy o používání a aplikace Prime Video
+                        vlastní telemetrii. Obojí jsem zakázal <strong>jen pro televizi</strong> — na ostatních zařízeních tyhle
+                        domény nechávám, aby mi nepřestal fungovat Amazon. Smart Hub i přehrávání jedou.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10l3 3 5-6"/>
+                        </svg>
+                    </div>
+                    <h3>Jira z počítače: 1 700 dotazů za minutu</h3>
+                    <p>
+                        Když mám v práci otevřenou Jiru, prohlížeč posílá její telemetrii tak často, že po zablokování jednu
+                        dopolední špičku vystřelil na <strong>1 756 dotazů za minutu</strong> — aplikace ignoruje, že jí DNS
+                        řeklo „neexistuje“, a zkouší to pořád dokola. Za týden 2 500 zablokovaných pokusů jen z tohohle.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
+                        </svg>
+                    </div>
+                    <h3>I router hlásí výrobci</h3>
+                    <p>
+                        Samotný Wi-Fi router posílal provozní logy do cloudové služby Datadog, kterou výrobce používá.
+                        Jedno vlastní pravidlo a je klid. Pozor jen na to, že stejná firma provozuje i časový server, který
+                        používá můj mobil — ten jsem blokovat nesměl.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/>
+                        </svg>
+                    </div>
+                    <h3>Co AdGuard nevidí</h3>
+                    <p>
+                        iPad má <strong>nula blokovaných dotazů</strong> — ne proto, že by byl čistý, ale protože Safari jede přes
+                        iCloud Private Relay, které si DNS řeší šifrovaně samo, mimo můj server. Totéž udělá Android s „privátním
+                        DNS“. DNS filtr je silný nástroj, ale ne vševidoucí.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Chytrá domácnost je slušná</h3>
+                    <p>
+                        Tiskárna Bambu, čistička Philips, robotický vysavač, světla Yeelight i pásek na Tuya cloudu mluví
+                        <strong>jen se svým cloudem</strong>, nic navíc. Seznam škodlivých domén (malware, phishing, podvody)
+                        za celý týden nechytil <strong>ani jeden dotaz</strong> — z žádného zařízení v bytě.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 6h6"/>
+                        </svg>
+                    </div>
+                    <h3>Tablet na zdi smí jen jedno</h3>
+                    <p>
+                        Tablet, který slouží jako ovládací panel Home Assistantu, nepotřebuje internet vůbec. Dostal
+                        <strong>obrácený režim</strong>: všechno je zakázané kromě pár domén (Home Assistant, čas, licence
+                        prohlížeče). Od té doby 145 ze 146 dotazů denně končí u mě a dashboard jede jako dřív.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jak jsem to nastavil -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Jak jsem to nastavil
+                </h2>
+                <p class="section-subtitle">Rozhodnutí, která dělají rozdíl mezi „funguje“ a „rozbilo mi to domácnost“</p>
+            </div>
+
+            <div class="filament-section">
+                <div class="filament-text">
+                    <p>
+                        Zásada číslo jedna: <strong>nic nesmí přestat fungovat</strong>. Manželka ani hosté nesmí poznat, že se
+                        v síti něco změnilo. Proto jsem šel opatrně — nejdřív mírné seznamy, týden koukání do logu, a teprve
+                        potom přitvrzení. A i před tím přitvrzením jsem si prošel čtyřicet domén, které chytrá domácnost, banky,
+                        Netflix, Messenger a spol. potřebují, a ověřil, že žádná z nich nově nespadne.
+                    </p>
+                    <div class="filament-features">
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Ven jen šifrovaně, ale se zálohou</strong>
+                                <p>Dotazy odcházejí přes DNS-over-HTTPS na Cloudflare a Google zároveň, vyhrává rychlejší. Když šifrované DNS vypadne, po třech sekundách naskočí obyčejné — schválně nešifrované, protože by jinak spadlo ze stejné příčiny. Internet doma nikdy nesmí záviset na jedné službě.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 6h16M4 12h16M4 18h10"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Čtyři seznamy, ne deset</strong>
+                                <p>Základní filtr AdGuardu, OISD Big, HaGeZi Multi PRO a HaGeZi Threat Intelligence (malware a podvody). Dohromady 2,2 milionu pravidel. Ty nejagresivnější varianty jsem schválně vynechal — padají po nich přihlášení, platby a cloudy chytrých zařízení.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Každé zařízení má jméno a vlastní pravidla</strong>
+                                <p>Všechna zařízení jsou v AdGuardu pojmenovaná, takže v logu vidím „televize“, ne číslo. A pravidla umím cílit: Microsoft telemetrii blokuju jen na PC a mobilu, Samsung logy jen na televizi, tablet na zdi má všechno zakázané. Ostatní zařízení to nepocítí.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>DNSSEC a ochrana proti malwaru zapnuté</strong>
+                                <p>DNSSEC ověřuje, že odpověď nikdo cestou nepodvrhl. Ochrana proti malwaru a phishingu vrací u známých škodlivých domén blokovací stránku. Za týden nechytila nic — což je dobrá zpráva, ne zbytečnost.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Stejný filtr i mimo domov</strong>
+                                <p>Mobil je trvale připojený přes Tailscale VPN a jako DNS má můj AdGuard. Takže i na mobilních datech nebo na cizí Wi-Fi platí stejná pravidla — a v logu ho vidím jménem, stejně jako doma.</p>
+                            </div>
+                        </div>
+                        <div class="filament-feature">
+                            <span class="icon icon-sm icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v6h-6"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Bez automatických aktualizací</strong>
+                                <p>Všechny ostatní kontejnery na serveru se aktualizují samy. AdGuard schválně ne — je to jediný DNS v síti a rozbitá aktualizace o půlnoci by znamenala byt bez internetu. Aktualizuju ručně, když jsem u toho.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filament-gallery">
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
+                        <span style="color: var(--soft-purple);">zásuvka&nbsp;›</span> telemetry-gw…<br>
+                        <span style="color: #ff6b6b;">AdGuard&nbsp;›</span> neexistuje ✕<br>
+                        <br>
+                        <span style="color: var(--soft-purple);">zásuvka&nbsp;›</span> cloudgateway…<br>
+                        <span style="color: var(--electric-teal);">AdGuard&nbsp;›</span> 52.x.x.x ✓ (cache)<br>
+                        <br>
+                        <span style="color: var(--soft-purple);">tablet&nbsp;›</span> play.googleapis…<br>
+                        <span style="color: #ff6b6b;">AdGuard&nbsp;›</span> neexistuje ✕ (jen tablet)<br>
+                        <br>
+                        <span style="color: var(--electric-teal);">DoH</span> · <span style="color: #ffa94d;">4 seznamy</span> · <span style="color: #ff6b6b;">per-client</span> · <span style="color: var(--electric-teal);">Tailscale</span>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border);">
+                        <span style="display: block; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.5rem;">Když něco přestane jít</span>
+                        <span style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; display: block;">
+                            1. Log → filtr na zařízení → hledat „Blocked“.<br>
+                            2. Klik na „Odblokovat“ — vznikne výjimka.<br>
+                            3. Počkat deset minut nebo přepnout Wi-Fi (viz pasti níže).<br>
+                            4. Nouzovka: kontejner vypnout, router přepne na obyčejné DNS.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Co bylo za týden blokováno -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Týden v číslech
+                </h2>
+                <p class="section-subtitle">Co který seznam reálně chytil — a co to o zařízeních říká</p>
+            </div>
+
+            <div class="ha-card ha-card-main" style="max-width: 900px; margin: 0 auto;">
+                <div class="ag-table-wrap">
+                <table class="ag-table">
+                    <thead>
+                        <tr><th>Zdroj blokování</th><th>Co chytá</th><th>Za týden</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Základní seznamy</td><td>reklamní sítě, sledovací pixely, analytika v aplikacích — tichá většina</td><td>~32 000</td></tr>
+                        <tr><td>HaGeZi Multi PRO</td><td>telemetrie: Jira, Microsoft Office, WhatsApp, Netflix, Sentry, App Center</td><td>5 845</td></tr>
+                        <tr><td>OISD Big</td><td>DoubleClick, Mixpanel, ScoreCardResearch, Google beacony</td><td>603</td></tr>
+                        <tr><td>Vlastní pravidla</td><td>Tapo telemetrie, Samsung TV logy, Prime Video, Microsoft, Firebase Crashlytics, tablet</td><td>~2 700</td></tr>
+                        <tr><td>Threat Intelligence</td><td>malware, phishing, podvodné weby</td><td><strong>0</strong></td></tr>
+                        <tr><td>Chytrá domácnost</td><td>Bambu, Philips, Xiaomi, Yeelight, Tuya — <strong>nic</strong>; jen Tapo telemetrie výše</td><td>0</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <p class="ha-card-desc" style="margin-top: 1.25rem; line-height: 1.8;">
+                    Celkem <strong>362 669 dotazů</strong>, z toho 41 118 blokovaných. Před přitvrzením seznamů to bylo 6–9 % denně,
+                    po něm <strong>17–20 %</strong>. Mobil má z toho nejvíc — 27 % jeho dotazů končí u mě, hlavně kvůli telemetrii
+                    Microsoftu a Googlu. Průměrná odpověď 4,6 ms, protože 93 % dotazů se vrátí z cache a ven jich za týden šlo
+                    jen 22 tisíc. Dostupnost: v logu není jediná hodina bez provozu, hlídání z Uptime Kumy hlásí nula výpadků
+                    od prvního dne (kromě jednoho restartu routeru).
+                </p>
+            </div>
+        </section>
+
+        <!-- Pasti -->
+        <section class="content-section section-alt">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Na co jsem cestou narazil
+                </h2>
+                <p class="section-subtitle">Věci, které v návodech nejsou — pro zvědavé je u každé i technická poznámka</p>
+            </div>
+
+            <div class="ha-card ha-card-main" style="max-width: 840px; margin: 0 auto;">
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></span>
+                    <div>
+                        <strong>Záloha, která se točila v kruhu</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            Jako záložní DNS jsem AdGuardu dal router — logické, ne? Jenže router má jako první DNS zase AdGuard.
+                            Když šifrované DNS na chvíli vypadlo, dotaz běhal AdGuard → router → AdGuard, dokud nevypršel čas.
+                            Ve statistikách to prozradila záloha s průměrnou odpovědí 265 ms proti 9 ms u všeho ostatního.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: fallback nastaven na veřejné resolvery (1.1.1.1, 9.9.9.9) po obyčejném UDP; router zůstal jen pro reverzní PTR privátních adres. Timeout upstreamu 10 → 3 s.</p>
+                    </div>
+                </div>
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                    <div>
+                        <strong>Odblokoval jsem doménu a deset minut se nic nedělo</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            Kvůli mobilu, který se ptal každou minutu, jsem prodloužil dobu, po kterou si zařízení blokovanou
+                            odpověď pamatuje, z 10 sekund na 10 minut. Míň dotazů, míň probouzení. Vedlejší efekt: když pak
+                            něco odblokuju, zařízení si ještě deset minut drží „neexistuje“ a já hledám chybu jinde. Teď vím,
+                            že mám nejdřív počkat nebo přepnout Wi-Fi.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: <code>blocked_response_ttl</code> 10 → 600 s. Při ladění po whitelistu vždy nejdřív flush cache klienta.</p>
+                    </div>
+                </div>
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v6h-6"/></svg></span>
+                    <div>
+                        <strong>Pravidlo „nefungovalo“ — jen jsem byl rychlejší než server</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            Celý pátek jsem byl přesvědčený, že jedno pravidlo pro víc zařízení najednou tiše nefunguje.
+                            Přepsal jsem ho na tři samostatná. V pondělí jsem zjistil, že po každém uložení pravidel AdGuard
+                            zhruba deset sekund přestavuje 2,2 milionu pravidel — a do té doby odpovídá podle starých. Já testoval
+                            po dvou sekundách. Pravidlo fungovalo od začátku.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: po <code>set_rules</code> čekat ≥12 s, nebo pollovat testovací doménou přes <code>check_host</code>. Syntaxe <code>$client='A'|'B'</code> funguje.</p>
+                    </div>
+                </div>
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+                    <div>
+                        <strong>Zvenku vypadal každý stejně</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            Dotazy z VPN se v logu slévaly do jedné anonymní adresy, takže pravidla pro mobil na něj venku
+                            neplatila. Dva dny jsem podezříval Docker. Nakonec za to mohl překlad adres ve VPN, který
+                            přeposílaný provoz „přerazítkuje“ adresou serveru. Jedna volba a mobil se venku hlásí jménem.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: <code>tailscale set --snat-subnet-routes=false</code>; DNAT do kontejneru je forward, tudíž podléhal SNAT. Bez SNAT potřebují LAN zařízení statickou routu na VPN rozsah zpět přes server.</p>
+                    </div>
+                </div>
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span>
+                    <div>
+                        <strong>Polovina zařízení se hlásila jako „router“</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            První noc šlo 80 % dotazů z routeru. Ne že by byl ukecaný — zařízení, která umí IPv6, se ptala
+                            po IPv6 a router jim to jen přeposílal. V logu jsem tak neviděl, kdo se ptá. Stačilo, aby router
+                            přestal nabízet IPv6 DNS, a zařízení se ptají po IPv4 přímo AdGuardu — pod svým jménem.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: alternativní firmware routeru, <code>dnsmasq.postconf</code> — volbu <code>option6:23</code> nahradit prázdnou hodnotou (ne smazat, jinak dnsmasq inzeruje sám sebe).</p>
+                    </div>
+                </div>
+                <div class="ag-lesson">
+                    <span class="ag-lesson-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg></span>
+                    <div>
+                        <strong>Ticho v logu neznamená problém</strong>
+                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
+                            Čistička, lustr a LED pásek najednou několik dní neposlaly ani jeden dotaz. Nejdřív jsem se lekl,
+                            že o ně AdGuard přišel. Ne — drží trvalé spojení ke svému cloudu a na DNS se ptají jen při
+                            znovupřipojení. Zařízení, které se ptá často, se spíš pořád odpojuje.
+                        </p>
+                        <p class="ha-card-desc ag-tech">technicky: persistentní MQTT spojení (AWS IoT, Xiaomi, Tuya). Ověřit ping + stav v Home Assistantu, ne log.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">
+                        <span class="icon icon-lg icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </span>
+                    </span>
+                    Pro zvědavé: z čeho je to postavené
+                </h2>
+            </div>
+
+            <div class="ha-hardware-grid ag-stack">
+                <div class="ha-card">
+                    <h3>AdGuard Home</h3>
+                    <ul class="ha-specs">
+                        <li>Docker Compose na home serveru</li>
+                        <li>Bind jen na LAN + VPN adresu</li>
+                        <li>Bez Watchtower labelu</li>
+                        <li>Konfigurace v zálohách (restic → R2)</li>
+                        <li>~600 MB RAM s 2,2 M pravidel</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Upstream</h3>
+                    <ul class="ha-specs">
+                        <li>DoH Cloudflare + Google, paralelně</li>
+                        <li>Fallback 1.1.1.1 + 9.9.9.9 (UDP)</li>
+                        <li>Timeout 3 s, cache 4 MB</li>
+                        <li>Optimistická cache zapnutá</li>
+                        <li>DNSSEC + Safe Browsing</li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Filtry</h3>
+                    <ul class="ha-specs">
+                        <li>AdGuard DNS filter</li>
+                        <li>OISD Big</li>
+                        <li>HaGeZi Multi PRO</li>
+                        <li>HaGeZi Threat Intelligence</li>
+                        <li>Vlastní pravidla s <code>$client=</code></li>
+                    </ul>
+                </div>
+                <div class="ha-card">
+                    <h3>Síť &amp; hlídání</h3>
+                    <ul class="ha-specs">
+                        <li>Router: DHCP DNS = server, záloha router</li>
+                        <li>Oddělená IoT síť, stejný DNS</li>
+                        <li>Tailscale: globální nameserver</li>
+                        <li>Uptime Kuma: 2 DNS monitory</li>
+                        <li>Výpadek → Telegram do minuty</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Co dál -->
+        <section class="content-section section-alt">
+            <div class="ha-card ha-card-main" style="max-width: 840px; margin: 0 auto;">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--warm-amber); flex-shrink: 0;">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    Co dál
+                </h3>
+                <p class="ha-card-desc" style="font-size: 1.05rem; line-height: 1.9;">
+                    Zařízení, která mají DNS natvrdo (Chromecast, Alexa, některé klimatizace), AdGuard obejdou. Až nějaké
+                    přibude, router je umí přesměrovat násilím — mám to připravené, zatím to nebylo potřeba. Další díly téhle
+                    sekce: <strong>router a oddělená IoT síť</strong> (proč mají krabičky vlastní Wi-Fi a jak se z ní dostat
+                    do Home Assistantu) a <strong>Tailscale</strong> (jak se dostat na všechno doma bez otevřeného portu).
+                </p>
+            </div>
+        </section>
+
+        <!-- Soukromí -->
+        <section class="content-section">
+            <div class="ha-card ha-card-main">
+                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--electric-teal); flex-shrink: 0;">
+                        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    Soukromí a bezpečnost
+                </h3>
+                <p class="ha-card-desc" style="font-size: 1.1rem; line-height: 1.9;">
+                    AdGuard běží <strong>jen v mojí domácí síti a ve VPN</strong>, z internetu není dosažitelný — na serveru
+                    neposlouchá jediný veřejný port. Log dotazů zůstává u mě doma a maže se po sedmi dnech. Ven odcházejí jen
+                    DNS dotazy, šifrovaně, na dva velké resolvery, které je stejně viděly i dřív — jen teď je nevidí poskytovatel
+                    internetu. Tahle stránka popisuje, <em>jak je to postavené</em>: žádné adresy, jména zařízení ani vnitřní
+                    uspořádání sítě tu nenajdeš. Domény, které cituju, jsou telemetrické servery výrobců — ty tajné nejsou.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../../js/icons.js"></script>
+    <script src="../../../js/components.js?v=20260912a"></script>
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/reveal.js"></script>
+    <script src="../../../js/diagram-zoom.js"></script>
+    <script src="../../../js/analytics.js"></script>
+</body>
+</html>

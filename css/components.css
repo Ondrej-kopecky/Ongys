@@ -85,14 +85,17 @@
 .card-ha:hover { border-color: #18bc9c; }
 .card-ai:hover { border-color: var(--warm-amber); }
 .card-frost:hover { border-color: #88c8ff; }
+.card-net:hover { border-color: #ff6b6b; }
 
 .card-ha .card-icon { color: #18bc9c; }
 .card-ai .card-icon { color: var(--warm-amber); }
 .card-frost .card-icon { color: #88c8ff; }
+.card-net .card-icon { color: #ff6b6b; }
 
 .card-ha:hover .card-arrow { color: #18bc9c; }
 .card-ai:hover .card-arrow { color: var(--warm-amber); }
 .card-frost:hover .card-arrow { color: #88c8ff; }
+.card-net:hover .card-arrow { color: #ff6b6b; }
 
 /* ========================================
    Subsection Cards

@@ -34,7 +34,11 @@ ongy.cz/
 │   │   └── tips/           # AI integrace, šablony, tipy
 │   ├── ai/                 # AI v praxi (workflow, Brain System, nástroje)
 │   │   ├── brain/          # Brain System v2.0 dokumentace
-│   │   └── coach/          # AI Coach — osobní trenér v Telegramu (Claude)
+│   │   ├── coach/          # AI Coach — osobní trenér v Telegramu (Claude)
+│   │   ├── gdpr/           # GDPR Broker Bot
+│   │   └── hotkey/         # ai-hotkey — AI kolečko nad označeným textem
+│   ├── server/             # Server & síť (od 2026-09-12; nahradilo Projects)
+│   │   └── adguard/        # AdGuard Home — DNS filtr pro celý byt
 │   ├── deskovky/           # Gloomhaven (amber) + Frosthaven (ledově modrá)
 │   ├── about/              # O mně (avatar, zájmy, práce, 3D tisk timeline)
 │   ├── blog/               # Ongy Notes (7 článků, SVG ikony podle kategorie)

@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
     <title>Blog | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260818b">
+    <link rel="stylesheet" href="../../css/style.css?v=20260912a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -36,6 +36,34 @@
 
         <section class="content-section">
             <div class="blog-list">
+                <article class="blog-post">
+                    <div class="blog-post-icon tag-net">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 12h8M12 8v8"/>
+                        </svg>
+                    </div>
+                    <div class="post-meta">
+                        <span class="post-date">12. září 2026</span>
+                        <span class="post-tag">Server &amp; síť</span>
+                    </div>
+                    <h2>Co moje zařízení posílají domů — týden s AdGuard Home jako DNS pro celý byt</h2>
+                    <p>
+                        Přes padesát chytrých krabiček doma a u žádné jsem přesně nevěděl, co, jak často a komu posílá.
+                        Tak jsem na home server nasadil <strong>AdGuard Home</strong>: každé zařízení se před spojením musí
+                        zeptat „kde je ten server?“, a když tu otázku odpovídám já, vidím v jednom logu úplně všechno — a můžu
+                        říct „takový server neexistuje“. Za první týden 360 tisíc dotazů, <strong>pětina zablokovaná</strong>,
+                        nula rozbitých zařízení.
+                    </p>
+                    <p>
+                        Zjištění stojí za to: chytré zásuvky hlásí výrobci každých dvacet minut, spouštěč aplikací na mobilu
+                        volal domů <strong>každou minutu i v noci</strong>, televize sbírá logy, Jira z počítače po zablokování
+                        vystřelila 1 700 dotazů za minutu a hlásí se i samotný router. Naopak tiskárna, čistička nebo vysavač
+                        jsou slušné. Plus šest pastí, na které jsem šlápl — od zálohy, která se točila v kruhu, po pravidlo,
+                        které „nefungovalo“ jen proto, že jsem testoval dřív, než ho server načetl. Otevírá to novou sekci webu:
+                        <a href="../server/adguard/">AdGuard Home — co moje zařízení posílají domů →</a>
+                    </p>
+                </article>
+
                 <article class="blog-post">
                     <div class="blog-post-icon tag-ai">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -439,7 +467,7 @@
     </main>
 
     <script src="../../js/icons.js"></script>
-    <script src="../../js/components.js?v=20260626f"></script>
+    <script src="../../js/components.js?v=20260912a"></script>
     <script src="../../js/main.js"></script>
     <script src="../../js/reveal.js"></script>
     <script src="../../js/analytics.js"></script>
