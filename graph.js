@@ -8,7 +8,7 @@
   const C = { core:'#2ee8c4', ha:'#2ee8c4', print:'#ffa94d', ai:'#a78bfa', server:'#7dd3fc', games:'#bcecff', blog:'#ff7a6e', tech:'#7c8780' };
 
   const N = [
-    ['ongy','ongy.cz','core','index.html',24],
+    ['ongy','ongy.cz','core','./',24],
     ['ha','Home Assistant','ha','pages/homeassistant/',12],
     ['print','3D tisk','print','pages/3d-print/',12],
     ['ai','AI','ai','pages/ai/',12],

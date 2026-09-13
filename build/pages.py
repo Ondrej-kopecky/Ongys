@@ -24,7 +24,7 @@ def blog():
       </article>'''
     body = f'''    <section class="project-hero shell">
       <div>
-        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>Blog</span></p>
+        <p class="crumbs"><a href="../../">Dílna</a><span>/</span><span>Blog</span></p>
         <h1>Co jsem zkusil, rozbil <span>a naučil se.</span></h1>
         <p class="lead">Krátké zápisky bez tlaku. Co se v dílně stalo, co se povedlo a na co jsem přišel až v provozu. Delší věci mají vlastní stránku, tady je vždy odkaz.</p>
       </div>
@@ -47,7 +47,7 @@ def blog():
 def about():
     body = '''    <section class="project-hero shell about-hero">
       <div>
-        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>O mně</span></p>
+        <p class="crumbs"><a href="../../">Dílna</a><span>/</span><span>O mně</span></p>
         <h1>Ahoj, jsem <span>Ongy.</span></h1>
         <p class="lead">QA tester, 3D tiskař, deskovkář a nadšenec do chytré domácnosti z Prahy. Ve dne testuju software pro jeden z největších českých delivery marketů, po večerech bastlím, automatizuju byt a hraju deskovky s partou. Tenhle web je moje digitální dílna.</p>
         <div class="links" style="margin-top:22px"><a class="button" href="https://github.com/Ondrej-kopecky">GitHub</a><a class="button button-quiet" href="https://www.linkedin.com/in/ond%C5%99ej-kopeck%C3%BD-1322b162/">LinkedIn</a><a class="button button-quiet" href="https://www.youtube.com/@bonggy23">YouTube</a><a class="button button-quiet" href="https://www.instagram.com/_ongy_/">Instagram</a><a class="button button-quiet" href="mailto:o.kopecky@seznam.cz">E-mail</a></div>
@@ -86,7 +86,7 @@ def about():
 
     <section class="psection"><div class="shell psection-grid">
       <div class="psection-head"><p class="eyebrow">Dál</p><h2>Kudy dál</h2></div>
-      <div class="links"><a class="button" href="../../index.html#dilny">Projít dílnu</a><a class="button button-quiet" href="../blog/">Číst zápisky</a><a class="button button-quiet" href="../../projects/">Všechny projekty</a></div>
+      <div class="links"><a class="button" href="../../#dilny">Projít dílnu</a><a class="button button-quiet" href="../blog/">Číst zápisky</a><a class="button button-quiet" href="../../projects/">Všechny projekty</a></div>
     </div></section>
 '''
     return render_generic({"path":"pages/about/","nav":"about","title":"O mně","description":"Kdo stojí za ongy.cz: QA tester z Prahy, 3D tiskař, deskovkář a nadšenec do chytré domácnosti a lokální AI."}, body)

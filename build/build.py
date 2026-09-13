@@ -8,7 +8,7 @@ FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="p
 TONE = {"ha": "teal", "3d": "amber", "ai": "purple", "server": "teal", "games": "ice"}
 
 NAV = [
-    ("Domů", "{r}index.html", "home", []),
+    ("Domů", "{r}", "home", []),
     ("3D tisk", "{r}pages/3d-print/", "3d", []),
     ("Home Assistant", "{r}pages/homeassistant/", "ha", [
         ("Zařízení a hardware","{r}pages/homeassistant/devices/","HW","Co doma běží a jakou cestou"),
@@ -51,7 +51,7 @@ def nav_html(r, active, path=""):
     cur = path.strip("/") + "/" if path.strip("/") else ""
     out = []
     for label, href, key, subs in NAV:
-        a = f'<a{" class=\"active\"" if key == active else ""} href="{href.format(r=r)}">{e(label)}</a>'
+        a = f'<a{" class=\"active\"" if key == active else ""} href="{href.format(r=r) or "./"}">{e(label)}</a>'
         if subs:
             sub = "".join(f'<a class="sub-item tint-{PAGE_TINT.get(h.format(r=""), "teal")}{" active" if h.format(r="") == cur else ""}"{" aria-current=\"page\"" if h.format(r="") == cur else ""} href="{h.format(r=r)}"><span class="sub-ic"><span class="sub-ic-text">{e(mk)}</span></span><span><b>{e(l)}</b><small>{e(d)}</small></span></a>' for l, h, mk, d in subs)
             more = f'<a class="sub-item sub-more" href="{href.format(r=r)}"><span class="sub-ic sub-ic-more"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg></span><span><b>Přehled sekce</b><small>{e(label)}: všechny projekty a články</small></span><svg class="sub-more-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
@@ -137,7 +137,7 @@ def render(c):
 <body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -199,7 +199,7 @@ def render_generic(c, body):
 <body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -320,7 +320,7 @@ def render_section_page(c):
 <body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -328,7 +328,7 @@ def render_section_page(c):
   <main id="obsah">
     <section class="project-hero shell">
       <div>
-        <p class="crumbs"><a href="{r}index.html">Dílna</a><span>/</span><span>{e(c["name"])}</span></p>
+        <p class="crumbs"><a href="{r}">Dílna</a><span>/</span><span>{e(c["name"])}</span></p>
         <h1>{c["h1"]}</h1>
         <p class="lead">{c["lead"]}</p>
       </div>
