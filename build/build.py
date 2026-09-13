@@ -4,7 +4,27 @@ import json, sys, html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist" if (ROOT / "dist").exists() else ROOT
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">'
-NAV = [("Domů","{r}index.html","home"),("3D tisk","https://ongy.cz/pages/3d-print/","3d"),("Home Assistant","https://ongy.cz/pages/homeassistant/","ha"),("AI","https://ongy.cz/pages/ai/","ai"),("Server & síť","https://ongy.cz/pages/server/","server"),("Deskovky","https://ongy.cz/pages/deskovky/","games"),("Blog","https://ongy.cz/pages/blog/","blog"),("O mně","https://ongy.cz/pages/about/","about")]
+NAV = [
+    ("Domů", "{r}index.html", "home", []),
+    ("3D tisk", "{r}pages/3d-print/", "3d", []),
+    ("Home Assistant", "{r}pages/homeassistant/", "ha", [("Zařízení a hardware","{r}pages/homeassistant/devices/"),("Automatizace","{r}pages/homeassistant/automations/"),("Data a monitoring","{r}pages/homeassistant/monitoring/"),("Tipy a triky","{r}pages/homeassistant/tips/"),("Aluprof žaluzie","{r}pages/homeassistant/zaluzie/")]),
+    ("AI", "{r}pages/ai/", "ai", [("AI Coach","{r}pages/ai/coach/"),("ai-hotkey","{r}pages/ai/hotkey/"),("GDPR Broker Bot","{r}pages/ai/gdpr/"),("Brain System","{r}pages/ai/brain/")]),
+    ("Server & síť", "{r}pages/server/", "server", [("AdGuard Home","{r}pages/server/adguard/")]),
+    ("Deskovky", "{r}pages/deskovky/", "games", []),
+    ("Blog", "{r}pages/blog/", "blog", []),
+    ("O mně", "{r}pages/about/", "about", []),
+]
+CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+def nav_html(r, active):
+    out = []
+    for label, href, key, subs in NAV:
+        a = f'<a{" class=\"active\"" if key == active else ""} href="{href.format(r=r)}">{e(label)}</a>'
+        if subs:
+            sub = "".join(f'<a href="{h.format(r=r)}">{e(l)}</a>' for l, h in subs)
+            out.append(f'<div class="nav-item has-sub">{a}{CHEV}<div class="sub">{sub}</div></div>')
+        else:
+            out.append(f'<div class="nav-item">{a}</div>')
+    return "".join(out)
 FOOTER = '<footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>'
 
 def e(s): return html.escape(s, quote=False)
@@ -42,7 +62,7 @@ def section(eyebrow, h2, inner):
 def render(c):
     depth = c["path"].strip("/").count("/") + 1
     r = "../" * depth
-    nav = "".join(f'<a{" class=\"active\"" if k==c.get("nav") else ""} href="{href.format(r=r)}">{e(label)}</a>' for label,href,k in NAV)
+    nav = nav_html(r, c.get("nav"))
     chips = "".join(f'<span class="chip{" amber" if ch.get("amber") else ""}"><i></i>{ch["text"]}</span>' for ch in c["chips"])
     kpis = "".join(f'<li><b>{k["b"]}</b><small>{e(k["small"])}</small></li>' for k in c["kpis"])
     out = []
@@ -75,13 +95,13 @@ def render(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=7"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
     <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
 
@@ -104,7 +124,7 @@ def render(c):
 {"".join(out)}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=11"></script>
+  <script src="{r}app.js?v=12"></script>
   <script src="{r}analytics.js?v=1"></script>
   <script src="{r}project.js?v=4"></script>
 </body>
@@ -126,7 +146,7 @@ def render_generic(c, body):
     """Obecná stránka: chrome (hlavička, nav, patička) + libovolné tělo."""
     depth = c["path"].strip("/").count("/") + 1 if c["path"].strip("/") else 0
     r = "../" * depth
-    nav = "".join(f'<a{" class=\"active\"" if k==c.get("nav") else ""} href="{href.format(r=r)}">{e(label)}</a>' for label,href,k in NAV)
+    nav = nav_html(r, c.get("nav"))
     page = f'''<!doctype html>
 <html lang="cs">
 <head>
@@ -136,13 +156,13 @@ def render_generic(c, body):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=7"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
     <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
 
@@ -151,7 +171,7 @@ def render_generic(c, body):
   </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=11"></script>
+  <script src="{r}app.js?v=12"></script>
   <script src="{r}analytics.js?v=1"></script>
   <script src="{r}project.js?v=4"></script>
 </body>
@@ -222,7 +242,7 @@ if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "catalog":
 def render_section_page(c):
     depth = c["path"].strip("/").count("/") + 1
     r = "../" * depth
-    nav = "".join(f'<a{" class=\"active\"" if k==c.get("nav") else ""} href="{href.format(r=r)}">{e(label)}</a>' for label,href,k in NAV)
+    nav = nav_html(r, c.get("nav"))
     color = c.get("color","teal")
     cards = ""
     for p in c["projects"]:
@@ -255,13 +275,13 @@ def render_section_page(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=7"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
     <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
 
@@ -292,7 +312,7 @@ def render_section_page(c):
 {notes}{stack}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=11"></script>
+  <script src="{r}app.js?v=12"></script>
   <script src="{r}analytics.js?v=1"></script>
   <script src="{r}project.js?v=4"></script>
 </body>

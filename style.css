@@ -31,10 +31,22 @@ button { font: inherit; }
 .brand img { width: 34px; height: 34px; }
 .brand > span > span { color: var(--muted); font-weight: 500; }
 .site-nav { display: flex; align-items: center; gap: 22px; font-size: .82rem; font-weight: 650; }
+.nav-item { position: relative; display: flex; align-items: center; gap: 4px; }
 .site-nav a { position: relative; padding: 23px 0; color: var(--muted); }
 .site-nav a:hover, .site-nav a.active { color: var(--text); }
-.site-nav a.active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; content: ""; background: var(--teal); }
-.menu-button { display: none; color: var(--text); border: 0; background: transparent; }
+.nav-item > a.active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; content: ""; background: var(--teal); }
+.chev { width: 14px; height: 14px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
+.has-sub:hover .chev, .has-sub:focus-within .chev { transform: rotate(180deg); stroke: var(--teal); }
+.sub { position: absolute; top: 100%; left: -14px; z-index: 40; display: none; min-width: 230px; padding: 8px; border: 1px solid #354039; border-radius: 14px; background: linear-gradient(145deg, #1a201d, #141816); box-shadow: 0 20px 44px rgba(0,0,0,.4), inset 0 1px rgba(255,255,255,.03); }
+.sub::before { position: absolute; top: -12px; left: 0; right: 0; height: 12px; content: ""; }
+.has-sub:hover .sub, .has-sub:focus-within .sub { display: grid; }
+.sub a { padding: 9px 12px; border-radius: 9px; color: var(--soft); font-weight: 600; white-space: nowrap; }
+.sub a:hover, .sub a:focus-visible { color: var(--text); background: var(--panel-2); }
+.menu-button { display: none; color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; background: transparent; font-size: .82rem; font-weight: 650; }
+.menu-button .mb-close { display: none; }
+.menu-button[aria-expanded="true"] .mb-open { display: none; }
+.menu-button[aria-expanded="true"] .mb-close { display: inline; }
+body.menu-open { overflow: hidden; }
 
 .eyebrow { margin: 0 0 12px; color: var(--teal); font: 700 .72rem "JetBrains Mono", "Cascadia Code", Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
 .hero { display: grid; grid-template-columns: 1.3fr .7fr; gap: 54px; align-items: center; padding-block: 72px 64px; }
@@ -187,11 +199,17 @@ body {
   :root { --shell: min(100% - 28px, 560px); }
   .header-inner { min-height: 60px; }
   .brand img { width: 32px; height: 32px; }
-  .menu-button { display: block; }
-  .site-nav { position: absolute; top: 60px; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 16px; border-bottom: 1px solid var(--line); background: var(--bg); }
+  .menu-button { display: inline-block; }
+  .site-header { backdrop-filter: none; background: var(--bg); }
+  .site-nav { position: fixed; top: 60px; right: 0; bottom: 0; left: 0; z-index: 25; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 20px 40px; overflow-y: auto; overscroll-behavior: contain; background: var(--bg); font-size: 1.02rem; }
   .site-nav.open { display: flex; }
-  .site-nav a { padding: 10px 0; }
-  .site-nav a.active::after { display: none; }
+  .nav-item { display: block; border-bottom: 1px solid var(--line); }
+  .nav-item > a { display: block; padding: 15px 0; color: var(--text); }
+  .nav-item > a.active { color: var(--teal); }
+  .nav-item > a.active::after { display: none; }
+  .chev { display: none; }
+  .sub { position: static; display: grid; grid-template-columns: 1fr; gap: 2px; min-width: 0; margin: 0 0 12px; padding: 0 0 0 14px; border: 0; border-left: 2px solid var(--line); border-radius: 0; background: none; box-shadow: none; }
+  .sub a { padding: 8px 10px; color: var(--muted); font-size: .92rem; font-weight: 500; white-space: normal; }
   .hero { padding-block: 52px 44px; }
   .hero-visual { padding: 24px 10px 20px 18px; }
   .hex-cloud span { width: 72px; }

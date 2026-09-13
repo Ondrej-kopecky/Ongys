@@ -2,11 +2,15 @@ const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.site-nav');
 
 if (menuButton && nav) {
-  menuButton.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('open', !open);
-  });
+  const setOpen = (open) => {
+    menuButton.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+  };
+  menuButton.addEventListener('click', () => setOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  window.matchMedia('(min-width: 701px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
 }
 
 const filters = [...document.querySelectorAll('.filter')];
