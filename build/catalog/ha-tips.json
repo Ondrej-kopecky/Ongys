@@ -1,128 +1,129 @@
 {
- "path": "pages/homeassistant/tips/",
- "nav": "ha",
- "name": "Tipy a triky",
- "section": {
-  "label": "Home Assistant",
-  "href": "https://ongy.cz/pages/homeassistant/"
- },
- "title": "Tipy a triky pro Home Assistant",
- "description": "Šest věcí z provozu Home Assistantu, které bych si přál vědět dřív: lokální integrace, ošetřené šablony, Zigbee na prodlužce, MQTT discovery, InfluxDB a notifikace s tlačítky. Plus AI konverzace přes Claude API.",
- "h1": "Drobnosti, které <span>ušetří večer.</span>",
- "lead": "Home Assistant mi doma běží přes rok. Většinu času funguje sám, ale pár věcí mě stálo víc hodin, než bylo nutné. Tady jsou sepsané, aby je nemusel řešit někdo další.",
- "chips": [
-  {
-   "text": "Raspberry Pi 5 · Zigbee · MQTT"
+  "path": "pages/homeassistant/tips/",
+  "nav": "ha",
+  "tint": "purple",
+  "name": "Tipy a triky",
+  "section": {
+    "label": "Home Assistant",
+    "href": "https://ongy.cz/pages/homeassistant/"
   },
-  {
-   "text": "Home Assistant · tipy z provozu",
-   "amber": true
-  }
- ],
- "kpi_label": "Z provozu",
- "kpis": [
-  {
-   "b": "6",
-   "small": "tipů z praxe"
+  "title": "Tipy a triky pro Home Assistant",
+  "description": "Šest věcí z provozu Home Assistantu, které bych si přál vědět dřív: lokální integrace, ošetřené šablony, Zigbee na prodlužce, MQTT discovery, InfluxDB a notifikace s tlačítky. Plus AI konverzace přes Claude API.",
+  "h1": "Drobnosti, které <span>ušetří večer.</span>",
+  "lead": "Home Assistant mi doma běží přes rok. Většinu času funguje sám, ale pár věcí mě stálo víc hodin, než bylo nutné. Tady jsou sepsané, aby je nemusel řešit někdo další.",
+  "chips": [
+    {
+      "text": "Raspberry Pi 5 · Zigbee · MQTT"
+    },
+    {
+      "text": "Home Assistant · tipy z provozu",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Z provozu",
+  "kpis": [
+    {
+      "b": "6",
+      "small": "tipů z praxe"
+    },
+    {
+      "b": "4",
+      "small": "vlastní integrace"
+    },
+    {
+      "b": "0",
+      "small": "cloudů v cestě"
+    }
+  ],
+  "kpi_note": "Zásuvky, vysavač, tiskárna i světla jedou lokálně. Internet potřebuje jen AI asistent a předpověď počasí.",
+  "intro": {
+    "eyebrow": "O čem to je",
+    "h2": "Měsíce provozu v šesti poznámkách",
+    "p": [
+      "Tohle není návod na instalaci. Těch je na internetu dost. Je to seznam věcí, na které jsem přišel až provozem: proč se automatizace v noci sesypala, proč Zigbee síť vypadávala a proč mi chytrá zásuvka reagovala se zpožděním.",
+      "Každý tip má krátké zdůvodnění a tam, kde to dává smysl, i pár řádků konfigurace. Dole jsou tři věci navíc, které z Home Assistantu dělají víc než jen ovladač světel."
+    ]
   },
-  {
-   "b": "4",
-   "small": "vlastní integrace"
-  },
-  {
-   "b": "0",
-   "small": "cloudů v cestě"
-  }
- ],
- "kpi_note": "Zásuvky, vysavač, tiskárna i světla jedou lokálně. Internet potřebuje jen AI asistent a předpověď počasí.",
- "intro": {
-  "eyebrow": "O čem to je",
-  "h2": "Měsíce provozu v šesti poznámkách",
-  "p": [
-   "Tohle není návod na instalaci. Těch je na internetu dost. Je to seznam věcí, na které jsem přišel až provozem: proč se automatizace v noci sesypala, proč Zigbee síť vypadávala a proč mi chytrá zásuvka reagovala se zpožděním.",
-   "Každý tip má krátké zdůvodnění a tam, kde to dává smysl, i pár řádků konfigurace. Dole jsou tři věci navíc, které z Home Assistantu dělají víc než jen ovladač světel."
+  "groups": [
+    {
+      "layout": "steps",
+      "eyebrow": "Tipy",
+      "h2": "Co bych si přál vědět dřív",
+      "items": [
+        {
+          "mark": "01",
+          "title": "Lokální integrace, kdykoli to jde",
+          "text": "Zásuvky Tuya jsem z cloudu přepnul na LocalTuya a zpoždění při zapnutí zmizelo. Vysavač Xiaomi jede přes MIoT rovnou po lokální síti. Když vypadne internet, domácnost funguje dál, jen se nedozvím počasí."
+        },
+        {
+          "mark": "02",
+          "title": "Šablony vždycky s | float(0)",
+          "text": "Senzor občas hlásí <code>unavailable</code>, třeba po restartu nebo když zásuvka na chvíli vypadne. Násobení textu číslem pak shodí celou šablonu a s ní i automatizaci, která ji čte. Výchozí nula to zachrání.",
+          "code": "template:\n  - sensor:\n      - name: \"Náklady dnes\"\n        unit_of_measurement: \"Kč\"\n        state: \"{{ states('sensor.spotreba_dnes') | float(0) * 12.41 }}\""
+        },
+        {
+          "mark": "03",
+          "title": "Zigbee dongle na USB prodlužce",
+          "text": "Sonoff dongle zapíchnutý přímo do Raspberry Pi ruší USB 3 a napájení. Na prodlužce aspoň metr od Pi se přestala rozpadat mesh síť a zařízení v rohu bytu drží spojení."
+        },
+        {
+          "mark": "04",
+          "title": "MQTT discovery po změně v HA",
+          "text": "Home Assistant přestal v MQTT discovery podporovat <code>object_id</code> a chce <code>default_entity_id</code>. HASS.Agent na počítači stále posílá starý formát. Místo čekání na opravu mám automatizaci, která po startu přepíše retained config zprávu novým klíčem.",
+          "code": "action: mqtt.publish\ndata:\n  topic: homeassistant/sensor/pc_cpu/config\n  retain: true\n  payload: &gt;-\n    {\"name\": \"PC CPU\", \"default_entity_id\": \"sensor.pc_cpu\",\n     \"state_topic\": \"hass_agent/pc/cpu\"}"
+        },
+        {
+          "mark": "05",
+          "title": "InfluxDB na dlouhou historii",
+          "text": "Recorder v MariaDB držím jen pár týdnů, jinak databáze roste a HA zpomaluje. Souběžně posílám vybrané senzory do InfluxDB, kde zůstávají roky. Grafana z toho kreslí spotřebu a teploty za celou sezónu.",
+          "code": "influxdb:\n  api_version: 2\n  host: influxdb\n  include:\n    domains:\n      - sensor\n    entity_globs:\n      - sensor.*_teplota"
+        },
+        {
+          "mark": "06",
+          "title": "Notifikace s tlačítky",
+          "text": "Mobilní notifikace umí nést akce. Stisk tlačítka přijde zpět jako událost <code>mobile_app_notification_action</code> a automatizace ji zpracuje. Pračka dopraná: Hotovo, Odložit 2 h, Přeskočit. Bez otvírání aplikace.",
+          "code": "action: notify.mobile_app_telefon\ndata:\n  message: \"Pračka dopraná\"\n  data:\n    actions:\n      - { action: \"PRADLO_HOTOVO\", title: \"Hotovo\" }\n      - { action: \"PRADLO_ODLOZIT\", title: \"Odložit 2 h\" }"
+        }
+      ]
+    },
+    {
+      "layout": "cards",
+      "eyebrow": "Integrace",
+      "h2": "AI, šablony a vlastní integrace",
+      "items": [
+        {
+          "title": "AI konverzace (Claude API)",
+          "text": "Konverzační asistent s voláním funkcí. Rozumí větě „zhasni v obýváku a řekni mi, kolik je na balkoně“, sám najde entity a zavolá služby. Odpovídá česky a bez zadrhávání.",
+          "meta": "Claude API · ovládání světel, čtení senzorů, shrnutí stavu"
+        },
+        {
+          "title": "Template senzory",
+          "text": "Jinja2 šablony počítají to, co žádný senzor neumí sám: náklady z kWh a ceny, součet spotřeby přes celý byt, stav „doma je někdo“ ze tří zdrojů. Vždy s ošetřenou nedostupností.",
+          "meta": "Jinja2 · kWh × 12,41 Kč · agregace a odvozené stavy"
+        },
+        {
+          "title": "Vlastní integrace z HACS",
+          "text": "Tiskárna Bambu Lab, vysavač Xiaomi, zásuvky Tuya a sensor na F1 kalendář. Všechno mluví lokálně, žádný z výrobců neví, kdy co doma zapínám.",
+          "meta": "HACS · bambu_lab, xiaomi_miot, localtuya, f1_sensor"
+        }
+      ]
+    }
+  ],
+  "tech": [
+    {
+      "summary": "Co za tím je",
+      "hint": "Pi 5 · HACS · MQTT · InfluxDB",
+      "body": "<dl class=\"kv\"><div><dt>Běh</dt><dd>Home Assistant OS na Raspberry Pi 5, Zigbee přes Sonoff dongle (ZHA), MQTT broker Mosquitto jako doplněk.</dd></div><div><dt>Integrace</dt><dd>Z HACS: bambu_lab, xiaomi_miot, localtuya, f1_sensor. Všechny komunikují jen v lokální síti.</dd></div><div><dt>AI asistent</dt><dd>Konverzační integrace napojená na Claude API s voláním funkcí. Zkoušel jsem i lokální model přes Ollamu, ale pro češtinu to nestačilo: špatně skloňoval, pletl entity a odpovídal pomalu. Cloudové API vyhrálo na kvalitě i rychlosti.</dd></div><div><dt>Historie</dt><dd>Recorder v MariaDB s krátkou retencí, dlouhodobá data v InfluxDB 2, grafy v Grafaně.</dd></div><div><dt>Notifikace</dt><dd>Aplikace HA Companion, akce v notifikacích se zpracovávají v automatizacích přes událost <code>mobile_app_notification_action</code>.</dd></div></dl>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Přehled: Home Assistant",
+      "href": "https://ongy.cz/pages/homeassistant/"
+    },
+    {
+      "text": "Automatizace",
+      "href": "https://ongy.cz/pages/homeassistant/automations/"
+    }
   ]
- },
- "groups": [
-  {
-   "layout": "steps",
-   "eyebrow": "Tipy",
-   "h2": "Co bych si přál vědět dřív",
-   "items": [
-    {
-     "mark": "01",
-     "title": "Lokální integrace, kdykoli to jde",
-     "text": "Zásuvky Tuya jsem z cloudu přepnul na LocalTuya a zpoždění při zapnutí zmizelo. Vysavač Xiaomi jede přes MIoT rovnou po lokální síti. Když vypadne internet, domácnost funguje dál, jen se nedozvím počasí."
-    },
-    {
-     "mark": "02",
-     "title": "Šablony vždycky s | float(0)",
-     "text": "Senzor občas hlásí <code>unavailable</code>, třeba po restartu nebo když zásuvka na chvíli vypadne. Násobení textu číslem pak shodí celou šablonu a s ní i automatizaci, která ji čte. Výchozí nula to zachrání.",
-     "code": "template:\n  - sensor:\n      - name: \"Náklady dnes\"\n        unit_of_measurement: \"Kč\"\n        state: \"{{ states('sensor.spotreba_dnes') | float(0) * 12.41 }}\""
-    },
-    {
-     "mark": "03",
-     "title": "Zigbee dongle na USB prodlužce",
-     "text": "Sonoff dongle zapíchnutý přímo do Raspberry Pi ruší USB 3 a napájení. Na prodlužce aspoň metr od Pi se přestala rozpadat mesh síť a zařízení v rohu bytu drží spojení."
-    },
-    {
-     "mark": "04",
-     "title": "MQTT discovery po změně v HA",
-     "text": "Home Assistant přestal v MQTT discovery podporovat <code>object_id</code> a chce <code>default_entity_id</code>. HASS.Agent na počítači stále posílá starý formát. Místo čekání na opravu mám automatizaci, která po startu přepíše retained config zprávu novým klíčem.",
-     "code": "action: mqtt.publish\ndata:\n  topic: homeassistant/sensor/pc_cpu/config\n  retain: true\n  payload: &gt;-\n    {\"name\": \"PC CPU\", \"default_entity_id\": \"sensor.pc_cpu\",\n     \"state_topic\": \"hass_agent/pc/cpu\"}"
-    },
-    {
-     "mark": "05",
-     "title": "InfluxDB na dlouhou historii",
-     "text": "Recorder v MariaDB držím jen pár týdnů, jinak databáze roste a HA zpomaluje. Souběžně posílám vybrané senzory do InfluxDB, kde zůstávají roky. Grafana z toho kreslí spotřebu a teploty za celou sezónu.",
-     "code": "influxdb:\n  api_version: 2\n  host: influxdb\n  include:\n    domains:\n      - sensor\n    entity_globs:\n      - sensor.*_teplota"
-    },
-    {
-     "mark": "06",
-     "title": "Notifikace s tlačítky",
-     "text": "Mobilní notifikace umí nést akce. Stisk tlačítka přijde zpět jako událost <code>mobile_app_notification_action</code> a automatizace ji zpracuje. Pračka dopraná: Hotovo, Odložit 2 h, Přeskočit. Bez otvírání aplikace.",
-     "code": "action: notify.mobile_app_telefon\ndata:\n  message: \"Pračka dopraná\"\n  data:\n    actions:\n      - { action: \"PRADLO_HOTOVO\", title: \"Hotovo\" }\n      - { action: \"PRADLO_ODLOZIT\", title: \"Odložit 2 h\" }"
-    }
-   ]
-  },
-  {
-   "layout": "cards",
-   "eyebrow": "Integrace",
-   "h2": "AI, šablony a vlastní integrace",
-   "items": [
-    {
-     "title": "AI konverzace (Claude API)",
-     "text": "Konverzační asistent s voláním funkcí. Rozumí větě „zhasni v obýváku a řekni mi, kolik je na balkoně“, sám najde entity a zavolá služby. Odpovídá česky a bez zadrhávání.",
-     "meta": "Claude API · ovládání světel, čtení senzorů, shrnutí stavu"
-    },
-    {
-     "title": "Template senzory",
-     "text": "Jinja2 šablony počítají to, co žádný senzor neumí sám: náklady z kWh a ceny, součet spotřeby přes celý byt, stav „doma je někdo“ ze tří zdrojů. Vždy s ošetřenou nedostupností.",
-     "meta": "Jinja2 · kWh × 12,41 Kč · agregace a odvozené stavy"
-    },
-    {
-     "title": "Vlastní integrace z HACS",
-     "text": "Tiskárna Bambu Lab, vysavač Xiaomi, zásuvky Tuya a sensor na F1 kalendář. Všechno mluví lokálně, žádný z výrobců neví, kdy co doma zapínám.",
-     "meta": "HACS · bambu_lab, xiaomi_miot, localtuya, f1_sensor"
-    }
-   ]
-  }
- ],
- "tech": [
-  {
-   "summary": "Co za tím je",
-   "hint": "Pi 5 · HACS · MQTT · InfluxDB",
-   "body": "<dl class=\"kv\"><div><dt>Běh</dt><dd>Home Assistant OS na Raspberry Pi 5, Zigbee přes Sonoff dongle (ZHA), MQTT broker Mosquitto jako doplněk.</dd></div><div><dt>Integrace</dt><dd>Z HACS: bambu_lab, xiaomi_miot, localtuya, f1_sensor. Všechny komunikují jen v lokální síti.</dd></div><div><dt>AI asistent</dt><dd>Konverzační integrace napojená na Claude API s voláním funkcí. Zkoušel jsem i lokální model přes Ollamu, ale pro češtinu to nestačilo: špatně skloňoval, pletl entity a odpovídal pomalu. Cloudové API vyhrálo na kvalitě i rychlosti.</dd></div><div><dt>Historie</dt><dd>Recorder v MariaDB s krátkou retencí, dlouhodobá data v InfluxDB 2, grafy v Grafaně.</dd></div><div><dt>Notifikace</dt><dd>Aplikace HA Companion, akce v notifikacích se zpracovávají v automatizacích přes událost <code>mobile_app_notification_action</code>.</dd></div></dl>"
-  }
- ],
- "links": [
-  {
-   "text": "Přehled: Home Assistant",
-   "href": "https://ongy.cz/pages/homeassistant/"
-  },
-  {
-   "text": "Automatizace",
-   "href": "https://ongy.cz/pages/homeassistant/automations/"
-  }
- ]
 }

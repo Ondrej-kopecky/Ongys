@@ -1,168 +1,169 @@
 {
- "path": "pages/homeassistant/devices/",
- "nav": "ha",
- "name": "Zařízení a hardware",
- "section": {
-  "label": "Home Assistant",
-  "href": "https://ongy.cz/pages/homeassistant/"
- },
- "title": "Zařízení a hardware v Home Assistantu",
- "description": "Na čem doma běží Home Assistant a co všechno na něj poslouchá: Raspberry Pi 5, Zigbee, vlastní most na žaluzie, tablet na zdi a přes padesát zařízení od světel po 3D tiskárnu.",
- "h1": "Padesát krabiček, <span>jeden mozek.</span>",
- "lead": "Světla, zásuvky, klimatizace, vysavač, tiskárna i žaluzie. Každá věc má vlastní aplikaci a vlastní cloud. Home Assistant je dostal pod jednu střechu a většinu z nich ovládá bez internetu.",
- "chips": [
-  {
-   "text": "běží na Raspberry Pi 5"
+  "path": "pages/homeassistant/devices/",
+  "nav": "ha",
+  "tint": "teal",
+  "name": "Zařízení a hardware",
+  "section": {
+    "label": "Home Assistant",
+    "href": "https://ongy.cz/pages/homeassistant/"
   },
-  {
-   "text": "Zigbee · Wi-Fi · 433 MHz",
-   "amber": true
-  }
- ],
- "kpi_label": "Stav domácnosti",
- "kpis": [
-  {
-   "b": "50+",
-   "small": "zařízení"
+  "title": "Zařízení a hardware v Home Assistantu",
+  "description": "Na čem doma běží Home Assistant a co všechno na něj poslouchá: Raspberry Pi 5, Zigbee, vlastní most na žaluzie, tablet na zdi a přes padesát zařízení od světel po 3D tiskárnu.",
+  "h1": "Padesát krabiček, <span>jeden mozek.</span>",
+  "lead": "Světla, zásuvky, klimatizace, vysavač, tiskárna i žaluzie. Každá věc má vlastní aplikaci a vlastní cloud. Home Assistant je dostal pod jednu střechu a většinu z nich ovládá bez internetu.",
+  "chips": [
+    {
+      "text": "běží na Raspberry Pi 5"
+    },
+    {
+      "text": "Zigbee · Wi-Fi · 433 MHz",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Stav domácnosti",
+  "kpis": [
+    {
+      "b": "50+",
+      "small": "zařízení"
+    },
+    {
+      "b": "11",
+      "small": "světel"
+    },
+    {
+      "b": "9,6k",
+      "small": "Kč za jádro"
+    }
+  ],
+  "kpi_note": "Raspberry Pi, Zigbee klíčenka, pouzdro a tablet na zdi dohromady pod deset tisíc. Zbytek jsou zařízení, která doma byla stejně, jen se předtím neuměla domluvit.",
+  "intro": {
+    "eyebrow": "O čem to je",
+    "h2": "Co mám a na čem to běží",
+    "p": [
+      "Tahle stránka je inventář. Ne návod, ne recenze, jen přehled toho, co se u mě doma připojuje k Home Assistantu a jakou cestou. Hodí se mně, když něco přidávám, a tobě, když přemýšlíš, jestli se konkrétní krabička dá zapojit bez cloudu.",
+      "Většina zařízení mluví jedním ze čtyř jazyků: Zigbee, Wi-Fi v místní síti, obyčejné rádio na 433 MHz nebo kabel. Pokud jde ovládat lokálně, ovládám ho lokálně. Cloud výrobce používám jen tam, kde to jinak nejde."
+    ]
   },
-  {
-   "b": "11",
-   "small": "světel"
-  },
-  {
-   "b": "9,6k",
-   "small": "Kč za jádro"
-  }
- ],
- "kpi_note": "Raspberry Pi, Zigbee klíčenka, pouzdro a tablet na zdi dohromady pod deset tisíc. Zbytek jsou zařízení, která doma byla stejně, jen se předtím neuměla domluvit.",
- "intro": {
-  "eyebrow": "O čem to je",
-  "h2": "Co mám a na čem to běží",
-  "p": [
-   "Tahle stránka je inventář. Ne návod, ne recenze, jen přehled toho, co se u mě doma připojuje k Home Assistantu a jakou cestou. Hodí se mně, když něco přidávám, a tobě, když přemýšlíš, jestli se konkrétní krabička dá zapojit bez cloudu.",
-   "Většina zařízení mluví jedním ze čtyř jazyků: Zigbee, Wi-Fi v místní síti, obyčejné rádio na 433 MHz nebo kabel. Pokud jde ovládat lokálně, ovládám ho lokálně. Cloud výrobce používám jen tam, kde to jinak nejde."
+  "groups": [
+    {
+      "eyebrow": "Jádro",
+      "h2": "Na čem to běží",
+      "layout": "cards",
+      "cols": 2,
+      "items": [
+        {
+          "title": "Raspberry Pi 5",
+          "text": "Srdce celé domácnosti. Čtyřjádro, 4 GB paměti a NVMe disk místo SD karty, takže to po roce provozu nezačne umírat. Bydlí v pouzdře, které jsem vytiskl na Bambu Labu, s aktivním chladičem.",
+          "meta": "4 GB RAM · 256 GB NVMe · 3D tištěné pouzdro"
+        },
+        {
+          "title": "Zigbee koordinátor",
+          "text": "Sonoff Zigbee 3.0 USB Dongle Plus. Jedna klíčenka, přes kterou jde všechno Zigbee: senzory, tlačítka, relé a IKEA světla. Bez cloudu, bez hubu od každé značky zvlášť.",
+          "meta": "Sonoff Dongle Plus-E · ZHA / Zigbee2MQTT"
+        },
+        {
+          "title": "ESP32 + CC1101, vlastní most",
+          "text": "Venkovní žaluzie mluví jen rádiem na 433 MHz a originální most výrobce jsem nechtěl. Tak jsem si postavil vlastní: ESP32, rádiový modul a anténa. Odposlechl jsem, co posílá dálkový ovladač, a přehrávám to.",
+          "meta": "ESPHome · 433 MHz · 523 Kč"
+        },
+        {
+          "title": "Tablet na zdi",
+          "text": "Xiaomi Redmi Pad 2 v tištěném držáku. Běží na něm Home Assistant v kiosk režimu, po půl minutě zhasne a probudí ho pohyb. Světla, klima a vysavač na jedno klepnutí u dveří.",
+          "meta": "11\" IPS · Fully Kiosk Browser · vlastní držák"
+        }
+      ]
+    },
+    {
+      "eyebrow": "Zařízení",
+      "h2": "Co všechno poslouchá",
+      "layout": "cards",
+      "items": [
+        {
+          "title": "Osvětlení",
+          "text": "LED pásky u PC, za panelem a pod postelí, dvě lampy u televize, lustry v obýváku a v ložnici, IKEA světla v kuchyni a osvětlení komory 3D tiskárny.",
+          "meta": "11 světel · Zigbee · Wi-Fi"
+        },
+        {
+          "title": "Klima a vzduch",
+          "text": "Klimatizace Midea přes místní síť, čistička Philips s měřením prachu, zvlhčovač v ložnici řízený podle vlhkosti a venkovní žaluzie, které stíní podle slunce.",
+          "meta": "4 zařízení · LAN · 433 MHz"
+        },
+        {
+          "title": "Senzory a ovladače",
+          "text": "Teploměry v pokoji a na balkoně, tři senzory vlhkosti u filamentu, tlačítko na probuzení PC, IKEA ovladač v kuchyni, dvě relé ve zdi a chytrá váha.",
+          "meta": "10 zařízení · Zigbee · Bluetooth"
+        },
+        {
+          "title": "Zásuvky a energie",
+          "text": "Čtyři měřicí zásuvky Tapo na PC, televizi, lednici a kuchyni. Spotřebu přepočítávám na koruny, takže vím, kolik stojí měsíc tisku nebo hraní.",
+          "meta": "4 zásuvky · Wi-Fi · měření kWh"
+        },
+        {
+          "title": "3D tisk",
+          "text": "Bambu Lab X1 Carbon se čtyřslotovým AMS. V Home Assistantu vidím stav tisku, průběh, teploty a živý obraz z komory, na vlastních kartách.",
+          "meta": "1 tiskárna · LAN · kamera"
+        },
+        {
+          "title": "Média",
+          "text": "Samsung televize, Chromecast a Android TV box. K tomu telefon a hodinky jako zdroj polohy, aby dům věděl, kdo je doma.",
+          "meta": "6 zařízení · Wi-Fi · sledování přítomnosti"
+        },
+        {
+          "title": "Vysavač",
+          "text": "Xiaomi X20 Pro, doma známý jako Darth Sider. Vysává i vytírá, jede každý den v půl jedenácté a sám hlásí, kdy vyměnit filtr, mop nebo vodu.",
+          "meta": "1 robot · Wi-Fi · denní úklid"
+        },
+        {
+          "title": "F1 a hobby",
+          "text": "Živá data ze závodů Formule 1 na vlastním panelu. Safety car nebo červená vlajka rozsvítí byt. V plánu je ještě vlastní meteostanice na ESP32.",
+          "meta": "55 entit · 3 pohledy · meteostanice v plánu"
+        }
+      ]
+    },
+    {
+      "eyebrow": "Rozpočet",
+      "h2": "Co to stálo",
+      "layout": "list",
+      "items": [
+        {
+          "mark": "01",
+          "title": "Základní sestava",
+          "text": "Raspberry Pi 5, NVMe disk, Zigbee klíčenka, tištěné pouzdro a tablet na zeď. Bez tabletu je to pod pět tisíc a dá se tím začít.",
+          "meta": "~9 100 Kč"
+        },
+        {
+          "mark": "02",
+          "title": "Vlastní most na žaluzie",
+          "text": "ESP32, rádiový modul CC1101 a anténa. Originální most od výrobce stojí několikanásobek a stejně chodí přes cloud.",
+          "meta": "523 Kč"
+        }
+      ]
+    }
+  ],
+  "tech": [
+    {
+      "summary": "Integrace a protokoly",
+      "hint": "kudy které zařízení mluví",
+      "body": "<dl class=\"kv\"><div><dt>Zigbee</dt><dd>Sonoff SNZB-02P (teploměr), SNZB-01P (tlačítko), 2× ZBMINI-L2 (relé), IKEA STYRBAR (ovladač), IKEA TRÅDFRI a MITTLED (světla). Vše přes jeden Sonoff Dongle Plus-E.</dd></div><div><dt>Lokální Wi-Fi a LAN</dt><dd>LocalTuya pro LED pásky a TV lampy, Tapo P110 zásuvky, Midea klimatizace přes LAN, Philips čistička přes CoAP, Bambu Lab X1C, Samsung TV, Xiaomi vysavač, Chromecast a Android TV.</dd></div><div><dt>Vlastní hardware</dt><dd>ESPHome na ESP32 s CC1101 pro žaluzie Aluprof (Dooya protokol, 433 MHz). Plánovaná meteostanice na ESP32-C3.</dd></div><div><dt>Ostatní</dt><dd>bodymiscale pro chytrou váhu (Bluetooth), F1 Sensor pro závodní data, Fully Kiosk Browser na tabletu, Nabu Casa pro šifrovaný přístup zvenku.</dd></div></dl>"
+    },
+    {
+      "summary": "Rozpočet po položkách",
+      "hint": "orientační ceny",
+      "body": "<table class=\"t\"><thead><tr><th>Položka</th><th>Cena</th></tr></thead><tbody><tr><td>Raspberry Pi 5, 4 GB</td><td>~3 000 Kč</td></tr><tr><td>NVMe SSD 256 GB</td><td>~800 Kč</td></tr><tr><td>Sonoff Zigbee Dongle Plus-E</td><td>~600 Kč</td></tr><tr><td>3D tištěné pouzdro (filament)</td><td>~200 Kč</td></tr><tr><td>Xiaomi Redmi Pad 2 (tablet na zeď)</td><td>~4 500 Kč</td></tr><tr><td>ESP32 NodeMCU-32S</td><td>249 Kč</td></tr><tr><td>CC1101 modul 433 MHz (EBYTE E07)</td><td>195 Kč</td></tr><tr><td>Anténa 2 dBi, SMA</td><td>79 Kč</td></tr></tbody></table><p class=\"note\">Celkem ~9 600 Kč za jádro a vlastní most. Zařízení samotná (světla, zásuvky, tiskárna, vysavač) do toho nepočítám, ta by doma byla i bez Home Assistanta.</p>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Přehled: Home Assistant",
+      "href": "https://ongy.cz/pages/homeassistant/"
+    },
+    {
+      "text": "Automatizace",
+      "href": "https://ongy.cz/pages/homeassistant/automations/"
+    },
+    {
+      "text": "Žaluzie: vlastní RF most",
+      "href": "https://ongy.cz/pages/homeassistant/zaluzie/"
+    }
   ]
- },
- "groups": [
-  {
-   "eyebrow": "Jádro",
-   "h2": "Na čem to běží",
-   "layout": "cards",
-   "cols": 2,
-   "items": [
-    {
-     "title": "Raspberry Pi 5",
-     "text": "Srdce celé domácnosti. Čtyřjádro, 4 GB paměti a NVMe disk místo SD karty, takže to po roce provozu nezačne umírat. Bydlí v pouzdře, které jsem vytiskl na Bambu Labu, s aktivním chladičem.",
-     "meta": "4 GB RAM · 256 GB NVMe · 3D tištěné pouzdro"
-    },
-    {
-     "title": "Zigbee koordinátor",
-     "text": "Sonoff Zigbee 3.0 USB Dongle Plus. Jedna klíčenka, přes kterou jde všechno Zigbee: senzory, tlačítka, relé a IKEA světla. Bez cloudu, bez hubu od každé značky zvlášť.",
-     "meta": "Sonoff Dongle Plus-E · ZHA / Zigbee2MQTT"
-    },
-    {
-     "title": "ESP32 + CC1101, vlastní most",
-     "text": "Venkovní žaluzie mluví jen rádiem na 433 MHz a originální most výrobce jsem nechtěl. Tak jsem si postavil vlastní: ESP32, rádiový modul a anténa. Odposlechl jsem, co posílá dálkový ovladač, a přehrávám to.",
-     "meta": "ESPHome · 433 MHz · 523 Kč"
-    },
-    {
-     "title": "Tablet na zdi",
-     "text": "Xiaomi Redmi Pad 2 v tištěném držáku. Běží na něm Home Assistant v kiosk režimu, po půl minutě zhasne a probudí ho pohyb. Světla, klima a vysavač na jedno klepnutí u dveří.",
-     "meta": "11\" IPS · Fully Kiosk Browser · vlastní držák"
-    }
-   ]
-  },
-  {
-   "eyebrow": "Zařízení",
-   "h2": "Co všechno poslouchá",
-   "layout": "cards",
-   "items": [
-    {
-     "title": "Osvětlení",
-     "text": "LED pásky u PC, za panelem a pod postelí, dvě lampy u televize, lustry v obýváku a v ložnici, IKEA světla v kuchyni a osvětlení komory 3D tiskárny.",
-     "meta": "11 světel · Zigbee · Wi-Fi"
-    },
-    {
-     "title": "Klima a vzduch",
-     "text": "Klimatizace Midea přes místní síť, čistička Philips s měřením prachu, zvlhčovač v ložnici řízený podle vlhkosti a venkovní žaluzie, které stíní podle slunce.",
-     "meta": "4 zařízení · LAN · 433 MHz"
-    },
-    {
-     "title": "Senzory a ovladače",
-     "text": "Teploměry v pokoji a na balkoně, tři senzory vlhkosti u filamentu, tlačítko na probuzení PC, IKEA ovladač v kuchyni, dvě relé ve zdi a chytrá váha.",
-     "meta": "10 zařízení · Zigbee · Bluetooth"
-    },
-    {
-     "title": "Zásuvky a energie",
-     "text": "Čtyři měřicí zásuvky Tapo na PC, televizi, lednici a kuchyni. Spotřebu přepočítávám na koruny, takže vím, kolik stojí měsíc tisku nebo hraní.",
-     "meta": "4 zásuvky · Wi-Fi · měření kWh"
-    },
-    {
-     "title": "3D tisk",
-     "text": "Bambu Lab X1 Carbon se čtyřslotovým AMS. V Home Assistantu vidím stav tisku, průběh, teploty a živý obraz z komory, na vlastních kartách.",
-     "meta": "1 tiskárna · LAN · kamera"
-    },
-    {
-     "title": "Média",
-     "text": "Samsung televize, Chromecast a Android TV box. K tomu telefon a hodinky jako zdroj polohy, aby dům věděl, kdo je doma.",
-     "meta": "6 zařízení · Wi-Fi · sledování přítomnosti"
-    },
-    {
-     "title": "Vysavač",
-     "text": "Xiaomi X20 Pro, doma známý jako Darth Sider. Vysává i vytírá, jede každý den v půl jedenácté a sám hlásí, kdy vyměnit filtr, mop nebo vodu.",
-     "meta": "1 robot · Wi-Fi · denní úklid"
-    },
-    {
-     "title": "F1 a hobby",
-     "text": "Živá data ze závodů Formule 1 na vlastním panelu. Safety car nebo červená vlajka rozsvítí byt. V plánu je ještě vlastní meteostanice na ESP32.",
-     "meta": "55 entit · 3 pohledy · meteostanice v plánu"
-    }
-   ]
-  },
-  {
-   "eyebrow": "Rozpočet",
-   "h2": "Co to stálo",
-   "layout": "list",
-   "items": [
-    {
-     "mark": "01",
-     "title": "Základní sestava",
-     "text": "Raspberry Pi 5, NVMe disk, Zigbee klíčenka, tištěné pouzdro a tablet na zeď. Bez tabletu je to pod pět tisíc a dá se tím začít.",
-     "meta": "~9 100 Kč"
-    },
-    {
-     "mark": "02",
-     "title": "Vlastní most na žaluzie",
-     "text": "ESP32, rádiový modul CC1101 a anténa. Originální most od výrobce stojí několikanásobek a stejně chodí přes cloud.",
-     "meta": "523 Kč"
-    }
-   ]
-  }
- ],
- "tech": [
-  {
-   "summary": "Integrace a protokoly",
-   "hint": "kudy které zařízení mluví",
-   "body": "<dl class=\"kv\"><div><dt>Zigbee</dt><dd>Sonoff SNZB-02P (teploměr), SNZB-01P (tlačítko), 2× ZBMINI-L2 (relé), IKEA STYRBAR (ovladač), IKEA TRÅDFRI a MITTLED (světla). Vše přes jeden Sonoff Dongle Plus-E.</dd></div><div><dt>Lokální Wi-Fi a LAN</dt><dd>LocalTuya pro LED pásky a TV lampy, Tapo P110 zásuvky, Midea klimatizace přes LAN, Philips čistička přes CoAP, Bambu Lab X1C, Samsung TV, Xiaomi vysavač, Chromecast a Android TV.</dd></div><div><dt>Vlastní hardware</dt><dd>ESPHome na ESP32 s CC1101 pro žaluzie Aluprof (Dooya protokol, 433 MHz). Plánovaná meteostanice na ESP32-C3.</dd></div><div><dt>Ostatní</dt><dd>bodymiscale pro chytrou váhu (Bluetooth), F1 Sensor pro závodní data, Fully Kiosk Browser na tabletu, Nabu Casa pro šifrovaný přístup zvenku.</dd></div></dl>"
-  },
-  {
-   "summary": "Rozpočet po položkách",
-   "hint": "orientační ceny",
-   "body": "<table class=\"t\"><thead><tr><th>Položka</th><th>Cena</th></tr></thead><tbody><tr><td>Raspberry Pi 5, 4 GB</td><td>~3 000 Kč</td></tr><tr><td>NVMe SSD 256 GB</td><td>~800 Kč</td></tr><tr><td>Sonoff Zigbee Dongle Plus-E</td><td>~600 Kč</td></tr><tr><td>3D tištěné pouzdro (filament)</td><td>~200 Kč</td></tr><tr><td>Xiaomi Redmi Pad 2 (tablet na zeď)</td><td>~4 500 Kč</td></tr><tr><td>ESP32 NodeMCU-32S</td><td>249 Kč</td></tr><tr><td>CC1101 modul 433 MHz (EBYTE E07)</td><td>195 Kč</td></tr><tr><td>Anténa 2 dBi, SMA</td><td>79 Kč</td></tr></tbody></table><p class=\"note\">Celkem ~9 600 Kč za jádro a vlastní most. Zařízení samotná (světla, zásuvky, tiskárna, vysavač) do toho nepočítám, ta by doma byla i bez Home Assistanta.</p>"
-  }
- ],
- "links": [
-  {
-   "text": "Přehled: Home Assistant",
-   "href": "https://ongy.cz/pages/homeassistant/"
-  },
-  {
-   "text": "Automatizace",
-   "href": "https://ongy.cz/pages/homeassistant/automations/"
-  },
-  {
-   "text": "Žaluzie: vlastní RF most",
-   "href": "https://ongy.cz/pages/homeassistant/zaluzie/"
-  }
- ]
 }

@@ -1,163 +1,167 @@
 {
- "path": "pages/3d-print/",
- "nav": "3d",
- "name": "3D tisk",
- "color": "amber",
- "title": "3D Print Lab",
- "description": "Bambu Lab X1 Carbon a resinová Anycubic Photon Mono X2: praktické díly, figurky a vlastní modely. Skladování filamentu s měřením vlhkosti, tipy na tisk.",
- "h1": "Od nápadu <span>k věci.</span>",
- "lead": "Kde se digitální modely mění v reálné věci. Praktické díly do bytu, figurky na deskovky a modely, které nikde nekoupíš.",
- "kpi_label": "Dílna",
- "kpis": [
-  {
-   "b": "2",
-   "small": "tiskárny"
+  "path": "pages/3d-print/",
+  "nav": "3d",
+  "name": "3D tisk",
+  "color": "amber",
+  "title": "3D Print Lab",
+  "description": "Bambu Lab X1 Carbon a resinová Anycubic Photon Mono X2: praktické díly, figurky a vlastní modely. Skladování filamentu s měřením vlhkosti, tipy na tisk.",
+  "h1": "Od nápadu <span>k věci.</span>",
+  "lead": "Kde se digitální modely mění v reálné věci. Praktické díly do bytu, figurky na deskovky a modely, které nikde nekoupíš.",
+  "kpi_label": "Dílna",
+  "kpis": [
+    {
+      "b": "2",
+      "small": "tiskárny"
+    },
+    {
+      "b": "FDM + resin",
+      "small": "dvě technologie"
+    },
+    {
+      "b": "1",
+      "small": "suchý box s měřením"
+    }
+  ],
+  "kpi_note": "Bambu Lab X1 Carbon na funkční díly, Anycubic Photon Mono X2 na detailní figurky.",
+  "intro_h2": "Dvě tiskárny, dva světy",
+  "intro": [
+    "FDM tiskárna dělá věci, které něco drží: organizéry, držáky, díly pro chytrou domácnost, hexy pro Gloomhaven. Resinová tiskárna dělá věci, na které se kouká: figurky s detaily, které z filamentu nedostaneš.",
+    "Filament se skladuje v suchém boxu s teploměrem a vlhkoměrem, který hlásí do Home Assistantu. Tisk se tak nekazí vlhkostí a já vím, kdy vyměnit silikagel."
+  ],
+  "projects_h2": "Co tu najdeš",
+  "projects": [
+    {
+      "href": "https://ongy.cz/pages/3d-print/",
+      "tag": "FDM",
+      "tagColor": "amber",
+      "name": "Bambu Lab X1 Carbon",
+      "text": "Rychlá, přesná, s automatickou výměnou filamentu. Většina praktických výtisků vzniká tady.",
+      "meta": "AMS · PLA · PETG",
+      "cta": "Otevřít →",
+      "tint": "amber"
+    },
+    {
+      "href": "https://ongy.cz/pages/3d-print/",
+      "tag": "RESIN",
+      "tagColor": "amber",
+      "name": "Anycubic Photon Mono X2",
+      "text": "Figurky a miniatury s jemnými detaily. Post-processing, mytí, vytvrzování.",
+      "meta": "mono LCD",
+      "cta": "Otevřít →",
+      "tint": "purple"
+    },
+    {
+      "href": "https://ongy.cz/pages/3d-print/",
+      "tag": "SKLADOVÁNÍ",
+      "name": "Suché skladování filamentu",
+      "text": "Box se silikagelem a senzorem vlhkosti napojeným na Home Assistant.",
+      "meta": "HA · Grafana",
+      "cta": "Otevřít →",
+      "tint": "teal"
+    },
+    {
+      "href": "https://ongy.cz/pages/3d-print/#co-tisknu",
+      "tag": "GALERIE",
+      "name": "Co tisknu",
+      "text": "Diablo, Sauron, Gandalf, Grogu, drak, hexy pro Gloomhaven a další.",
+      "meta": "figurky · díly",
+      "cta": "Otevřít →",
+      "tint": "ice"
+    }
+  ],
+  "notes": [],
+  "stack": [
+    [
+      "FDM",
+      "Bambu Lab X1 Carbon s AMS. PLA a PETG, profily pro MakerWorld. PETG: čistý bed (IPA), 70 °C, první vrstva 230 °C, sundávat až po vychladnutí."
+    ],
+    [
+      "Resin",
+      "Anycubic Photon Mono X2. Po tisku dvě lázně IPA po 3 minutách, ofouknout, UV 5 až 10 minut. Podpěry sundat před vytvrzením, tenké části vytvrzovat kratší dobu."
+    ],
+    [
+      "Více barev",
+      "AMS umí 4 barvy najednou. Flush volume podle přechodu (tmavá na světlou potřebuje víc), u menších modelů pořadí tisku „By object“, ať prime tower nezabírá místo."
+    ],
+    [
+      "Modely",
+      "Vlastní modely a remaky na <a href=\"https://makerworld.com\">MakerWorld</a>, hexové pole pro Gloomhaven na magnety."
+    ]
+  ],
+  "media": {
+    "eyebrow": "Co tisknu",
+    "h2": "Figurky, hexy a věci do bytu",
+    "items": [
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121443_lsulql",
+        "alt": "Diablo",
+        "caption": "Diablo: Lord of Terror z resinu - Anycubic Photon Mono X2",
+        "wide": true
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121412_fxzaol",
+        "alt": "Diablo - detail",
+        "caption": "Diablo - detail: Detailní pohled na resinový tisk",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20231113_210324_wytz0a",
+        "alt": "Sauron",
+        "caption": "Sauron: Temný pán z Pána prstenů - resin",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240410_165045_apmhhn",
+        "alt": "Gandalf",
+        "caption": "Gandalf: \"You shall not pass!\" - resin",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240322_144011_wkree7",
+        "alt": "Grogu",
+        "caption": "Grogu: Baby Yoda z Mandaloriana - resin",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230815_183435_cxnpkv",
+        "alt": "Drak",
+        "caption": "Drak: Fantasy drak z resinu",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230724_075452_rvmaa8",
+        "alt": "Vlk - Zaklínač",
+        "caption": "Vlk - Zaklínač: Witcher vlk z resinu",
+        "wide": false
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240612_095821_m1nizk",
+        "alt": "Gloomhaven hexy",
+        "caption": "Gloomhaven hexy: Modulární hexové pole na magnety - FDM",
+        "wide": true
+      }
+    ],
+    "fit": "cover"
   },
-  {
-   "b": "FDM + resin",
-   "small": "dvě technologie"
-  },
-  {
-   "b": "1",
-   "small": "suchý box s měřením"
+  "media2": {
+    "eyebrow": "Dílna",
+    "h2": "Skladování a data",
+    "items": [
+      {
+        "src": "../../assets/filament-storage.jpg",
+        "alt": "Skladování filamentu",
+        "caption": "Suché skladování filamentu s teploměrem a vlhkoměrem."
+      },
+      {
+        "src": "../../assets/silica-gel-box.jpg",
+        "alt": "Box se silikagelem",
+        "caption": "Box se silikagelem a senzorem napojeným na Home Assistant."
+      },
+      {
+        "src": "../../assets/grafana-filament.jpg",
+        "alt": "Graf vlhkosti filamentu",
+        "caption": "Vlhkost v čase v Grafaně, ať vím, kdy vyměnit silikagel."
+      }
+    ]
   }
- ],
- "kpi_note": "Bambu Lab X1 Carbon na funkční díly, Anycubic Photon Mono X2 na detailní figurky.",
- "intro_h2": "Dvě tiskárny, dva světy",
- "intro": [
-  "FDM tiskárna dělá věci, které něco drží: organizéry, držáky, díly pro chytrou domácnost, hexy pro Gloomhaven. Resinová tiskárna dělá věci, na které se kouká: figurky s detaily, které z filamentu nedostaneš.",
-  "Filament se skladuje v suchém boxu s teploměrem a vlhkoměrem, který hlásí do Home Assistantu. Tisk se tak nekazí vlhkostí a já vím, kdy vyměnit silikagel."
- ],
- "projects_h2": "Co tu najdeš",
- "projects": [
-  {
-   "href": "https://ongy.cz/pages/3d-print/",
-   "tag": "FDM",
-   "tagColor": "amber",
-   "name": "Bambu Lab X1 Carbon",
-   "text": "Rychlá, přesná, s automatickou výměnou filamentu. Většina praktických výtisků vzniká tady.",
-   "meta": "AMS · PLA · PETG",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/3d-print/",
-   "tag": "RESIN",
-   "tagColor": "amber",
-   "name": "Anycubic Photon Mono X2",
-   "text": "Figurky a miniatury s jemnými detaily. Post-processing, mytí, vytvrzování.",
-   "meta": "mono LCD",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/3d-print/",
-   "tag": "SKLADOVÁNÍ",
-   "name": "Suché skladování filamentu",
-   "text": "Box se silikagelem a senzorem vlhkosti napojeným na Home Assistant.",
-   "meta": "HA · Grafana",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/3d-print/#co-tisknu",
-   "tag": "GALERIE",
-   "name": "Co tisknu",
-   "text": "Diablo, Sauron, Gandalf, Grogu, drak, hexy pro Gloomhaven a další.",
-   "meta": "figurky · díly",
-   "cta": "Otevřít →"
-  }
- ],
- "notes": [],
- "stack": [
-  [
-   "FDM",
-   "Bambu Lab X1 Carbon s AMS. PLA a PETG, profily pro MakerWorld. PETG: čistý bed (IPA), 70 °C, první vrstva 230 °C, sundávat až po vychladnutí."
-  ],
-  [
-   "Resin",
-   "Anycubic Photon Mono X2. Po tisku dvě lázně IPA po 3 minutách, ofouknout, UV 5 až 10 minut. Podpěry sundat před vytvrzením, tenké části vytvrzovat kratší dobu."
-  ],
-  [
-   "Více barev",
-   "AMS umí 4 barvy najednou. Flush volume podle přechodu (tmavá na světlou potřebuje víc), u menších modelů pořadí tisku „By object“, ať prime tower nezabírá místo."
-  ],
-  [
-   "Modely",
-   "Vlastní modely a remaky na <a href=\"https://makerworld.com\">MakerWorld</a>, hexové pole pro Gloomhaven na magnety."
-  ]
- ],
- "media": {
-  "eyebrow": "Co tisknu",
-  "h2": "Figurky, hexy a věci do bytu",
-  "items": [
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121443_lsulql",
-    "alt": "Diablo",
-    "caption": "Diablo: Lord of Terror z resinu - Anycubic Photon Mono X2",
-    "wide": true
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121412_fxzaol",
-    "alt": "Diablo - detail",
-    "caption": "Diablo - detail: Detailní pohled na resinový tisk",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20231113_210324_wytz0a",
-    "alt": "Sauron",
-    "caption": "Sauron: Temný pán z Pána prstenů - resin",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240410_165045_apmhhn",
-    "alt": "Gandalf",
-    "caption": "Gandalf: \"You shall not pass!\" - resin",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240322_144011_wkree7",
-    "alt": "Grogu",
-    "caption": "Grogu: Baby Yoda z Mandaloriana - resin",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230815_183435_cxnpkv",
-    "alt": "Drak",
-    "caption": "Drak: Fantasy drak z resinu",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230724_075452_rvmaa8",
-    "alt": "Vlk - Zaklínač",
-    "caption": "Vlk - Zaklínač: Witcher vlk z resinu",
-    "wide": false
-   },
-   {
-    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240612_095821_m1nizk",
-    "alt": "Gloomhaven hexy",
-    "caption": "Gloomhaven hexy: Modulární hexové pole na magnety - FDM",
-    "wide": true
-   }
-  ],
-  "fit": "cover"
- },
- "media2": {
-  "eyebrow": "Dílna",
-  "h2": "Skladování a data",
-  "items": [
-   {
-    "src": "../../assets/filament-storage.jpg",
-    "alt": "Skladování filamentu",
-    "caption": "Suché skladování filamentu s teploměrem a vlhkoměrem."
-   },
-   {
-    "src": "../../assets/silica-gel-box.jpg",
-    "alt": "Box se silikagelem",
-    "caption": "Box se silikagelem a senzorem napojeným na Home Assistant."
-   },
-   {
-    "src": "../../assets/grafana-filament.jpg",
-    "alt": "Graf vlhkosti filamentu",
-    "caption": "Vlhkost v čase v Grafaně, ať vím, kdy vyměnit silikagel."
-   }
-  ]
- }
 }

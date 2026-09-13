@@ -1,170 +1,171 @@
 {
- "path": "pages/ai/hotkey/",
- "nav": "ai",
- "name": "ai-hotkey",
- "title": "ai-hotkey: AI tam, kde zrovna píšu",
- "description": "Malá appka pro Windows: označím text kdekoli, stisknu zkratku a kolečko mi nabídne opravit, přeložit, shrnout nebo vysvětlit. Model běží doma na grafice, do cloudu jde jen překlad, když chci.",
- "section": {
-  "label": "AI Lab",
-  "href": "https://ongy.cz/pages/ai/"
- },
- "h1": "AI tam, kde <span>zrovna píšu.</span>",
- "lead": "Označím text v libovolném programu, stisknu jednu zkratku a kolečko mi nabídne opravit, přeložit, shrnout nebo vysvětlit. Model běží doma na grafice, do cloudu jde jen to, co tam sám pošlu.",
- "chips": [
-  {
-   "text": "v provozu na Windows 11"
+  "path": "pages/ai/hotkey/",
+  "nav": "ai",
+  "tint": "amber",
+  "name": "ai-hotkey",
+  "title": "ai-hotkey: AI tam, kde zrovna píšu",
+  "description": "Malá appka pro Windows: označím text kdekoli, stisknu zkratku a kolečko mi nabídne opravit, přeložit, shrnout nebo vysvětlit. Model běží doma na grafice, do cloudu jde jen překlad, když chci.",
+  "section": {
+    "label": "AI Lab",
+    "href": "https://ongy.cz/pages/ai/"
   },
-  {
-   "text": "AI Lab · vlastní nástroj",
-   "amber": true
+  "h1": "AI tam, kde <span>zrovna píšu.</span>",
+  "lead": "Označím text v libovolném programu, stisknu jednu zkratku a kolečko mi nabídne opravit, přeložit, shrnout nebo vysvětlit. Model běží doma na grafice, do cloudu jde jen to, co tam sám pošlu.",
+  "chips": [
+    {
+      "text": "v provozu na Windows 11"
+    },
+    {
+      "text": "AI Lab · vlastní nástroj",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Jedna zkratka v číslech",
+  "kpis": [
+    {
+      "b": "1",
+      "small": "zkratka, funguje všude"
+    },
+    {
+      "b": "5+",
+      "small": "akcí v kolečku"
+    },
+    {
+      "b": "0 Kč",
+      "small": "při lokálním režimu"
+    }
+  ],
+  "kpi_note": "První použitelnou verzi jsem měl za jeden den, s AI jako parťákem. Model na grafice je zadarmo, překlady přes Claude stojí pár korun denně, zbytek je zadarmo.",
+  "kcemu": {
+    "h2": "Oprava, překlad a shrnutí bez přepínání oken",
+    "p": [
+      "Většinu dne píšu: testovací scénáře, hlášení chyb, maily. A pořád dokola opravuju češtinu, překládám do angličtiny a zkracuju.",
+      "Teď označím text, stisknu zkratku a u kurzoru vyskočí kolečko s pěti akcemi. Za pár vteřin mám výsledek v panelu, u oprav i barevně, co se změnilo. Enter ho vloží místo původního textu, dřív se nic nepřepíše.",
+      "Funguje to v prohlížeči, v Jiře, v editoru i v Telegramu. A umělá inteligence běží u mě doma na grafické kartě."
+    ]
+  },
+  "proc": {
+    "h2": "Kopírovat, přepnout, vložit, počkat, zkopírovat zpátky",
+    "p": [
+      "Až doteď: zkopírovat, přepnout do chatu, vložit, počkat, zkopírovat zpátky. Otrava, když to děláš třicetkrát denně.",
+      "Hotové nástroje, které tohle umí přímo v systému, posílají všechno označené na cizí server. Chtěl jsem to samé, jen s modelem doma."
+    ]
+  },
+  "jak": {
+    "h2": "Co se stane mezi zkratkou a vloženým textem",
+    "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Tok textu od zkratky přes ai-hotkey k modelu a zpět do panelu\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"20\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"130\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">1. Zkratka</text><text x=\"130\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">v libovolném programu · pamatuje si okno</text>\n            <rect x=\"270\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">2. Označený text</text><text x=\"380\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">přes schránku · původní obsah vrátí</text>\n            <rect x=\"520\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"630\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">3. Kolečko u kurzoru</text><text x=\"630\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">pět akcí · klik nebo písmeno</text>\n            <path d=\"M130 66 L345 118 M380 66 L380 100 M630 66 L415 118\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n            <path d=\"M380 100 L430 128 L430 160 L380 188 L330 160 L330 128 Z\" fill=\"rgba(46,232,196,.10)\" stroke=\"#2ee8c4\"/><text x=\"380\" y=\"140\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">ai-hotkey</text><text x=\"380\" y=\"157\" fill=\"#2ee8c4\" font-size=\"11\">pokyn + text</text>\n            <path d=\"M330 144 L130 246\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"20\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"rgba(46,232,196,.08)\" stroke=\"rgba(46,232,196,.5)\"/><text x=\"130\" y=\"266\" fill=\"#2ee8c4\" font-weight=\"600\">Doma na grafice</text><text x=\"130\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">Gemma 4 přes Ollama · zadarmo, offline</text>\n            <path d=\"M380 188 L380 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"270\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"266\" fill=\"#edf1ed\" font-weight=\"600\">4. Panel s výsledkem</text><text x=\"380\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">porovnání před / po · Enter vloží</text>\n            <path d=\"M430 144 L630 246\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"520\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"630\" y=\"266\" fill=\"#ffa94d\" font-weight=\"600\">Cloud (Claude)</text><text x=\"630\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">jen když přepnu · hlavně překlady</text>\n          </g></svg>",
+    "bullets": [
+      {
+        "b": "Přes schránku, ne přes speciální rozhraní.",
+        "t": "Appka za mě stiskne Ctrl+C a původní obsah schránky hned vrátí. Proto funguje všude."
+      },
+      {
+        "b": "Kolečko u kurzoru.",
+        "t": "Pět akcí, každá má své písmeno. Vlastní akci si napíšu vlastními slovy."
+      },
+      {
+        "b": "Model doma, cloud na vyžádání.",
+        "t": "Gramatiku, shrnutí a vysvětlení zvládne grafika. Překlady jdou do Claude, zní přirozeněji."
+      },
+      {
+        "b": "Nic bez souhlasu.",
+        "t": "Panel ukáže porovnání před a po, text se nahradí až po Enteru."
+      }
+    ]
+  },
+  "zjisteni": {
+    "h2": "Co mě zdrželo nejvíc",
+    "items": [
+      {
+        "num": "minuty",
+        "h": "Model si povídal sám se sebou",
+        "p": "Gemma před odpovědí přemýšlí nahlas. Nad dvěma čárkami napsala tisíce slov úvah. Po vypnutí odpovídá do pár vteřin."
+      },
+      {
+        "num": "2.",
+        "amber": true,
+        "h": "Druhý stisk zkratky zamrzl",
+        "p": "Dvě části aplikace na sebe čekaly. Projevilo se to jen s otevřeným kolečkem. Hledání trvalo déle než oprava."
+      },
+      {
+        "num": "4096",
+        "h": "Dlouhý text se potichu usekl",
+        "p": "Výchozí paměť na vstup je krátká. Celou stránku model shrnul jen ze začátku, bez varování. Zvětšil jsem ji a ověřil, že to platí."
+      }
+    ]
+  },
+  "lekce": {
+    "h2": "Tři věci, které bych příště udělal hned",
+    "items": [
+      {
+        "h": "Nejdřív náhled, pak nahrazení",
+        "p": "První verze vkládala opravu automaticky. Rychlé, ale AI občas změní i to, co jsem nechtěl. Porovnání a Enter jako souhlas je jediná správná cesta."
+      },
+      {
+        "h": "Jazyk odpovědi napsat natvrdo",
+        "p": "Domácí model u shrnutí sklouzával do angličtiny, i když jsem říkal „drž jazyk originálu“. Pomohlo až „piš česky“ v každém pokynu."
+      },
+      {
+        "h": "Po restartu se podívat do grafiky",
+        "p": "Po restartu Ollamy zůstaly v grafice staré kopie modelu, nový odpovídal pětkrát pomaleji. Náhle pomalý model není chyba appky."
+      }
+    ]
+  },
+  "tech": [
+    {
+      "summary": "Stack",
+      "hint": "Tauri · Ollama · Claude · Windows 11",
+      "body": "<dl class=\"kv\"><div><dt>Jádro</dt><dd>Tauri v2 v Rustu: tray, autostart, single-instance, globální zkratka, NSIS instalátor. UI ve vanilla TypeScriptu + Vite, SVG kolečko ve Fluent vzhledu, panel s Markdown renderem a slovním diffem (LCS).</dd></div><div><dt>Model doma</dt><dd>Ollama s Gemma 4 12B na grafice, streamovaná odpověď. Po doladění kontext 12288, flash attention, KV cache q8_0, cca 50 tok/s.</dd></div><div><dt>Cloud</dt><dd>Anthropic API za společným traitem <code>LlmProvider</code>, Sonnet 5 / Opus 5 / Haiku 4.5. Na překlady napevno, jinak jen když přepnu v hlavičce panelu.</dd></div><div><dt>Platforma</dt><dd>Windows 11. Simulace kláves přes <code>enigo</code>, fokus přes Win32 <code>SetForegroundWindow</code>. Vše specifické pro Windows je v jednom oddělitelném modulu, Linux má připravený brief.</dd></div></dl>"
+    },
+    {
+      "summary": "Pasti s modelem",
+      "hint": "thinking · VRAM · kontext",
+      "body": "<p>Gemma 4 i Qwen 3 jsou „thinking“ modely. Ollama <code>/api/chat</code> bere <code>think:false</code>, OpenAI-kompatibilní <code>/v1</code> jen <code>reasoning_effort:\"none\"</code>. Odtud malý axum proxy („Leo bridge“), díky kterému i asistent v prohlížeči Brave shrne stránku za čtyři vteřiny místo minut.</p><p>Po zabití Ollamy přežijí podprocesy <code>llama-server.exe</code>. Tři zombie = plná VRAM a 9 tok/s. Zabít i je, Ollamu spustit s env proměnnými v témže procesu, ověřit přes <code>nvidia-smi</code>. Výchozí kontext Ollamy je 4096 tokenů: <code>OLLAMA_CONTEXT_LENGTH=12288</code> a kontrola <code>n_ctx_slot</code> v <code>server.log</code>, jinak se dlouhý vstup potichu usekne.</p>"
+    },
+    {
+      "summary": "Pasti s okny",
+      "hint": "deadlock · DPI · stín",
+      "body": "<p><code>hide()/show()/is_visible()</code> volané přímo v callbacku globální zkratky = deadlock. Práci s oknem odpálit ve vlastním vlákně, stav popupu držet v <code>AtomicBool</code>. Pozice kurzoru a rozměry okna jsou ve fyzických px, config v logických, násobit <code>scale_factor()</code>, jinak je kolečko na 150 % zvětšení napůl mimo. Frameless kruh chce <code>shadow: false</code>, Mica i Acrylic by byly čtvercové. Vzhled prošel čtyřmi koly: seznam, kolečko s emoji, čistší kolečko, panel s diffem. Ikony nakonec jako stroke SVG, emoji na Windows vypadaly hrozně.</p>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Článek na blogu",
+      "href": "https://ongy.cz/pages/blog/"
+    },
+    {
+      "text": "Přehled: AI Lab",
+      "href": "https://ongy.cz/pages/ai/"
+    }
+  ],
+  "privacy": "Ve výchozím stavu jde označený text do modelu na mé grafické kartě a tam končí. Žádný účet, žádná registrace, žádný sběr dat. Do cloudu (Claude) odchází jen ten jeden kousek textu, u kterého si to sám přepnu, typicky překlad.",
+  "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"92\" cy=\"76\" r=\"44\" opacity=\".7\"/><circle cx=\"92\" cy=\"76\" r=\"14\"/><path d=\"M92 32v30M92 90v30M48 76h30M106 76h30\" opacity=\".5\"/><path d=\"M60 44l32 32M124 44L92 76M60 108l32-32M124 108L92 76\" opacity=\".35\" stroke-dasharray=\"3 5\"/><path d=\"M22 22l18 46 8-12 14 14 6-6-14-14 12-8z\" fill=\"currentColor\" stroke=\"none\" opacity=\".9\"/></svg>",
+  "media": {
+    "h2": "Kolečko, porovnání a nastavení",
+    "items": [
+      {
+        "type": "video",
+        "src": "../../../assets/demo-grammar-diff.mp4",
+        "poster": "../../../assets/demo-grammar-diff-poster.jpg",
+        "caption": "Oprava gramatiky: označit, zkratka, kolečko, porovnání před a po, Enter.",
+        "wide": true
+      },
+      {
+        "src": "../../../assets/ai-hotkey-wheel.webp",
+        "alt": "Kolečko akcí ai-hotkey u kurzoru",
+        "caption": "Kolečko u kurzoru: pět akcí, každá má své písmeno."
+      },
+      {
+        "type": "video",
+        "src": "../../../assets/demo-translate.mp4",
+        "poster": "../../../assets/demo-translate-poster.jpg",
+        "caption": "Překlad přes Claude, přepnutí jedním kliknutím."
+      },
+      {
+        "src": "../../../assets/settings-actions.webp",
+        "alt": "Nastavení akcí ai-hotkey",
+        "caption": "Vlastní akce: pokyn napsaný vlastními slovy."
+      }
+    ]
   }
- ],
- "kpi_label": "Jedna zkratka v číslech",
- "kpis": [
-  {
-   "b": "1",
-   "small": "zkratka, funguje všude"
-  },
-  {
-   "b": "5+",
-   "small": "akcí v kolečku"
-  },
-  {
-   "b": "0 Kč",
-   "small": "při lokálním režimu"
-  }
- ],
- "kpi_note": "První použitelnou verzi jsem měl za jeden den, s AI jako parťákem. Model na grafice je zadarmo, překlady přes Claude stojí pár korun denně, zbytek je zadarmo.",
- "kcemu": {
-  "h2": "Oprava, překlad a shrnutí bez přepínání oken",
-  "p": [
-   "Většinu dne píšu: testovací scénáře, hlášení chyb, maily. A pořád dokola opravuju češtinu, překládám do angličtiny a zkracuju.",
-   "Teď označím text, stisknu zkratku a u kurzoru vyskočí kolečko s pěti akcemi. Za pár vteřin mám výsledek v panelu, u oprav i barevně, co se změnilo. Enter ho vloží místo původního textu, dřív se nic nepřepíše.",
-   "Funguje to v prohlížeči, v Jiře, v editoru i v Telegramu. A umělá inteligence běží u mě doma na grafické kartě."
-  ]
- },
- "proc": {
-  "h2": "Kopírovat, přepnout, vložit, počkat, zkopírovat zpátky",
-  "p": [
-   "Až doteď: zkopírovat, přepnout do chatu, vložit, počkat, zkopírovat zpátky. Otrava, když to děláš třicetkrát denně.",
-   "Hotové nástroje, které tohle umí přímo v systému, posílají všechno označené na cizí server. Chtěl jsem to samé, jen s modelem doma."
-  ]
- },
- "jak": {
-  "h2": "Co se stane mezi zkratkou a vloženým textem",
-  "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Tok textu od zkratky přes ai-hotkey k modelu a zpět do panelu\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"20\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"130\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">1. Zkratka</text><text x=\"130\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">v libovolném programu · pamatuje si okno</text>\n            <rect x=\"270\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">2. Označený text</text><text x=\"380\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">přes schránku · původní obsah vrátí</text>\n            <rect x=\"520\" y=\"20\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"630\" y=\"40\" fill=\"#edf1ed\" font-weight=\"600\">3. Kolečko u kurzoru</text><text x=\"630\" y=\"56\" fill=\"#7c8780\" font-size=\"11\">pět akcí · klik nebo písmeno</text>\n            <path d=\"M130 66 L345 118 M380 66 L380 100 M630 66 L415 118\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n            <path d=\"M380 100 L430 128 L430 160 L380 188 L330 160 L330 128 Z\" fill=\"rgba(46,232,196,.10)\" stroke=\"#2ee8c4\"/><text x=\"380\" y=\"140\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">ai-hotkey</text><text x=\"380\" y=\"157\" fill=\"#2ee8c4\" font-size=\"11\">pokyn + text</text>\n            <path d=\"M330 144 L130 246\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"20\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"rgba(46,232,196,.08)\" stroke=\"rgba(46,232,196,.5)\"/><text x=\"130\" y=\"266\" fill=\"#2ee8c4\" font-weight=\"600\">Doma na grafice</text><text x=\"130\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">Gemma 4 přes Ollama · zadarmo, offline</text>\n            <path d=\"M380 188 L380 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"270\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"266\" fill=\"#edf1ed\" font-weight=\"600\">4. Panel s výsledkem</text><text x=\"380\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">porovnání před / po · Enter vloží</text>\n            <path d=\"M430 144 L630 246\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\" fill=\"none\"/><rect x=\"520\" y=\"246\" width=\"220\" height=\"46\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"630\" y=\"266\" fill=\"#ffa94d\" font-weight=\"600\">Cloud (Claude)</text><text x=\"630\" y=\"282\" fill=\"#7c8780\" font-size=\"11\">jen když přepnu · hlavně překlady</text>\n          </g></svg>",
-  "bullets": [
-   {
-    "b": "Přes schránku, ne přes speciální rozhraní.",
-    "t": "Appka za mě stiskne Ctrl+C a původní obsah schránky hned vrátí. Proto funguje všude."
-   },
-   {
-    "b": "Kolečko u kurzoru.",
-    "t": "Pět akcí, každá má své písmeno. Vlastní akci si napíšu vlastními slovy."
-   },
-   {
-    "b": "Model doma, cloud na vyžádání.",
-    "t": "Gramatiku, shrnutí a vysvětlení zvládne grafika. Překlady jdou do Claude, zní přirozeněji."
-   },
-   {
-    "b": "Nic bez souhlasu.",
-    "t": "Panel ukáže porovnání před a po, text se nahradí až po Enteru."
-   }
-  ]
- },
- "zjisteni": {
-  "h2": "Co mě zdrželo nejvíc",
-  "items": [
-   {
-    "num": "minuty",
-    "h": "Model si povídal sám se sebou",
-    "p": "Gemma před odpovědí přemýšlí nahlas. Nad dvěma čárkami napsala tisíce slov úvah. Po vypnutí odpovídá do pár vteřin."
-   },
-   {
-    "num": "2.",
-    "amber": true,
-    "h": "Druhý stisk zkratky zamrzl",
-    "p": "Dvě části aplikace na sebe čekaly. Projevilo se to jen s otevřeným kolečkem. Hledání trvalo déle než oprava."
-   },
-   {
-    "num": "4096",
-    "h": "Dlouhý text se potichu usekl",
-    "p": "Výchozí paměť na vstup je krátká. Celou stránku model shrnul jen ze začátku, bez varování. Zvětšil jsem ji a ověřil, že to platí."
-   }
-  ]
- },
- "lekce": {
-  "h2": "Tři věci, které bych příště udělal hned",
-  "items": [
-   {
-    "h": "Nejdřív náhled, pak nahrazení",
-    "p": "První verze vkládala opravu automaticky. Rychlé, ale AI občas změní i to, co jsem nechtěl. Porovnání a Enter jako souhlas je jediná správná cesta."
-   },
-   {
-    "h": "Jazyk odpovědi napsat natvrdo",
-    "p": "Domácí model u shrnutí sklouzával do angličtiny, i když jsem říkal „drž jazyk originálu“. Pomohlo až „piš česky“ v každém pokynu."
-   },
-   {
-    "h": "Po restartu se podívat do grafiky",
-    "p": "Po restartu Ollamy zůstaly v grafice staré kopie modelu, nový odpovídal pětkrát pomaleji. Náhle pomalý model není chyba appky."
-   }
-  ]
- },
- "tech": [
-  {
-   "summary": "Stack",
-   "hint": "Tauri · Ollama · Claude · Windows 11",
-   "body": "<dl class=\"kv\"><div><dt>Jádro</dt><dd>Tauri v2 v Rustu: tray, autostart, single-instance, globální zkratka, NSIS instalátor. UI ve vanilla TypeScriptu + Vite, SVG kolečko ve Fluent vzhledu, panel s Markdown renderem a slovním diffem (LCS).</dd></div><div><dt>Model doma</dt><dd>Ollama s Gemma 4 12B na grafice, streamovaná odpověď. Po doladění kontext 12288, flash attention, KV cache q8_0, cca 50 tok/s.</dd></div><div><dt>Cloud</dt><dd>Anthropic API za společným traitem <code>LlmProvider</code>, Sonnet 5 / Opus 5 / Haiku 4.5. Na překlady napevno, jinak jen když přepnu v hlavičce panelu.</dd></div><div><dt>Platforma</dt><dd>Windows 11. Simulace kláves přes <code>enigo</code>, fokus přes Win32 <code>SetForegroundWindow</code>. Vše specifické pro Windows je v jednom oddělitelném modulu, Linux má připravený brief.</dd></div></dl>"
-  },
-  {
-   "summary": "Pasti s modelem",
-   "hint": "thinking · VRAM · kontext",
-   "body": "<p>Gemma 4 i Qwen 3 jsou „thinking“ modely. Ollama <code>/api/chat</code> bere <code>think:false</code>, OpenAI-kompatibilní <code>/v1</code> jen <code>reasoning_effort:\"none\"</code>. Odtud malý axum proxy („Leo bridge“), díky kterému i asistent v prohlížeči Brave shrne stránku za čtyři vteřiny místo minut.</p><p>Po zabití Ollamy přežijí podprocesy <code>llama-server.exe</code>. Tři zombie = plná VRAM a 9 tok/s. Zabít i je, Ollamu spustit s env proměnnými v témže procesu, ověřit přes <code>nvidia-smi</code>. Výchozí kontext Ollamy je 4096 tokenů: <code>OLLAMA_CONTEXT_LENGTH=12288</code> a kontrola <code>n_ctx_slot</code> v <code>server.log</code>, jinak se dlouhý vstup potichu usekne.</p>"
-  },
-  {
-   "summary": "Pasti s okny",
-   "hint": "deadlock · DPI · stín",
-   "body": "<p><code>hide()/show()/is_visible()</code> volané přímo v callbacku globální zkratky = deadlock. Práci s oknem odpálit ve vlastním vlákně, stav popupu držet v <code>AtomicBool</code>. Pozice kurzoru a rozměry okna jsou ve fyzických px, config v logických, násobit <code>scale_factor()</code>, jinak je kolečko na 150 % zvětšení napůl mimo. Frameless kruh chce <code>shadow: false</code>, Mica i Acrylic by byly čtvercové. Vzhled prošel čtyřmi koly: seznam, kolečko s emoji, čistší kolečko, panel s diffem. Ikony nakonec jako stroke SVG, emoji na Windows vypadaly hrozně.</p>"
-  }
- ],
- "links": [
-  {
-   "text": "Článek na blogu",
-   "href": "https://ongy.cz/pages/blog/"
-  },
-  {
-   "text": "Přehled: AI Lab",
-   "href": "https://ongy.cz/pages/ai/"
-  }
- ],
- "privacy": "Ve výchozím stavu jde označený text do modelu na mé grafické kartě a tam končí. Žádný účet, žádná registrace, žádný sběr dat. Do cloudu (Claude) odchází jen ten jeden kousek textu, u kterého si to sám přepnu, typicky překlad.",
- "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"92\" cy=\"76\" r=\"44\" opacity=\".7\"/><circle cx=\"92\" cy=\"76\" r=\"14\"/><path d=\"M92 32v30M92 90v30M48 76h30M106 76h30\" opacity=\".5\"/><path d=\"M60 44l32 32M124 44L92 76M60 108l32-32M124 108L92 76\" opacity=\".35\" stroke-dasharray=\"3 5\"/><path d=\"M22 22l18 46 8-12 14 14 6-6-14-14 12-8z\" fill=\"currentColor\" stroke=\"none\" opacity=\".9\"/></svg>",
- "media": {
-  "h2": "Kolečko, porovnání a nastavení",
-  "items": [
-   {
-    "type": "video",
-    "src": "../../../assets/demo-grammar-diff.mp4",
-    "poster": "../../../assets/demo-grammar-diff-poster.jpg",
-    "caption": "Oprava gramatiky: označit, zkratka, kolečko, porovnání před a po, Enter.",
-    "wide": true
-   },
-   {
-    "src": "../../../assets/ai-hotkey-wheel.webp",
-    "alt": "Kolečko akcí ai-hotkey u kurzoru",
-    "caption": "Kolečko u kurzoru: pět akcí, každá má své písmeno."
-   },
-   {
-    "type": "video",
-    "src": "../../../assets/demo-translate.mp4",
-    "poster": "../../../assets/demo-translate-poster.jpg",
-    "caption": "Překlad přes Claude, přepnutí jedním kliknutím."
-   },
-   {
-    "src": "../../../assets/settings-actions.webp",
-    "alt": "Nastavení akcí ai-hotkey",
-    "caption": "Vlastní akce: pokyn napsaný vlastními slovy."
-   }
-  ]
- }
 }

@@ -1,28 +1,63 @@
 #!/usr/bin/env python3
 """Generátor projektových stránek ongy.cz (nový design). Obsah: build/content/*.json → dist/<path>/index.html"""
-import json, sys, html, pathlib
+import json, re, sys, html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist" if (ROOT / "dist").exists() else ROOT
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">'
+# tón záře za sekcemi podle sekce (odpovídá poli "color" v build/sections/*.json)
+TONE = {"ha": "teal", "3d": "amber", "ai": "purple", "server": "teal", "games": "ice"}
+
 NAV = [
     ("Domů", "{r}index.html", "home", []),
     ("3D tisk", "{r}pages/3d-print/", "3d", []),
-    ("Home Assistant", "{r}pages/homeassistant/", "ha", [("Zařízení a hardware","{r}pages/homeassistant/devices/"),("Automatizace","{r}pages/homeassistant/automations/"),("Data a monitoring","{r}pages/homeassistant/monitoring/"),("Tipy a triky","{r}pages/homeassistant/tips/"),("Aluprof žaluzie","{r}pages/homeassistant/zaluzie/")]),
-    ("AI", "{r}pages/ai/", "ai", [("AI Coach","{r}pages/ai/coach/"),("ai-hotkey","{r}pages/ai/hotkey/"),("GDPR Broker Bot","{r}pages/ai/gdpr/"),("Brain System","{r}pages/ai/brain/")]),
-    ("Server & síť", "{r}pages/server/", "server", [("AdGuard Home","{r}pages/server/adguard/"),("Router a IoT síť","{r}pages/server/router-iot/"),("Tailscale","{r}pages/server/tailscale/"),("Zálohy","{r}pages/server/backups/"),("Bezpečnostní audit","{r}pages/server/audit/")]),
+    ("Home Assistant", "{r}pages/homeassistant/", "ha", [
+        ("Zařízení a hardware","{r}pages/homeassistant/devices/","HW","Co doma běží a jakou cestou"),
+        ("Automatizace","{r}pages/homeassistant/automations/","AUT","Sedm ukázek a devět oblastí"),
+        ("Data a monitoring","{r}pages/homeassistant/monitoring/","DAT","Grafana, InfluxDB, měsíční report"),
+        ("Tipy a triky","{r}pages/homeassistant/tips/","TIP","Co bych si přál vědět dřív"),
+        ("Aluprof žaluzie","{r}pages/homeassistant/zaluzie/","RF","Vlastní most z ESP32 na 433 MHz")]),
+    ("AI", "{r}pages/ai/", "ai", [
+        ("AI Coach","{r}pages/ai/coach/","AC","Trenér, který bydlí v Telegramu"),
+        ("ai-hotkey","{r}pages/ai/hotkey/","HK","AI tam, kde zrovna píšu"),
+        ("GDPR Broker Bot","{r}pages/ai/gdpr/","GD","Vymáhá moje data od brokerů"),
+        ("Brain System","{r}pages/ai/brain/","BR","Paměť, která přežije session")]),
+    ("Server & síť", "{r}pages/server/", "server", [
+        ("AdGuard Home","{r}pages/server/adguard/","DNS","Co moje zařízení posílají domů"),
+        ("Router a IoT síť","{r}pages/server/router-iot/","NET","Krabičky mají vlastní Wi-Fi"),
+        ("Tailscale","{r}pages/server/tailscale/","VPN","Domů bez otevřeného portu"),
+        ("Zálohy","{r}pages/server/backups/","BKP","Záloha, kterou jsem obnovil"),
+        ("Bezpečnostní audit","{r}pages/server/audit/","SEC","Co doma poslouchá a kdo se dostane dovnitř")]),
     ("Deskovky", "{r}pages/deskovky/", "games", []),
     ("Blog", "{r}pages/blog/", "blog", []),
     ("O mně", "{r}pages/about/", "about", []),
 ]
+ARR_NE = '<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>'  # ↗ jako SVG (znak se vykresluje jako emoji)
 CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+def _page_tints():
+    """path ('pages/ai/coach/') → tint, načteno z build/content a build/catalog JSONů."""
+    m = {}
+    for d in ("content", "catalog"):
+        for f in sorted((ROOT / "build" / d).glob("*.json")):
+            try:
+                c = json.loads(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if c.get("tint"):
+                m[c["path"].strip("/") + "/"] = c["tint"]
+    return m
+PAGE_TINT = _page_tints()
+
 def nav_html(r, active, path=""):
     cur = path.strip("/") + "/" if path.strip("/") else ""
     out = []
     for label, href, key, subs in NAV:
         a = f'<a{" class=\"active\"" if key == active else ""} href="{href.format(r=r)}">{e(label)}</a>'
         if subs:
-            sub = "".join(f'<a{" class=\"active\" aria-current=\"page\"" if h.format(r="") == cur else ""} href="{h.format(r=r)}">{e(l)}</a>' for l, h in subs)
-            out.append(f'<div class="nav-item has-sub">{a}{CHEV}<div class="sub">{sub}</div></div>')
+            sub = "".join(f'<a class="sub-item tint-{PAGE_TINT.get(h.format(r=""), "teal")}{" active" if h.format(r="") == cur else ""}"{" aria-current=\"page\"" if h.format(r="") == cur else ""} href="{h.format(r=r)}"><span class="sub-ic"><span class="sub-ic-text">{e(mk)}</span></span><span><b>{e(l)}</b><small>{e(d)}</small></span></a>' for l, h, mk, d in subs)
+            more = f'<a class="sub-item sub-more" href="{href.format(r=r)}"><span class="sub-ic sub-ic-more"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg></span><span><b>Přehled sekce</b><small>{e(label)}: všechny projekty a články</small></span><svg class="sub-more-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
+            is_open = (key == active)
+            btn = f'<button class="sub-toggle" type="button" aria-expanded="{"true" if is_open else "false"}" aria-label="Rozbalit {e(label)}">{CHEV}</button>'
+            out.append(f'<div class="nav-item has-sub{" open" if is_open else ""}">{a}{btn}<div class="sub"><div class="sub-inner">{sub}{more}</div></div></div>')
         else:
             out.append(f'<div class="nav-item">{a}</div>')
     return "".join(out)
@@ -64,6 +99,7 @@ def render(c):
     depth = c["path"].strip("/").count("/") + 1
     r = "../" * depth
     nav = nav_html(r, c.get("nav"), c["path"])
+    tone = c.get("tint") or TONE.get(c.get("nav"), "teal")   # barva projektu (stejná jako jeho karta v sekci), jinak barva sekce
     chips = "".join(f'<span class="chip{" amber" if ch.get("amber") else ""}"><i></i>{ch["text"]}</span>' for ch in c["chips"])
     kpis = "".join(f'<li><b>{k["b"]}</b><small>{e(k["small"])}</small></li>' for k in c["kpis"])
     out = []
@@ -94,14 +130,14 @@ def render(c):
   <meta name="description" content="{e(c["description"])}">
   <meta name="theme-color" content="#101312"><title>{e(c["title"])} | Ongy.cz</title>
   {social_meta(c)}
-  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
+  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg?v=2">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=12"><link rel="stylesheet" href="{r}project.css?v=9">
 </head>
-<body>
+<body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -125,7 +161,7 @@ def render(c):
 {"".join(out)}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=12"></script>
+  <script src="{r}app.js?v=13"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
@@ -136,7 +172,7 @@ def render(c):
     target.write_text(page, encoding="utf-8")
     return target
 
-if __name__ == "__main__" and not (len(sys.argv) > 1 and sys.argv[1] in ("sections", "catalog")):
+if __name__ == "__main__" and not (len(sys.argv) > 1 and sys.argv[1] in ("sections", "catalog", "nav")):
     files = sys.argv[1:] or sorted((ROOT/"build"/"content").glob("*.json"))
     for f in files:
         c = json.loads(pathlib.Path(f).read_text(encoding="utf-8"))
@@ -148,6 +184,7 @@ def render_generic(c, body):
     depth = c["path"].strip("/").count("/") + 1 if c["path"].strip("/") else 0
     r = "../" * depth
     nav = nav_html(r, c.get("nav"), c["path"])
+    tone = c.get("tint") or c.get("color") or TONE.get(c.get("nav"), "teal")
     page = f'''<!doctype html>
 <html lang="cs">
 <head>
@@ -155,14 +192,14 @@ def render_generic(c, body):
   <meta name="description" content="{e(c["description"])}">
   <meta name="theme-color" content="#101312"><title>{e(c["title"])} | Ongy.cz</title>
   {social_meta(c)}
-  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
+  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg?v=2">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=12"><link rel="stylesheet" href="{r}project.css?v=9">
 </head>
-<body>
+<body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -172,7 +209,7 @@ def render_generic(c, body):
   </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=12"></script>
+  <script src="{r}app.js?v=13"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
@@ -245,10 +282,12 @@ def render_section_page(c):
     r = "../" * depth
     nav = nav_html(r, c.get("nav"), c["path"])
     color = c.get("color","teal")
+    tone = color
     cards = ""
     for p in c["projects"]:
         st = p.get("status","running")
-        cards += f'<a class="archive-card" data-status="{st}" href="{p["href"]}"><span class="tag {p.get("tagColor","teal")}">{p["tag"]}</span><h2>{p["name"]}</h2><p>{p["text"]}</p><small>{p.get("meta","")}</small><b>{p.get("cta","Detail →")}</b></a>'
+        tint = f' tint-{p["tint"]}' if p.get("tint") else ""
+        cards += f'<a class="archive-card{tint}" data-status="{st}" href="{p["href"]}"><span class="tag {p.get("tagColor","teal")}">{p["tag"]}</span><h2>{p["name"]}</h2><p>{p["text"]}</p><small>{p.get("meta","")}</small><b>{p.get("cta","Detail →").replace("↗", ARR_NE)}</b></a>'
     notes = ""
     if c.get("notes"):
         items = "".join(f'<a class="row-link" href="{n["href"]}"><span class="hex-mini {color}">{n.get("mark","TXT")}</span><span><strong>{n["title"]}</strong><small>{n["date"]}</small></span><b>→</b></a>' for n in c["notes"])
@@ -274,14 +313,14 @@ def render_section_page(c):
   <meta name="description" content="{e(c["description"])}">
   <meta name="theme-color" content="#101312"><title>{e(c["title"])} | Ongy.cz</title>
   {social_meta(c)}
-  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
+  <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg?v=2">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=12"><link rel="stylesheet" href="{r}project.css?v=9">
 </head>
-<body>
+<body data-tone="{tone}">
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <a class="brand" href="{r}index.html"><img src="{r}assets/logo-mark.svg?v=2" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">{nav}</nav>
   </div></header>
@@ -313,7 +352,7 @@ def render_section_page(c):
 {notes}{stack}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=12"></script>
+  <script src="{r}app.js?v=13"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
@@ -332,3 +371,19 @@ def build_sections():
 if __name__ == "__main__" and (len(sys.argv) == 1 or sys.argv[1] == "sections"):
     build_sections()
     import subprocess; subprocess.run([sys.executable, str(ROOT/"build"/"relink.py")])
+
+
+# ---------------- ruční stránky (homepage, /projects/): přegenerování navigace ----------------
+NAV_RE = re.compile(r'(<nav id="site-nav" class="site-nav" aria-label="Hlavní navigace">).*?(</nav>)', re.S)
+def sync_manual_nav():
+    for rel, r, active in (("index.html", "", "home"), ("projects/index.html", "../", None)):
+        f = DIST / rel
+        if not f.exists():
+            continue
+        html_ = f.read_text(encoding="utf-8")
+        new_ = NAV_RE.sub(lambda m: m.group(1) + nav_html(r, active, rel if rel != "index.html" else "") + m.group(2), html_, count=1)
+        if new_ != html_:
+            f.write_text(new_, encoding="utf-8"); print("nav →", rel)
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "nav":
+    sync_manual_nav()

@@ -1,132 +1,138 @@
 {
- "path": "pages/server/",
- "nav": "server",
- "name": "Server & síť",
- "color": "teal",
- "title": "Server & síť",
- "description": "Home server ze starého notebooku, DNS filtr pro celý byt, oddělená IoT síť, VPN místo otevřených portů a šifrované zálohy. Jak to stavím a proč.",
- "h1": "Vlastní služby pod <span>vlastní střechou.</span>",
- "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň. Pět dílů: DNS filtr, router a IoT síť, VPN, zálohy, audit.",
- "kpi_label": "Stav dílny",
- "kpis": [
-  {
-   "b": "26",
-   "small": "služeb v Dockeru"
-  },
-  {
-   "b": "0",
-   "small": "otevřených portů"
-  },
-  {
-   "b": "1",
-   "small": "notebook"
-  }
- ],
- "kpi_note": "Web ven jde přes tunel, admin rozhraní jen přes VPN. Zálohy každou noc šifrovaně do cloudu.",
- "intro_h2": "Server, síť a soukromí, které se dá měřit",
- "intro": [
-  "Server je starý firemní notebook s baterií, takže výpadek proudu přežije. Běží na něm web, trackery na deskovky, AI boti, DNS pro celý byt i zálohy. Home Assistant má vlastní Raspberry Pi, protože ten se restartuje častěji.",
-  "Díly téhle sekce jdou od DNS filtru přes router a oddělenou síť pro chytré krabičky až k VPN a zálohám. Každý stojí sám o sobě a začíná tím, k čemu to je. Technika je až uvnitř."
- ],
- "projects_h2": "Díly sekce",
- "projects": [
-  {
-   "href": "https://ongy.cz/pages/server/adguard/",
-   "tag": "DÍL 1 · BĚŽÍ",
-   "name": "AdGuard Home",
-   "text": "Co moje zařízení posílají domů a jak jsem to utnul, aniž by něco přestalo fungovat.",
-   "meta": "Docker · DoH · 4 seznamy",
-   "cta": "Číst →"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/router-iot/",
-   "tag": "DÍL 2 · BĚŽÍ",
-   "name": "Router a oddělená IoT síť",
-   "text": "Proč mají chytré krabičky vlastní Wi-Fi a jak se z ní dostane Home Assistant k zařízením.",
-   "meta": "Asuswrt-Merlin · 2,5 GbE",
-   "cta": "Číst →"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/tailscale/",
-   "tag": "DÍL 3 · BĚŽÍ",
-   "name": "Tailscale, domů bez otevřeného portu",
-   "text": "Jak se dostanu na všechno doma odkudkoli, aniž by na internetu něco poslouchalo.",
-   "meta": "subnet router · pravidla přístupu",
-   "cta": "Číst →"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/backups/",
-   "tag": "DÍL 4 · OBNOVA OVĚŘENA",
-   "name": "Zálohy, které jsem konečně obnovil",
-   "text": "Šifrované zálohy do cloudu každou noc a test obnovy, bez kterého záloha není záloha.",
-   "meta": "restic · Cloudflare R2",
-   "cta": "Číst →"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/audit/",
-   "tag": "DÍL 5 · CHECKLIST",
-   "name": "Bezpečnostní audit domácnosti",
-   "text": "Co doma poslouchá, kdo se dostane dovnitř a jediné riziko, které zbylo. Checklist i pro tebe.",
-   "meta": "5 kroků",
-   "cta": "Číst →"
-  },
-  {
-   "href": "https://ongy.cz/pages/homeassistant/monitoring/",
-   "tag": "BĚŽÍ",
-   "name": "Monitoring a dashboardy",
-   "text": "Grafana, InfluxDB a Uptime Kuma. Co sleduju a co mi chodí do Telegramu.",
-   "meta": "v sekci Home Assistant",
-   "cta": "Otevřít →"
-  }
- ],
- "notes": [
-  {
-   "href": "https://ongy.cz/pages/server/backups/",
-   "mark": "BKP",
-   "title": "Záloha, kterou jsem konečně obnovil",
-   "date": "13. září 2026 · Zálohy"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/audit/",
-   "mark": "SEC",
-   "title": "Co doma poslouchá a kdo se může dostat dovnitř",
-   "date": "13. září 2026 · Bezpečnostní audit"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/tailscale/",
-   "mark": "VPN",
-   "title": "Domů odkudkoli, bez otevřeného portu",
-   "date": "13. září 2026 · Tailscale"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/router-iot/",
-   "mark": "NET",
-   "title": "Krabičky mají vlastní Wi-Fi",
-   "date": "13. září 2026 · Router a IoT síť"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/adguard/",
-   "mark": "DNS",
-   "title": "Co moje zařízení posílají domů",
-   "date": "12. září 2026 · AdGuard Home"
-  }
- ],
- "stack": [
-  [
-   "Železo",
-   "Vysloužilý firemní notebook (i7, 32 GB RAM), baterie jako záložní zdroj, Kubuntu LTS, kabel 2,5 GbE."
+  "path": "pages/server/",
+  "nav": "server",
+  "name": "Server & síť",
+  "color": "teal",
+  "title": "Server & síť",
+  "description": "Home server ze starého notebooku, DNS filtr pro celý byt, oddělená IoT síť, VPN místo otevřených portů a šifrované zálohy. Jak to stavím a proč.",
+  "h1": "Vlastní služby pod <span>vlastní střechou.</span>",
+  "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň. Pět dílů: DNS filtr, router a IoT síť, VPN, zálohy, audit.",
+  "kpi_label": "Stav dílny",
+  "kpis": [
+    {
+      "b": "26",
+      "small": "služeb v Dockeru"
+    },
+    {
+      "b": "0",
+      "small": "otevřených portů"
+    },
+    {
+      "b": "1",
+      "small": "notebook"
+    }
   ],
-  [
-   "Web ven",
-   "Docker Compose, Caddy jako reverzní proxy, Cloudflare Tunnel. Domácí IP nikde nevidět."
+  "kpi_note": "Web ven jde přes tunel, admin rozhraní jen přes VPN. Zálohy každou noc šifrovaně do cloudu.",
+  "intro_h2": "Server, síť a soukromí, které se dá měřit",
+  "intro": [
+    "Server je starý firemní notebook s baterií, takže výpadek proudu přežije. Běží na něm web, trackery na deskovky, AI boti, DNS pro celý byt i zálohy. Home Assistant má vlastní Raspberry Pi, protože ten se restartuje častěji.",
+    "Díly téhle sekce jdou od DNS filtru přes router a oddělenou síť pro chytré krabičky až k VPN a zálohám. Každý stojí sám o sobě a začíná tím, k čemu to je. Technika je až uvnitř."
   ],
-  [
-   "Síť a přístup",
-   "AdGuard Home jako DNS pro celý byt, oddělená IoT síť na routeru, Tailscale místo VPN serveru. Admin rozhraní jen z VPN."
+  "projects_h2": "Díly sekce",
+  "projects": [
+    {
+      "href": "https://ongy.cz/pages/server/adguard/",
+      "tag": "DÍL 1 · BĚŽÍ",
+      "name": "AdGuard Home",
+      "text": "Co moje zařízení posílají domů a jak jsem to utnul, aniž by něco přestalo fungovat.",
+      "meta": "Docker · DoH · 4 seznamy",
+      "cta": "Číst →",
+      "tint": "teal"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/router-iot/",
+      "tag": "DÍL 2 · BĚŽÍ",
+      "name": "Router a oddělená IoT síť",
+      "text": "Proč mají chytré krabičky vlastní Wi-Fi a jak se z ní dostane Home Assistant k zařízením.",
+      "meta": "Asuswrt-Merlin · 2,5 GbE",
+      "cta": "Číst →",
+      "tint": "amber"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/tailscale/",
+      "tag": "DÍL 3 · BĚŽÍ",
+      "name": "Tailscale, domů bez otevřeného portu",
+      "text": "Jak se dostanu na všechno doma odkudkoli, aniž by na internetu něco poslouchalo.",
+      "meta": "subnet router · pravidla přístupu",
+      "cta": "Číst →",
+      "tint": "ice"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/backups/",
+      "tag": "DÍL 4 · OBNOVA OVĚŘENA",
+      "name": "Zálohy, které jsem konečně obnovil",
+      "text": "Šifrované zálohy do cloudu každou noc a test obnovy, bez kterého záloha není záloha.",
+      "meta": "restic · Cloudflare R2",
+      "cta": "Číst →",
+      "tint": "purple"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/audit/",
+      "tag": "DÍL 5 · CHECKLIST",
+      "name": "Bezpečnostní audit domácnosti",
+      "text": "Co doma poslouchá, kdo se dostane dovnitř a jediné riziko, které zbylo. Checklist i pro tebe.",
+      "meta": "5 kroků",
+      "cta": "Číst →",
+      "tint": "coral"
+    },
+    {
+      "href": "https://ongy.cz/pages/homeassistant/monitoring/",
+      "tag": "BĚŽÍ",
+      "name": "Monitoring a dashboardy",
+      "text": "Grafana, InfluxDB a Uptime Kuma. Co sleduju a co mi chodí do Telegramu.",
+      "meta": "v sekci Home Assistant",
+      "cta": "Otevřít →",
+      "tint": "ice"
+    }
   ],
-  [
-   "Hlídání a zálohy",
-   "Uptime Kuma a Netdata hlásí do Telegramu. Restic šifrovaně do Cloudflare R2 každou noc, verzované."
+  "notes": [
+    {
+      "href": "https://ongy.cz/pages/server/backups/",
+      "mark": "BKP",
+      "title": "Záloha, kterou jsem konečně obnovil",
+      "date": "13. září 2026 · Zálohy"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/audit/",
+      "mark": "SEC",
+      "title": "Co doma poslouchá a kdo se může dostat dovnitř",
+      "date": "13. září 2026 · Bezpečnostní audit"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/tailscale/",
+      "mark": "VPN",
+      "title": "Domů odkudkoli, bez otevřeného portu",
+      "date": "13. září 2026 · Tailscale"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/router-iot/",
+      "mark": "NET",
+      "title": "Krabičky mají vlastní Wi-Fi",
+      "date": "13. září 2026 · Router a IoT síť"
+    },
+    {
+      "href": "https://ongy.cz/pages/server/adguard/",
+      "mark": "DNS",
+      "title": "Co moje zařízení posílají domů",
+      "date": "12. září 2026 · AdGuard Home"
+    }
+  ],
+  "stack": [
+    [
+      "Železo",
+      "Vysloužilý firemní notebook (i7, 32 GB RAM), baterie jako záložní zdroj, Kubuntu LTS, kabel 2,5 GbE."
+    ],
+    [
+      "Web ven",
+      "Docker Compose, Caddy jako reverzní proxy, Cloudflare Tunnel. Domácí IP nikde nevidět."
+    ],
+    [
+      "Síť a přístup",
+      "AdGuard Home jako DNS pro celý byt, oddělená IoT síť na routeru, Tailscale místo VPN serveru. Admin rozhraní jen z VPN."
+    ],
+    [
+      "Hlídání a zálohy",
+      "Uptime Kuma a Netdata hlásí do Telegramu. Restic šifrovaně do Cloudflare R2 každou noc, verzované."
+    ]
   ]
- ]
 }

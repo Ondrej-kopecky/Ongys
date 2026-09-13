@@ -1,159 +1,160 @@
 {
- "path": "pages/ai/gdpr/",
- "nav": "ai",
- "name": "GDPR Broker Bot",
- "title": "Kdo drží moje data — GDPR Broker Bot",
- "description": "Lokální Python bot, který rozesílá žádosti podle GDPR firmám obchodujícím s osobními daty, čte odpovědi, hlídá lhůty a z přiznaných příjemců dělá další cíle. Bez externích knihoven, každou dávku schvaluju sám.",
- "section": {
-  "label": "AI Lab",
-  "href": "https://ongy.cz/pages/ai/"
- },
- "h1": "Kdo drží moje data, <span>musí to přiznat.</span>",
- "lead": "Bot na mém serveru rozesílá žádosti podle GDPR firmám, které obchodují s osobními daty. Čte odpovědi, hlídá lhůty a z každé přiznané firmy udělá další cíl. Já jen schvaluju, co odejde.",
- "chips": [
-  {
-   "text": "v provozu, čeká na odpovědi"
+  "path": "pages/ai/gdpr/",
+  "nav": "ai",
+  "tint": "purple",
+  "name": "GDPR Broker Bot",
+  "title": "Kdo drží moje data — GDPR Broker Bot",
+  "description": "Lokální Python bot, který rozesílá žádosti podle GDPR firmám obchodujícím s osobními daty, čte odpovědi, hlídá lhůty a z přiznaných příjemců dělá další cíle. Bez externích knihoven, každou dávku schvaluju sám.",
+  "section": {
+    "label": "AI Lab",
+    "href": "https://ongy.cz/pages/ai/"
   },
-  {
-   "text": "AI Lab · agent",
-   "amber": true
-  }
- ],
- "kpi_label": "Stav kampaně",
- "kpis": [
-  {
-   "b": "85",
-   "small": "brokerů v hledáčku"
+  "h1": "Kdo drží moje data, <span>musí to přiznat.</span>",
+  "lead": "Bot na mém serveru rozesílá žádosti podle GDPR firmám, které obchodují s osobními daty. Čte odpovědi, hlídá lhůty a z každé přiznané firmy udělá další cíl. Já jen schvaluju, co odejde.",
+  "chips": [
+    {
+      "text": "v provozu, čeká na odpovědi"
+    },
+    {
+      "text": "AI Lab · agent",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Stav kampaně",
+  "kpis": [
+    {
+      "b": "85",
+      "small": "brokerů v hledáčku"
+    },
+    {
+      "b": "25",
+      "small": "žádostí odesláno"
+    },
+    {
+      "b": "30 dní",
+      "small": "lhůta na odpověď"
+    }
+  ],
+  "kpi_note": "Nula externích knihoven, jen Python. Žádná žádost neodejde bez mého souhlasu v Telegramu.",
+  "kcemu": {
+    "h2": "Firmy, které o mně vědí, a já o nich ne",
+    "p": [
+      "Data broker je firma, kterou jsi nikdy neoslovil, a přesto o tobě má složku. Kupuje údaje, skládá je a prodává dál. Jsou jich stovky a seznam „kdo má ta moje“ neexistuje.",
+      "GDPR mi dává právo se každé zeptat, co o mně má, odkud a komu to předala. A pak chtít výmaz. Ručně je to práce na týdny.",
+      "Tak jsem si napsal bota. Rozesílá žádosti, čte odpovědi, hlídá lhůty a u firem, které mlčí, skládá podklady pro stížnost na úřad."
+    ]
   },
-  {
-   "b": "25",
-   "small": "žádostí odesláno"
+  "proc": {
+    "h2": "Otravná práce, kterou nikdo neudělá",
+    "p": [
+      "Zkusil jsem to ručně. Pár mailů, tabulka, hlídání lhůty. Po týdnu jsem ztratil přehled a po měsíci chuť.",
+      "Přitom je to práce pro stroj: šablona, odeslat, zapsat, počkat, připomenout. Chtěl jsem jen rozhodovat, co odejde mým jménem."
+    ]
   },
-  {
-   "b": "30 dní",
-   "small": "lhůta na odpověď"
-  }
- ],
- "kpi_note": "Nula externích knihoven, jen Python. Žádná žádost neodejde bez mého souhlasu v Telegramu.",
- "kcemu": {
-  "h2": "Firmy, které o mně vědí, a já o nich ne",
-  "p": [
-   "Data broker je firma, kterou jsi nikdy neoslovil, a přesto o tobě má složku. Kupuje údaje, skládá je a prodává dál. Jsou jich stovky a seznam „kdo má ta moje“ neexistuje.",
-   "GDPR mi dává právo se každé zeptat, co o mně má, odkud a komu to předala. A pak chtít výmaz. Ručně je to práce na týdny.",
-   "Tak jsem si napsal bota. Rozesílá žádosti, čte odpovědi, hlídá lhůty a u firem, které mlčí, skládá podklady pro stížnost na úřad."
-  ]
- },
- "proc": {
-  "h2": "Otravná práce, kterou nikdo neudělá",
-  "p": [
-   "Zkusil jsem to ručně. Pár mailů, tabulka, hlídání lhůty. Po týdnu jsem ztratil přehled a po měsíci chuť.",
-   "Přitom je to práce pro stroj: šablona, odeslat, zapsat, počkat, připomenout. Chtěl jsem jen rozhodovat, co odejde mým jménem."
-  ]
- },
- "jak": {
-  "h2": "Smyčka, která se rozrůstá sama",
-  "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Smyčka žádostí: bot posílá e-maily brokerům, čte odpovědi, Claude z nich vytáhne příjemce a ti se vrací jako nové cíle ke schválení\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"290\" y=\"16\" width=\"180\" height=\"46\" rx=\"10\" fill=\"rgba(46,232,196,.08)\" stroke=\"rgba(46,232,196,.5)\"/><text x=\"380\" y=\"36\" fill=\"#2ee8c4\" font-weight=\"600\">Telegram</text><text x=\"380\" y=\"52\" fill=\"#7c8780\" font-size=\"11\">souhrn dávky · moje „ano“</text>\n            <path d=\"M380 62 L380 108\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\"/>\n            <path d=\"M380 108 L430 137 L430 167 L380 196 L330 167 L330 137 Z\" fill=\"rgba(46,232,196,.10)\" stroke=\"#2ee8c4\"/><text x=\"380\" y=\"148\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Broker</text><text x=\"380\" y=\"164\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Bot</text>\n            <text x=\"380\" y=\"214\" fill=\"#7c8780\" font-size=\"11\">home server · Python bez knihoven · cron</text>\n            <path d=\"M330 152 L170 152\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"20\" y=\"130\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"95\" y=\"150\" fill=\"#edf1ed\" font-weight=\"600\">Data brokeři</text><text x=\"95\" y=\"166\" fill=\"#7c8780\" font-size=\"11\">žádost e-mailem · odpověď</text>\n            <path d=\"M430 152 L590 152\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\"/><rect x=\"590\" y=\"130\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"665\" y=\"150\" fill=\"#edf1ed\" font-weight=\"600\">Claude</text><text x=\"665\" y=\"166\" fill=\"#7c8780\" font-size=\"11\">čte jen redigovaný text</text>\n            <path d=\"M352 186 L120 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"20\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"120\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Lokální databáze</text><text x=\"120\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">žádosti · odpovědi · lhůty · skóre</text>\n            <path d=\"M380 222 L380 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"280\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Lhůty a urgence</text><text x=\"380\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">po 30 dnech · spis pro úřad</text>\n            <path d=\"M665 176 L640 246\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\"/><rect x=\"540\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"640\" y=\"265\" fill=\"#ffa94d\" font-weight=\"600\">Noví brokeři do fronty</text><text x=\"640\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">přiznaní příjemci · ke schválení</text>\n            <path d=\"M740 268 L752 268 L752 39 L470 39\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n          </g></svg>",
-  "bullets": [
-   {
-    "b": "Nejdřív přístup, výmaz až potom.",
-    "t": "Žádost o přístup nutí firmu přiznat zdroj i příjemce dat. Při výmazu by smazala dřív, než řekne, kudy data tečou."
-   },
-   {
-    "b": "Nic neodejde bez mého souhlasu.",
-    "t": "Bot připraví dávku, pošle souhrn do Telegramu a čeká na moje ano. Stížnost na úřad je vždy ruční."
-   },
-   {
-    "b": "Přiznaní příjemci jsou nové cíle.",
-    "t": "Claude z odpovědi vytáhne, komu firma data předala. Každá se přidá do fronty ke schválení."
-   },
-   {
-    "b": "Lhůty hlídá bot.",
-    "t": "Po třiceti dnech bez odpovědi připraví urgenci. Když firma mlčí dál, sestaví podklady pro stížnost."
-   }
-  ]
- },
- "zjisteni": {
-  "h2": "Co bot umí",
-  "eyebrow": "Co umí",
-  "items": [
-   {
-    "num": "2",
-    "h": "Články, správné pořadí",
-    "p": "Přístup podle článku 15, výmaz podle článku 17. Ten druhý až po potvrzení, že data drží."
-   },
-   {
-    "num": "1",
-    "h": "Ano v Telegramu",
-    "p": "Souhrn dávky, jedno slovo, teprve pak odeslání."
-   },
-   {
-    "num": "3",
-    "h": "Druhy odpovědí",
-    "p": "Potvrzení, věcná odpověď, nedoručení. Bot je k žádosti páruje sám, přeposlaný mail taky."
-   },
-   {
-    "num": "0–100",
-    "amber": true,
-    "h": "Skóre rizika",
-    "p": "Drží data, prodal je dál, ignoruje lhůtu. Z chování firmy vznikne číslo a vím, na koho se zaměřit první."
-   },
-   {
-    "num": "30+",
-    "amber": true,
-    "h": "Urgence, pak spis",
-    "p": "Po lhůtě urgence. Když firma mlčí dál, vznikne spis pro úřad: časová osa, citace, porušení."
-   },
-   {
-    "num": "2",
-    "h": "Verze reportu",
-    "p": "Veřejná bez osobních údajů pro článek, soukromá s celým auditem pro mě."
-   }
-  ]
- },
- "lekce": {
-  "h2": "Tři věci, na které jsem přišel až v provozu",
-  "items": [
-   {
-    "h": "Nejtěžší je prokázat, kdo jsem",
-    "p": "Firmy s profesními daty párují podle pracovní identity, ne osobního mailu. Osobní žádost tak často vrátí „nic nemáme“. Dám odkaz na veřejný profil, pracovní mail ani telefon ne. Jen by získali další vazbu."
-   },
-   {
-    "h": "Nejdřív zmapovat, pak mazat",
-    "p": "První verze posílala přístup i výmaz najednou. Firma pak klidně „smazala“ a zmizela dřív, než řekla, komu data prodala. Mapa je cennější než rychlý úklid."
-   },
-   {
-    "h": "AI čte odpovědi líp než moje pravidla",
-    "p": "Klasifikace podle klíčových slov se pletla. Claude na strukturovanou extrakci je výrazně přesnější. Pravidla zůstala jako záloha."
-   }
-  ]
- },
- "tech": [
-  {
-   "summary": "Stack a běh",
-   "hint": "Python stdlib · SMTP/IMAP · Claude · SQLite",
-   "body": "<dl class=\"kv\"><div><dt>Jádro</dt><dd>Python 3.12, jen standardní knihovna: <code>smtplib</code>, <code>imaplib</code>, <code>sqlite3</code>. Žádné <code>pip install</code>, vlastní mini <code>.env</code> loader. Běží na home serveru.</dd></div><div><dt>E-mail</dt><dd>Samostatná schránka jen pro GDPR. SMTP odesílá, IMAP čte. Párování odpovědí přes <code>Message-ID</code>, detekce bounce i automatického potvrzení. Přeposlaný mail se páruje podle obsahu.</dd></div><div><dt>AI vrstva</dt><dd>Claude Sonnet přes vlastní API klíč, jediné místo s AI. Structured output: zdroj, příjemci, drží/nedrží. Před odesláním redakce PII: známé údaje nahrazeny značkami jako <code>[EMAIL]</code>, <code>[PHONE]</code>.</dd></div><div><dt>Data a provoz</dt><dd>SQLite: brokeři, žádosti, odpovědi, lhůty, stav. Cron denně: stáhnout odpovědi, vyřetězit příjemce, přepsat report. V pondělí navíc lhůty a follow-upy. Approval gate přes Telegram.</dd></div></dl>"
+  "jak": {
+    "h2": "Smyčka, která se rozrůstá sama",
+    "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Smyčka žádostí: bot posílá e-maily brokerům, čte odpovědi, Claude z nich vytáhne příjemce a ti se vrací jako nové cíle ke schválení\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"290\" y=\"16\" width=\"180\" height=\"46\" rx=\"10\" fill=\"rgba(46,232,196,.08)\" stroke=\"rgba(46,232,196,.5)\"/><text x=\"380\" y=\"36\" fill=\"#2ee8c4\" font-weight=\"600\">Telegram</text><text x=\"380\" y=\"52\" fill=\"#7c8780\" font-size=\"11\">souhrn dávky · moje „ano“</text>\n            <path d=\"M380 62 L380 108\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\"/>\n            <path d=\"M380 108 L430 137 L430 167 L380 196 L330 167 L330 137 Z\" fill=\"rgba(46,232,196,.10)\" stroke=\"#2ee8c4\"/><text x=\"380\" y=\"148\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Broker</text><text x=\"380\" y=\"164\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Bot</text>\n            <text x=\"380\" y=\"214\" fill=\"#7c8780\" font-size=\"11\">home server · Python bez knihoven · cron</text>\n            <path d=\"M330 152 L170 152\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"20\" y=\"130\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"95\" y=\"150\" fill=\"#edf1ed\" font-weight=\"600\">Data brokeři</text><text x=\"95\" y=\"166\" fill=\"#7c8780\" font-size=\"11\">žádost e-mailem · odpověď</text>\n            <path d=\"M430 152 L590 152\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\"/><rect x=\"590\" y=\"130\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"665\" y=\"150\" fill=\"#edf1ed\" font-weight=\"600\">Claude</text><text x=\"665\" y=\"166\" fill=\"#7c8780\" font-size=\"11\">čte jen redigovaný text</text>\n            <path d=\"M352 186 L120 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"20\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"120\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Lokální databáze</text><text x=\"120\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">žádosti · odpovědi · lhůty · skóre</text>\n            <path d=\"M380 222 L380 246\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\"/><rect x=\"280\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Lhůty a urgence</text><text x=\"380\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">po 30 dnech · spis pro úřad</text>\n            <path d=\"M665 176 L640 246\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\"/><rect x=\"540\" y=\"246\" width=\"200\" height=\"44\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"640\" y=\"265\" fill=\"#ffa94d\" font-weight=\"600\">Noví brokeři do fronty</text><text x=\"640\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">přiznaní příjemci · ke schválení</text>\n            <path d=\"M740 268 L752 268 L752 39 L470 39\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n          </g></svg>",
+    "bullets": [
+      {
+        "b": "Nejdřív přístup, výmaz až potom.",
+        "t": "Žádost o přístup nutí firmu přiznat zdroj i příjemce dat. Při výmazu by smazala dřív, než řekne, kudy data tečou."
+      },
+      {
+        "b": "Nic neodejde bez mého souhlasu.",
+        "t": "Bot připraví dávku, pošle souhrn do Telegramu a čeká na moje ano. Stížnost na úřad je vždy ruční."
+      },
+      {
+        "b": "Přiznaní příjemci jsou nové cíle.",
+        "t": "Claude z odpovědi vytáhne, komu firma data předala. Každá se přidá do fronty ke schválení."
+      },
+      {
+        "b": "Lhůty hlídá bot.",
+        "t": "Po třiceti dnech bez odpovědi připraví urgenci. Když firma mlčí dál, sestaví podklady pro stížnost."
+      }
+    ]
   },
-  {
-   "summary": "Životní cyklus žádosti",
-   "hint": "co se s ní děje po odeslání",
-   "body": "<table class=\"t\"><thead><tr><th>Stav</th><th>Co to znamená</th><th>Co bot udělá</th></tr></thead><tbody><tr><td>odesláno</td><td>čl. 15 odešel, běží 30 dní</td><td>zapíše deadline, čeká</td></tr><tr><td>potvrzeno</td><td>automatické „máme to“</td><td>hlásí do Telegramu, lhůta běží dál</td></tr><tr><td>věcná odpověď</td><td>firma řekla, co má a komu dala</td><td>Claude vytáhne zdroj a příjemce, ti jdou do fronty; pokud drží data, připraví čl. 17</td></tr><tr><td>nedoručeno</td><td>bounce</td><td>hlásí do Telegramu, kontakt hledám ručně</td></tr><tr><td>po lhůtě</td><td>30 dní bez věcné odpovědi</td><td>připraví urgenci ke schválení</td></tr><tr><td>mlčí dál</td><td>ani po urgenci nic</td><td>vyexportuje spis a draft stížnosti; odeslání je vždy ruční</td></tr></tbody></table><p class=\"note\">Spis obsahuje časovou osu, Message-ID, data a lhůty, doslovné citace z odpovědí, AI rozbor a shrnutí porušení.</p>"
+  "zjisteni": {
+    "h2": "Co bot umí",
+    "eyebrow": "Co umí",
+    "items": [
+      {
+        "num": "2",
+        "h": "Články, správné pořadí",
+        "p": "Přístup podle článku 15, výmaz podle článku 17. Ten druhý až po potvrzení, že data drží."
+      },
+      {
+        "num": "1",
+        "h": "Ano v Telegramu",
+        "p": "Souhrn dávky, jedno slovo, teprve pak odeslání."
+      },
+      {
+        "num": "3",
+        "h": "Druhy odpovědí",
+        "p": "Potvrzení, věcná odpověď, nedoručení. Bot je k žádosti páruje sám, přeposlaný mail taky."
+      },
+      {
+        "num": "0–100",
+        "amber": true,
+        "h": "Skóre rizika",
+        "p": "Drží data, prodal je dál, ignoruje lhůtu. Z chování firmy vznikne číslo a vím, na koho se zaměřit první."
+      },
+      {
+        "num": "30+",
+        "amber": true,
+        "h": "Urgence, pak spis",
+        "p": "Po lhůtě urgence. Když firma mlčí dál, vznikne spis pro úřad: časová osa, citace, porušení."
+      },
+      {
+        "num": "2",
+        "h": "Verze reportu",
+        "p": "Veřejná bez osobních údajů pro článek, soukromá s celým auditem pro mě."
+      }
+    ]
   },
-  {
-   "summary": "Skóre rizika",
-   "hint": "0–100 z chování firmy",
-   "body": "<p>Body přičítá za to, že firma data drží, že je předala dál (a kolika příjemcům), že ignoruje lhůtu nebo žádost odmítla. Automatické potvrzení příjmu bez věcné odpovědi je slabý, ale nenulový signál. Výsledek řadí brokery do tří pásem a určuje, komu jde urgence první. Extrakce z odpovědí jede přes Claude, klíčová slova zůstala jen jako fallback bez API.</p>"
-  }
- ],
- "links": [
-  {
-   "text": "Článek na blogu",
-   "href": "https://ongy.cz/pages/blog/"
+  "lekce": {
+    "h2": "Tři věci, na které jsem přišel až v provozu",
+    "items": [
+      {
+        "h": "Nejtěžší je prokázat, kdo jsem",
+        "p": "Firmy s profesními daty párují podle pracovní identity, ne osobního mailu. Osobní žádost tak často vrátí „nic nemáme“. Dám odkaz na veřejný profil, pracovní mail ani telefon ne. Jen by získali další vazbu."
+      },
+      {
+        "h": "Nejdřív zmapovat, pak mazat",
+        "p": "První verze posílala přístup i výmaz najednou. Firma pak klidně „smazala“ a zmizela dřív, než řekla, komu data prodala. Mapa je cennější než rychlý úklid."
+      },
+      {
+        "h": "AI čte odpovědi líp než moje pravidla",
+        "p": "Klasifikace podle klíčových slov se pletla. Claude na strukturovanou extrakci je výrazně přesnější. Pravidla zůstala jako záloha."
+      }
+    ]
   },
-  {
-   "text": "Přehled: AI Lab",
-   "href": "https://ongy.cz/pages/ai/"
-  }
- ],
- "privacy": "Bot běží jen na mém home serveru. Seznam firem, žádosti i odpovědi leží v lokální databázi u mě doma, přihlašovací údaje jsou mimo git. Pro celou komunikaci mám samostatnou schránku: osobní zůstává čistá a korespondence je pohromadě pro případnou stížnost. Do Claude API jde jen redigovaný text odpovědi, moje známé údaje bot předem nahradí značkami. Tahle stránka popisuje, jak je bot postavený: žádný seznam firem ani osobní údaje tu nenajdeš.",
- "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M80 66l16 9v18l-16 9-16-9V75z\"/><circle cx=\"30\" cy=\"40\" r=\"9\"/><circle cx=\"130\" cy=\"40\" r=\"9\"/><circle cx=\"30\" cy=\"120\" r=\"9\"/><circle cx=\"130\" cy=\"120\" r=\"9\"/><circle cx=\"80\" cy=\"22\" r=\"7\" opacity=\".6\"/><path d=\"M38 46l28 22M122 46L94 68M38 114l28-22M122 114L94 92M80 29v37\" opacity=\".55\" stroke-dasharray=\"4 4\"/><path d=\"M118 40h-8M110 40l4-4M110 40l4 4\" opacity=\".7\"/></svg>"
+  "tech": [
+    {
+      "summary": "Stack a běh",
+      "hint": "Python stdlib · SMTP/IMAP · Claude · SQLite",
+      "body": "<dl class=\"kv\"><div><dt>Jádro</dt><dd>Python 3.12, jen standardní knihovna: <code>smtplib</code>, <code>imaplib</code>, <code>sqlite3</code>. Žádné <code>pip install</code>, vlastní mini <code>.env</code> loader. Běží na home serveru.</dd></div><div><dt>E-mail</dt><dd>Samostatná schránka jen pro GDPR. SMTP odesílá, IMAP čte. Párování odpovědí přes <code>Message-ID</code>, detekce bounce i automatického potvrzení. Přeposlaný mail se páruje podle obsahu.</dd></div><div><dt>AI vrstva</dt><dd>Claude Sonnet přes vlastní API klíč, jediné místo s AI. Structured output: zdroj, příjemci, drží/nedrží. Před odesláním redakce PII: známé údaje nahrazeny značkami jako <code>[EMAIL]</code>, <code>[PHONE]</code>.</dd></div><div><dt>Data a provoz</dt><dd>SQLite: brokeři, žádosti, odpovědi, lhůty, stav. Cron denně: stáhnout odpovědi, vyřetězit příjemce, přepsat report. V pondělí navíc lhůty a follow-upy. Approval gate přes Telegram.</dd></div></dl>"
+    },
+    {
+      "summary": "Životní cyklus žádosti",
+      "hint": "co se s ní děje po odeslání",
+      "body": "<table class=\"t\"><thead><tr><th>Stav</th><th>Co to znamená</th><th>Co bot udělá</th></tr></thead><tbody><tr><td>odesláno</td><td>čl. 15 odešel, běží 30 dní</td><td>zapíše deadline, čeká</td></tr><tr><td>potvrzeno</td><td>automatické „máme to“</td><td>hlásí do Telegramu, lhůta běží dál</td></tr><tr><td>věcná odpověď</td><td>firma řekla, co má a komu dala</td><td>Claude vytáhne zdroj a příjemce, ti jdou do fronty; pokud drží data, připraví čl. 17</td></tr><tr><td>nedoručeno</td><td>bounce</td><td>hlásí do Telegramu, kontakt hledám ručně</td></tr><tr><td>po lhůtě</td><td>30 dní bez věcné odpovědi</td><td>připraví urgenci ke schválení</td></tr><tr><td>mlčí dál</td><td>ani po urgenci nic</td><td>vyexportuje spis a draft stížnosti; odeslání je vždy ruční</td></tr></tbody></table><p class=\"note\">Spis obsahuje časovou osu, Message-ID, data a lhůty, doslovné citace z odpovědí, AI rozbor a shrnutí porušení.</p>"
+    },
+    {
+      "summary": "Skóre rizika",
+      "hint": "0–100 z chování firmy",
+      "body": "<p>Body přičítá za to, že firma data drží, že je předala dál (a kolika příjemcům), že ignoruje lhůtu nebo žádost odmítla. Automatické potvrzení příjmu bez věcné odpovědi je slabý, ale nenulový signál. Výsledek řadí brokery do tří pásem a určuje, komu jde urgence první. Extrakce z odpovědí jede přes Claude, klíčová slova zůstala jen jako fallback bez API.</p>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Článek na blogu",
+      "href": "https://ongy.cz/pages/blog/"
+    },
+    {
+      "text": "Přehled: AI Lab",
+      "href": "https://ongy.cz/pages/ai/"
+    }
+  ],
+  "privacy": "Bot běží jen na mém home serveru. Seznam firem, žádosti i odpovědi leží v lokální databázi u mě doma, přihlašovací údaje jsou mimo git. Pro celou komunikaci mám samostatnou schránku: osobní zůstává čistá a korespondence je pohromadě pro případnou stížnost. Do Claude API jde jen redigovaný text odpovědi, moje známé údaje bot předem nahradí značkami. Tahle stránka popisuje, jak je bot postavený: žádný seznam firem ani osobní údaje tu nenajdeš.",
+  "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M80 66l16 9v18l-16 9-16-9V75z\"/><circle cx=\"30\" cy=\"40\" r=\"9\"/><circle cx=\"130\" cy=\"40\" r=\"9\"/><circle cx=\"30\" cy=\"120\" r=\"9\"/><circle cx=\"130\" cy=\"120\" r=\"9\"/><circle cx=\"80\" cy=\"22\" r=\"7\" opacity=\".6\"/><path d=\"M38 46l28 22M122 46L94 68M38 114l28-22M122 114L94 92M80 29v37\" opacity=\".55\" stroke-dasharray=\"4 4\"/><path d=\"M118 40h-8M110 40l4-4M110 40l4 4\" opacity=\".7\"/></svg>"
 }

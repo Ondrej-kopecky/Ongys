@@ -1,162 +1,163 @@
 {
- "path": "pages/homeassistant/automations/",
- "nav": "ha",
- "name": "Automatizace",
- "title": "Automatizace v Home Assistantu: co se doma děje samo",
- "description": "Přes 35 automatizací v Home Assistantu: vysávání, když nejsem doma, světla podle televize a F1, hlídání 3D tisku, žaluzie proti slunci a Zigbee tlačítka. Jak jsou napsané a co se osvědčilo.",
- "section": {
-  "label": "Home Assistant",
-  "href": "https://ongy.cz/pages/homeassistant/"
- },
- "h1": "Co se doma děje, <span>aniž bych sáhl na vypínač.</span>",
- "lead": "Vysavač vyjede, když odejdu. Lampy se přizpůsobí filmu nebo závodu F1. Žaluzie se zatáhnou dřív, než mi slunce svítí do obrazovky. Všechno běží v Home Assistantu na Raspberry Pi, bez cloudu a bez měsíčních poplatků.",
- "chips": [
-  {
-   "text": "běží nepřetržitě"
+  "path": "pages/homeassistant/automations/",
+  "nav": "ha",
+  "tint": "amber",
+  "name": "Automatizace",
+  "title": "Automatizace v Home Assistantu: co se doma děje samo",
+  "description": "Přes 35 automatizací v Home Assistantu: vysávání, když nejsem doma, světla podle televize a F1, hlídání 3D tisku, žaluzie proti slunci a Zigbee tlačítka. Jak jsou napsané a co se osvědčilo.",
+  "section": {
+    "label": "Home Assistant",
+    "href": "https://ongy.cz/pages/homeassistant/"
   },
-  {
-   "text": "Home Assistant · díl 2",
-   "amber": true
-  }
- ],
- "kpi_label": "Aktuální stav",
- "kpis": [
-  {
-   "b": "35+",
-   "small": "automatizací"
+  "h1": "Co se doma děje, <span>aniž bych sáhl na vypínač.</span>",
+  "lead": "Vysavač vyjede, když odejdu. Lampy se přizpůsobí filmu nebo závodu F1. Žaluzie se zatáhnou dřív, než mi slunce svítí do obrazovky. Všechno běží v Home Assistantu na Raspberry Pi, bez cloudu a bez měsíčních poplatků.",
+  "chips": [
+    {
+      "text": "běží nepřetržitě"
+    },
+    {
+      "text": "Home Assistant · díl 2",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Aktuální stav",
+  "kpis": [
+    {
+      "b": "35+",
+      "small": "automatizací"
+    },
+    {
+      "b": "9",
+      "small": "oblastí"
+    },
+    {
+      "b": "vše",
+      "small": "lokálně, bez cloudu"
+    }
+  ],
+  "kpi_note": "Většina jde přes Zigbee a lokální integrace. Když vypadne internet, doma se nic nezmění, jen nedojdou notifikace na mobil.",
+  "intro": {
+    "eyebrow": "O čem to je",
+    "h2": "Nechci ovládat dům z mobilu. Chci, aby se ovládal sám.",
+    "p": [
+      "Chytrá domácnost, kde musím pro každé světlo vytáhnout telefon, je horší než obyčejný vypínač. Proto většinu věcí řeším automatizacemi: pravidlo „když se stane tohle, udělej tamto“ a pak na to zapomenu. Dobrá automatizace je ta, o které rodina neví, že existuje.",
+      "Začal jsem třemi pravidly kolem vysavače a za pár let se to rozrostlo na víc než třicet. Každé z nich vzniklo z konkrétní otravnosti: slunce na obrazovce, zapomenuté světlo v kuchyni, tisk, který v noci selhal a nikdo o tom nevěděl. Tady je výběr těch, které používám denně, a přehled všech oblastí."
+    ]
   },
-  {
-   "b": "9",
-   "small": "oblastí"
-  },
-  {
-   "b": "vše",
-   "small": "lokálně, bez cloudu"
-  }
- ],
- "kpi_note": "Většina jde přes Zigbee a lokální integrace. Když vypadne internet, doma se nic nezmění, jen nedojdou notifikace na mobil.",
- "intro": {
-  "eyebrow": "O čem to je",
-  "h2": "Nechci ovládat dům z mobilu. Chci, aby se ovládal sám.",
-  "p": [
-   "Chytrá domácnost, kde musím pro každé světlo vytáhnout telefon, je horší než obyčejný vypínač. Proto většinu věcí řeším automatizacemi: pravidlo „když se stane tohle, udělej tamto“ a pak na to zapomenu. Dobrá automatizace je ta, o které rodina neví, že existuje.",
-   "Začal jsem třemi pravidly kolem vysavače a za pár let se to rozrostlo na víc než třicet. Každé z nich vzniklo z konkrétní otravnosti: slunce na obrazovce, zapomenuté světlo v kuchyni, tisk, který v noci selhal a nikdo o tom nevěděl. Tady je výběr těch, které používám denně, a přehled všech oblastí."
+  "groups": [
+    {
+      "layout": "steps",
+      "eyebrow": "Ukázky",
+      "h2": "Sedm, které používám denně",
+      "items": [
+        {
+          "mark": "01",
+          "title": "Chytré vysávání",
+          "text": "Když je 10:30, nikdo není půl hodiny doma, vysavač má přes 40 % baterie a stojí v doku, tak nasadí režim vysávání s mopem a vyjede. Na mobil přijde zpráva s tlačítky Stop a Odložit o 2 hodiny.",
+          "code": "triggers:\n  - trigger: time\n    at: \"10:30:00\"\nconditions:\n  - condition: state\n    entity_id: person.me\n    state: not_home\n    for: \"00:30:00\"\n  - condition: numeric_state\n    entity_id: sensor.vacuum_battery\n    above: 40"
+        },
+        {
+          "mark": "02",
+          "title": "Příchod domů",
+          "text": "Když dorazím domů, vysavač se zastaví a vrátí do doku. Pokud je po západu slunce, rozsvítí se lampy v obýváku. Když má vysavač nasazené mopy, spustí se jejich sušení."
+        },
+        {
+          "mark": "03",
+          "title": "Televize a lampy",
+          "text": "Když se zapne televize, lampy za ní přejdou do tlumeného barevného režimu. Když se vypne, lampy zhasnou. Žádné ovládání, jen stav televize jako spouštěč.",
+          "code": "triggers:\n  - trigger: state\n    entity_id: media_player.tv\n    to: \"on\"\nactions:\n  - action: light.turn_on\n    target:\n      entity_id: light.tv_lamps\n    data:\n      brightness_pct: 30\n      rgb_color: [255, 120, 40]"
+        },
+        {
+          "mark": "04",
+          "title": "F1 světla",
+          "text": "Když senzor závodu hlásí Safety Car, lampy zežloutnou. Při červené vlajce blikají červeně. Při startu proběhne odpočet jako na startovní rovince: pět červených, zhasnout, jede se."
+        },
+        {
+          "mark": "05",
+          "title": "3D tisk pod dohledem",
+          "text": "Když začne tisk, rozsvítí se komora tiskárny. Když skončí, přijde notifikace s fotkou a komora zhasne. Když tiskárna nahlásí chybu, dozvím se to okamžitě, ne až ráno.",
+          "code": "triggers:\n  - trigger: state\n    entity_id: sensor.printer_status\n    to: \"finish\"\nactions:\n  - action: notify.mobile_app\n    data:\n      title: \"Tisk hotov\"\n      message: \"Můžeš sundat výtisk.\"\n  - action: light.turn_off\n    target:\n      entity_id: light.printer_chamber"
+        },
+        {
+          "mark": "06",
+          "title": "IKEA STYRBAR v kuchyni",
+          "text": "Když zmáčknu Zigbee ovladač, světla v kuchyni se zapnou nebo vypnou. Boční tlačítka mění jas po 10 %. Funguje pro IKEA světla i pro LED pásek pod linkou, bez telefonu a bez internetu."
+        },
+        {
+          "mark": "07",
+          "title": "Žaluzie proti slunci",
+          "text": "Když se zapne klimatizace, venkovní žaluzie se stáhnou na 25 % a drží chlad. Když běží televize a slunce svítí z jihu, zatáhnou tak, aby neoslňovaly. Večer, když slunce klesne pod 10°, samy vyjedou. Ovládá je vlastní ESP32 s rádiovým modulem, <a href=\"https://ongy.cz/pages/homeassistant/zaluzie/\">celý návod je zvlášť</a>."
+        }
+      ]
+    },
+    {
+      "layout": "cards",
+      "eyebrow": "Podle oblasti",
+      "h2": "Devět oblastí",
+      "items": [
+        {
+          "title": "Vysavač a úklid",
+          "text": "Denní vysávání v 10:30, upozornění na údržbu kartáčů a filtru, návrat do doku při slabé baterii.",
+          "meta": "3 automatizace"
+        },
+        {
+          "title": "Osvětlení",
+          "text": "Ztlumení po západu slunce, ovládání tlačítky, světelné efekty při F1, ranní simulace východu slunce v ložnici.",
+          "meta": "8 automatizací"
+        },
+        {
+          "title": "3D tisk",
+          "text": "Notifikace při dokončení, hlídání teploty a vlhkosti v komoře, vypnutí při chybě, denní přehled tisků.",
+          "meta": "4 automatizace"
+        },
+        {
+          "title": "Notifikace",
+          "text": "Slabá baterie v senzorech, teplota mimo rozsah, spotřeba nad limit. Všechno chodí do mobilu jako krátká zpráva s kontextem.",
+          "meta": "5 automatizací"
+        },
+        {
+          "title": "Přítomnost",
+          "text": "Příchod domů rozsvítí a zastaví vysavač, odchod zhasne, co zůstalo, a „dobrou noc“ vypne všechno najednou.",
+          "meta": "3 automatizace"
+        },
+        {
+          "title": "Energie",
+          "text": "Měsíční report spotřeby, upozornění na neobvyklý odběr, automatické vypnutí zásuvek, které jen žerou proud naprázdno.",
+          "meta": "3 automatizace"
+        },
+        {
+          "title": "Zigbee ovladače",
+          "text": "IKEA STYRBAR pro kuchyň, Sonoff tlačítko pro probuzení, uspání a zamknutí PC, relé v kuchyni a na chodbě, scény pro televizi (Film, Večer, Relax).",
+          "meta": "4 automatizace"
+        },
+        {
+          "title": "F1",
+          "text": "Safety Car přepne lampy na žlutou, červená vlajka spustí blikání. Závod se dá sledovat i po světle v pokoji.",
+          "meta": "2 automatizace"
+        },
+        {
+          "title": "Žaluzie",
+          "text": "Stínění při klimatizaci, ochrana obrazovky před sluncem, večerní vytažení a Zigbee tlačítko nahoru, stop, dolů.",
+          "meta": "4 automatizace"
+        }
+      ]
+    }
+  ],
+  "tech": [
+    {
+      "summary": "Jak jsou automatizace napsané",
+      "hint": "YAML · helpers · template senzory",
+      "body": "<dl class=\"kv\"><div><dt>YAML vs. editor</dt><dd>Jednoduché věci klikám v grafickém editoru Home Assistantu. Cokoliv s více podmínkami nebo s tlačítky v notifikaci píšu rovnou v YAML, líp se to čte a dá se to verzovat.</dd></div><div><dt>Spouštěče a podmínky</dt><dd>Spouštěč je jedna událost (čas, změna stavu, stisk tlačítka). Podmínky určují, jestli má akce vůbec proběhnout: přítomnost, výška slunce, stav baterie. Díky tomu jedna automatizace nemusí řešit všechny výjimky uvnitř.</dd></div><div><dt>Helpers</dt><dd>Přepínače a časovače v Home Assistantu, které nesouvisí s žádným fyzickým zařízením. Používám je třeba na „odložit úklid o 2 hodiny“ nebo na pauzu automatizací, když mám návštěvu.</dd></div><div><dt>Template senzory</dt><dd>Vypočítané hodnoty ze surových dat: jestli slunce svítí z jihu a dost vysoko, jestli je někdo doma déle než půl hodiny, jestli tisk běží. Automatizace pak mají jednu čitelnou podmínku místo pěti.</dd></div><div><dt>Notifikace s tlačítky</dt><dd>Mobilní aplikace umí ve zprávě zobrazit akce. Odpověď na tlačítko je zase událost, kterou chytá další automatizace. Tak vzniklo „Stop“ a „Odložit“ u vysavače.</dd></div></dl>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Přehled: Home Assistant",
+      "href": "https://ongy.cz/pages/homeassistant/"
+    },
+    {
+      "text": "Zařízení a hardware",
+      "href": "https://ongy.cz/pages/homeassistant/devices/"
+    }
   ]
- },
- "groups": [
-  {
-   "layout": "steps",
-   "eyebrow": "Ukázky",
-   "h2": "Sedm, které používám denně",
-   "items": [
-    {
-     "mark": "01",
-     "title": "Chytré vysávání",
-     "text": "Když je 10:30, nikdo není půl hodiny doma, vysavač má přes 40 % baterie a stojí v doku, tak nasadí režim vysávání s mopem a vyjede. Na mobil přijde zpráva s tlačítky Stop a Odložit o 2 hodiny.",
-     "code": "triggers:\n  - trigger: time\n    at: \"10:30:00\"\nconditions:\n  - condition: state\n    entity_id: person.me\n    state: not_home\n    for: \"00:30:00\"\n  - condition: numeric_state\n    entity_id: sensor.vacuum_battery\n    above: 40"
-    },
-    {
-     "mark": "02",
-     "title": "Příchod domů",
-     "text": "Když dorazím domů, vysavač se zastaví a vrátí do doku. Pokud je po západu slunce, rozsvítí se lampy v obýváku. Když má vysavač nasazené mopy, spustí se jejich sušení."
-    },
-    {
-     "mark": "03",
-     "title": "Televize a lampy",
-     "text": "Když se zapne televize, lampy za ní přejdou do tlumeného barevného režimu. Když se vypne, lampy zhasnou. Žádné ovládání, jen stav televize jako spouštěč.",
-     "code": "triggers:\n  - trigger: state\n    entity_id: media_player.tv\n    to: \"on\"\nactions:\n  - action: light.turn_on\n    target:\n      entity_id: light.tv_lamps\n    data:\n      brightness_pct: 30\n      rgb_color: [255, 120, 40]"
-    },
-    {
-     "mark": "04",
-     "title": "F1 světla",
-     "text": "Když senzor závodu hlásí Safety Car, lampy zežloutnou. Při červené vlajce blikají červeně. Při startu proběhne odpočet jako na startovní rovince: pět červených, zhasnout, jede se."
-    },
-    {
-     "mark": "05",
-     "title": "3D tisk pod dohledem",
-     "text": "Když začne tisk, rozsvítí se komora tiskárny. Když skončí, přijde notifikace s fotkou a komora zhasne. Když tiskárna nahlásí chybu, dozvím se to okamžitě, ne až ráno.",
-     "code": "triggers:\n  - trigger: state\n    entity_id: sensor.printer_status\n    to: \"finish\"\nactions:\n  - action: notify.mobile_app\n    data:\n      title: \"Tisk hotov\"\n      message: \"Můžeš sundat výtisk.\"\n  - action: light.turn_off\n    target:\n      entity_id: light.printer_chamber"
-    },
-    {
-     "mark": "06",
-     "title": "IKEA STYRBAR v kuchyni",
-     "text": "Když zmáčknu Zigbee ovladač, světla v kuchyni se zapnou nebo vypnou. Boční tlačítka mění jas po 10 %. Funguje pro IKEA světla i pro LED pásek pod linkou, bez telefonu a bez internetu."
-    },
-    {
-     "mark": "07",
-     "title": "Žaluzie proti slunci",
-     "text": "Když se zapne klimatizace, venkovní žaluzie se stáhnou na 25 % a drží chlad. Když běží televize a slunce svítí z jihu, zatáhnou tak, aby neoslňovaly. Večer, když slunce klesne pod 10°, samy vyjedou. Ovládá je vlastní ESP32 s rádiovým modulem, <a href=\"https://ongy.cz/pages/homeassistant/zaluzie/\">celý návod je zvlášť</a>."
-    }
-   ]
-  },
-  {
-   "layout": "cards",
-   "eyebrow": "Podle oblasti",
-   "h2": "Devět oblastí",
-   "items": [
-    {
-     "title": "Vysavač a úklid",
-     "text": "Denní vysávání v 10:30, upozornění na údržbu kartáčů a filtru, návrat do doku při slabé baterii.",
-     "meta": "3 automatizace"
-    },
-    {
-     "title": "Osvětlení",
-     "text": "Ztlumení po západu slunce, ovládání tlačítky, světelné efekty při F1, ranní simulace východu slunce v ložnici.",
-     "meta": "8 automatizací"
-    },
-    {
-     "title": "3D tisk",
-     "text": "Notifikace při dokončení, hlídání teploty a vlhkosti v komoře, vypnutí při chybě, denní přehled tisků.",
-     "meta": "4 automatizace"
-    },
-    {
-     "title": "Notifikace",
-     "text": "Slabá baterie v senzorech, teplota mimo rozsah, spotřeba nad limit. Všechno chodí do mobilu jako krátká zpráva s kontextem.",
-     "meta": "5 automatizací"
-    },
-    {
-     "title": "Přítomnost",
-     "text": "Příchod domů rozsvítí a zastaví vysavač, odchod zhasne, co zůstalo, a „dobrou noc“ vypne všechno najednou.",
-     "meta": "3 automatizace"
-    },
-    {
-     "title": "Energie",
-     "text": "Měsíční report spotřeby, upozornění na neobvyklý odběr, automatické vypnutí zásuvek, které jen žerou proud naprázdno.",
-     "meta": "3 automatizace"
-    },
-    {
-     "title": "Zigbee ovladače",
-     "text": "IKEA STYRBAR pro kuchyň, Sonoff tlačítko pro probuzení, uspání a zamknutí PC, relé v kuchyni a na chodbě, scény pro televizi (Film, Večer, Relax).",
-     "meta": "4 automatizace"
-    },
-    {
-     "title": "F1",
-     "text": "Safety Car přepne lampy na žlutou, červená vlajka spustí blikání. Závod se dá sledovat i po světle v pokoji.",
-     "meta": "2 automatizace"
-    },
-    {
-     "title": "Žaluzie",
-     "text": "Stínění při klimatizaci, ochrana obrazovky před sluncem, večerní vytažení a Zigbee tlačítko nahoru, stop, dolů.",
-     "meta": "4 automatizace"
-    }
-   ]
-  }
- ],
- "tech": [
-  {
-   "summary": "Jak jsou automatizace napsané",
-   "hint": "YAML · helpers · template senzory",
-   "body": "<dl class=\"kv\"><div><dt>YAML vs. editor</dt><dd>Jednoduché věci klikám v grafickém editoru Home Assistantu. Cokoliv s více podmínkami nebo s tlačítky v notifikaci píšu rovnou v YAML, líp se to čte a dá se to verzovat.</dd></div><div><dt>Spouštěče a podmínky</dt><dd>Spouštěč je jedna událost (čas, změna stavu, stisk tlačítka). Podmínky určují, jestli má akce vůbec proběhnout: přítomnost, výška slunce, stav baterie. Díky tomu jedna automatizace nemusí řešit všechny výjimky uvnitř.</dd></div><div><dt>Helpers</dt><dd>Přepínače a časovače v Home Assistantu, které nesouvisí s žádným fyzickým zařízením. Používám je třeba na „odložit úklid o 2 hodiny“ nebo na pauzu automatizací, když mám návštěvu.</dd></div><div><dt>Template senzory</dt><dd>Vypočítané hodnoty ze surových dat: jestli slunce svítí z jihu a dost vysoko, jestli je někdo doma déle než půl hodiny, jestli tisk běží. Automatizace pak mají jednu čitelnou podmínku místo pěti.</dd></div><div><dt>Notifikace s tlačítky</dt><dd>Mobilní aplikace umí ve zprávě zobrazit akce. Odpověď na tlačítko je zase událost, kterou chytá další automatizace. Tak vzniklo „Stop“ a „Odložit“ u vysavače.</dd></div></dl>"
-  }
- ],
- "links": [
-  {
-   "text": "Přehled: Home Assistant",
-   "href": "https://ongy.cz/pages/homeassistant/"
-  },
-  {
-   "text": "Zařízení a hardware",
-   "href": "https://ongy.cz/pages/homeassistant/devices/"
-  }
- ]
 }

@@ -1,160 +1,161 @@
 {
- "path": "pages/server/audit/",
- "nav": "server",
- "name": "Bezpečnostní audit",
- "title": "Bezpečnostní audit domácnosti — co poslouchá a kdo se dostane dovnitř",
- "description": "Checklist v pěti krocích, který jsem si prošel po přidání VPN: co poslouchá do internetu, kdo se dostane dovnitř, co odchází ven, účty a aktualizace. Tři věci vypnuté, jedno riziko zůstalo.",
- "section": {
-  "label": "Server & síť",
-  "href": "https://ongy.cz/pages/server/"
- },
- "h1": "Co doma poslouchá <span>a kdo se může dostat dovnitř.</span>",
- "lead": "Po přidání VPN jsem prošel všechno, co může někdo zvenku najít. Z internetu nic. Tři věci jsem přesto vypnul a jedno riziko zůstalo.",
- "chips": [
-  {
-   "text": "stav září 2026"
+  "path": "pages/server/audit/",
+  "nav": "server",
+  "tint": "coral",
+  "name": "Bezpečnostní audit",
+  "title": "Bezpečnostní audit domácnosti — co poslouchá a kdo se dostane dovnitř",
+  "description": "Checklist v pěti krocích, který jsem si prošel po přidání VPN: co poslouchá do internetu, kdo se dostane dovnitř, co odchází ven, účty a aktualizace. Tři věci vypnuté, jedno riziko zůstalo.",
+  "section": {
+    "label": "Server & síť",
+    "href": "https://ongy.cz/pages/server/"
   },
-  {
-   "text": "Server &amp; síť · díl 5",
-   "amber": true
-  }
- ],
- "kpi_label": "Stav po auditu",
- "kpis": [
-  {
-   "b": "0",
-   "small": "veřejných portů"
+  "h1": "Co doma poslouchá <span>a kdo se může dostat dovnitř.</span>",
+  "lead": "Po přidání VPN jsem prošel všechno, co může někdo zvenku najít. Z internetu nic. Tři věci jsem přesto vypnul a jedno riziko zůstalo.",
+  "chips": [
+    {
+      "text": "stav září 2026"
+    },
+    {
+      "text": "Server &amp; síť · díl 5",
+      "amber": true
+    }
+  ],
+  "kpi_label": "Stav po auditu",
+  "kpis": [
+    {
+      "b": "0",
+      "small": "veřejných portů"
+    },
+    {
+      "b": "3",
+      "small": "věci vypnuté"
+    },
+    {
+      "b": "1",
+      "small": "zbývající riziko"
+    }
+  ],
+  "kpi_note": "Všechno, co má rozhraní pro správu, je dostupné jen přes VPN. Zbývající riziko není v síti, ale v kapse: odemčený telefon.",
+  "kcemu": {
+    "h2": "Checklist, který si projdeš u sebe za večer",
+    "p": [
+      "Tohle není návod na můj server. Je to pět otázek, které si můžeš položit doma, i když máš jen router a pár chytrých krabiček. Odpovědi najdeš v nastavení routeru a v účtech, které máš dávno založené.",
+      "Kdy? Poprvé hned, pak po každé větší změně: nové zařízení s přístupem zvenku, nová služba, nový router. A jednou za půl roku bez důvodu, protože „vypnuté“ má sklon se samo zase zapnout."
+    ]
   },
-  {
-   "b": "3",
-   "small": "věci vypnuté"
+  "proc": {
+    "h2": "Je to dost bezpečné?",
+    "p": [
+      "Nejdřív jsem postavil VPN, aby se telefon dostal k domácím službám odkudkoliv. Pak jsem přes ni pustil i celou domácí síť. Každé takové zjednodušení je zároveň nová cesta dovnitř.",
+      "Chtěl jsem vědět, kolik těch cest je, kdo po nich může jít a jestli by mi ztráta telefonu otevřela celý byt."
+    ]
   },
-  {
-   "b": "1",
-   "small": "zbývající riziko"
-  }
- ],
- "kpi_note": "Všechno, co má rozhraní pro správu, je dostupné jen přes VPN. Zbývající riziko není v síti, ale v kapse: odemčený telefon.",
- "kcemu": {
-  "h2": "Checklist, který si projdeš u sebe za večer",
-  "p": [
-   "Tohle není návod na můj server. Je to pět otázek, které si můžeš položit doma, i když máš jen router a pár chytrých krabiček. Odpovědi najdeš v nastavení routeru a v účtech, které máš dávno založené.",
-   "Kdy? Poprvé hned, pak po každé větší změně: nové zařízení s přístupem zvenku, nová služba, nový router. A jednou za půl roku bez důvodu, protože „vypnuté“ má sklon se samo zase zapnout."
-  ]
- },
- "proc": {
-  "h2": "Je to dost bezpečné?",
-  "p": [
-   "Nejdřív jsem postavil VPN, aby se telefon dostal k domácím službám odkudkoliv. Pak jsem přes ni pustil i celou domácí síť. Každé takové zjednodušení je zároveň nová cesta dovnitř.",
-   "Chtěl jsem vědět, kolik těch cest je, kdo po nich může jít a jestli by mi ztráta telefonu otevřela celý byt."
-  ]
- },
- "jak": {
-  "h2": "Checklist v pěti krocích",
-  "visual": "<svg viewBox=\"0 0 760 120\" role=\"img\" aria-label=\"Pět kroků auditu: co poslouchá ven, kdo se dostane dovnitř, co odchází ven, účty a 2FA, aktualizace\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <path d=\"M90 60 H670\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n            <g><rect x=\"20\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"88\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">01</text><text x=\"88\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Co poslouchá ven</text></g>\n            <g><rect x=\"172\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"240\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">02</text><text x=\"240\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Kdo se dostane dovnitř</text></g>\n            <g><rect x=\"324\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"392\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">03</text><text x=\"392\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Co odchází ven</text></g>\n            <g><rect x=\"476\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"544\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">04</text><text x=\"544\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Účty a 2FA</text></g>\n            <g><rect x=\"628\" y=\"30\" width=\"112\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"684\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">05</text><text x=\"684\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Aktualizace</text></g>\n            <text x=\"380\" y=\"110\" fill=\"#7c8780\" font-size=\"11\">zvenku dovnitř, pak zevnitř ven, nakonec účty a údržba</text>\n          </g></svg>",
-  "bullets": [
-   {
-    "b": "Co poslouchá do internetu.",
-    "t": "Vypíšu vše, co čeká na spojení, a ptám se, na jaké adrese. Pro veřejnou adresu je správná odpověď: nic. Web jde ven tunelem, který spojení navazuje zevnitř."
-   },
-   {
-    "b": "Kdo se dostane dovnitř.",
-    "t": "Rozhraní pro správu jen přes VPN. SSH jen klíčem a jen na VPN adrese. Router: vzdálená správa, UPnP a WPS vypnuté."
-   },
-   {
-    "b": "Co odchází ven.",
-    "t": "Vlastní DNS vidí každý dotaz z domácnosti. Když něco mluví s neznámým serverem, uvidím to tady první."
-   },
-   {
-    "b": "Účty a dvoufázové ověření.",
-    "t": "Hlavní účet, správa VPN, doména, router. Všude 2FA. Účet je dnes větší díra než port."
-   },
-   {
-    "b": "Aktualizace.",
-    "t": "Kontejnery se aktualizují samy, s výjimkou DNS, u kterého chci každou změnu vidět. Systém a router ručně, ale pravidelně."
-   }
-  ]
- },
- "zjisteni": {
-  "h2": "Co jsem našel a vypnul",
-  "eyebrow": "Nálezy",
-  "items": [
-   {
-    "num": "1/3",
-    "h": "Cloud přístup k Home Assistantu",
-    "p": "Zapnutý ještě z dob před VPN. Aplikace v telefonu už jede přes VPN, tak jsem cloud vypnul. Jedna cesta dovnitř míň."
-   },
-   {
-    "num": "2/3",
-    "h": "Sdílení souborů mezi zařízeními",
-    "p": "Desktopová aplikace poslouchala na všech adresách. Použil jsem ji dvakrát. Ukončena a z autostartu pryč."
-   },
-   {
-    "num": "3/3",
-    "h": "Propojení s telefonem",
-    "p": "Služba na párování notebooku s mobilem. Poslouchá všude, nepoužívám. Vypnuto včetně autostartu."
-   },
-   {
-    "num": "OK",
-    "h": "Router",
-    "p": "Vzdálená správa z internetu, UPnP i WPS vypnuté. Wi-Fi na WPA3 s přechodem pro starší zařízení."
-   },
-   {
-    "num": "OK",
-    "h": "Tunel a VPN",
-    "p": "Tunel vede jen k webům, k žádné správě. VPN bez výstupního uzlu, server cizí trasy nepřijímá. Ztracené zařízení musím smazat ručně."
-   },
-   {
-    "num": "1",
-    "amber": true,
-    "h": "Zbývá: fyzické riziko",
-    "p": "Odemčený mobil nebo počítač, případně ukradený hlavní účet, znamená přístup do celé sítě. Mitigace: 2FA, zámek obrazovky, ztracené zařízení hned odebrat z VPN."
-   }
-  ]
- },
- "lekce": {
-  "h2": "Tři věci, které jsem si odnesl",
-  "items": [
-   {
-    "h": "Nejslabší místo je odemčený telefon",
-    "p": "Nula veřejných portů nepomůže, když kdo drží můj odemčený mobil, je doma. Na řadě je zámek obrazovky a kratší čas do uzamčení."
-   },
-   {
-    "h": "Audit má smysl jako diff",
-    "p": "Poprvé to trvalo večer. Podruhé kontroluju jen, co se změnilo od minula. Proto si stav zapisuju: co poslouchá, co je vypnuté a proč."
-   },
-   {
-    "h": "„Vypnuto“ musí přežít restart",
-    "p": "Ukončit aplikaci nestačí. Dvě z vypnutých služeb měly autostart a po restartu by byly zpátky. Hotovo je, až když to ověřím po restartu."
-   }
-  ]
- },
- "tech": [
-  {
-   "summary": "Jak jsem kontroloval",
-   "hint": "čtyři otázky, žádné výstupy",
-   "body": "<dl class=\"kv\"><div><dt>Co poslouchá</dt><dd>Výpis naslouchajících soketů systémovou utilitou, seřazený podle adresy. Cokoliv s „všechny adresy“ musí mít důvod, nebo jde pryč.</dd></div><div><dt>Firewall</dt><dd>Stav firewallu a výchozí politika pro příchozí spojení: zamítnout. Výjimky jen pro to, co potřebuje domácnost.</dd></div><div><dt>Tunel</dt><dd>Konfigurace tunelu: seznam veřejných jmen a kam vedou. Hledal jsem cokoliv, co vypadá jako správa, a nenašel.</dd></div><div><dt>VPN</dt><dd>Stav VPN klienta: výstupní uzel, sdílení služeb ven, přijímání cizích tras, expirace klíčů. Plus pravidla, které zařízení smí do domácí sítě.</dd></div></dl>"
+  "jak": {
+    "h2": "Checklist v pěti krocích",
+    "visual": "<svg viewBox=\"0 0 760 120\" role=\"img\" aria-label=\"Pět kroků auditu: co poslouchá ven, kdo se dostane dovnitř, co odchází ven, účty a 2FA, aktualizace\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <path d=\"M90 60 H670\" stroke=\"rgba(46,232,196,.35)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n            <g><rect x=\"20\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"88\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">01</text><text x=\"88\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Co poslouchá ven</text></g>\n            <g><rect x=\"172\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"240\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">02</text><text x=\"240\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Kdo se dostane dovnitř</text></g>\n            <g><rect x=\"324\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"392\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">03</text><text x=\"392\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Co odchází ven</text></g>\n            <g><rect x=\"476\" y=\"30\" width=\"136\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"544\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">04</text><text x=\"544\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Účty a 2FA</text></g>\n            <g><rect x=\"628\" y=\"30\" width=\"112\" height=\"60\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"684\" y=\"52\" fill=\"#2ee8c4\" font-family=\"JetBrains Mono, monospace\" font-weight=\"700\">05</text><text x=\"684\" y=\"70\" fill=\"#edf1ed\" font-weight=\"600\">Aktualizace</text></g>\n            <text x=\"380\" y=\"110\" fill=\"#7c8780\" font-size=\"11\">zvenku dovnitř, pak zevnitř ven, nakonec účty a údržba</text>\n          </g></svg>",
+    "bullets": [
+      {
+        "b": "Co poslouchá do internetu.",
+        "t": "Vypíšu vše, co čeká na spojení, a ptám se, na jaké adrese. Pro veřejnou adresu je správná odpověď: nic. Web jde ven tunelem, který spojení navazuje zevnitř."
+      },
+      {
+        "b": "Kdo se dostane dovnitř.",
+        "t": "Rozhraní pro správu jen přes VPN. SSH jen klíčem a jen na VPN adrese. Router: vzdálená správa, UPnP a WPS vypnuté."
+      },
+      {
+        "b": "Co odchází ven.",
+        "t": "Vlastní DNS vidí každý dotaz z domácnosti. Když něco mluví s neznámým serverem, uvidím to tady první."
+      },
+      {
+        "b": "Účty a dvoufázové ověření.",
+        "t": "Hlavní účet, správa VPN, doména, router. Všude 2FA. Účet je dnes větší díra než port."
+      },
+      {
+        "b": "Aktualizace.",
+        "t": "Kontejnery se aktualizují samy, s výjimkou DNS, u kterého chci každou změnu vidět. Systém a router ručně, ale pravidelně."
+      }
+    ]
   },
-  {
-   "summary": "Otevřené body",
-   "hint": "co ještě není dořešené",
-   "body": "<p>Automatické aktualizace kontejnerů běží v univerzálním čase, takže se spouštějí o dvě hodiny jindy, než si myslím. Buď nastavím časovou zónu, nebo u jedné služby zafixuju verzi místo „vždy nejnovější“. A v Home Assistantu zbývá jedna volba, která dovoluje vzdálený přístup znovu zapnout z aplikace. Vypnout, aby „vypnuto“ platilo i tam.</p>"
-  }
- ],
- "links": [
-  {
-   "text": "Článek na blogu",
-   "href": "https://ongy.cz/pages/blog/"
+  "zjisteni": {
+    "h2": "Co jsem našel a vypnul",
+    "eyebrow": "Nálezy",
+    "items": [
+      {
+        "num": "1/3",
+        "h": "Cloud přístup k Home Assistantu",
+        "p": "Zapnutý ještě z dob před VPN. Aplikace v telefonu už jede přes VPN, tak jsem cloud vypnul. Jedna cesta dovnitř míň."
+      },
+      {
+        "num": "2/3",
+        "h": "Sdílení souborů mezi zařízeními",
+        "p": "Desktopová aplikace poslouchala na všech adresách. Použil jsem ji dvakrát. Ukončena a z autostartu pryč."
+      },
+      {
+        "num": "3/3",
+        "h": "Propojení s telefonem",
+        "p": "Služba na párování notebooku s mobilem. Poslouchá všude, nepoužívám. Vypnuto včetně autostartu."
+      },
+      {
+        "num": "OK",
+        "h": "Router",
+        "p": "Vzdálená správa z internetu, UPnP i WPS vypnuté. Wi-Fi na WPA3 s přechodem pro starší zařízení."
+      },
+      {
+        "num": "OK",
+        "h": "Tunel a VPN",
+        "p": "Tunel vede jen k webům, k žádné správě. VPN bez výstupního uzlu, server cizí trasy nepřijímá. Ztracené zařízení musím smazat ručně."
+      },
+      {
+        "num": "1",
+        "amber": true,
+        "h": "Zbývá: fyzické riziko",
+        "p": "Odemčený mobil nebo počítač, případně ukradený hlavní účet, znamená přístup do celé sítě. Mitigace: 2FA, zámek obrazovky, ztracené zařízení hned odebrat z VPN."
+      }
+    ]
   },
-  {
-   "text": "Přehled: Server &amp; síť",
-   "href": "https://ongy.cz/pages/server/"
+  "lekce": {
+    "h2": "Tři věci, které jsem si odnesl",
+    "items": [
+      {
+        "h": "Nejslabší místo je odemčený telefon",
+        "p": "Nula veřejných portů nepomůže, když kdo drží můj odemčený mobil, je doma. Na řadě je zámek obrazovky a kratší čas do uzamčení."
+      },
+      {
+        "h": "Audit má smysl jako diff",
+        "p": "Poprvé to trvalo večer. Podruhé kontroluju jen, co se změnilo od minula. Proto si stav zapisuju: co poslouchá, co je vypnuté a proč."
+      },
+      {
+        "h": "„Vypnuto“ musí přežít restart",
+        "p": "Ukončit aplikaci nestačí. Dvě z vypnutých služeb měly autostart a po restartu by byly zpátky. Hotovo je, až když to ověřím po restartu."
+      }
+    ]
   },
-  {
-   "text": "Tailscale: VPN domů",
-   "href": "https://ongy.cz/pages/server/tailscale/"
-  }
- ],
- "privacy": "Tahle stránka schválně neuvádí, co přesně a kde běží: žádné adresy, porty, jména služeb ani zařízení. Je to popis obrany, ne mapa. Kdo si chce ověřit svoje, ať si projde checklist nahoře u sebe. Funguje stejně s jedním routerem jako s celým serverem.",
- "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M80 18l48 20v40c0 30-22 52-48 64C54 130 32 108 32 78V38z\"/><path d=\"M80 48l24 14v28L80 104 56 90V62z\" opacity=\".6\"/><path d=\"M68 78l9 9 17-19\" stroke-width=\"2.2\"/><rect x=\"112\" y=\"118\" width=\"26\" height=\"20\" rx=\"4\" opacity=\".8\"/><path d=\"M117 118v-6a8 8 0 0 1 16 0v6\" opacity=\".8\"/><circle cx=\"125\" cy=\"128\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/></svg>"
+  "tech": [
+    {
+      "summary": "Jak jsem kontroloval",
+      "hint": "čtyři otázky, žádné výstupy",
+      "body": "<dl class=\"kv\"><div><dt>Co poslouchá</dt><dd>Výpis naslouchajících soketů systémovou utilitou, seřazený podle adresy. Cokoliv s „všechny adresy“ musí mít důvod, nebo jde pryč.</dd></div><div><dt>Firewall</dt><dd>Stav firewallu a výchozí politika pro příchozí spojení: zamítnout. Výjimky jen pro to, co potřebuje domácnost.</dd></div><div><dt>Tunel</dt><dd>Konfigurace tunelu: seznam veřejných jmen a kam vedou. Hledal jsem cokoliv, co vypadá jako správa, a nenašel.</dd></div><div><dt>VPN</dt><dd>Stav VPN klienta: výstupní uzel, sdílení služeb ven, přijímání cizích tras, expirace klíčů. Plus pravidla, které zařízení smí do domácí sítě.</dd></div></dl>"
+    },
+    {
+      "summary": "Otevřené body",
+      "hint": "co ještě není dořešené",
+      "body": "<p>Automatické aktualizace kontejnerů běží v univerzálním čase, takže se spouštějí o dvě hodiny jindy, než si myslím. Buď nastavím časovou zónu, nebo u jedné služby zafixuju verzi místo „vždy nejnovější“. A v Home Assistantu zbývá jedna volba, která dovoluje vzdálený přístup znovu zapnout z aplikace. Vypnout, aby „vypnuto“ platilo i tam.</p>"
+    }
+  ],
+  "links": [
+    {
+      "text": "Článek na blogu",
+      "href": "https://ongy.cz/pages/blog/"
+    },
+    {
+      "text": "Přehled: Server &amp; síť",
+      "href": "https://ongy.cz/pages/server/"
+    },
+    {
+      "text": "Tailscale: VPN domů",
+      "href": "https://ongy.cz/pages/server/tailscale/"
+    }
+  ],
+  "privacy": "Tahle stránka schválně neuvádí, co přesně a kde běží: žádné adresy, porty, jména služeb ani zařízení. Je to popis obrany, ne mapa. Kdo si chce ověřit svoje, ať si projde checklist nahoře u sebe. Funguje stejně s jedním routerem jako s celým serverem.",
+  "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M80 18l48 20v40c0 30-22 52-48 64C54 130 32 108 32 78V38z\"/><path d=\"M80 48l24 14v28L80 104 56 90V62z\" opacity=\".6\"/><path d=\"M68 78l9 9 17-19\" stroke-width=\"2.2\"/><rect x=\"112\" y=\"118\" width=\"26\" height=\"20\" rx=\"4\" opacity=\".8\"/><path d=\"M117 118v-6a8 8 0 0 1 16 0v6\" opacity=\".8\"/><circle cx=\"125\" cy=\"128\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/></svg>"
 }

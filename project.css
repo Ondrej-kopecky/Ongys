@@ -20,9 +20,11 @@
 .kpis li { padding: 14px 0 0; border-top: 1px solid var(--line); }
 .kpis b { display: block; font-family: "Montserrat", "Inter", sans-serif; font-size: 1.7rem; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
 .kpis small { display: block; margin-top: 6px; color: var(--muted); font-size: .74rem; }
+.kpis b em { display: block; margin-top: 5px; font: 600 .55em/1 "Inter", sans-serif; font-style: normal; letter-spacing: 0; color: var(--soft); white-space: nowrap; }
 .hero-panel p.note { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: var(--soft); font-size: .88rem; }
 
-.psection { padding-block: 56px; border-top: 1px solid var(--line); }
+.psection { position: relative; padding-block: 56px; border-top: 0; }
+.psection::before { content: ""; position: absolute; top: 0; left: 50%; width: var(--shell); max-width: 1100px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, rgb(var(--tone-rgb)) 0, rgba(var(--tone-rgb),.45) 48px, var(--line) 140px, var(--line) 72%, transparent 100%); }
 .psection-grid { display: grid; grid-template-columns: 250px 1fr; gap: 44px; align-items: start; }
 .psection-head { position: sticky; top: 90px; }
 .psection-head h2 { margin: 0; font-size: 1.55rem; line-height: 1.15; letter-spacing: -.03em; }
@@ -73,13 +75,11 @@ table.t td:last-child { text-align: right; white-space: nowrap; font-variant-num
 .note { margin: 14px 0 0; color: var(--muted); font-size: .85rem; }
 
 .links { display: flex; flex-wrap: wrap; gap: 10px; }
-.button-quiet { color: var(--text); background: var(--panel); border: 1px solid var(--line); }
-.button-quiet:hover { color: var(--teal); background: var(--panel-2); border-color: var(--teal); }
 .privacy { padding: 22px 24px; color: var(--soft); font-size: .92rem; }
 .privacy strong { color: var(--text); }
 
 @media (max-width: 900px) { .project-hero { grid-template-columns: 1fr; gap: 28px; padding-block: 44px 36px; } .psection-grid { grid-template-columns: 1fr; gap: 18px; } .psection-head { position: static; } .finds { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 700px) { .finds, .kv { grid-template-columns: 1fr; } .kpis { gap: 10px; } .kpis b { font-size: 1.4rem; } .psection { padding-block: 40px; } }
+@media (max-width: 700px) { .finds, .kv { grid-template-columns: 1fr; } .kpis { gap: 10px; } .kpis b { font-size: 1.4rem; } .kpis b em { font-size: .62em; } .psection { padding-block: 40px; } }
 
 /* --- přehled sekce --- */
 .section-intro-inline { margin-bottom: 20px; }
@@ -162,3 +162,56 @@ pre.code code { padding: 0; background: none; font: inherit; }
 
 .step > div, .lesson > div, .find { min-width: 0; }
 pre.code { max-width: 100%; }
+
+/* ===== Skleněné destičky (vnitřní stránky) ===== */
+.psection, .project-hero, .archive { position: relative; }
+.psection::after, .project-hero::after, .archive::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; z-index: -1; pointer-events: none;
+  /* záře jen pod sloupcem s obsahem (ne přes celou šířku okna), s malým přesahem do stran */
+  width: calc(var(--shell) + 240px); max-width: 1340px; transform: translateX(-50%);
+  background:
+    radial-gradient(36% 50% at 14% 22%, var(--glow-a), transparent 70%),
+    radial-gradient(28% 40% at 84% 26%, var(--glow-b), transparent 70%),
+    radial-gradient(30% 40% at 60% 88%, var(--glow-c), transparent 70%);
+  /* plynulé ztlumení u všech okrajů, aby se záře nikde neusekla */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 24%, #000 76%, transparent 100%), linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(180deg, transparent 0, #000 24%, #000 76%, transparent 100%), linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
+}
+.panel, .hero-panel, .find, .lesson, details.tech, .shot, .row-list, .post, .about-band, .diagram {
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.018) 40%, rgba(255,255,255,.01) 65%, rgba(var(--tone-rgb),.05) 100%);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(255,255,255,.04),
+    inset 1px 0 0 rgba(255,255,255,.08),
+    0 1px 2px rgba(0,0,0,.35),
+    0 18px 40px rgba(0,0,0,.35),
+    0 40px 90px rgba(0,0,0,.3);
+}
+.panel, .find, .lesson, details.tech, .post, .about-band, .hero-panel { position: relative; overflow: hidden; }
+.panel::before, .find::before, .lesson::before, .post::before, .about-band::before, .hero-panel::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background:
+    /* barva projektu jen u okrajů (pravý horní roh + slabý náběh zleva), ne pruh přes střed */
+    radial-gradient(70% 60% at 100% 0%, rgba(var(--tone-rgb),.09), transparent 70%),
+    linear-gradient(115deg, rgba(var(--tone-rgb),.06) 0%, rgba(var(--tone-rgb),.02) 16%, transparent 28%),
+    /* bílý lesk nahoře = sklo */
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 35%);
+}
+.hero-panel::after { display: none; }
+.hero-panel > *, .find > *, .lesson > *, .post > *, .about-band > * { position: relative; z-index: 1; }
+.hero-panel .motif { z-index: 1; }
+.find:hover { border-color: rgba(var(--tone-rgb),.45); background: linear-gradient(135deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.03) 40%, rgba(var(--tone-rgb),.08) 100%); }
+details.tech summary { position: relative; z-index: 1; }
+details.tech .body { position: relative; z-index: 1; }
+.kv, .table, .t { position: relative; z-index: 1; }
+.shot figcaption { position: relative; z-index: 1; }
+/* lightbox a ovládací prvky ať zůstanou plné */
+dialog.lightbox { backdrop-filter: none; }
+@media (max-width: 700px) {
+  .panel, .hero-panel, .find, .lesson, details.tech, .shot, .row-list, .post, .about-band, .diagram { backdrop-filter: blur(6px) saturate(150%); -webkit-backdrop-filter: blur(6px) saturate(150%); }
+}

@@ -1,121 +1,126 @@
 {
- "path": "pages/homeassistant/",
- "nav": "ha",
- "name": "Home Assistant",
- "color": "teal",
- "title": "Home Assistant",
- "description": "Chytrá domácnost, která tiše dělá svou práci: 50+ zařízení, 35+ automatizací, tablet na zdi, dashboardy a vlastní RF most pro žaluzie. Vše na Raspberry Pi doma.",
- "h1": "Byt, který se stará <span>o rutinu.</span>",
- "lead": "Světla, žaluzie, energie i vzduch na jednom místě. Automatizace běží doma na Raspberry Pi a já mám pořád kontrolu nad daty. Chytrá domácnost, na kterou většinu času ani nemyslím.",
- "kpi_label": "Domácnost",
- "kpis": [
-  {
-   "b": "50+",
-   "small": "zařízení"
-  },
-  {
-   "b": "35+",
-   "small": "automatizací"
-  },
-  {
-   "b": "9",
-   "small": "dashboardů"
-  }
- ],
- "kpi_note": "Raspberry Pi 5, Zigbee, Wi-Fi zařízení v oddělené síti. Grafana na data, tablet na zdi na ovládání.",
- "intro_h2": "Systém, ne hromada gadgetů",
- "intro": [
-  "Nejde mi o blikající krabičky. Chtěl jsem systém, který ráno roztáhne žaluzie, večer ztlumí světla, hlídá vzduch a spotřebu a nikoho neobtěžuje. Když něco dělám ručně potřetí, je to kandidát na automatizaci.",
-  "Sekce je rozdělená podle toho, co hledáš: zařízení a hardware, automatizace, data a monitoring, tipy. A jeden díl o žaluziích, které oficiálně do Home Assistantu nejdou, tak jsem si postavil vlastní most."
- ],
- "projects_h2": "Podstránky",
- "projects": [
-  {
-   "href": "https://ongy.cz/pages/homeassistant/devices/",
-   "tag": "HARDWARE",
-   "name": "Zařízení a hardware",
-   "text": "Raspberry Pi 5, Zigbee, tablet na zdi, senzory a zásuvky. Co doma běží a proč zrovna tohle.",
-   "meta": "50+ zařízení",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/homeassistant/automations/",
-   "tag": "AUTOMATIZACE",
-   "name": "Automatizace",
-   "text": "Osm kategorií od světel po energii. S ukázkami, které se dají zkopírovat.",
-   "meta": "35+ automatizací",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/homeassistant/monitoring/",
-   "tag": "DATA",
-   "name": "Data a monitoring",
-   "text": "Grafana, InfluxDB, Node-RED reporty. Jak vypadá týden domácnosti v grafech.",
-   "meta": "9 dashboardů",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/homeassistant/tips/",
-   "tag": "TIPY",
-   "name": "Tipy a triky",
-   "text": "AI integrace, šablony, drobnosti, které šetří čas.",
-   "meta": "",
-   "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/homeassistant/zaluzie/",
-   "tag": "PROJEKT",
-   "name": "Aluprof žaluzie přes ESP32",
-   "text": "Vlastní RF most, protože oficiální cesta neexistuje. Odposlech ovladače, ESPHome, kalibrace a tři automatizace.",
-   "meta": "ESP32 · CC1101 · 433 MHz",
-   "cta": "Číst →"
-  }
- ],
- "notes": [
-  {
-   "href": "https://ongy.cz/pages/homeassistant/zaluzie/",
-   "mark": "RF",
-   "title": "Aluprof žaluzie do Home Assistantu přes vlastní ESP32",
-   "date": "31. května 2026 · žaluzie"
-  }
- ],
- "stack": [
-  [
-   "Mozek",
-   "Home Assistant na Raspberry Pi 5, ESPHome pro vlastní zařízení, Node-RED na reporty."
+  "path": "pages/homeassistant/",
+  "nav": "ha",
+  "name": "Home Assistant",
+  "color": "teal",
+  "title": "Home Assistant",
+  "description": "Chytrá domácnost, která tiše dělá svou práci: 50+ zařízení, 35+ automatizací, tablet na zdi, dashboardy a vlastní RF most pro žaluzie. Vše na Raspberry Pi doma.",
+  "h1": "Byt, který se stará <span>o rutinu.</span>",
+  "lead": "Světla, žaluzie, energie i vzduch na jednom místě. Automatizace běží doma na Raspberry Pi a já mám pořád kontrolu nad daty. Chytrá domácnost, na kterou většinu času ani nemyslím.",
+  "kpi_label": "Domácnost",
+  "kpis": [
+    {
+      "b": "50+",
+      "small": "zařízení"
+    },
+    {
+      "b": "35+",
+      "small": "automatizací"
+    },
+    {
+      "b": "9",
+      "small": "dashboardů"
+    }
   ],
-  [
-   "Zařízení",
-   "Zigbee senzory a světla, Wi-Fi zásuvky a světla v oddělené IoT síti, tablet na zdi jako ovládací panel."
+  "kpi_note": "Raspberry Pi 5, Zigbee, Wi-Fi zařízení v oddělené síti. Grafana na data, tablet na zdi na ovládání.",
+  "intro_h2": "Systém, ne hromada gadgetů",
+  "intro": [
+    "Nejde mi o blikající krabičky. Chtěl jsem systém, který ráno roztáhne žaluzie, večer ztlumí světla, hlídá vzduch a spotřebu a nikoho neobtěžuje. Když něco dělám ručně potřetí, je to kandidát na automatizaci.",
+    "Sekce je rozdělená podle toho, co hledáš: zařízení a hardware, automatizace, data a monitoring, tipy. A jeden díl o žaluziích, které oficiálně do Home Assistantu nejdou, tak jsem si postavil vlastní most."
   ],
-  [
-   "Data",
-   "InfluxDB a Grafana na home serveru, energie po místnostech, teploty, vlhkost, spotřeba PC."
+  "projects_h2": "Podstránky",
+  "projects": [
+    {
+      "href": "https://ongy.cz/pages/homeassistant/devices/",
+      "tag": "HARDWARE",
+      "name": "Zařízení a hardware",
+      "text": "Raspberry Pi 5, Zigbee, tablet na zdi, senzory a zásuvky. Co doma běží a proč zrovna tohle.",
+      "meta": "50+ zařízení",
+      "cta": "Otevřít →",
+      "tint": "teal"
+    },
+    {
+      "href": "https://ongy.cz/pages/homeassistant/automations/",
+      "tag": "AUTOMATIZACE",
+      "name": "Automatizace",
+      "text": "Osm kategorií od světel po energii. S ukázkami, které se dají zkopírovat.",
+      "meta": "35+ automatizací",
+      "cta": "Otevřít →",
+      "tint": "amber"
+    },
+    {
+      "href": "https://ongy.cz/pages/homeassistant/monitoring/",
+      "tag": "DATA",
+      "name": "Data a monitoring",
+      "text": "Grafana, InfluxDB, Node-RED reporty. Jak vypadá týden domácnosti v grafech.",
+      "meta": "9 dashboardů",
+      "cta": "Otevřít →",
+      "tint": "ice"
+    },
+    {
+      "href": "https://ongy.cz/pages/homeassistant/tips/",
+      "tag": "TIPY",
+      "name": "Tipy a triky",
+      "text": "AI integrace, šablony, drobnosti, které šetří čas.",
+      "meta": "",
+      "cta": "Otevřít →",
+      "tint": "purple"
+    },
+    {
+      "href": "https://ongy.cz/pages/homeassistant/zaluzie/",
+      "tag": "PROJEKT",
+      "name": "Aluprof žaluzie přes ESP32",
+      "text": "Vlastní RF most, protože oficiální cesta neexistuje. Odposlech ovladače, ESPHome, kalibrace a tři automatizace.",
+      "meta": "ESP32 · CC1101 · 433 MHz",
+      "cta": "Číst →",
+      "tint": "coral"
+    }
   ],
-  [
-   "Přístup",
-   "Lokálně přes tablet a aplikaci, zvenku přes Tailscale. Cloud Home Assistantu vypnutý."
-  ]
- ],
- "media": {
-  "h2": "Ovládání na zdi a data v grafech",
-  "items": [
-   {
-    "src": "../../assets/wall-tablet.jpg",
-    "alt": "Tablet na zdi s dashboardem Home Assistantu",
-    "caption": "Tablet na zdi: hlavní ovládací panel bytu, běží v kiosk režimu.",
-    "wide": true
-   },
-   {
-    "src": "../../assets/grafana-filament.jpg",
-    "alt": "Graf vlhkosti v boxu s filamentem v Grafaně",
-    "caption": "Vlhkost v boxu s filamentem, měřená senzorem a vykreslená v Grafaně."
-   },
-   {
-    "src": "../../assets/silica-gel-box.jpg",
-    "alt": "Box se silikagelem a senzorem",
-    "caption": "Suchý box se silikagelem a senzorem, který hlásí do Home Assistantu."
-   }
-  ]
- }
+  "notes": [
+    {
+      "href": "https://ongy.cz/pages/homeassistant/zaluzie/",
+      "mark": "RF",
+      "title": "Aluprof žaluzie do Home Assistantu přes vlastní ESP32",
+      "date": "31. května 2026 · žaluzie"
+    }
+  ],
+  "stack": [
+    [
+      "Mozek",
+      "Home Assistant na Raspberry Pi 5, ESPHome pro vlastní zařízení, Node-RED na reporty."
+    ],
+    [
+      "Zařízení",
+      "Zigbee senzory a světla, Wi-Fi zásuvky a světla v oddělené IoT síti, tablet na zdi jako ovládací panel."
+    ],
+    [
+      "Data",
+      "InfluxDB a Grafana na home serveru, energie po místnostech, teploty, vlhkost, spotřeba PC."
+    ],
+    [
+      "Přístup",
+      "Lokálně přes tablet a aplikaci, zvenku přes Tailscale. Cloud Home Assistantu vypnutý."
+    ]
+  ],
+  "media": {
+    "h2": "Ovládání na zdi a data v grafech",
+    "items": [
+      {
+        "src": "../../assets/wall-tablet.jpg",
+        "alt": "Tablet na zdi s dashboardem Home Assistantu",
+        "caption": "Tablet na zdi: hlavní ovládací panel bytu, běží v kiosk režimu.",
+        "wide": true
+      },
+      {
+        "src": "../../assets/grafana-filament.jpg",
+        "alt": "Graf vlhkosti v boxu s filamentem v Grafaně",
+        "caption": "Vlhkost v boxu s filamentem, měřená senzorem a vykreslená v Grafaně."
+      },
+      {
+        "src": "../../assets/silica-gel-box.jpg",
+        "alt": "Box se silikagelem a senzorem",
+        "caption": "Suchý box se silikagelem a senzorem, který hlásí do Home Assistantu."
+      }
+    ]
+  }
 }

@@ -8,7 +8,14 @@ if (menuButton && nav) {
     document.body.classList.toggle('menu-open', open);
   };
   menuButton.addEventListener('click', () => setOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
-  nav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+  nav.addEventListener('click', (e) => {
+    const t = e.target.closest('.sub-toggle');
+    if (t && window.matchMedia('(max-width: 700px)').matches) {
+      e.preventDefault(); const item = t.closest('.has-sub'); const open = !item.classList.contains('open');
+      item.classList.toggle('open', open); t.setAttribute('aria-expanded', String(open)); return;
+    }
+    if (e.target.closest('a')) setOpen(false);
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
   window.matchMedia('(min-width: 701px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
 }
