@@ -71,8 +71,8 @@ def social_meta(c):
     t = e(c["title"]); d = e(c["description"])
     return (f'{CSP}\n  <meta name="referrer" content="strict-origin-when-cross-origin">\n  <link rel="canonical" href="{url}">\n'
             f'  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">\n'
-            f'  <meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg?v=2">\n'
-            f'  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg?v=2">')
+            f'  <meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">\n'
+            f'  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">')
 
 def paras(ps): return "".join(f"<p>{p}</p>" for p in ps)
 
@@ -161,7 +161,7 @@ def render(c):
 {"".join(out)}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=13"></script>
+  <script src="{r}app.js?v=14"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
@@ -209,7 +209,7 @@ def render_generic(c, body):
   </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=13"></script>
+  <script src="{r}app.js?v=14"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
@@ -352,7 +352,7 @@ def render_section_page(c):
 {notes}{stack}  </main>
 
   {FOOTER}
-  <script src="{r}app.js?v=13"></script>
+  <script src="{r}app.js?v=14"></script>
   <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>

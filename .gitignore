@@ -15,3 +15,4 @@ Thumbs.db
 HA_WEBSITE_STRUCTURE.md
 reform.md
 .playwright-cli/
+__pycache__/
