@@ -1,0 +1,102 @@
+{
+ "path": "pages/ai/",
+ "nav": "ai",
+ "name": "AI Lab",
+ "color": "purple",
+ "title": "AI Lab",
+ "description": "AI v praxi: osobní trenér v Telegramu, bot na GDPR žádosti, AI kolečko nad označeným textem a paměťový systém pro práci s AI. Ne teorie, nástroje, které denně používám.",
+ "h1": "Malé nástroje pro <span>skutečné úkoly.</span>",
+ "lead": "AI nepřidávám, aby tam byla. Používám ji tam, kde reálně ušetří práci: v kapse jako trenéra, nad označeným textem, při vymáhání vlastních dat. A když to jde, běží doma na vlastní grafice.",
+ "kpi_label": "AI v provozu",
+ "kpis": [
+  {
+   "b": "4",
+   "small": "projekty"
+  },
+  {
+   "b": "75 Kč",
+   "small": "měsíčně za Coache"
+  },
+  {
+   "b": "0 Kč",
+   "small": "za lokální model"
+  }
+ ],
+ "kpi_note": "Claude na to, co potřebuje přesnost. Lokální Gemma na to, co má zůstat doma.",
+ "intro_h2": "Ne hype, jen praxe",
+ "intro": [
+  "Většina věcí tady vznikla stejně: něco mě štvalo, postavil jsem první verzi za den a pak ji ladil podle skutečného používání. Claude Code je můj hlavní vývojový nástroj, Brain System mu dává paměť mezi sezeními.",
+  "Každý projekt má stránku ve stejné osnově: k čemu to je, proč vznikl, jak funguje, co jsem se naučil. Technické detaily jsou v rozbalovacích blocích pro ty, kdo to chtějí postavit taky."
+ ],
+ "projects_h2": "Projekty",
+ "projects": [
+  {
+   "href": "https://ongy.cz/pages/ai/coach/",
+   "tag": "BĚŽÍ DENNĚ",
+   "name": "AI Coach",
+   "text": "Osobní trenér v Telegramu. Vyfotíš jídlo, řekneš, co jsi jedl, a ráno ti připomene cvičení.",
+   "meta": "Claude · Whisper · Home Assistant"
+  },
+  {
+   "href": "https://ongy.cz/pages/ai/hotkey/",
+   "tag": "WINDOWS MVP",
+   "tagColor": "amber",
+   "status": "building",
+   "name": "ai-hotkey",
+   "text": "AI kolečko nad označeným textem v jakémkoli programu. Opravit, přeložit, shrnout. Model běží doma na grafice.",
+   "meta": "Tauri · Rust · Ollama"
+  },
+  {
+   "href": "https://ongy.cz/pages/ai/gdpr/",
+   "tag": "V PROVOZU",
+   "name": "GDPR Broker Bot",
+   "text": "Mapuje, kdo drží moje data, posílá žádosti data brokerům a hlídá lhůty. Nic neodejde bez mého souhlasu.",
+   "meta": "Python stdlib · Claude · SQLite"
+  },
+  {
+   "href": "https://ongy.cz/pages/ai/brain/",
+   "tag": "9+ PROJEKTŮ",
+   "name": "Brain System",
+   "text": "Paměť, která přežije konec session. Changelog, úkoly a rozhodnutí v každém projektu.",
+   "meta": "Markdown · skills · hooks"
+  }
+ ],
+ "notes": [
+  {
+   "href": "https://ongy.cz/pages/ai/hotkey/",
+   "mark": "AI",
+   "title": "AI kolečko nad označeným textem",
+   "date": "18. srpna 2026 · ai-hotkey"
+  },
+  {
+   "href": "https://ongy.cz/pages/ai/gdpr/",
+   "mark": "GD",
+   "title": "Bot, který vymáhá moje data od brokerů",
+   "date": "26. června 2026 · GDPR Broker Bot"
+  },
+  {
+   "href": "https://ongy.cz/pages/ai/coach/",
+   "mark": "AC",
+   "title": "AI Coach umí být i přísný",
+   "date": "3. června 2026 · AI Coach"
+  }
+ ],
+ "stack": [
+  [
+   "Modely",
+   "Claude Opus na odhad jídla z fotek, Sonnet na záměr a texty, lokální Gemma přes Ollama pro věci, které mají zůstat doma."
+  ],
+  [
+   "Vývoj",
+   "Claude Code s Brain Systemem v každém projektu. Multi-agent orchestrace tam, kde se práce dá rozdělit."
+  ],
+  [
+   "Provoz",
+   "Telegram jako rozhraní, SQLite na data, cron na rutinu. Všechno na home serveru."
+  ],
+  [
+   "Náklady",
+   "Coach kolem 75 Kč měsíčně, každé volání API se loguje. Lokální model zadarmo."
+  ]
+ ]
+}

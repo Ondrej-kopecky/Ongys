@@ -1,331 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Kompletní Home Assistant setup - 50+ zařízení, 35+ automatizací, 9 Grafana dashboardů, 100% lokálně">
-<meta property="og:title" content="Home Assistant | Ongy.cz">
-    <meta property="og:description" content="50+ zařízení, 35+ automatizací, 9 Grafana dashboardů — vše lokálně">
-    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://ongy.cz/pages/homeassistant/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <title>Home Assistant | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <style>
-        /* Klíčové vlastnosti — 4 karty v řadě (bez schodu) */
-        .feature-grid { grid-template-columns: repeat(4, 1fr); }
-        @media (max-width: 1100px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
-        /* Prozkoumej Setup — 4 dlaždice vedle sebe + responsive */
-        .ha-devices-grid.setup-grid { grid-template-columns: repeat(4, 1fr); }
-        @media (max-width: 1100px) { .ha-devices-grid.setup-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .ha-devices-grid.setup-grid { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chytrá domácnost, která tiše dělá svou práci: 50+ zařízení, 35+ automatizací, tablet na zdi, dashboardy a vlastní RF most pro žaluzie. Vše na Raspberry Pi doma.">
+  <meta name="theme-color" content="#101312"><title>Home Assistant | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/homeassistant/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Home Assistant"><meta property="og:description" content="Chytrá domácnost, která tiše dělá svou práci: 50+ zařízení, 35+ automatizací, tablet na zdi, dashboardy a vlastní RF most pro žaluzie. Vše na Raspberry Pi doma."><meta property="og:url" content="https://ongy.cz/pages/homeassistant/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Home Assistant"><meta name="twitter:description" content="Chytrá domácnost, která tiše dělá svou práci: 50+ zařízení, 35+ automatizací, tablet na zdi, dashboardy a vlastní RF most pro žaluzie. Vše na Raspberry Pi doma."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=7"><link rel="stylesheet" href="../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <!-- Page Header -->
-        <section class="page-hero page-hero-ha">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                    <circle cx="12" cy="8" r="1" fill="currentColor"/>
-                </svg>
-                <h1>Home Assistant</h1>
-                <p class="page-subtitle">Chytrá domácnost s plnou kontrolou</p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../index.html"><img src="../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../index.html">Domů</a><a href="../../pages/3d-print/">3D tisk</a><a class="active" href="../../pages/homeassistant/">Home Assistant</a><a href="../../pages/ai/">AI</a><a href="../../pages/server/">Server &amp; síť</a><a href="../../pages/deskovky/">Deskovky</a><a href="../../pages/blog/">Blog</a><a href="../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Intro Section -->
-        <section class="content-section">
-            <div class="ha-intro">
-                <p class="intro-text">
-                    Home Assistant je srdce mé chytré domácnosti. Všechno běží lokálně, bez cloudu,
-                    s plnou kontrolou nad daty a automatizacemi. Tady sdílím svůj setup,
-                    zajímavé automatizace a tipy.
-                </p>
-            </div>
-        </section>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>Home Assistant</span></p>
+        <h1>Byt, který se stará <span>o rutinu.</span></h1>
+        <p class="lead">Světla, žaluzie, energie i vzduch na jednom místě. Automatizace běží doma na Raspberry Pi a já mám pořád kontrolu nad daty. Chytrá domácnost, na kterou většinu času ani nemyslím.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Domácnost</span>
+        <ul class="kpis"><li><b>50+</b><small>zařízení</small></li><li><b>35+</b><small>automatizací</small></li><li><b>9</b><small>dashboardů</small></li></ul>
+        <p class="note">Raspberry Pi 5, Zigbee, Wi-Fi zařízení v oddělené síti. Grafana na data, tablet na zdi na ovládání.</p>
+      </aside>
+    </section>
 
-        <!-- Stats Section -->
-        <section class="content-section">
-            <div class="ha-stats">
-                <div class="ha-stat">
-                    <span class="ha-stat-number">50+</span>
-                    <span class="ha-stat-label">Zařízení</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">35+</span>
-                    <span class="ha-stat-label">Automatizací</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">9</span>
-                    <span class="ha-stat-label">Grafana Dashboardů</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">100%</span>
-                    <span class="ha-stat-label">Lokálně</span>
-                </div>
-            </div>
-        </section>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">O čem to je</p><h2>Systém, ne hromada gadgetů</h2></div>
+      <div class="prose"><p>Nejde mi o blikající krabičky. Chtěl jsem systém, který ráno roztáhne žaluzie, večer ztlumí světla, hlídá vzduch a spotřebu a nikoho neobtěžuje. Když něco dělám ručně potřetí, je to kandidát na automatizaci.</p><p>Sekce je rozdělená podle toho, co hledáš: zařízení a hardware, automatizace, data a monitoring, tipy. A jeden díl o žaluziích, které oficiálně do Home Assistantu nejdou, tak jsem si postavil vlastní most.</p></div>
+    </div></section>
+    <section class="psection" id="jak-to-vypada"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jak to vypadá</p><h2>Ovládání na zdi a data v grafech</h2></div>
+      <div class="shots"><figure class="shot wide"><a href="../../assets/wall-tablet.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/wall-tablet.jpg" alt="Tablet na zdi s dashboardem Home Assistantu" loading="lazy" decoding="async"></a><figcaption>Tablet na zdi: hlavní ovládací panel bytu, běží v kiosk režimu.</figcaption></figure><figure class="shot"><a href="../../assets/grafana-filament.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/grafana-filament.jpg" alt="Graf vlhkosti v boxu s filamentem v Grafaně" loading="lazy" decoding="async"></a><figcaption>Vlhkost v boxu s filamentem, měřená senzorem a vykreslená v Grafaně.</figcaption></figure><figure class="shot"><a href="../../assets/silica-gel-box.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/silica-gel-box.jpg" alt="Box se silikagelem a senzorem" loading="lazy" decoding="async"></a><figcaption>Suchý box se silikagelem a senzorem, který hlásí do Home Assistantu.</figcaption></figure></div>
+    </div></section>
 
-        <!-- Feature Highlights -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Klíčové Vlastnosti
-                </h2>
-            </div>
+    <section class="psection"><div class="shell">
+      <div class="section-intro-inline"><p class="eyebrow">Projekty a stránky</p><h2>Podstránky</h2></div>
+      <div class="archive-grid"><a class="archive-card" data-status="running" href="../../pages/homeassistant/devices/"><span class="tag teal">HARDWARE</span><h2>Zařízení a hardware</h2><p>Raspberry Pi 5, Zigbee, tablet na zdi, senzory a zásuvky. Co doma běží a proč zrovna tohle.</p><small>50+ zařízení</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/homeassistant/automations/"><span class="tag teal">AUTOMATIZACE</span><h2>Automatizace</h2><p>Osm kategorií od světel po energii. S ukázkami, které se dají zkopírovat.</p><small>35+ automatizací</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/homeassistant/monitoring/"><span class="tag teal">DATA</span><h2>Data a monitoring</h2><p>Grafana, InfluxDB, Node-RED reporty. Jak vypadá týden domácnosti v grafech.</p><small>9 dashboardů</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/homeassistant/tips/"><span class="tag teal">TIPY</span><h2>Tipy a triky</h2><p>AI integrace, šablony, drobnosti, které šetří čas.</p><small></small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/homeassistant/zaluzie/"><span class="tag teal">PROJEKT</span><h2>Aluprof žaluzie přes ESP32</h2><p>Vlastní RF most, protože oficiální cesta neexistuje. Odposlech ovladače, ESPHome, kalibrace a tři automatizace.</p><small>ESP32 · CC1101 · 433 MHz</small><b>Číst →</b></a></div>
+    </div></section>
 
-            <div class="ha-hardware-grid feature-grid">
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                    </div>
-                    <h3>Chytré Automatizace</h3>
-                    <p class="ha-card-desc">35+ automatizací — denní úklid, 3D tisk monitoring, F1 racing světla, Zigbee ovladače, presence detection</p>
-                </div>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Z deníku</p><h2>Zápisky k tématu</h2></div>
+      <div class="row-list"><a class="row-link" href="../../pages/homeassistant/zaluzie/"><span class="hex-mini teal">RF</span><span><strong>Aluprof žaluzie do Home Assistantu přes vlastní ESP32</strong><small>31. května 2026 · žaluzie</small></span><b>→</b></a></div>
+    </div></section>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Z čeho se to skládá</h2></div>
+      <div class="panel privacy"><dl class="kv"><div><dt>Mozek</dt><dd>Home Assistant na Raspberry Pi 5, ESPHome pro vlastní zařízení, Node-RED na reporty.</dd></div><div><dt>Zařízení</dt><dd>Zigbee senzory a světla, Wi-Fi zásuvky a světla v oddělené IoT síti, tablet na zdi jako ovládací panel.</dd></div><div><dt>Data</dt><dd>InfluxDB a Grafana na home serveru, energie po místnostech, teploty, vlhkost, spotřeba PC.</dd></div><div><dt>Přístup</dt><dd>Lokálně přes tablet a aplikaci, zvenku přes Tailscale. Cloud Home Assistantu vypnutý.</dd></div></dl></div>
+    </div></section>
+  </main>
 
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 3v18h18"/>
-                            <path d="M18 9l-5 5-4-4-3 3"/>
-                        </svg>
-                    </div>
-                    <h3>Data & Monitoring</h3>
-                    <p class="ha-card-desc">Grafana dashboardy, InfluxDB databáze, Node-RED měsíční reporty - kompletní přehled</p>
-                </div>
-
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0110 0v4"/>
-                        </svg>
-                    </div>
-                    <h3>Bezpečnost & Privacy</h3>
-                    <p class="ha-card-desc">LocalTuya, žádný cloud, Nabu Casa šifrovaný přístup — data zůstávají jen u mě</p>
-                </div>
-
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-                        </svg>
-                    </div>
-                    <h3>Wall Tablet</h3>
-                    <p class="ha-card-desc">Xiaomi Redmi Pad 2 na zdi s 3D tištěným držákem — auto-wake při pohybu, centrální ovládání bytu</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Navigation to Sections -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="8" y1="6" x2="21" y2="6"/>
-                                <line x1="8" y1="12" x2="21" y2="12"/>
-                                <line x1="8" y1="18" x2="21" y2="18"/>
-                                <line x1="3" y1="6" x2="3.01" y2="6"/>
-                                <line x1="3" y1="12" x2="3.01" y2="12"/>
-                                <line x1="3" y1="18" x2="3.01" y2="18"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Prozkoumej Setup
-                </h2>
-                <p class="section-subtitle">Klikni na sekci, která tě zajímá</p>
-            </div>
-
-            <div class="ha-devices-grid setup-grid">
-                <a href="devices/" class="ha-section-link">
-                    <div class="ha-device-category ha-section-card">
-                        <div class="ha-section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                <path d="M13.73 21a2 2 0 01-3.46 0"/>
-                            </svg>
-                        </div>
-                        <h3>Zařízení & Hardware</h3>
-                        <p>50+ zařízení, RPi5, Zigbee, tablet kiosk, rozpočet ~4600 CZK</p>
-                    </div>
-                </a>
-
-                <a href="automations/" class="ha-section-link">
-                    <div class="ha-device-category ha-section-card">
-                        <div class="ha-section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                            </svg>
-                        </div>
-                        <h3>Automatizace</h3>
-                        <p>35+ automatizací s YAML ukázkami</p>
-                    </div>
-                </a>
-
-                <a href="monitoring/" class="ha-section-link">
-                    <div class="ha-device-category ha-section-card">
-                        <div class="ha-section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 3v18h18"/>
-                                <path d="M18 9l-5 5-4-4-3 3"/>
-                            </svg>
-                        </div>
-                        <h3>Monitoring & Data</h3>
-                        <p>Grafana, InfluxDB, Node-RED reporty</p>
-                    </div>
-                </a>
-
-                <a href="tips/" class="ha-section-link">
-                    <div class="ha-device-category ha-section-card">
-                        <div class="ha-section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a8 8 0 0 1 8 8c0 2.5-1.5 4.5-3 6-1.5 1.5-2 3-2 5h-6c0-2-.5-3.5-2-5-1.5-1.5-3-3.5-3-6a8 8 0 0 1 8-8z"/>
-                                <path d="M10 21v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1"/>
-                            </svg>
-                        </div>
-                        <h3>Tipy & Triky</h3>
-                        <p>AI integrace, šablony, poučení z praxe</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Tech Stack Overview -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Tech Stack
-                </h2>
-            </div>
-
-            <div class="ha-hardware-grid">
-                <div class="ha-card">
-                    <h3>Hardware</h3>
-                    <ul class="ha-specs">
-                        <li>Raspberry Pi 5 (4GB RAM, 256GB SSD)</li>
-                        <li>Sonoff Zigbee 3.0 USB Dongle Plus</li>
-                        <li>3D tištěné pouzdro s aktivním chlazením</li>
-                    </ul>
-                    <a href="devices/" style="color: var(--electric-teal); text-decoration: none; font-size: 0.9rem;">→ Detaily v sekci Zařízení</a>
-                </div>
-
-                <div class="ha-card">
-                    <h3>Protokoly</h3>
-                    <ul class="ha-specs">
-                        <li>Zigbee (ZHA) - 20+ zařízení</li>
-                        <li>MQTT - Bambu Lab, PC monitoring</li>
-                        <li>HTTP/API - TP-Link, Samsung TV</li>
-                        <li>WiFi - Xiaomi, Tuya zařízení</li>
-                    </ul>
-                </div>
-
-                <div class="ha-card">
-                    <h3>Integrace</h3>
-                    <ul class="ha-specs">
-                        <li>bambu_lab (3D tiskárna)</li>
-                        <li>xiaomi_miot (vysavač)</li>
-                        <li>localtuya (bez cloudu)</li>
-                        <li>f1_sensor (F1 live data)</li>
-                        <li>extended_openai_conversation (AI)</li>
-                    </ul>
-                    <a href="tips/" style="color: var(--electric-teal); text-decoration: none; font-size: 0.9rem;">→ Více v sekci Tipy & Triky</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Co jsem se naučil -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0012 2z"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Co jsem se naučil
-                </h2>
-                <p class="section-subtitle">Co bylo nejtěžší a co bych dnes udělal jinak</p>
-            </div>
-
-            <div class="ha-card ha-card-main" style="max-width: 840px; margin: 0 auto;">
-                <div style="display: flex; gap: 1rem; margin-bottom: 1.4rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0; line-height: 1.4;">🤖</span>
-                    <div>
-                        <strong style="color: var(--electric-teal); font-size: 1.05rem;">Lokální LLM na češtinu zatím nestačí</strong>
-                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
-                            Chtěl jsem ovládat dům hlasem přes <strong>lokální model</strong> a ušetřit za API. Zkusil jsem
-                            Ollamu (Gemma 3, Qwen 2.5) na CPU — jenže buď chyběl tool calling, nebo bylo <strong>české
-                            rozpoznávání záměru nespolehlivé</strong>. Skončil jsem u Claude API: rychlé, levné a česky
-                            rozumí. Ollama šla pryč. Dnes bych s lokálním LLM na ovládání zatím nezačínal.
-                        </p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1rem; margin-bottom: 1.4rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0; line-height: 1.4;">📡</span>
-                    <div>
-                        <strong style="color: var(--electric-teal); font-size: 1.05rem;">Nejtěžší byly venkovní žaluzie</strong>
-                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
-                            Aluprof žaluzie jezdí po 433 MHz a oficiální cesta do Home Assistantu prakticky neexistuje.
-                            Musel jsem postavit <strong>vlastní RF most z ESP32 a čipu CC1101</strong>, zachytit protokol
-                            původního ovladače a přehrát ho. Nejkřehčí, ale nejvíc uspokojivá část celého bytu.
-                        </p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0; line-height: 1.4;">🏠</span>
-                    <div>
-                        <strong style="color: var(--electric-teal); font-size: 1.05rem;">Lokálně, nebo to dřív nebo později spadne</strong>
-                        <p class="ha-card-desc" style="line-height: 1.8; margin-top: 0.35rem;">
-                            Každá integrace přes cizí cloud je závislost, která jednou umře s cizím serverem (nebo se
-                            zpoplatní). Proto teď preferuju lokální cestu, i když dá víc práce — <code>localtuya</code>
-                            místo cloudu, Zigbee místo WiFi mraku. <strong>50+ zařízení běží 100 % lokálně</strong> na RPi 5.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="../../js/icons.js"></script>
-    <script src="../../js/components.js?v=20260912a"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/reveal.js"></script>
-    <script src="../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../app.js?v=11"></script>
+  <script src="../../analytics.js?v=1"></script>
+  <script src="../../project.js?v=3"></script>
 </body>
 </html>

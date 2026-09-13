@@ -1,334 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="35+ automatizací v Home Assistant - vysávání, 3D tisk, F1 světla, TV ovládání a další">
-    <title>Automatizace | Home Assistant | Ongy.cz</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Přes 35 automatizací v Home Assistantu: vysávání, když nejsem doma, světla podle televize a F1, hlídání 3D tisku, žaluzie proti slunci a Zigbee tlačítka. Jak jsou napsané a co se osvědčilo.">
+  <meta name="theme-color" content="#101312"><title>Automatizace v Home Assistantu: co se doma děje samo | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/homeassistant/automations/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Automatizace v Home Assistantu: co se doma děje samo"><meta property="og:description" content="Přes 35 automatizací v Home Assistantu: vysávání, když nejsem doma, světla podle televize a F1, hlídání 3D tisku, žaluzie proti slunci a Zigbee tlačítka. Jak jsou napsané a co se osvědčilo."><meta property="og:url" content="https://ongy.cz/pages/homeassistant/automations/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Automatizace v Home Assistantu: co se doma děje samo"><meta name="twitter:description" content="Přes 35 automatizací v Home Assistantu: vysávání, když nejsem doma, světla podle televize a F1, hlídání 3D tisku, žaluzie proti slunci a Zigbee tlačítka. Jak jsou napsané a co se osvědčilo."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css?v=7"><link rel="stylesheet" href="../../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <!-- Page Header -->
-        <section class="page-hero page-hero-ha">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                </svg>
-                <h1>Automatizace</h1>
-                <p class="page-subtitle">Magie, která mi šetří čas</p>
-                <p class="breadcrumb">
-                    <a href="../">Home Assistant</a> / Automatizace
-                </p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../../index.html">Domů</a><a href="../../../pages/3d-print/">3D tisk</a><a class="active" href="../../../pages/homeassistant/">Home Assistant</a><a href="../../../pages/ai/">AI</a><a href="../../../pages/server/">Server &amp; síť</a><a href="../../../pages/deskovky/">Deskovky</a><a href="../../../pages/blog/">Blog</a><a href="../../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Stats -->
-        <section class="content-section">
-            <div class="ha-stats">
-                <div class="ha-stat">
-                    <span class="ha-stat-number">32</span>
-                    <span class="ha-stat-label">Celkem automatizací</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">7</span>
-                    <span class="ha-stat-label">Kategorií</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">24/7</span>
-                    <span class="ha-stat-label">Aktivní</span>
-                </div>
-            </div>
-        </section>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../../pages/homeassistant/">Home Assistant</a><span>/</span><span>Automatizace</span></p>
+        <h1>Co se doma děje, <span>aniž bych sáhl na vypínač.</span></h1>
+        <p class="lead">Vysavač vyjede, když odejdu. Lampy se přizpůsobí filmu nebo závodu F1. Žaluzie se zatáhnou dřív, než mi slunce svítí do obrazovky. Všechno běží v Home Assistantu na Raspberry Pi, bez cloudu a bez měsíčních poplatků.</p>
+        <div class="status-row"><span class="chip"><i></i>běží nepřetržitě</span><span class="chip amber"><i></i>Home Assistant · díl 2</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Aktuální stav</span>
+        <ul class="kpis"><li><b>35+</b><small>automatizací</small></li><li><b>9</b><small>oblastí</small></li><li><b>vše</b><small>lokálně, bez cloudu</small></li></ul>
+        <p class="note">Většina jde přes Zigbee a lokální integrace. Když vypadne internet, doma se nic nezmění, jen nedojdou notifikace na mobil.</p>
+      </aside>
+    </section>
 
-        <!-- Automations Grid -->
-        <section class="content-section section-alt">
-            <div class="ha-automations-grid">
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>
-                        <h3>Chytré vysávání</h3>
-                    </div>
-                    <p>Darth Sider vyjíždí každý den, když nejsem doma. Mop + vysávání. Notifikace s možností odložení.</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">10:30 + person.ongy != home</span>
-                    </div>
-                </div>
+    <section class="psection" id="o-cem-to-je"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">O čem to je</p><h2>Nechci ovládat dům z mobilu. Chci, aby se ovládal sám.</h2></div>
+      <div class="prose"><p>Chytrá domácnost, kde musím pro každé světlo vytáhnout telefon, je horší než obyčejný vypínač. Proto většinu věcí řeším automatizacemi: pravidlo „když se stane tohle, udělej tamto“ a pak na to zapomenu. Dobrá automatizace je ta, o které rodina neví, že existuje.</p><p>Začal jsem třemi pravidly kolem vysavače a za pár let se to rozrostlo na víc než třicet. Každé z nich vzniklo z konkrétní otravnosti: slunce na obrazovce, zapomenuté světlo v kuchyni, tisk, který v noci selhal a nikdo o tom nevěděl. Tady je výběr těch, které používám denně, a přehled všech oblastí.</p></div>
+    </div></section>
+    <section class="psection" id="ukazky"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Ukázky</p><h2>Sedm, které používám denně</h2></div>
+      <div class="steps"><div class="step"><span class="n">01</span><div><h3>Chytré vysávání</h3><p>Když je 10:30, nikdo není půl hodiny doma, vysavač má přes 40 % baterie a stojí v doku, tak nasadí režim vysávání s mopem a vyjede. Na mobil přijde zpráva s tlačítky Stop a Odložit o 2 hodiny.</p><pre class="code"><code>triggers:
+  - trigger: time
+    at: "10:30:00"
+conditions:
+  - condition: state
+    entity_id: person.me
+    state: not_home
+    for: "00:30:00"
+  - condition: numeric_state
+    entity_id: sensor.vacuum_battery
+    above: 40</code></pre></div></div><div class="step"><span class="n">02</span><div><h3>Příchod domů</h3><p>Když dorazím domů, vysavač se zastaví a vrátí do doku. Pokud je po západu slunce, rozsvítí se lampy v obýváku. Když má vysavač nasazené mopy, spustí se jejich sušení.</p></div></div><div class="step"><span class="n">03</span><div><h3>Televize a lampy</h3><p>Když se zapne televize, lampy za ní přejdou do tlumeného barevného režimu. Když se vypne, lampy zhasnou. Žádné ovládání, jen stav televize jako spouštěč.</p><pre class="code"><code>triggers:
+  - trigger: state
+    entity_id: media_player.tv
+    to: "on"
+actions:
+  - action: light.turn_on
+    target:
+      entity_id: light.tv_lamps
+    data:
+      brightness_pct: 30
+      rgb_color: [255, 120, 40]</code></pre></div></div><div class="step"><span class="n">04</span><div><h3>F1 světla</h3><p>Když senzor závodu hlásí Safety Car, lampy zežloutnou. Při červené vlajce blikají červeně. Při startu proběhne odpočet jako na startovní rovince: pět červených, zhasnout, jede se.</p></div></div><div class="step"><span class="n">05</span><div><h3>3D tisk pod dohledem</h3><p>Když začne tisk, rozsvítí se komora tiskárny. Když skončí, přijde notifikace s fotkou a komora zhasne. Když tiskárna nahlásí chybu, dozvím se to okamžitě, ne až ráno.</p><pre class="code"><code>triggers:
+  - trigger: state
+    entity_id: sensor.printer_status
+    to: "finish"
+actions:
+  - action: notify.mobile_app
+    data:
+      title: "Tisk hotov"
+      message: "Můžeš sundat výtisk."
+  - action: light.turn_off
+    target:
+      entity_id: light.printer_chamber</code></pre></div></div><div class="step"><span class="n">06</span><div><h3>IKEA STYRBAR v kuchyni</h3><p>Když zmáčknu Zigbee ovladač, světla v kuchyni se zapnou nebo vypnou. Boční tlačítka mění jas po 10 %. Funguje pro IKEA světla i pro LED pásek pod linkou, bez telefonu a bez internetu.</p></div></div><div class="step"><span class="n">07</span><div><h3>Žaluzie proti slunci</h3><p>Když se zapne klimatizace, venkovní žaluzie se stáhnou na 25 % a drží chlad. Když běží televize a slunce svítí z jihu, zatáhnou tak, aby neoslňovaly. Večer, když slunce klesne pod 10°, samy vyjedou. Ovládá je vlastní ESP32 s rádiovým modulem, <a href="../../../pages/homeassistant/zaluzie/">celý návod je zvlášť</a>.</p></div></div></div>
+    </div></section>
+    <section class="psection" id="podle-oblasti"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Podle oblasti</p><h2>Devět oblastí</h2></div>
+      <div class="finds"><div class="panel find item"><h3>Vysavač a úklid</h3><p>Denní vysávání v 10:30, upozornění na údržbu kartáčů a filtru, návrat do doku při slabé baterii.</p><small class="meta">3 automatizace</small></div><div class="panel find item"><h3>Osvětlení</h3><p>Ztlumení po západu slunce, ovládání tlačítky, světelné efekty při F1, ranní simulace východu slunce v ložnici.</p><small class="meta">8 automatizací</small></div><div class="panel find item"><h3>3D tisk</h3><p>Notifikace při dokončení, hlídání teploty a vlhkosti v komoře, vypnutí při chybě, denní přehled tisků.</p><small class="meta">4 automatizace</small></div><div class="panel find item"><h3>Notifikace</h3><p>Slabá baterie v senzorech, teplota mimo rozsah, spotřeba nad limit. Všechno chodí do mobilu jako krátká zpráva s kontextem.</p><small class="meta">5 automatizací</small></div><div class="panel find item"><h3>Přítomnost</h3><p>Příchod domů rozsvítí a zastaví vysavač, odchod zhasne, co zůstalo, a „dobrou noc“ vypne všechno najednou.</p><small class="meta">3 automatizace</small></div><div class="panel find item"><h3>Energie</h3><p>Měsíční report spotřeby, upozornění na neobvyklý odběr, automatické vypnutí zásuvek, které jen žerou proud naprázdno.</p><small class="meta">3 automatizace</small></div><div class="panel find item"><h3>Zigbee ovladače</h3><p>IKEA STYRBAR pro kuchyň, Sonoff tlačítko pro probuzení, uspání a zamknutí PC, relé v kuchyni a na chodbě, scény pro televizi (Film, Večer, Relax).</p><small class="meta">4 automatizace</small></div><div class="panel find item"><h3>F1</h3><p>Safety Car přepne lampy na žlutou, červená vlajka spustí blikání. Závod se dá sledovat i po světle v pokoji.</p><small class="meta">2 automatizace</small></div><div class="panel find item"><h3>Žaluzie</h3><p>Stínění při klimatizaci, ochrana obrazovky před sluncem, večerní vytažení a Zigbee tlačítko nahoru, stop, dolů.</p><small class="meta">4 automatizace</small></div></div>
+    </div></section>
+    <section class="psection" id="pro-zvedave"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Technické detaily</h2></div>
+      <div><details class="panel tech" open><summary>Jak jsou automatizace napsané <small>YAML · helpers · template senzory</small></summary><div class="body"><dl class="kv"><div><dt>YAML vs. editor</dt><dd>Jednoduché věci klikám v grafickém editoru Home Assistantu. Cokoliv s více podmínkami nebo s tlačítky v notifikaci píšu rovnou v YAML, líp se to čte a dá se to verzovat.</dd></div><div><dt>Spouštěče a podmínky</dt><dd>Spouštěč je jedna událost (čas, změna stavu, stisk tlačítka). Podmínky určují, jestli má akce vůbec proběhnout: přítomnost, výška slunce, stav baterie. Díky tomu jedna automatizace nemusí řešit všechny výjimky uvnitř.</dd></div><div><dt>Helpers</dt><dd>Přepínače a časovače v Home Assistantu, které nesouvisí s žádným fyzickým zařízením. Používám je třeba na „odložit úklid o 2 hodiny“ nebo na pauzu automatizací, když mám návštěvu.</dd></div><div><dt>Template senzory</dt><dd>Vypočítané hodnoty ze surových dat: jestli slunce svítí z jihu a dost vysoko, jestli je někdo doma déle než půl hodiny, jestli tisk běží. Automatizace pak mají jednu čitelnou podmínku místo pěti.</dd></div><div><dt>Notifikace s tlačítky</dt><dd>Mobilní aplikace umí ve zprávě zobrazit akce. Odpověď na tlačítko je zase událost, kterou chytá další automatizace. Tak vzniklo „Stop“ a „Odložit“ u vysavače.</dd></div></dl></div></details></div>
+    </div></section>
+    <section class="psection" id="dal"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dál</p><h2>Související</h2></div>
+      <div class="links"><a class="button" href="../../../pages/homeassistant/">Přehled: Home Assistant</a><a class="button button-quiet" href="../../../pages/homeassistant/devices/">Zařízení a hardware</a></div>
+    </div></section>
 
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-                        <h3>Příchod domů</h3>
-                    </div>
-                    <p>Zastavit vysavač, rozsvítit světla (pokud je tma). Sušení mopů pokud jsou nasazené.</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">person.ongy → home + sunset</span>
-                    </div>
-                </div>
+  </main>
 
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
-                        <h3>TV automatizace</h3>
-                    </div>
-                    <p>Samsung Q60 zapnutá → TV lampy chill RGB mód. Vypnutí TV → lampy zhasnou.</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">media_player.samsung_q60 state</span>
-                    </div>
-                </div>
-
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15l2-8h12l2 8M6 15v4M18 15v4"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg></span>
-                        <h3>F1 Race Lights</h3>
-                    </div>
-                    <p>Safety Car → žlutá, Červená vlajka → blikání, Start závodu → lights out show!</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">f1_sensor track_status</span>
-                    </div>
-                </div>
-
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18h12M12 6v8M8 10l4-4 4 4"/></svg></span>
-                        <h3>3D Tisk notifikace</h3>
-                    </div>
-                    <p>Start tisku → rozsvítit chamber, konec → notifikace + zhasnout. Chyby okamžitě.</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">sensor.x1c print_status</span>
-                    </div>
-                </div>
-
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 22h4M12 2v1M12 8a4 4 0 00-4 4c0 2 2 4 2 6h4c0-2 2-4 2-6a4 4 0 00-4-4z"/></svg></span>
-                        <h3>IKEA STYRBAR</h3>
-                    </div>
-                    <p>Zigbee ovladač v kuchyni – ON/OFF + jas ±10% pro TRÅDFRI a MITTLED.</p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">zha_event device_ieee</span>
-                    </div>
-                </div>
-
-                <div class="ha-automation">
-                    <div class="ha-automation-header">
-                        <span class="ha-automation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18M3 12h18M3 16h18"/></svg></span>
-                        <h3>Žaluzie: stínění</h3>
-                    </div>
-                    <p>Venkovní žaluzie Aluprof přes vlastní ESP32 + CC1101. Zatáhnou na komfort při zapnutí klimy, anti-glare při TV + slunci, večer samy vyjedou. <a href="../zaluzie/" style="color: var(--electric-teal);">Celý návod →</a></p>
-                    <div class="ha-automation-trigger">
-                        <span class="trigger-label">Trigger:</span>
-                        <span class="trigger-value">climate / media_player / sun</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Categories Overview -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="7" height="7"/>
-                                <rect x="14" y="3" width="7" height="7"/>
-                                <rect x="14" y="14" width="7" height="7"/>
-                                <rect x="3" y="14" width="7" height="7"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Kategorie automatizací
-                </h2>
-            </div>
-
-            <div class="ha-devices-grid">
-                <div class="ha-device-category">
-                    <h3>🤖 Vysavač & Úklid (3)</h3>
-                    <ul>
-                        <li>Denní vysávání v 10:30</li>
-                        <li>Upozornění na údržbu</li>
-                        <li>Automatický návrat při nízké baterii</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>💡 Osvětlení (8)</h3>
-                    <ul>
-                        <li>Automatické ztmavení po západu</li>
-                        <li>IKEA STYRBAR ovládání</li>
-                        <li>F1 Racing světelné efekty</li>
-                        <li>Ranní probuzení (simulace východu)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>🖨️ 3D Tisk (4)</h3>
-                    <ul>
-                        <li>Notifikace při dokončení</li>
-                        <li>Monitoring teploty/vlhkosti</li>
-                        <li>Automatické vypnutí při chybě</li>
-                        <li>Denní report</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>📱 Notifikace (5)</h3>
-                    <ul>
-                        <li>Nízká baterie v zařízeních</li>
-                        <li>Teplota mimo rozsah</li>
-                        <li>Spotřeba energie nad limit</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>🏠 Přítomnost (3)</h3>
-                    <ul>
-                        <li>Příchod domů (welcome back)</li>
-                        <li>Odchod z domu (vypni světla)</li>
-                        <li>Dobrá noc (all off)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>⚡ Energie (3)</h3>
-                    <ul>
-                        <li>Měsíční report spotřeby</li>
-                        <li>High usage alert</li>
-                        <li>Automatické vypínání idle</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>🎮 Zigbee Ovladače (4)</h3>
-                    <ul>
-                        <li>IKEA STYRBAR — kuchyň (±10% brightness)</li>
-                        <li>Sonoff SNZB-01P — PC WoL/Sleep/Lock</li>
-                        <li>ZBMIINI-L2 relé — kuchyň + chodba</li>
-                        <li>TV scény (Film, Večer, Relax)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>🏎️ F1 Racing (2)</h3>
-                    <ul>
-                        <li>Safety Car → žlutá světla</li>
-                        <li>Red Flag → blikající červená</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>🪟 Žaluzie (4)</h3>
-                    <ul>
-                        <li>Klima zapnutá → zastínit na komfort (25 %)</li>
-                        <li>TV + slunce z jihu → anti-glare</li>
-                        <li>Večer (slunce &lt; 10°) → roztáhnout</li>
-                        <li>Zigbee tlačítko: nahoru / stop / dolů</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- YAML Example -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Ukázka: Chytré vysávání
-                </h2>
-                <p class="section-subtitle">Reálný YAML z mého Home Assistanta</p>
-            </div>
-
-            <div class="ha-card ha-card-main" style="margin-bottom: 2rem;">
-                <h3>Když &rarr; Pak</h3>
-                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <div style="flex: 1; min-width: 200px;">
-                        <p style="color: var(--warm-amber); font-weight: 600; margin-bottom: 0.5rem;">Podmínky:</p>
-                        <ul class="ha-specs">
-                            <li>Je 10:30</li>
-                            <li>Nejsem doma min. 30 minut</li>
-                            <li>Baterie vysavače &gt; 40%</li>
-                            <li>Vysavač je v dokovací stanici</li>
-                        </ul>
-                    </div>
-                    <div style="flex: 1; min-width: 200px;">
-                        <p style="color: var(--electric-teal); font-weight: 600; margin-bottom: 0.5rem;">Akce:</p>
-                        <ul class="ha-specs">
-                            <li>Nastav režim: Sweep + Mop, Strong</li>
-                            <li>Spusť vysávání + mopování</li>
-                            <li>Pošli notifikaci na telefon</li>
-                            <li>Tlačítka: Stop / Odložit 2h</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ha-card ha-card-main">
-                <h3>YAML</h3>
-                <div style="margin-top: 1rem; padding: 1.25rem; background: rgba(0,0,0,0.4); border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; line-height: 1.6;">
-                    <div><span style="color: var(--electric-teal);">trigger:</span></div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">trigger:</span> time</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">at:</span> <span style="color: var(--text-muted);">"10:30:00"</span></div>
-                    <div style="margin-top: 0.75rem;"><span style="color: var(--electric-teal);">conditions:</span></div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">condition:</span> state</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> person.ongy_io</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">state:</span> not_home</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">for:</span> <span style="color: var(--text-muted);">"00:30:00"</span></div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">condition:</span> numeric_state</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> sensor.xiaomi_d102gl_b71e_battery_level</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">above:</span> 40</div>
-                    <div style="margin-top: 0.75rem;"><span style="color: var(--electric-teal);">actions:</span></div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> select.select_option</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">target:</span></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> select.xiaomi_d102gl_b71e_sweep_mop_type</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">data:</span></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">option:</span> <span style="color: var(--text-muted);">"Sweep Mop"</span></div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> button.press</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">target:</span></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">entity_id:</span> button.xiaomi_d102gl_b71e_start_sweep_mop</div>
-                    <div>&nbsp;&nbsp;- <span style="color: var(--warm-amber);">action:</span> notify.mobile_app_sm_s911b</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">data:</span></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">title:</span> <span style="color: var(--text-muted);">"Automatický úklid zahájen"</span></div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--warm-amber);">message:</span> <span style="color: var(--text-muted);">"Darth Sider vyjel na mise"</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Back to Main -->
-        <section class="content-section section-alt">
-            <div style="text-align: center;">
-                <a href="../" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--electric-teal); color: var(--midnight); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-                    ← Zpět na Home Assistant
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="../../../js/icons.js"></script>
-    <script src="../../../js/components.js?v=20260912a"></script>
-    <script src="../../../js/main.js"></script>
-    <script src="../../../js/reveal.js"></script>
-    <script src="../../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../../app.js?v=11"></script>
+  <script src="../../../analytics.js?v=1"></script>
+  <script src="../../../project.js?v=3"></script>
 </body>
 </html>

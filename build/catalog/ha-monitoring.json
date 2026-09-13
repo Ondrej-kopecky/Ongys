@@ -1,0 +1,166 @@
+{
+ "path": "pages/homeassistant/monitoring/",
+ "nav": "ha",
+ "name": "Data a monitoring",
+ "title": "Data a monitoring bytu: Grafana, InfluxDB, Node-RED",
+ "description": "Jak sbírám data z chytré domácnosti: Home Assistant posílá senzory do InfluxDB, Grafana z nich kreslí devět dashboardů a Node-RED mi jednou měsíčně pošle vyúčtování.",
+ "section": {
+  "label": "Home Assistant",
+  "href": "https://ongy.cz/pages/homeassistant/"
+ },
+ "h1": "Byt, který si vede <span>vlastní statistiky.</span>",
+ "lead": "Home Assistant ví, co se doma děje právě teď. Já chci vědět i to, co se dělo minulý měsíc. Tak každé měření ukládám, kreslím si z toho grafy a jednou za měsíc mi přijde účet.",
+ "chips": [
+  {
+   "text": "Grafana · InfluxDB · Node-RED"
+  },
+  {
+   "text": "běží na Raspberry Pi 5",
+   "amber": true
+  }
+ ],
+ "kpi_label": "Co to sbírá",
+ "kpis": [
+  {
+   "b": "9",
+   "small": "dashboardů v Grafaně"
+  },
+  {
+   "b": "4",
+   "small": "oblasti v měsíčním reportu"
+  },
+  {
+   "b": "1.",
+   "small": "den v měsíci přijde účet"
+  }
+ ],
+ "kpi_note": "Energie, 3D tisk, vysavač a klima. Každý první den v měsíci v osm ráno mám v mailu přehled za celý měsíc, spočítaný v korunách.",
+ "intro": {
+  "eyebrow": "O čem to je",
+  "h2": "Proč si z bytu ukládat čísla",
+  "p": [
+   "Chytrá domácnost normálně žije jen v přítomnosti. Světlo svítí, teplota je 22 stupňů, tiskárna tiskne. Jakmile se hodnota změní, ta stará zmizí. Mně ale chybělo srovnání: kolik toho počítač opravdu sežere za měsíc, jestli v ložnici v noci klesá vlhkost, kolik hodin tiskárna odpracovala.",
+   "Tak jsem si postavil malý sklad měření. Home Assistant každou změnu senzoru pošle do databáze, Grafana z ní kreslí grafy a Node-RED jednou měsíčně sečte, co se stalo, a pošle mi to e-mailem. Nic z toho nemusím obsluhovat, jen se dívám."
+  ]
+ },
+ "media": {
+  "h2": "Dashboardy",
+  "items": [
+   {
+    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231434_fwnlxv.png",
+    "alt": "Grafana - Spotřeba Energie",
+    "caption": "<strong>Spotřeba energie.</strong> PC, televize, kuchyň a lednice vedle sebe.",
+    "wide": true
+   },
+   {
+    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231422_bnwrf3.png",
+    "alt": "Grafana - Teploty a Vlhkost",
+    "caption": "<strong>Teploty a vlhkost.</strong> Xiaomi senzory v jednotlivých místnostech."
+   },
+   {
+    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231506_hmgqwv.png",
+    "alt": "Grafana - Bambu Lab X1C",
+    "caption": "<strong>Bambu Lab X1C.</strong> Statistiky 3D tisku: teploty, časy, filament."
+   },
+   {
+    "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-01-15_231448_eacxza.png",
+    "alt": "Grafana - Raspberry Pi 5",
+    "caption": "<strong>Raspberry Pi 5.</strong> Jak se má počítač, na kterém to všechno běží."
+   }
+  ]
+ },
+ "groups": [
+  {
+   "layout": "cards",
+   "eyebrow": "Stack",
+   "h2": "Tři nástroje",
+   "items": [
+    {
+     "title": "Grafana",
+     "text": "Kreslí grafy. Devět dashboardů, každý pro jednu oblast bytu. Otevřu prohlížeč a vidím týden, měsíc nebo rok zpátky.",
+     "meta": "vizualizace historických dat"
+    },
+    {
+     "title": "InfluxDB",
+     "text": "Databáze pro časové řady. Každá změna senzoru tu dostane razítko s časem a zůstane. Home Assistant do ní zapisuje přes svůj Recorder.",
+     "meta": "teploty, vlhkost, spotřeba, 3D tisk"
+    },
+    {
+     "title": "Node-RED",
+     "text": "Automatizace skládaná z krabiček. Jednou měsíčně projde data, spočítá součty a průměry a vygeneruje HTML e-mail s vyúčtováním.",
+     "meta": "měsíční report, 1. den v měsíci v 8:00"
+    }
+   ]
+  },
+  {
+   "layout": "list",
+   "eyebrow": "Co sleduju",
+   "h2": "Devět dashboardů",
+   "items": [
+    {
+     "mark": "01",
+     "title": "Spotřeba energie",
+     "text": "PC, televize, kuchyň a lednice. Tady vidím, co doma opravdu topí do zásuvky."
+    },
+    {
+     "mark": "02",
+     "title": "3D tisk",
+     "text": "Teploty trysky a podložky, délka tisků, spotřebovaný filament."
+    },
+    {
+     "mark": "03",
+     "title": "Teploty místností",
+     "text": "Pokoj, ložnice, balkon a k tomu teploty ve filament boxech."
+    },
+    {
+     "mark": "04",
+     "title": "Vlhkost filamentu",
+     "text": "Tři boxy se sušeným filamentem. Když vlhkost stoupá, je čas vyměnit silikagel."
+    },
+    {
+     "mark": "05",
+     "title": "Vysavač",
+     "text": "Kolikrát uklidil, kolik metrů čtverečních a jak jsou na tom kartáče a filtry."
+    },
+    {
+     "mark": "06",
+     "title": "Baterie zařízení",
+     "text": "Senzory, dálkové ovladače, tlačítka. Ať mi nic nezhasne bez varování."
+    },
+    {
+     "mark": "07",
+     "title": "Raspberry Pi 5",
+     "text": "Zátěž procesoru, paměť, teplota a disk počítače, na kterém Home Assistant běží."
+    },
+    {
+     "mark": "08",
+     "title": "Přítomnost a lokace",
+     "text": "Kdy jsem doma a kdy ne. Užitečné pro ladění automatizací, které se řídí přítomností."
+    },
+    {
+     "mark": "09",
+     "title": "PC statistiky",
+     "text": "Jak dlouho počítač běží, kdy se probouzí a kolik při tom bere."
+    }
+   ]
+  }
+ ],
+ "tech": [
+  {
+   "summary": "Kudy data tečou",
+   "hint": "HA · InfluxDB · Grafana · Node-RED",
+   "body": "<dl class=\"kv\"><div><dt>Sběr</dt><dd>Home Assistant přes integraci InfluxDB zapisuje každou změnu stavu vybraných entit: teploty, vlhkost, spotřebu, metriky tiskárny. Vlastní Recorder v HA drží jen krátkou historii, InfluxDB dlouhodobou.</dd></div><div><dt>Uložení</dt><dd>InfluxDB jako time-series databáze na Raspberry Pi 5, vedle Home Assistanta. Každý záznam má časové razítko, dotazy se dělají po časových oknech.</dd></div><div><dt>Vizualizace</dt><dd>Grafana má InfluxDB jako datový zdroj. Devět dashboardů, každý s vlastními dotazy a rozsahem od jednoho dne po rok.</dd></div><div><dt>Report</dt><dd>Node-RED flow se spustí první den v měsíci v 8:00, vytáhne data za uplynulý měsíc, spočítá součty a průměry a pošle HTML e-mail. Energie se přepočítá na koruny sazbou 12,41 Kč/kWh. Součástí je 3D tisk (počet, filament, čas), vysavač (úklidy, plocha, díly) a klima (průměry a maximální vlhkost).</dd></div></dl>"
+  }
+ ],
+ "links": [
+  {
+   "text": "Přehled: Home Assistant",
+   "href": "https://ongy.cz/pages/homeassistant/"
+  },
+  {
+   "text": "Server &amp; síť",
+   "href": "https://ongy.cz/pages/server/"
+  }
+ ],
+ "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M28 24v112h104\"/><path d=\"M44 104l24-28 20 18 24-40 20 14\" opacity=\".85\"/><path d=\"M44 120h88\" stroke-dasharray=\"4 5\" opacity=\".5\"/><circle cx=\"68\" cy=\"76\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"112\" cy=\"54\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/></svg>"
+}

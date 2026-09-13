@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Ongy digitální dílna">
+  <defs>
+    <linearGradient id="hex" x1="12" y1="14" x2="88" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#79f5dc"/>
+      <stop offset="1" stop-color="#20cfae"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M50 4 90 27v46L50 96 10 73V27Z" fill="#0e1714" stroke="url(#hex)" stroke-width="4"/>
+  <path d="M50 12 83 31v38L50 88 17 69V31Z" fill="none" stroke="#2ee8c4" stroke-opacity=".22" stroke-width="2"/>
+
+  <path d="M46 48 35 41M54 48l11-7M50 54v8" fill="none" stroke="#2ee8c4" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="50" cy="50" r="5" fill="#2ee8c4"/>
+
+  <!-- Home Assistant / domov -->
+  <path d="m22 34 11-9 11 9v11H36v-8h-6v8h-8Z" fill="none" stroke="#9bf7e4" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- AI / jiskra -->
+  <path d="M69 22c1.2 7 4 9.8 11 11-7 1.2-9.8 4-11 11-1.2-7-4-9.8-11-11 7-1.2 9.8-4 11-11Z" fill="#9bf7e4"/>
+  <circle cx="80" cy="22" r="2.5" fill="#2ee8c4"/>
+
+  <!-- 3D tisk / tryska a vrstvy -->
+  <path d="M41 63h18v8l-5 5h-8l-5-5Z" fill="#9bf7e4"/>
+  <path d="m47 76 3 6 3-6M38 84h24" fill="none" stroke="#2ee8c4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="16" cy="50" r="2" fill="#2ee8c4" opacity=".55"/>
+  <circle cx="84" cy="50" r="2" fill="#2ee8c4" opacity=".55"/>
+</svg>

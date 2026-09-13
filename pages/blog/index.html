@@ -1,475 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Ongy Notes - krátké zápisky a poznámky">
-<meta property="og:title" content="Blog | Ongy.cz">
-    <meta property="og:description" content="Krátké zápisky o 3D tisku, Home Assistantu a tech experimentech">
-    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://ongy.cz/pages/blog/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <title>Blog | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ongy Notes: krátké zápisky o chytré domácnosti, lokální AI, 3D tisku, home serveru a nástrojích pro deskovky.">
+  <meta name="theme-color" content="#101312"><title>Blog | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/blog/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Blog"><meta property="og:description" content="Ongy Notes: krátké zápisky o chytré domácnosti, lokální AI, 3D tisku, home serveru a nástrojích pro deskovky."><meta property="og:url" content="https://ongy.cz/pages/blog/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Blog"><meta name="twitter:description" content="Ongy Notes: krátké zápisky o chytré domácnosti, lokální AI, 3D tisku, home serveru a nástrojích pro deskovky."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=7"><link rel="stylesheet" href="../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <section class="page-hero">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 20h9"/>
-                    <path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                </svg>
-                <h1>Ongy Notes</h1>
-                <p class="page-subtitle">Krátké zápisky bez tlaku</p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../index.html"><img src="../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../index.html">Domů</a><a href="../../pages/3d-print/">3D tisk</a><a href="../../pages/homeassistant/">Home Assistant</a><a href="../../pages/ai/">AI</a><a href="../../pages/server/">Server &amp; síť</a><a href="../../pages/deskovky/">Deskovky</a><a class="active" href="../../pages/blog/">Blog</a><a href="../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <section class="content-section">
-            <div class="blog-list">
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-net">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 12h8M12 8v8"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">12. září 2026</span>
-                        <span class="post-tag">Server &amp; síť</span>
-                    </div>
-                    <h2>Co moje zařízení posílají domů — týden s AdGuard Home jako DNS pro celý byt</h2>
-                    <p>
-                        Přes padesát chytrých krabiček doma a u žádné jsem přesně nevěděl, co, jak často a komu posílá.
-                        Tak jsem na home server nasadil <strong>AdGuard Home</strong>: každé zařízení se před spojením musí
-                        zeptat „kde je ten server?“, a když tu otázku odpovídám já, vidím v jednom logu úplně všechno — a můžu
-                        říct „takový server neexistuje“. Za první týden 360 tisíc dotazů, <strong>pětina zablokovaná</strong>,
-                        nula rozbitých zařízení.
-                    </p>
-                    <p>
-                        Zjištění stojí za to: chytré zásuvky hlásí výrobci každých dvacet minut, spouštěč aplikací na mobilu
-                        volal domů <strong>každou minutu i v noci</strong>, televize sbírá logy, Jira z počítače po zablokování
-                        vystřelila 1 700 dotazů za minutu a hlásí se i samotný router. Naopak tiskárna, čistička nebo vysavač
-                        jsou slušné. Plus šest pastí, na které jsem šlápl — od zálohy, která se točila v kruhu, po pravidlo,
-                        které „nefungovalo“ jen proto, že jsem testoval dřív, než ho server načetl. Otevírá to novou sekci webu:
-                        <a href="../server/adguard/">AdGuard Home — co moje zařízení posílají domů →</a>
-                    </p>
-                </article>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>Blog</span></p>
+        <h1>Co jsem zkusil, rozbil <span>a naučil se.</span></h1>
+        <p class="lead">Krátké zápisky bez tlaku. Co se v dílně stalo, co se povedlo a na co jsem přišel až v provozu. Delší věci mají vlastní stránku, tady je vždy odkaz.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Deník v číslech">
+        <span class="motif"><svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="34" y="24" width="92" height="112" rx="8"/><path d="M52 52h56M52 72h56M52 92h36" opacity=".7"/><path d="M110 118l22-22" opacity=".8"/><path d="M104 124l6-6 22-22 6 6-22 22z" opacity=".5"/></svg></span>
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Deník</span>
+        <ul class="kpis"><li><b>17</b><small>zápisků</small></li><li><b>5</b><small>témat</small></li><li><b>2025</b><small>první zápisek</small></li></ul>
+        <p class="note">Šest nejnovějších nahoře, zbytek na kliknutí. Filtrem si vybereš jen téma, které tě zajímá.</p>
+      </aside>
+    </section>
 
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3.5"/><path d="M12 2v6.5M12 15.5V22M2 12h6.5M15.5 12H22"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">18. srpna 2026</span>
-                        <span class="post-tag">AI</span>
-                    </div>
-                    <h2>Postavil jsem si AI kolečko nad označený text — Tauri, Rust a lokální Gemma</h2>
-                    <p>
-                        Označíš text v libovolném programu, stiskneš <code>Ctrl+Shift+Space</code> a u kurzoru vyskočí
-                        kolečko: <strong>Opravit gramatiku, Přeložit, Shrnout, Vysvětlit, Upravit styl</strong> — nebo
-                        vlastní akce, kterou si napíšeš vlastními slovy. Výsledek přijde do panelu i s barevným
-                        <strong>porovnáním „před / po"</strong>, a teprve když ho odsouhlasíš, nahradí původní text.
-                        Konec kopírování do chatu s AI a zpátky.
-                    </p>
-                    <p>
-                        Podobné nástroje existují, ale posílají všechno, co označíš, na cizí server. Já jsem to chtěl
-                        <strong>doma</strong>: umělá inteligence běží na grafické kartě v mém PC, zadarmo a bez internetu;
-                        jen na překlady si jedním kliknutím přepnu Claude. První použitelná verze vznikla za jeden den
-                        a po cestě jsem šlápl na pár pěkných pastí — třeba na model, který si nad jednou větou „přemýšlel"
-                        několik minut. Jak to funguje, proč je to udělané takhle a na co jsem narazil:
-                        <a href="../ai/hotkey/">ai-hotkey — jak je postavený →</a>
-                    </p>
-                </article>
+    <section class="psection"><div class="shell">
+      <div class="filters" role="group" aria-label="Filtrovat zápisky"><button class="filter active" type="button" data-tag="all" aria-pressed="true">Vše <span>17</span></button><button class="filter" type="button" data-tag="server" aria-pressed="false">Server &amp; síť <span>1</span></button><button class="filter" type="button" data-tag="ai" aria-pressed="false">AI <span>5</span></button><button class="filter" type="button" data-tag="ha" aria-pressed="false">Home Assistant <span>3</span></button><button class="filter" type="button" data-tag="games" aria-pressed="false">Deskovky <span>6</span></button><button class="filter" type="button" data-tag="web" aria-pressed="false">Web <span>2</span></button></div>
+      <div class="posts-list" aria-live="polite"><article class="panel post" data-tag="server">
+        <div class="post-meta"><span class="tag teal">Server &amp; síť</span><span class="post-date">12. září 2026</span></div>
+        <h2>Co moje zařízení posílají domů — týden s AdGuard Home jako DNS pro celý byt</h2>
+        <div class="prose post-body"><p>Přes padesát chytrých krabiček doma a u žádné jsem přesně nevěděl, co, jak často a komu posílá. Tak jsem na home server nasadil <strong>AdGuard Home</strong>: každé zařízení se před spojením musí zeptat „kde je ten server?“, a když tu otázku odpovídám já, vidím v jednom logu úplně všechno — a můžu říct „takový server neexistuje“. Za první týden 360 tisíc dotazů, <strong>pětina zablokovaná</strong>, nula rozbitých zařízení.</p><p>Zjištění stojí za to: chytré zásuvky hlásí výrobci každých dvacet minut, spouštěč aplikací na mobilu volal domů <strong>každou minutu i v noci</strong>, televize sbírá logy, Jira z počítače po zablokování vystřelila 1 700 dotazů za minutu a hlásí se i samotný router. Naopak tiskárna, čistička nebo vysavač jsou slušné. Plus šest pastí, na které jsem šlápl — od zálohy, která se točila v kruhu, po pravidlo, které „nefungovalo“ jen proto, že jsem testoval dřív, než ho server načetl. Otevírá to novou sekci webu: <a href="../server/adguard/">AdGuard Home — co moje zařízení posílají domů →</a></p></div>
+      </article><article class="panel post" data-tag="ai">
+        <div class="post-meta"><span class="tag purple">AI</span><span class="post-date">18. srpna 2026</span></div>
+        <h2>Postavil jsem si AI kolečko nad označený text — Tauri, Rust a lokální Gemma</h2>
+        <div class="prose post-body"><p>Označíš text v libovolném programu, stiskneš <code>Ctrl+Shift+Space</code> a u kurzoru vyskočí kolečko: <strong>Opravit gramatiku, Přeložit, Shrnout, Vysvětlit, Upravit styl</strong> — nebo vlastní akce, kterou si napíšeš vlastními slovy. Výsledek přijde do panelu i s barevným <strong>porovnáním „před / po"</strong>, a teprve když ho odsouhlasíš, nahradí původní text. Konec kopírování do chatu s AI a zpátky.</p><p>Podobné nástroje existují, ale posílají všechno, co označíš, na cizí server. Já jsem to chtěl <strong>doma</strong>: umělá inteligence běží na grafické kartě v mém PC, zadarmo a bez internetu; jen na překlady si jedním kliknutím přepnu Claude. První použitelná verze vznikla za jeden den a po cestě jsem šlápl na pár pěkných pastí — třeba na model, který si nad jednou větou „přemýšlel" několik minut. Jak to funguje, proč je to udělané takhle a na co jsem narazil: <a href="../ai/hotkey/">ai-hotkey — jak je postavený →</a></p></div>
+      </article><article class="panel post" data-tag="ai">
+        <div class="post-meta"><span class="tag purple">AI</span><span class="post-date">26. června 2026</span></div>
+        <h2>Postavil jsem si bota, který za mě vymáhá moje data od data brokerů</h2>
+        <div class="prose post-body"><p>Existují stovky <em>data brokerů</em> — firem, co tiše sbírají a přeprodávají osobní data — a nikde není seznam „kdo má zrovna ta moje". Tak jsem si napsal Python bota, který rozesílá GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. Nic neodejde bez mého „ANO" — bot pošle souhrn dávky do Telegramu a čeká na schválení.</p><p>Nejhezčí část je <strong>samorozšiřování</strong>: žádost podle čl. 15 nutí brokera přiznat, komu data prodal dál. Tu odpověď přečte <strong>Claude (Sonnet)</strong>, vytáhne příjemce a každou přiznanou firmu sám přidá jako nový cíl — síť žádostí se tak rozrůstá bez mého zásahu. Celé to běží <strong>bez jediné externí knihovny</strong>, čistá Python stdlib. Jak je bot postavený jsem sepsal samostatně: <a href="../ai/gdpr/">GDPR Broker Bot — architektura, řetězení a eskalace →</a>.</p></div>
+      </article><article class="panel post" data-tag="ai">
+        <div class="post-meta"><span class="tag purple">AI</span><span class="post-date">3. června 2026</span></div>
+        <h2>AI Coach umí být i přísný — adaptivní koučink a kolik to celé stojí</h2>
+        <div class="prose post-body"><p>Můj Telegram trenér na Claude povyrostl. Nově mění tón podle toho, jak se mi daří: když držím režim, je v pohodě; když třikrát za týden vynechám cvičení, přitvrdí a žádné výmluvy; a když nahlásím, že mě něco bolí, sám vyřadí rizikové cviky a přepne na lehčí verzi. Při opakované bolesti připomene odbornou kontrolu.</p><p>Přidal jsem i metriky z Galaxy Watch (kroky, tep, HRV) přímo do denního přehledu, inline grafy váhy a kalorií, a hlavně <strong>transparentní účet</strong> — bot si loguje každé volání Claude API, takže přesně vím, že mě celý provoz stojí kolem <strong>75&nbsp;Kč měsíčně</strong> (levnější než kafe). Sepsal jsem to do stránky o&nbsp;<a href="../ai/coach/">AI Coachi — módy, hodinky a náklady →</a>.</p></div>
+      </article><article class="panel post" data-tag="ai">
+        <div class="post-meta"><span class="tag purple">AI</span><span class="post-date">31. května 2026</span></div>
+        <h2>AI Coach: osobní trenér v Telegramu postavený na Claude</h2>
+        <div class="prose post-body"><p>Postavil jsem si Telegram bota, který funguje jako osobní trenér. Vyfotíš jídlo a Claude vision odhadne kalorie a makra, řekneš do mikrofonu co jsi jedl a je to zapsané, ráno a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy přes Home Assistant — žádné ruční zapisování.</p><p>Zajímavá byla lekce z provozu: levnější model systematicky podhodnocoval české porce o čtvrtinu, tak teď běží na dvou modelech — <strong>Opus</strong> na přesný odhad jídla z fotek a <strong>Sonnet</strong> na rozpoznání záměru a dotazy. Jak je celý bot postavený jsem sepsal samostatně: <a href="../ai/coach/">AI Coach — architektura, modely a funkce →</a>.</p></div>
+      </article><article class="panel post" data-tag="ha">
+        <div class="post-meta"><span class="tag teal">Home Assistant</span><span class="post-date">31. května 2026</span></div>
+        <h2>Aluprof žaluzie do Home Assistant přes vlastní ESP32 + CC1101</h2>
+        <div class="prose post-body"><p>Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta do Home Assistantu prakticky neexistuje. Postavil jsem si vlastní RF most z ESP32 a čipu CC1101 — zachytil RF protokol původního ovladače, přehrál ho a v ESPHome z toho udělal plnohodnotnou <em>cover</em> entitu s posuvníkem polohy. Řeší to spousta lidí v ČR úplně stejně.</p><p>Sepsal jsem celý postup jako samostatný návod — zapojení, odposlech protokolu, ESPHome konfiguraci, kalibraci i tři automatizace (stínění podle slunce, večerní roztažení, anti-glare na TV): <a href="../homeassistant/zaluzie/">Aluprof žaluzie přes ESP32 + CC1101 →</a>.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">24. března 2026</span></div>
+        <h2>Gloomhaven Tracker v5.4: Forgotten Circles, ability karty a achievement stickery</h2>
+        <div class="prose post-body"><p><a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> poskočil z v4.0 na v5.4. Největší novinka: <strong>Forgotten Circles DLC</strong> — 20 nových scénářů s vlastním flowchartem, které se dají zapnout/vypnout v nastavení.</p><p>Ability karty dostaly kompletní české názvy pro všech 17 tříd (379 karet). Lightbox zobrazí kartu ve velkém s českým názvem. Karty jsou seřazené podle iniciativy a namapované na fotky z české edice. Na mapě se objevily české achievement stickery s cyklováním upgrade levelů na klik. Autentické PNG ikony z hry nahradily SVG v popisech předmětů i slotů.</p><p>Další vylepšení: flip-card animace eventů, toast notifikace, undo dokončení scénáře, class unlock systém (auto odemknutí při retirement), automatické snapshot zálohy, Info stránka s changelogem a smazání postavy. Celkem 105 testů.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">22. března 2026</span></div>
+        <h2>Gloomhaven Tracker v4.0: příběhy, bezpečnost a SEO</h2>
+        <div class="prose post-body"><p><a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> vyrostl na verzi 4.0. Největší novinka: kompletní české překlady — 95 scénářů má český souhrn příběhu a 60 questových linií je přeloženo s progresivním odhalováním podle checkpointů. Nová stránka Příběh v navigaci.</p><p>Attack Modifier deck vizualizuje balíček karet se statistikami (miss%, krit%, rolling) a přepočítává se v reálném čase při zaškrtnutí talentu. Retirement flow s potvrzovacím dialogem ukáže, co se odemkne. Zapečetěné obálky (A, B, ☀, ☾, X) jsou spoiler-safe s varováním před otevřením. 151 předmětů má upscalované fotky (JPG, 587×900).</p><p>Security audit: heslo min. 8 znaků, API docs skryté v produkci, HSTS a security headers, timing-safe verifikační kódy, Docker non-root. SEO: meta tagy, Open Graph, sitemap, robots.txt a ověření v Google Search Console. Feedback notifikace na email s rozšířenými daty. Celkem 105 testů.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">22. března 2026</span></div>
+        <h2>Gloomhaven Tracker v3.0: sdílení kampaně</h2>
+        <div class="prose post-body"><p><a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> je ve verzi 3.0. Nová hlavní funkce: sdílení kampaně mezi hráči. Vlastník kampaně vygeneruje 6-místný kód, ostatní hráči se s ním připojí a sdílejí společný postup — scénáře, blahobyt, reputaci, úspěchy, události i postavy.</p><p>Vše se synchronizuje přes cloud. Správa členů (přidání, odebrání, opuštění) je přímo v nastavení kampaně.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">22. března 2026</span></div>
+        <h2>Gloomhaven Tracker: eventy, spoilery a donate</h2>
+        <div class="prose post-body"><p>Masivní update <a href="https://gloomhaven.ongy.cz">Gloomhaven Trackeru</a> na základě feedbacku od uživatele. Event systém se 150 událostmi (městské + cestovní), A/B výběr s auto-apply efektů na kampaň — reputace, blahobyt, odemčení scénářů i předmětů.</p><p>Scénáře mají automatický výpočet úrovně, podmínky pro zahrání a spoiler ochranu odměn. Random reward pickery pro předměty (#71-95) i vedlejší scénáře. Item dostupnost opravena — náhodné předměty se ukazují jen po vylosování.</p><p>Donate sekce kompletně přepracovaná — Buy Me a Coffee, Revolut a Bitcoin QR. Nový zlatý scrollbar, aktivní kampaň v headeru a 105 testů.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">20. března 2026</span></div>
+        <h2>Gloomhaven Tracker: mobilní view a login</h2>
+        <div class="prose post-body"><p>Velký update <a href="https://gloomhaven.ongy.cz">Gloomhaven Trackeru</a>. Celý flowchart scénářů teď funguje na mobilu — pinch-to-zoom, tap na scénář otevře detail jako bottom sheet. Přidal jsem login s email verifikací a automatickou synchronizaci kampaní do cloudu.</p><p>Další novinky: možnost ručně odemknout scénáře, nový branding (GLOOMHAVEN zlatě + TRACKER šedě), kompaktnější legenda a responzivní breakpointy pro tablety.</p></div>
+      </article><article class="panel post" data-tag="web" data-more hidden>
+        <div class="post-meta"><span class="tag amber">Web</span><span class="post-date">20. března 2026</span></div>
+        <h2>Ongy.cz: velký update</h2>
+        <div class="prose post-body"><p>Celý web dostal pořádnou péči. Nová stránka O mně se stylizovaným avatarem a 3D tisk timeline. Fotky tiskáren lokálně místo Cloudinary. Blog posty mají barevné SVG ikony podle kategorie. AI sekce kompletně přepsaná s popisem Brain System a workflow.</p><p>Technicky: scroll reveal animace, Open Graph tagy pro sdílení, 2×2 grid na homepage, hex-heart footer ikona, a spousta mobilních fixů. Home Assistant sekce aktualizována na reálný stav — 50+ zařízení včetně wall tabletu s 3D tištěným držákem.</p></div>
+      </article><article class="panel post" data-tag="games" data-more hidden>
+        <div class="post-meta"><span class="tag ice">Deskovky</span><span class="post-date">5. března 2026</span></div>
+        <h2>Deskovky a Gloomhaven Tracker</h2>
+        <div class="prose post-body"><p>Sekce Frosthaven se přerodila v plnohodnotnou sekci Deskovky. Kromě Frosthavenu tam teď najdete i Gloomhaven a propojení na nový projekt – <a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a>, webovou appku na sledování kampaní.</p><p>Tracker běží na vlastní subdoméně a nasazuje se automaticky přes GitHub Actions. Sekce Deskovky dostala taky nový layout s kartami pro jednotlivé hry.</p></div>
+      </article><article class="panel post" data-tag="ai" data-more hidden>
+        <div class="post-meta"><span class="tag purple">AI</span><span class="post-date">29. ledna 2026</span></div>
+        <h2>AI Brain System má vlastní stránku</h2>
+        <div class="prose post-body"><p>Přidal jsem podstránku do sekce AI Lab, která dokumentuje Brain System v2.0 – systém, kterým si Claude Code udržuje paměť mezi sessions. Najdete tam popis architektury, jak fungují kontextové soubory, úkoly a changelog.</p></div>
+      </article><article class="panel post" data-tag="ha" data-more hidden>
+        <div class="post-meta"><span class="tag teal">Home Assistant</span><span class="post-date">24. ledna 2026</span></div>
+        <h2>Home Assistant: 9 podstránek a CSS refaktoring</h2>
+        <div class="prose post-body"><p>Sekce Home Assistant vyrostla natolik, že jsem ji rozdělil na 9 samostatných podstránek – přehled, zařízení, dashboardy, automatizace, Floor3D, data a reporting, hardware, integrace a timeline.</p><p>Zároveň jsem rozsekl monolitický CSS soubor do modulů, aby se v tom dalo lépe orientovat.</p></div>
+      </article><article class="panel post" data-tag="ha" data-more hidden>
+        <div class="post-meta"><span class="tag teal">Home Assistant</span><span class="post-date">15. ledna 2026</span></div>
+        <h2>Home Assistant sekce je na světě</h2>
+        <div class="prose post-body"><p>Konečně jsem přidal kompletní sekci o mém Home Assistant setupu. Jsou tam reálná data – seznam zařízení, screenshoty z dashboardů a Grafany, interaktivní Floor3D karta bytu a popis celého data stacku (InfluxDB, Grafana, Node-RED).</p><p>Screenshoty jdou zvětšit přes lightbox a dashboardy mají carousel. Taky jsem přešel na čisté URL bez .html koncovek.</p></div>
+      </article><article class="panel post" data-tag="web" data-more hidden>
+        <div class="post-meta"><span class="tag amber">Web</span><span class="post-date">10. prosince 2025</span></div>
+        <h2>Web je live!</h2>
+        <div class="prose post-body"><p>První verze ongy.cz je na světě. Dlouho jsem přemýšlel, jestli mít vlastní web, a nakonec jsem se rozhodl to zkusit. Plánuju sem dávat věci kolem 3D tisku, deskovek a různých tech experimentů.</p><p>Postupně budu přidávat obsah – fotky z tisku, zápisky z Frosthavenu, možná nějaké AI experimenty. Uvidíme kam to povede.</p></div>
+      </article></div>
+      <div class="links" style="margin-top:14px"><button class="button button-quiet show-more" type="button">Zobrazit další zápisky (11)</button></div>
+    </div></section>
 
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">26. června 2026</span>
-                        <span class="post-tag">AI</span>
-                    </div>
-                    <h2>Postavil jsem si bota, který za mě vymáhá moje data od data brokerů</h2>
-                    <p>
-                        Existují stovky <em>data brokerů</em> — firem, co tiše sbírají a přeprodávají osobní data —
-                        a nikde není seznam „kdo má zrovna ta moje". Tak jsem si napsal Python bota, který rozesílá
-                        GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte
-                        příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. Nic neodejde
-                        bez mého „ANO" — bot pošle souhrn dávky do Telegramu a čeká na schválení.
-                    </p>
-                    <p>
-                        Nejhezčí část je <strong>samorozšiřování</strong>: žádost podle čl. 15 nutí brokera přiznat,
-                        komu data prodal dál. Tu odpověď přečte <strong>Claude (Sonnet)</strong>, vytáhne příjemce
-                        a každou přiznanou firmu sám přidá jako nový cíl — síť žádostí se tak rozrůstá bez mého
-                        zásahu. Celé to běží <strong>bez jediné externí knihovny</strong>, čistá Python stdlib.
-                        Jak je bot postavený jsem sepsal samostatně:
-                        <a href="../ai/gdpr/">GDPR Broker Bot — architektura, řetězení a eskalace →</a>.
-                    </p>
-                </article>
+  </main>
 
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">3. června 2026</span>
-                        <span class="post-tag">AI</span>
-                    </div>
-                    <h2>AI Coach umí být i přísný — adaptivní koučink a kolik to celé stojí</h2>
-                    <p>
-                        Můj Telegram trenér na Claude povyrostl. Nově mění tón podle toho, jak se mi daří:
-                        když držím režim, je v pohodě; když třikrát za týden vynechám cvičení, přitvrdí
-                        a žádné výmluvy; a když nahlásím, že mě něco bolí, sám vyřadí rizikové cviky
-                        a přepne na lehčí verzi. Při opakované bolesti připomene odbornou kontrolu.
-                    </p>
-                    <p>
-                        Přidal jsem i metriky z Galaxy Watch (kroky, tep, HRV) přímo do denního přehledu,
-                        inline grafy váhy a kalorií, a hlavně <strong>transparentní účet</strong> — bot si
-                        loguje každé volání Claude API, takže přesně vím, že mě celý provoz stojí kolem
-                        <strong>75&nbsp;Kč měsíčně</strong> (levnější než kafe). Sepsal jsem to do stránky
-                        o&nbsp;<a href="../ai/coach/">AI Coachi — módy, hodinky a náklady →</a>.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">31. května 2026</span>
-                        <span class="post-tag">AI</span>
-                    </div>
-                    <h2>AI Coach: osobní trenér v Telegramu postavený na Claude</h2>
-                    <p>
-                        Postavil jsem si Telegram bota, který funguje jako osobní trenér. Vyfotíš jídlo a Claude
-                        vision odhadne kalorie a makra, řekneš do mikrofonu co jsi jedl a je to zapsané, ráno
-                        a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy přes
-                        Home Assistant — žádné ruční zapisování.
-                    </p>
-                    <p>
-                        Zajímavá byla lekce z provozu: levnější model systematicky podhodnocoval české porce
-                        o čtvrtinu, tak teď běží na dvou modelech — <strong>Opus</strong> na přesný odhad jídla
-                        z fotek a <strong>Sonnet</strong> na rozpoznání záměru a dotazy. Jak je celý bot
-                        postavený jsem sepsal samostatně:
-                        <a href="../ai/coach/">AI Coach — architektura, modely a funkce →</a>.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ha">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">31. května 2026</span>
-                        <span class="post-tag">Home Assistant</span>
-                    </div>
-                    <h2>Aluprof žaluzie do Home Assistant přes vlastní ESP32 + CC1101</h2>
-                    <p>
-                        Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta
-                        do Home Assistantu prakticky neexistuje. Postavil jsem si vlastní RF most z ESP32
-                        a čipu CC1101 — zachytil RF protokol původního ovladače, přehrál ho a v ESPHome
-                        z toho udělal plnohodnotnou <em>cover</em> entitu s posuvníkem polohy. Řeší to
-                        spousta lidí v ČR úplně stejně.
-                    </p>
-                    <p>
-                        Sepsal jsem celý postup jako samostatný návod — zapojení, odposlech protokolu,
-                        ESPHome konfiguraci, kalibraci i tři automatizace (stínění podle slunce, večerní
-                        roztažení, anti-glare na TV): <a href="../homeassistant/zaluzie/">Aluprof žaluzie přes ESP32 + CC1101 →</a>.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">24. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Gloomhaven Tracker v5.4: Forgotten Circles, ability karty a achievement stickery</h2>
-                    <p>
-                        <a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> poskočil z v4.0 na v5.4.
-                        Největší novinka: <strong>Forgotten Circles DLC</strong> — 20 nových scénářů s vlastním
-                        flowchartem, které se dají zapnout/vypnout v nastavení.
-                    </p>
-                    <p>
-                        Ability karty dostaly kompletní české názvy pro všech 17 tříd (379 karet). Lightbox
-                        zobrazí kartu ve velkém s českým názvem. Karty jsou seřazené podle iniciativy a
-                        namapované na fotky z české edice. Na mapě se objevily české achievement stickery
-                        s cyklováním upgrade levelů na klik. Autentické PNG ikony z hry nahradily SVG
-                        v popisech předmětů i slotů.
-                    </p>
-                    <p>
-                        Další vylepšení: flip-card animace eventů, toast notifikace, undo dokončení scénáře,
-                        class unlock systém (auto odemknutí při retirement), automatické snapshot zálohy,
-                        Info stránka s changelogem a smazání postavy. Celkem 105 testů.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">22. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Gloomhaven Tracker v4.0: příběhy, bezpečnost a SEO</h2>
-                    <p>
-                        <a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> vyrostl na verzi 4.0.
-                        Největší novinka: kompletní české překlady — 95 scénářů má český souhrn příběhu
-                        a 60 questových linií je přeloženo s progresivním odhalováním podle checkpointů.
-                        Nová stránka Příběh v navigaci.
-                    </p>
-                    <p>
-                        Attack Modifier deck vizualizuje balíček karet se statistikami (miss%, krit%, rolling)
-                        a přepočítává se v reálném čase při zaškrtnutí talentu. Retirement flow s potvrzovacím
-                        dialogem ukáže, co se odemkne. Zapečetěné obálky (A, B, ☀, ☾, X) jsou spoiler-safe
-                        s varováním před otevřením. 151 předmětů má upscalované fotky (JPG, 587×900).
-                    </p>
-                    <p>
-                        Security audit: heslo min. 8 znaků, API docs skryté v produkci, HSTS a security headers,
-                        timing-safe verifikační kódy, Docker non-root. SEO: meta tagy, Open Graph, sitemap,
-                        robots.txt a ověření v Google Search Console. Feedback notifikace na email
-                        s rozšířenými daty. Celkem 105 testů.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">22. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Gloomhaven Tracker v3.0: sdílení kampaně</h2>
-                    <p>
-                        <a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a> je ve verzi 3.0.
-                        Nová hlavní funkce: sdílení kampaně mezi hráči. Vlastník kampaně vygeneruje
-                        6-místný kód, ostatní hráči se s ním připojí a sdílejí společný postup —
-                        scénáře, blahobyt, reputaci, úspěchy, události i postavy.
-                    </p>
-                    <p>
-                        Vše se synchronizuje přes cloud. Správa členů (přidání, odebrání, opuštění)
-                        je přímo v nastavení kampaně.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">22. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Gloomhaven Tracker: eventy, spoilery a donate</h2>
-                    <p>
-                        Masivní update <a href="https://gloomhaven.ongy.cz">Gloomhaven Trackeru</a>
-                        na základě feedbacku od uživatele. Event systém se 150 událostmi (městské + cestovní),
-                        A/B výběr s auto-apply efektů na kampaň — reputace, blahobyt, odemčení scénářů i předmětů.
-                    </p>
-                    <p>
-                        Scénáře mají automatický výpočet úrovně, podmínky pro zahrání a spoiler ochranu odměn.
-                        Random reward pickery pro předměty (#71-95) i vedlejší scénáře. Item dostupnost opravena —
-                        náhodné předměty se ukazují jen po vylosování.
-                    </p>
-                    <p>
-                        Donate sekce kompletně přepracovaná — Buy Me a Coffee, Revolut a Bitcoin QR.
-                        Nový zlatý scrollbar, aktivní kampaň v headeru a 105 testů.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">20. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Gloomhaven Tracker: mobilní view a login</h2>
-                    <p>
-                        Velký update <a href="https://gloomhaven.ongy.cz">Gloomhaven Trackeru</a>.
-                        Celý flowchart scénářů teď funguje na mobilu — pinch-to-zoom, tap na scénář
-                        otevře detail jako bottom sheet. Přidal jsem login s email verifikací
-                        a automatickou synchronizaci kampaní do cloudu.
-                    </p>
-                    <p>
-                        Další novinky: možnost ručně odemknout scénáře, nový branding
-                        (GLOOMHAVEN zlatě + TRACKER šedě), kompaktnější legenda
-                        a responzivní breakpointy pro tablety.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-web">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">20. března 2026</span>
-                        <span class="post-tag">Web</span>
-                    </div>
-                    <h2>Ongy.cz: velký update</h2>
-                    <p>
-                        Celý web dostal pořádnou péči. Nová stránka O mně se stylizovaným avatarem
-                        a 3D tisk timeline. Fotky tiskáren lokálně místo Cloudinary. Blog posty
-                        mají barevné SVG ikony podle kategorie. AI sekce kompletně přepsaná
-                        s popisem Brain System a workflow.
-                    </p>
-                    <p>
-                        Technicky: scroll reveal animace, Open Graph tagy pro sdílení,
-                        2×2 grid na homepage, hex-heart footer ikona, a spousta mobilních fixů.
-                        Home Assistant sekce aktualizována na reálný stav — 50+ zařízení včetně
-                        wall tabletu s 3D tištěným držákem.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-deskovky">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">5. března 2026</span>
-                        <span class="post-tag">Deskovky</span>
-                    </div>
-                    <h2>Deskovky a Gloomhaven Tracker</h2>
-                    <p>
-                        Sekce Frosthaven se přerodila v plnohodnotnou sekci Deskovky. Kromě Frosthavenu
-                        tam teď najdete i Gloomhaven a propojení na nový projekt –
-                        <a href="https://gloomhaven.ongy.cz">Gloomhaven Tracker</a>,
-                        webovou appku na sledování kampaní.
-                    </p>
-                    <p>
-                        Tracker běží na vlastní subdoméně a nasazuje se automaticky přes GitHub Actions.
-                        Sekce Deskovky dostala taky nový layout s kartami pro jednotlivé hry.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/><path d="M9 14h6"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">29. ledna 2026</span>
-                        <span class="post-tag">AI</span>
-                    </div>
-                    <h2>AI Brain System má vlastní stránku</h2>
-                    <p>
-                        Přidal jsem podstránku do sekce AI Lab, která dokumentuje Brain System v2.0 –
-                        systém, kterým si Claude Code udržuje paměť mezi sessions. Najdete tam popis
-                        architektury, jak fungují kontextové soubory, úkoly a changelog.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ha">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">24. ledna 2026</span>
-                        <span class="post-tag">Home Assistant</span>
-                    </div>
-                    <h2>Home Assistant: 9 podstránek a CSS refaktoring</h2>
-                    <p>
-                        Sekce Home Assistant vyrostla natolik, že jsem ji rozdělil na 9 samostatných
-                        podstránek – přehled, zařízení, dashboardy, automatizace, Floor3D,
-                        data a reporting, hardware, integrace a timeline.
-                    </p>
-                    <p>
-                        Zároveň jsem rozsekl monolitický CSS soubor do modulů, aby se v tom dalo lépe orientovat.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-ha">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">15. ledna 2026</span>
-                        <span class="post-tag">Home Assistant</span>
-                    </div>
-                    <h2>Home Assistant sekce je na světě</h2>
-                    <p>
-                        Konečně jsem přidal kompletní sekci o mém Home Assistant setupu. Jsou tam reálná
-                        data – seznam zařízení, screenshoty z dashboardů a Grafany, interaktivní Floor3D
-                        karta bytu a popis celého data stacku (InfluxDB, Grafana, Node-RED).
-                    </p>
-                    <p>
-                        Screenshoty jdou zvětšit přes lightbox a dashboardy mají carousel.
-                        Taky jsem přešel na čisté URL bez .html koncovek.
-                    </p>
-                </article>
-
-                <article class="blog-post">
-                    <div class="blog-post-icon tag-web">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <div class="post-meta">
-                        <span class="post-date">10. prosince 2025</span>
-                        <span class="post-tag">Web</span>
-                    </div>
-                    <h2>Web je live!</h2>
-                    <p>
-                        První verze ongy.cz je na světě. Dlouho jsem přemýšlel, jestli mít vlastní web,
-                        a nakonec jsem se rozhodl to zkusit. Plánuju sem dávat věci kolem 3D tisku,
-                        deskovek a různých tech experimentů.
-                    </p>
-                    <p>
-                        Postupně budu přidávat obsah – fotky z tisku, zápisky z Frosthavenu,
-                        možná nějaké AI experimenty. Uvidíme kam to povede.
-                    </p>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <script src="../../js/icons.js"></script>
-    <script src="../../js/components.js?v=20260912a"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/reveal.js"></script>
-    <script src="../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../app.js?v=11"></script>
+  <script src="../../analytics.js?v=1"></script>
+  <script src="../../project.js?v=3"></script>
 </body>
 </html>

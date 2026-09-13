@@ -1,411 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Ongy 3D Print Lab - Bambu Lab X1C, Anycubic Photon Mono X2, tisky, tipy a triky">
-<meta property="og:title" content="3D Print Lab | Ongy.cz">
-    <meta property="og:description" content="Bambu Lab X1C, Anycubic Photon Mono X2, projekty a tipy">
-    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://ongy.cz/pages/3d-print/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <title>3D Print Lab | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bambu Lab X1 Carbon a resinová Anycubic Photon Mono X2: praktické díly, figurky a vlastní modely. Skladování filamentu s měřením vlhkosti, tipy na tisk.">
+  <meta name="theme-color" content="#101312"><title>3D Print Lab | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/3d-print/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="3D Print Lab"><meta property="og:description" content="Bambu Lab X1 Carbon a resinová Anycubic Photon Mono X2: praktické díly, figurky a vlastní modely. Skladování filamentu s měřením vlhkosti, tipy na tisk."><meta property="og:url" content="https://ongy.cz/pages/3d-print/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="3D Print Lab"><meta name="twitter:description" content="Bambu Lab X1 Carbon a resinová Anycubic Photon Mono X2: praktické díly, figurky a vlastní modely. Skladování filamentu s měřením vlhkosti, tipy na tisk."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=7"><link rel="stylesheet" href="../../project.css?v=6">
 </head>
 <body>
-    <!-- Navigation is injected by components.js -->
-    
-    <main>
-        <!-- Page Header -->
-        <section class="page-hero">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="12" width="16" height="10" rx="1"/>
-                    <rect x="6" y="14" width="12" height="6" rx="0.5"/>
-                    <path d="M6 12V4a1 1 0 011-1h10a1 1 0 011 1v8"/>
-                    <path d="M9 17h6"/>
-                    <circle cx="12" cy="8" r="2"/>
-                </svg>
-                <h1>3D Print Lab</h1>
-                <p class="page-subtitle">Kde se digitální sny mění v plast</p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../index.html"><img src="../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../index.html">Domů</a><a class="active" href="../../pages/3d-print/">3D tisk</a><a href="../../pages/homeassistant/">Home Assistant</a><a href="../../pages/ai/">AI</a><a href="../../pages/server/">Server &amp; síť</a><a href="../../pages/deskovky/">Deskovky</a><a href="../../pages/blog/">Blog</a><a href="../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Printers Section -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="4" y="12" width="16" height="10" rx="1"/>
-                                <rect x="6" y="14" width="12" height="6" rx="0.5"/>
-                                <path d="M6 12V4a1 1 0 011-1h10a1 1 0 011 1v8"/>
-                                <path d="M9 17h6"/>
-                                <circle cx="12" cy="8" r="2"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Moje tiskárny
-                </h2>
-            </div>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>3D tisk</span></p>
+        <h1>Od nápadu <span>k věci.</span></h1>
+        <p class="lead">Kde se digitální modely mění v reálné věci. Praktické díly do bytu, figurky na deskovky a modely, které nikde nekoupíš.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="now-label"><span class="pulse" style="background:var(--amber)"></span>Dílna</span>
+        <ul class="kpis"><li><b>2</b><small>tiskárny</small></li><li><b>FDM + resin</b><small>dvě technologie</small></li><li><b>1</b><small>suchý box s měřením</small></li></ul>
+        <p class="note">Bambu Lab X1 Carbon na funkční díly, Anycubic Photon Mono X2 na detailní figurky.</p>
+      </aside>
+    </section>
 
-            <div class="printer-grid">
-                <div class="printer-card">
-                    <div class="printer-image">
-                        <img src="../../assets/images/3d-print/bambu-x1c.avif"
-                             alt="Bambu Lab X1 Carbon"
-                             loading="lazy">
-                    </div>
-                    <div class="printer-info">
-                        <h3>Bambu Lab X1 Carbon</h3>
-                        <span class="printer-type">FDM / Filament</span>
-                        <p>Hlavní pracant na funkční díly, organizéry a větší projekty. AMS systém pro multicolor tisky.</p>
-                        <ul class="printer-specs">
-                            <li>Build: 256×256×256 mm</li>
-                            <li>Rychlost: až 500 mm/s</li>
-                            <li>Materiály: PLA, PETG, ABS, TPU...</li>
-                        </ul>
-                    </div>
-                </div>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">O čem to je</p><h2>Dvě tiskárny, dva světy</h2></div>
+      <div class="prose"><p>FDM tiskárna dělá věci, které něco drží: organizéry, držáky, díly pro chytrou domácnost, hexy pro Gloomhaven. Resinová tiskárna dělá věci, na které se kouká: figurky s detaily, které z filamentu nedostaneš.</p><p>Filament se skladuje v suchém boxu s teploměrem a vlhkoměrem, který hlásí do Home Assistantu. Tisk se tak nekazí vlhkostí a já vím, kdy vyměnit silikagel.</p></div>
+    </div></section>
+    <section class="psection" id="co-tisknu"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co tisknu</p><h2>Figurky, hexy a věci do bytu</h2></div>
+      <div class="shots cover"><figure class="shot wide"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121443_lsulql" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121443_lsulql" alt="Diablo" loading="lazy" decoding="async"></a><figcaption>Diablo: Lord of Terror z resinu - Anycubic Photon Mono X2</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121412_fxzaol" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230910_121412_fxzaol" alt="Diablo - detail" loading="lazy" decoding="async"></a><figcaption>Diablo - detail: Detailní pohled na resinový tisk</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20231113_210324_wytz0a" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20231113_210324_wytz0a" alt="Sauron" loading="lazy" decoding="async"></a><figcaption>Sauron: Temný pán z Pána prstenů - resin</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240410_165045_apmhhn" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240410_165045_apmhhn" alt="Gandalf" loading="lazy" decoding="async"></a><figcaption>Gandalf: "You shall not pass!" - resin</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240322_144011_wkree7" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240322_144011_wkree7" alt="Grogu" loading="lazy" decoding="async"></a><figcaption>Grogu: Baby Yoda z Mandaloriana - resin</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230815_183435_cxnpkv" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230815_183435_cxnpkv" alt="Drak" loading="lazy" decoding="async"></a><figcaption>Drak: Fantasy drak z resinu</figcaption></figure><figure class="shot"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230724_075452_rvmaa8" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20230724_075452_rvmaa8" alt="Vlk - Zaklínač" loading="lazy" decoding="async"></a><figcaption>Vlk - Zaklínač: Witcher vlk z resinu</figcaption></figure><figure class="shot wide"><a href="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240612_095821_m1nizk" class="zoom" aria-label="Zvětšit"><img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_1200,q_auto,f_auto/20240612_095821_m1nizk" alt="Gloomhaven hexy" loading="lazy" decoding="async"></a><figcaption>Gloomhaven hexy: Modulární hexové pole na magnety - FDM</figcaption></figure></div>
+    </div></section>
+    <section class="psection" id="dilna"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dílna</p><h2>Skladování a data</h2></div>
+      <div class="shots"><figure class="shot"><a href="../../assets/filament-storage.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/filament-storage.jpg" alt="Skladování filamentu" loading="lazy" decoding="async"></a><figcaption>Suché skladování filamentu s teploměrem a vlhkoměrem.</figcaption></figure><figure class="shot"><a href="../../assets/silica-gel-box.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/silica-gel-box.jpg" alt="Box se silikagelem" loading="lazy" decoding="async"></a><figcaption>Box se silikagelem a senzorem napojeným na Home Assistant.</figcaption></figure><figure class="shot"><a href="../../assets/grafana-filament.jpg" class="zoom" aria-label="Zvětšit"><img src="../../assets/grafana-filament.jpg" alt="Graf vlhkosti filamentu" loading="lazy" decoding="async"></a><figcaption>Vlhkost v čase v Grafaně, ať vím, kdy vyměnit silikagel.</figcaption></figure></div>
+    </div></section>
 
-                <div class="printer-card">
-                    <div class="printer-image">
-                        <img src="../../assets/images/3d-print/anycubic-photon-mono-x2.png"
-                             alt="Anycubic Photon Mono X2"
-                             loading="lazy">
-                    </div>
-                    <div class="printer-info">
-                        <h3>Anycubic Photon Mono X2</h3>
-                        <span class="printer-type">MSLA / Resin</span>
-                        <p>Pro detailní figurky, miniatury a přesné modely. Neskutečný detail.</p>
-                        <ul class="printer-specs">
-                            <li>Build: 196×122×200 mm</li>
-                            <li>Rozlišení: 4K+ mono LCD</li>
-                            <li>Materiály: Standard, ABS-like, Flex...</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <section class="psection"><div class="shell">
+      <div class="section-intro-inline"><p class="eyebrow">Projekty a stránky</p><h2>Co tu najdeš</h2></div>
+      <div class="archive-grid"><a class="archive-card" data-status="running" href="../../pages/3d-print/"><span class="tag amber">FDM</span><h2>Bambu Lab X1 Carbon</h2><p>Rychlá, přesná, s automatickou výměnou filamentu. Většina praktických výtisků vzniká tady.</p><small>AMS · PLA · PETG</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/3d-print/"><span class="tag amber">RESIN</span><h2>Anycubic Photon Mono X2</h2><p>Figurky a miniatury s jemnými detaily. Post-processing, mytí, vytvrzování.</p><small>mono LCD</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/3d-print/"><span class="tag teal">SKLADOVÁNÍ</span><h2>Suché skladování filamentu</h2><p>Box se silikagelem a senzorem vlhkosti napojeným na Home Assistant.</p><small>HA · Grafana</small><b>Otevřít →</b></a><a class="archive-card" data-status="running" href="../../pages/3d-print/#co-tisknu"><span class="tag teal">GALERIE</span><h2>Co tisknu</h2><p>Diablo, Sauron, Gandalf, Grogu, drak, hexy pro Gloomhaven a další.</p><small>figurky · díly</small><b>Otevřít →</b></a></div>
+    </div></section>
 
-        </section>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Z čeho se to skládá</h2></div>
+      <div class="panel privacy"><dl class="kv"><div><dt>FDM</dt><dd>Bambu Lab X1 Carbon s AMS. PLA a PETG, profily pro MakerWorld. PETG: čistý bed (IPA), 70 °C, první vrstva 230 °C, sundávat až po vychladnutí.</dd></div><div><dt>Resin</dt><dd>Anycubic Photon Mono X2. Po tisku dvě lázně IPA po 3 minutách, ofouknout, UV 5 až 10 minut. Podpěry sundat před vytvrzením, tenké části vytvrzovat kratší dobu.</dd></div><div><dt>Více barev</dt><dd>AMS umí 4 barvy najednou. Flush volume podle přechodu (tmavá na světlou potřebuje víc), u menších modelů pořadí tisku „By object“, ať prime tower nezabírá místo.</dd></div><div><dt>Modely</dt><dd>Vlastní modely a remaky na <a href="https://makerworld.com">MakerWorld</a>, hexové pole pro Gloomhaven na magnety.</dd></div></dl></div>
+    </div></section>
+  </main>
 
-        <!-- Filament Storage Section -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="9"/>
-                                <circle cx="12" cy="12" r="4"/>
-                                <circle cx="12" cy="12" r="1"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Skladování filamentu
-                </h2>
-            </div>
-
-            <div class="filament-section">
-                <div class="filament-text">
-                    <p>
-                        Používám hlavně filamenty Bambu Lab a Sunlu — oba jsou kompatibilní s AMS.
-                        Bambu filamenty mají NFC čip, který automaticky nahraje správný profil do sliceru.
-                        Vlhkost je největší nepřítel filamentu — mokrý praská a tiskne nekvalitně.
-                        Proto skladuji všechny cívky v uzavřených plastových boxech se silica gelem.
-                    </p>
-                    <div class="filament-features">
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22c5.5-3 9-7.5 9-12a9 9 0 10-18 0c0 4.5 3.5 9 9 12z"/><circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Xiaomi senzory vlhkosti</strong>
-                                <p>Každý box má vlastní čidlo napojené na Home Assistant. Hlídám vlhkost pod 20 %.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Vytištěné krabičky na silica gel</strong>
-                                <p>Vlastní design s perforovaným víčkem. Gel mění barvu když nasákne — pak ho stačí vysušit v troubě.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>HA automatizace</strong>
-                                <p>Notifikace když vlhkost stoupne nad limit. Propojené s Grafana dashboardem pro historii.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filament-gallery">
-                    <div class="filament-photo">
-                        <img src="../../assets/images/3d-print/filament-storage.jpg"
-                             alt="Filament storage - plastové boxy se senzory vlhkosti"
-                             loading="lazy">
-                        <span class="photo-caption">Boxy se senzory vlhkosti a silica gelem</span>
-                    </div>
-                    <div class="filament-photo">
-                        <img src="../../assets/images/3d-print/silica-gel-box.jpg"
-                             alt="3D vytištěná krabička na silica gel"
-                             loading="lazy">
-                        <span class="photo-caption">Vytištěná krabička na silica gel</span>
-                    </div>
-                    <div class="filament-photo">
-                        <img src="../../assets/images/3d-print/grafana-filament.jpg"
-                             alt="Grafana dashboard - vlhkost a teplota filamentu"
-                             loading="lazy">
-                        <span class="photo-caption">Grafana — vlhkost a teplota filament boxů (24h)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <circle cx="12" cy="8" r="1.5" fill="currentColor"/>
-                                <circle cx="8" cy="12" r="1.5" fill="currentColor"/>
-                                <circle cx="16" cy="12" r="1.5" fill="currentColor"/>
-                                <circle cx="10" cy="16" r="1.5" fill="currentColor"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Co tisknu
-                </h2>
-                <p class="section-subtitle">Výběr z mých projektů</p>
-            </div>
-
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">Vše</button>
-                <button class="filter-btn" data-filter="functional">Funkční</button>
-                <button class="filter-btn" data-filter="boardgames">Deskovky</button>
-                <button class="filter-btn" data-filter="miniatures">Figurky</button>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20230910_121443_lsulql"
-                             alt="Diablo - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Diablo</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Lord of Terror z resinu - Anycubic Photon Mono X2</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20230910_121412_fxzaol"
-                             alt="Diablo - detail" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Diablo - detail</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Detailní pohled na resinový tisk</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20231113_210324_wytz0a"
-                             alt="Sauron - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Sauron</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Temný pán z Pána prstenů - resin</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20240410_165045_apmhhn"
-                             alt="Gandalf - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Gandalf</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>"You shall not pass!" - resin</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20240322_144011_wkree7"
-                             alt="Grogu - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Grogu</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Baby Yoda z Mandaloriana - resin</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20230815_183435_cxnpkv"
-                             alt="Drak - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Drak</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Fantasy drak z resinu</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="miniatures">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20230724_075452_rvmaa8"
-                             alt="Vlk ze Zaklínače - resinová figurka" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Vlk - Zaklínač</h3>
-                        <span class="project-tag">Figurky</span>
-                        <p>Witcher vlk z resinu</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="boardgames">
-                    <div class="project-image">
-                        <img src="https://res.cloudinary.com/dwuteqscm/image/upload/w_600,q_auto,f_auto/20240612_095821_m1nizk"
-                             alt="Gloomhaven hexové pole" loading="lazy" class="ha-card-img">
-                    </div>
-                    <div class="project-info">
-                        <h3>Gloomhaven hexy</h3>
-                        <span class="project-tag">Deskovky</span>
-                        <p>Modulární hexové pole na magnety - FDM</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tips Section -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 21h6"/>
-                                <path d="M9 18h6"/>
-                                <path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Tipy & Triky
-                </h2>
-                <p class="section-subtitle">Poznámky z tiskového bojiště</p>
-            </div>
-
-            <div class="tips-grid">
-                <article class="tip-card">
-                    <span class="tip-number">01</span>
-                    <h3>Bed adhesion pro PETG</h3>
-                    <p>PETG miluje čistý bed. IPA alkohol před každým tiskem je základ. Bed na 70 °C, první vrstva 230 °C a pomalejší rychlost. Na Bambu textured plate PETG drží perfektně — ale sundávat až po vychladnutí, jinak se plate zničí.</p>
-                </article>
-
-                <article class="tip-card">
-                    <span class="tip-number">02</span>
-                    <h3>Resin post-processing</h3>
-                    <p>Po tisku: oplach v IPA (2 lázně po 3 minutách), ofouknutí vzduchem, vytvrzení v UV komoře 5–10 minut. Supports sundávat ještě před vytvrzením — po vytvrzení jsou křehké a lámou detaily. Tenké části (meče, rohy) vytvrzovat kratší dobu.</p>
-                </article>
-
-                <article class="tip-card">
-                    <span class="tip-number">03</span>
-                    <h3>Multicolor s AMS</h3>
-                    <p>Bambu AMS umí 4 barvy najednou. V Bambu Studio: barevné malování přímo na modelu, flush volume nastavit podle přechodu (tmavá→světlá potřebuje víc). Prime tower zabírá místo — u menších modelů zkusit "By object" pořadí tisku.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Downloads Section -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                                <polyline points="7 10 12 15 17 10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Ke stažení
-                </h2>
-                <p class="section-subtitle">Moje modely a doporučené zdroje</p>
-            </div>
-
-            <div class="downloads-grid">
-                <a href="https://makerworld.com/cs/@_ongy_" target="_blank" rel="noopener noreferrer" class="download-card external">
-                    <svg class="download-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                        <line x1="12" y1="22.08" x2="12" y2="12"/>
-                    </svg>
-                    <h3>MakerWorld profil</h3>
-                    <p>Moje modely a remaky na Bambu MakerWorld</p>
-                    <span class="external-badge">↗</span>
-                </a>
-
-                <a href="https://makerworld.com/cs" target="_blank" rel="noopener noreferrer" class="download-card external">
-                    <svg class="download-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                    <h3>MakerWorld</h3>
-                    <p>Komunita modelů pro Bambu Lab tiskárny</p>
-                    <span class="external-badge">↗</span>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close">&times;</button>
-        <button class="lightbox-prev">&#10094;</button>
-        <button class="lightbox-next">&#10095;</button>
-        <img class="lightbox-image" src="" alt="">
-        <div class="lightbox-caption"></div>
-    </div>
-
-    <script src="../../js/icons.js"></script>
-    <script src="../../js/components.js?v=20260912a"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/ha-lightbox.js?v=3"></script>
-    <script src="../../js/reveal.js"></script>
-    <script src="../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../app.js?v=11"></script>
+  <script src="../../analytics.js?v=1"></script>
+  <script src="../../project.js?v=3"></script>
 </body>
 </html>

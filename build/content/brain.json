@@ -1,0 +1,158 @@
+{
+ "path": "pages/ai/brain/",
+ "nav": "ai",
+ "name": "Brain System",
+ "title": "Paměť, která přežije konec session — Brain System",
+ "description": "Brain System: složka s textovými soubory v každém projektu, kterou si AI agent na začátku přečte a na konci sám doplní. Změny, úkoly, rozhodnutí a poznámka pro příští session.",
+ "section": {
+  "label": "AI Lab",
+  "href": "https://ongy.cz/pages/ai/"
+ },
+ "h1": "Paměť, která přežije <span>konec session.</span>",
+ "lead": "AI si mezi rozhovory nic nepamatuje. Tak jsem jí dal zápisník: složku v projektu, kterou si agent na začátku přečte a na konci doplní.",
+ "chips": [
+  {
+   "text": "běží v 9+ projektech"
+  },
+  {
+   "text": "AI Lab · nástroje",
+   "amber": true
+  }
+ ],
+ "kpi_label": "Stav dneska",
+ "kpis": [
+  {
+   "b": "9+",
+   "small": "projektů s pamětí"
+  },
+  {
+   "b": "2.0",
+   "small": "verze systému"
+  },
+  {
+   "b": "7",
+   "small": "skills"
+  }
+ ],
+ "kpi_note": "Osobní i pracovní projekty, jedna struktura. Start session z pěti minut na pár sekund.",
+ "kcemu": {
+  "h2": "Zápisník, který si AI čte sama",
+  "p": [
+   "Každý rozhovor s AI začíná od nuly. Co jsme minule vymysleli, dnes neví. U projektu na měsíce je to průšvih.",
+   "Brain System je složka textových souborů v projektu. Agent si ji na začátku přečte a ví, kde jsme skončili. Na konci sám zapíše, co udělal a co je na řadě.",
+   "Řeknu „načti si brain“ a jedeme dál."
+  ]
+ },
+ "proc": {
+  "h2": "Pět minut vysvětlování při každém startu",
+  "p": [
+   "Web, tracker na deskovky, domácí server, práce. Samá krátká sezení a každé začínalo stejně: jaký stack, jaká pravidla, co bylo minule.",
+   "První pokus byl jeden soubor s poznámkami. Rychle přerostl. Chtěl jsem strukturu, kde má každý typ informace své místo, a agenta, který ji udržuje sám."
+  ]
+ },
+ "jak": {
+  "h2": "Přečti, pracuj, zapiš",
+  "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Cyklus session: agent na začátku paměť přečte, během práce ji používá a na konci do ní zapíše\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"305\" y=\"14\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"34\" fill=\"#edf1ed\" font-weight=\"600\">Claude Code</text><text x=\"380\" y=\"50\" fill=\"#7c8780\" font-size=\"11\">agent čte i zapisuje sám</text>\n            <path d=\"M665 128 L665 84 L95 84 L95 128\" stroke=\"rgba(255,169,77,.5)\" stroke-dasharray=\"4 4\" fill=\"none\"/><text x=\"230\" y=\"79\" fill=\"#ffa94d\" font-size=\"11\">další session</text>\n            <path d=\"M380 60 L380 106\" stroke=\"rgba(46,232,196,.5)\" fill=\"none\"/>\n            <rect x=\"20\" y=\"128\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"95\" y=\"148\" fill=\"#edf1ed\" font-weight=\"600\">Začátek session</text><text x=\"95\" y=\"164\" fill=\"#7c8780\" font-size=\"11\">přečte, kde jsme skončili</text>\n            <rect x=\"590\" y=\"128\" width=\"150\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"665\" y=\"148\" fill=\"#edf1ed\" font-weight=\"600\">Konec session</text><text x=\"665\" y=\"164\" fill=\"#7c8780\" font-size=\"11\">zapíše, co se stalo a co dál</text>\n            <path d=\"M170 151 L330 151\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\"/><path d=\"M430 151 L590 151\" stroke=\"rgba(46,232,196,.5)\" stroke-dasharray=\"4 4\"/>\n            <path d=\"M380 106 L430 135 L430 165 L380 194 L330 165 L330 135 Z\" fill=\"rgba(46,232,196,.10)\" stroke=\"#2ee8c4\"/><text x=\"380\" y=\"146\" fill=\"#2ee8c4\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">.brain/</text><text x=\"380\" y=\"163\" fill=\"#2ee8c4\" font-size=\"11\">paměť projektu</text>\n            <path d=\"M380 194 L380 226 M110 226 L650 226 M110 226 L110 240 M290 226 L290 240 M470 226 L470 240 M650 226 L650 240\" stroke=\"rgba(255,255,255,.25)\" stroke-dasharray=\"4 4\" fill=\"none\"/>\n            <rect x=\"30\" y=\"240\" width=\"160\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"110\" y=\"260\" fill=\"#edf1ed\" font-weight=\"600\">changelog</text><text x=\"110\" y=\"276\" fill=\"#7c8780\" font-size=\"11\">co se stalo</text>\n            <rect x=\"210\" y=\"240\" width=\"160\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"290\" y=\"260\" fill=\"#edf1ed\" font-weight=\"600\">tasks</text><text x=\"290\" y=\"276\" fill=\"#7c8780\" font-size=\"11\">co se dělá a v jakém stavu</text>\n            <rect x=\"390\" y=\"240\" width=\"160\" height=\"46\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"470\" y=\"260\" fill=\"#edf1ed\" font-weight=\"600\">context · decisions</text><text x=\"470\" y=\"276\" fill=\"#7c8780\" font-size=\"11\">co platí a proč</text>\n            <rect x=\"570\" y=\"240\" width=\"160\" height=\"46\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"650\" y=\"260\" fill=\"#ffa94d\" font-weight=\"600\">NEXT_SESSION_TODO</text><text x=\"650\" y=\"276\" fill=\"#7c8780\" font-size=\"11\">co je na řadě</text>\n          </g></svg>",
+  "bullets": [
+   {
+    "b": "Na začátku přečte, kde jsme skončili.",
+    "t": "Zkontroluje rozdělanou práci, načte úkoly a poznámku pro tuhle session."
+   },
+   {
+    "b": "Každý úkol má životní cyklus.",
+    "t": "Otevřený, naplánovaný, v procesu, hotový. Stavy mění agent sám."
+   },
+   {
+    "b": "Návody se načítají až podle potřeby.",
+    "t": "Sedm malých skills, každý pro jednu činnost."
+   },
+   {
+    "b": "Na konci zapíše, co se stalo a co dál.",
+    "t": "Jeden příkaz: changelog, úkoly, poznámka pro příště."
+   }
+  ]
+ },
+ "zjisteni": {
+  "h2": "Z čeho se skládá",
+  "eyebrow": "Struktura",
+  "items": [
+   {
+    "num": "log",
+    "h": "Changelog",
+    "p": "Historie sezení. Co se udělalo, co se rozbilo, co se opravilo."
+   },
+   {
+    "num": "todo",
+    "h": "Tasks",
+    "p": "Každý úkol ve vlastním souboru se stavem a dalším krokem. Hotové se archivují."
+   },
+   {
+    "num": "ctx",
+    "h": "Context",
+    "p": "Opakující se vzory: jak se nasazuje, jak vypadá design, na co si dát pozor."
+   },
+   {
+    "num": "next",
+    "amber": true,
+    "h": "NEXT_SESSION_TODO",
+    "p": "Most mezi dny. Kde jsem skončil, co je další krok, jaká priorita."
+   },
+   {
+    "num": "7",
+    "h": "Skills",
+    "p": "Návody, jak s pamětí zacházet, aby agent psal konzistentně."
+   },
+   {
+    "num": "adr",
+    "h": "Decisions",
+    "p": "Proč tohle a ne tamto. Za půl roku si důvody nepamatuju, agent ano."
+   }
+  ]
+ },
+ "lekce": {
+  "h2": "Co jsem zjistil až časem",
+  "items": [
+   {
+    "h": "Jeden soubor nestačí",
+    "p": "První verze byla jedna dlouhá poznámka. Po měsíci se v ní mísilo všechno a agent z ní tahal nesmysly. Rozdělit podle typu informace byl průlom."
+   },
+   {
+    "h": "Nenačítat všechno najednou",
+    "p": "Dřív se při startu načítala kompletní pravidla. Drahé a pomalé. Dnes jen krátký přehled, zbytek až když je potřeba."
+   },
+   {
+    "h": "Agent musí psát sám",
+    "p": "Ručně doplňovaná paměť zastarala během týdne. Když zapisuje agent bez ptaní, drží krok s realitou."
+   }
+  ]
+ },
+ "tech": [
+  {
+   "summary": "Formát a mechanika",
+   "hint": "Markdown · lifecycle · skills",
+   "body": "<dl class=\"kv\"><div><dt>Formát</dt><dd>Obyčejný Markdown ve složce <code>.brain/</code>, verzovaný spolu s projektem v Gitu. Žádná databáze, žádný plugin. Čitelné pro člověka i pro model.</dd></div><div><dt>Lifecycle úkolů</dt><dd>OPEN → PLAN → PROCESS → TEST → REVIEW → DONE → ACCEPTED. Jeden číslovaný soubor na úkol. Přechody dělá agent sám, hotové úkoly se archivují.</dd></div><div><dt>Skills a hooks v Claude Code</dt><dd>Sedm skills: memory-reader, first-answer, task-lifecycle, changelog-writing, context-files, decision-making, mastery. Načítají se podle situace, ne při startu. Příkazy <code>/brain-status</code>, <code>/brain-update</code>, <code>/brain-finish</code>, <code>/brain-cleanup</code>, <code>/brain-debug</code>.</dd></div><div><dt>Token efektivita</dt><dd>v1.0 načítala při každém startu kolem 20 kB pravidel. v2.0 s on-demand skills asi 5 kB, úspora zhruba 85 %. Kvalita výstupu bez rozdílu.</dd></div></dl>"
+  },
+  {
+   "summary": "Více počítačů a agentů",
+   "hint": "Git vault · orchestrace",
+   "body": "<p>Paměť všech projektů žije v jednom soukromém Git repu, projekty do něj odkazují symlinkem. <code>/brain-finish</code> změny commitne a pushne, na druhém počítači stačí pull. Pro větší úkoly hlavní agent deleguje sub-agentům (rešerše, dokumentace, testy, analýza gitu) a paměť je jejich společný kontext. Jednoduché věci řeší rovnou sám.</p>"
+  },
+  {
+   "summary": "Jak vypadá začátek session",
+   "hint": "čistý vs. rozdělaný repo",
+   "body": "<p>Čistý repo: přehled projektu, aktivní úkoly a otázka, na čem pokračujeme. Rozdělaný repo: agent se zastaví a nabídne dokončit a commitnout, pokračovat v práci, nebo změny odložit. Konec session: <code>/brain-finish</code> projde úkoly, zapíše changelog a připraví poznámku pro příště.</p>"
+  }
+ ],
+ "links": [
+  {
+   "text": "Přehled: AI Lab",
+   "href": "https://ongy.cz/pages/ai/"
+  },
+  {
+   "text": "Článek na blogu",
+   "href": "https://ongy.cz/pages/blog/"
+  }
+ ],
+ "privacy": "Paměť jsou obyčejné soubory v repozitáři projektu. Nikam se neposílají a nic se nesynchronizuje na cizí servery. Do modelu jde jen to, co si agent při práci přečte, stejně jako zbytek kódu. Tahle stránka popisuje princip, ne obsah mojí paměti.",
+ "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M40 52l40-18 40 18-40 18z\"/><path d=\"M40 74l40 18 40-18\" opacity=\".8\"/><path d=\"M40 96l40 18 40-18\" opacity=\".55\"/><path d=\"M40 118l40 18 40-18\" opacity=\".3\"/><path d=\"M124 30a30 30 0 0 1 14 22\" opacity=\".7\"/><path d=\"M134 46l4 8 6-6\" opacity=\".7\"/></svg>"
+}

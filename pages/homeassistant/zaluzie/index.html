@@ -1,169 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Návod, jak dostat venkovní žaluzie Aluprof (motor Dooya, 433 MHz) do Home Assistant bez oficiálního mostu — vlastní ESP32 s CC1101, odposlech RF protokolu, ESPHome konfigurace a automatizace. Řeší to spousta lidí v ČR.">
-    <title>Aluprof žaluzie do Home Assistant přes ESP32 + CC1101 | Ongy.cz</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <style>
-        .zal-lead { font-size: 1.1rem; line-height: 1.7; }
-        .zal-card p { line-height: 1.75; margin-bottom: 1rem; }
-        .zal-card p:last-child { margin-bottom: 0; }
-        .zal-card ul { margin: 0.5rem 0 1rem 1.25rem; line-height: 1.7; }
-        .zal-card li { margin-bottom: 0.4rem; }
-        .zal-card h3 { margin: 1.5rem 0 0.6rem; font-family: var(--font-heading); }
-        .zal-card h3:first-child { margin-top: 0; }
-        .zal-spec { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem; }
-        .zal-spec span {
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            padding: 0.3rem 0.85rem;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
-        .zal-code {
-            background: #0d1117;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 1.1rem 1.3rem;
-            overflow-x: auto;
-            margin: 1.2rem 0;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            line-height: 1.6;
-            color: #c7d0dd;
-            white-space: pre;
-        }
-        .zal-inline {
-            font-family: var(--font-mono);
-            font-size: 0.85em;
-            color: var(--electric-teal);
-            background: rgba(46,232,196,0.08);
-            border-radius: 5px;
-            padding: 0.1em 0.35em;
-        }
-        .zal-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 0.5rem; }
-        .zal-table th, .zal-table td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--card-border); }
-        .zal-table th { font-family: var(--font-heading); color: var(--electric-teal); }
-        .zal-table td { font-family: var(--font-mono); font-size: 0.85rem; }
-        .zal-note {
-            border-left: 3px solid var(--electric-teal);
-            background: rgba(46,232,196,0.05);
-            border-radius: 8px;
-            padding: 0.9rem 1.15rem;
-            margin: 1.2rem 0;
-            line-height: 1.65;
-        }
-        .zal-note--warn { border-left-color: #ff9800; background: rgba(255,152,0,0.06); }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Venkovní žaluzie Aluprof (motor Dooya, 433 MHz) v Home Assistantu bez oficiálního mostu: vlastní ESP32 s CC1101, odposlech protokolu ovladače, ESPHome cover s polohou a tři automatizace, které šetří klimatizaci.">
+  <meta name="theme-color" content="#101312"><title>Venkovní žaluzie bez originálního mostu — Aluprof přes ESP32 + CC1101 | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/homeassistant/zaluzie/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Venkovní žaluzie bez originálního mostu — Aluprof přes ESP32 + CC1101"><meta property="og:description" content="Venkovní žaluzie Aluprof (motor Dooya, 433 MHz) v Home Assistantu bez oficiálního mostu: vlastní ESP32 s CC1101, odposlech protokolu ovladače, ESPHome cover s polohou a tři automatizace, které šetří klimatizaci."><meta property="og:url" content="https://ongy.cz/pages/homeassistant/zaluzie/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Venkovní žaluzie bez originálního mostu — Aluprof přes ESP32 + CC1101"><meta name="twitter:description" content="Venkovní žaluzie Aluprof (motor Dooya, 433 MHz) v Home Assistantu bez oficiálního mostu: vlastní ESP32 s CC1101, odposlech protokolu ovladače, ESPHome cover s polohou a tři automatizace, které šetří klimatizaci."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css?v=7"><link rel="stylesheet" href="../../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <!-- Page Header -->
-        <section class="page-hero page-hero-ha">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="1"/>
-                    <line x1="3" y1="8" x2="21" y2="8"/>
-                    <line x1="3" y1="12" x2="21" y2="12"/>
-                    <line x1="3" y1="16" x2="21" y2="16"/>
-                </svg>
-                <h1>Aluprof žaluzie do Home Assistant</h1>
-                <p class="page-subtitle">Vlastní RF most z ESP32 + CC1101 místo originálního mostu</p>
-                <p class="breadcrumb">
-                    <a href="../">Home Assistant</a> / Venkovní žaluzie
-                </p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../../index.html">Domů</a><a href="../../../pages/3d-print/">3D tisk</a><a class="active" href="../../../pages/homeassistant/">Home Assistant</a><a href="../../../pages/ai/">AI</a><a href="../../../pages/server/">Server &amp; síť</a><a href="../../../pages/deskovky/">Deskovky</a><a href="../../../pages/blog/">Blog</a><a href="../../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Intro -->
-        <section class="content-section">
-            <div class="ha-card ha-card-main">
-                <p class="zal-lead">Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta do Home Assistantu prakticky neexistuje. Tady je, jak jsem si je rozjel přes vlastní ESP32 s čipem CC1101 — odposlech RF protokolu, ESPHome konfigurace a tři automatizace, které mi reálně šetří klimatizaci. Píšu to schválně podrobně, protože tohle řeší spousta lidí v Česku úplně stejně.</p>
-                <div class="zal-spec" style="margin-top: 1.25rem;">
-                    <span>ESP32 (NodeMCU-32S)</span>
-                    <span>CC1101 @ 433,92 MHz</span>
-                    <span>ESPHome</span>
-                    <span>Dooya protokol</span>
-                    <span>~300 Kč HW</span>
-                </div>
-            </div>
-        </section>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../../pages/homeassistant/">Home Assistant</a><span>/</span><span>Aluprof žaluzie</span></p>
+        <h1>Venkovní žaluzie <span>bez originálního mostu.</span></h1>
+        <p class="lead">Aluprof je prodává s ručním ovladačem na 433 MHz a tím to končí. Postavil jsem si vlastní most z ESP32 za pár stovek. Žaluzie teď mají v Home Assistantu polohu, scény a tři automatizace.</p>
+        <div class="status-row"><span class="chip"><i></i>běží, lokálně bez cloudu</span><span class="chip amber"><i></i>Home Assistant · hardware</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="motif"><svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="30" y="36" width="70" height="8" rx="2"/><rect x="30" y="52" width="70" height="8" rx="2" opacity=".85"/><rect x="30" y="68" width="70" height="8" rx="2" opacity=".7"/><rect x="30" y="84" width="70" height="8" rx="2" opacity=".55"/><rect x="30" y="100" width="70" height="8" rx="2" opacity=".4"/><path d="M116 60a24 24 0 0 1 0 34M126 50a38 38 0 0 1 0 54M136 40a52 52 0 0 1 0 74" opacity=".8"/><circle cx="112" cy="77" r="3" fill="currentColor" stroke="none"/></svg></span>
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Vlastní RF most</span>
+        <ul class="kpis"><li><b>433</b><small>MHz, stejné rádio jako ovladač</small></li><li><b>3</b><small>automatizace</small></li><li><b>~300 Kč</b><small>za díly</small></li></ul>
+        <p class="note">Poloha 0 až 100 % z času jízdy: 21,3 s nahoru, 19 s dolů. Jeden ESP32 obslouží všechny žaluzie v domě.</p>
+      </aside>
+    </section>
 
-        <!-- Problém -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">Problém: žaluzie, co „neumí“ do HA</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>Mám venkovní žaluzie Aluprof. Pohon je <strong>Dooya</strong> (Aluprof ho prodává pod svým jménem) a komunikuje rádiem na <strong>433,92&nbsp;MHz</strong>. K tomu dostanete nástěnný/ruční vysílač a tím to končí — žádné Wi-Fi, žádný Zigbee, žádná oficiální integrace do Home Assistant.</p>
-                <p>Možností je pár a žádná se mi nelíbila: koupit drahý univerzální RF most, předělat motory, nebo se smířit s tím, že rolety prostě „nejsou chytré“. Klasická situace, do které se v ČR dostane každý druhý majitel Aluprofu. Tak jsem si to postavil sám — plně lokálně, za pár stovek a bez cloudu.</p>
-            </div>
-        </section>
-
-        <!-- Hardware -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">Hardware: ESP32 + CC1101</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <div class="filament-photo" style="margin-bottom: 1.25rem;">
-                    <img src="../../../assets/images/aluprof-esp32.jpg"
-                         alt="ESP32 s CC1101 modulem a SMA anténou, vedle originální ovladač Aluprof DC305A"
-                         loading="lazy">
-                    <span class="photo-caption">Reálný setup: ESP32 + CC1101 (s anténou) propojené dupont vodiči — vlevo originální ovladač Aluprof, ze kterého se odposlechl protokol</span>
-                </div>
-                <p>Srdcem je obyčejné <span class="zal-inline">ESP32</span> a k němu RF modul <span class="zal-inline">CC1101</span>, který umí vysílat i přijímat na 433&nbsp;MHz (na rozdíl od levných pevně laděných modulů). Použil jsem modul EBYTE E07-M1101D se SMA anténou. Propojení je přes SPI:</p>
-                <table class="zal-table">
-                    <thead><tr><th>CC1101</th><th>ESP32 GPIO</th></tr></thead>
-                    <tbody>
-                        <tr><td>VCC</td><td>3V3 (NE 5V!)</td></tr>
-                        <tr><td>GND</td><td>GND</td></tr>
-                        <tr><td>SCK</td><td>GPIO18</td></tr>
-                        <tr><td>MISO</td><td>GPIO19</td></tr>
-                        <tr><td>MOSI</td><td>GPIO23</td></tr>
-                        <tr><td>CSN</td><td>GPIO5</td></tr>
-                        <tr><td>GDO0</td><td>GPIO13</td></tr>
-                    </tbody>
-                </table>
-                <div class="zal-note zal-note--warn"><strong>Pozor na napájení:</strong> CC1101 není 5V tolerantní. Napájejte ho z 3,3&nbsp;V pinu ESP32, ne z 5&nbsp;V, jinak ho odpálíte.</div>
-            </div>
-        </section>
-
-        <!-- Protokol -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">Odposlech protokolu</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>Tohle je jádro celé věci. Dooya nepoužívá žádný standardní kód, který by ESPHome znal z krabice — je to <strong>proprietární protokol</strong>. Mimochodem: Aluprof <strong>není</strong> Somfy ani „Enjoy“ — párování přes tyhle protokoly nikdy nesedlo, právě protože pod kapotou je Dooya.</p>
-                <p>Postup: přepnout CC1101 do RX režimu, zmáčkat na originálním ovladači nahoru / stop / dolů a z průběhů vytáhnout strukturu rámce:</p>
-                <ul>
-                    <li><strong>Frekvence:</strong> 433,92&nbsp;MHz, modulace OOK/ASK</li>
-                    <li><strong>Délka kódu:</strong> 40 bitů = 24-bit adresa + 8-bit kanál + 4-bit příkaz + 4-bit kontrola</li>
-                    <li><strong>Příkazy:</strong> UP / STOP / DOWN se liší jen v nibble příkazu (u mě 1 / 5 / 3, kde příkaz = kontrola)</li>
-                    <li><strong>Časování:</strong> preamble ~4820&nbsp;µs, sync ~1470&nbsp;µs, dlouhý puls ~720&nbsp;µs / krátký ~360&nbsp;µs; rámec se opakuje několikrát</li>
-                </ul>
-                <div class="zal-note"><strong>Důležité:</strong> každý ovladač má vlastní 24-bit adresu (ID) a kanál — moje vám k ničemu nebude, musíte si zachytit to svoje. Dobrá zpráva: Dooya je <strong>statický kód</strong> (žádný rolling code), takže zachycený rámec stačí jen přehrávat. Ověřeno tím, že rámce byly napříč stisky identické.</div>
-            </div>
-        </section>
-
-        <!-- ESPHome -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">ESPHome konfigurace</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>Dnes je to nejjednodušší přes oficiální <span class="zal-inline">cc1101</span> komponentu v ESPHome (od verze 2026.5) — na capturu <span class="zal-inline">remote_receiver</span> s dumpem Dooya, na ovládání <span class="zal-inline">remote_transmitter</span>. Cover entitu dělá <span class="zal-inline">time_based</span>, která z času jízdy dopočítává polohu 0–100&nbsp;%:</p>
-                <div class="zal-code">cover:
+    <section class="psection" id="k-cemu-to-je"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">K čemu to je</p><h2>Hloupé žaluzie jako plnohodnotné chytré rolety</h2></div>
+      <div class="prose"><p>Venkovní žaluzie mám na jih. Z výroby k nim patří jen ruční ovladač: nahoru, stop, dolů. Nic víc.</p><p>Krabička s ESP32 teď vysílá stejný signál jako ovladač. Home Assistant tak žaluzie vidí jako běžnou roletu s posuvníkem polohy. Jdou do scén, na hlas i na tlačítko na zdi.</p><p>Hlavní přínos jsou automatizace. Žaluzie samy stíní, když běží klimatizace, večer vyjedou nahoru a při televizi se přivřou kvůli odleskům.</p></div>
+    </div></section>
+    <section class="psection" id="proc"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Proč</p><h2>Oficiální cesta neexistuje</h2></div>
+      <div class="prose"><p>Pohon je Dooya, Aluprof ho jen prodává pod svým jménem. Mluví na 433 MHz vlastním protokolem. Žádná Wi-Fi, žádný Zigbee, žádná integrace.</p><p>Na výběr byl drahý univerzální most, výměna motorů, nebo to vzdát. Tak jsem si most postavil sám: lokálně, bez cloudu, za pár stovek. Podle dotazů řeší to samé spousta lidí v Česku.</p></div>
+    </div></section>
+    <section class="psection" id="jak-to-funguje"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jak to funguje</p><h2>Naučit krabičku mluvit jako ovladač</h2></div>
+      <div><div class="panel diagram"><svg viewBox="0 0 760 300" role="img" aria-label="Cesta signálu: originální ovladač, odposlech, ESP32 s CC1101, motor žaluzie; nahoře Home Assistant">
+          <g font-family="Inter, sans-serif" font-size="12" text-anchor="middle">
+            <rect x="20" y="16" width="230" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="135" y="36" fill="#edf1ed" font-weight="600">Zigbee tlačítko na zdi</text><text x="135" y="52" fill="#7c8780" font-size="11">dolů · stop · nahoru, bez mobilu</text>
+            <rect x="305" y="16" width="150" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="380" y="36" fill="#edf1ed" font-weight="600">Home Assistant</text><text x="380" y="52" fill="#7c8780" font-size="11">roleta s polohou 0 až 100 %</text>
+            <rect x="510" y="16" width="230" height="46" rx="10" fill="rgba(255,169,77,.08)" stroke="rgba(255,169,77,.5)"/><text x="625" y="36" fill="#ffa94d" font-weight="600">3 automatizace</text><text x="625" y="52" fill="#7c8780" font-size="11">klimatizace · západ slunce · odlesky na TV</text>
+            <path d="M250 39 L305 39 M455 39 L510 39" stroke="rgba(255,255,255,.25)" stroke-dasharray="4 4" fill="none"/>
+            <path d="M380 62 L435 118" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4" fill="none"/>
+            <rect x="20" y="130" width="150" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="95" y="150" fill="#edf1ed" font-weight="600">Originální ovladač</text><text x="95" y="166" fill="#7c8780" font-size="11">433,92 MHz · Dooya</text>
+            <rect x="190" y="130" width="150" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="265" y="150" fill="#edf1ed" font-weight="600">Odposlech</text><text x="265" y="166" fill="#7c8780" font-size="11">rámec 40 bitů, statický kód</text>
+            <path d="M170 153 L190 153 M340 153 L385 153" stroke="rgba(255,255,255,.25)" stroke-dasharray="4 4" fill="none"/>
+            <path d="M435 118 L485 147 L485 177 L435 206 L385 177 L385 147 Z" fill="rgba(46,232,196,.10)" stroke="#2ee8c4"/><text x="435" y="157" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">ESP32</text><text x="435" y="173" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">+ CC1101</text>
+            <path d="M485 153 L560 153" stroke="rgba(46,232,196,.6)" stroke-dasharray="4 4" fill="none"/>
+            <rect x="560" y="130" width="180" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="650" y="150" fill="#edf1ed" font-weight="600">Motor Dooya</text><text x="650" y="166" fill="#7c8780" font-size="11">venkovní žaluzie Aluprof</text>
+            <text x="435" y="226" fill="#7c8780" font-size="11">přehrává zachycený rámec · jedna krabička pro celý dům</text>
+            <path d="M435 232 L435 250" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4" fill="none"/>
+            <rect x="255" y="250" width="360" height="44" rx="10" fill="#1c211f" stroke="#354039"/><text x="435" y="269" fill="#edf1ed" font-weight="600">Poloha z času jízdy</text><text x="435" y="285" fill="#7c8780" font-size="11">21,3 s nahoru · 19 s dolů · jízda na doraz srovná odchylku</text>
+          </g></svg></div><ul class="bullets"><li><b>Nejdřív poslouchám.</b> CC1101 přepnu na příjem, zmáčknu na ovladači nahoru, stop a dolů a zachytím rámec. Kód je statický, stačí ho přehrávat.</li><li><b>Pak vysílám to samé.</b> ESPHome pošle zachycený rámec s jiným příkazem. Motor nepozná rozdíl.</li><li><b>Polohu počítám z času.</b> Stopkami jsem změřil jízdu nahoru a dolů, z toho Home Assistant dopočítá procenta. Jízda na doraz srovná odchylku.</li><li><b>Nikdy úplně dolů.</b> Za žaluzií je vývod klimatizace, všechny akce proto jedou na komfortní pozici 25 %.</li></ul></div>
+    </div></section>
+    <section class="psection" id="jak-to-vypada"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jak to vypadá</p><h2>Krabička, která mluví jako ovladač</h2></div>
+      <div class="shots"><figure class="shot wide"><a href="../../../assets/aluprof-esp32.jpg" class="zoom" aria-label="Zvětšit"><img src="../../../assets/aluprof-esp32.jpg" alt="ESP32 s modulem CC1101 vedle originálního ovladače Aluprof" loading="lazy" decoding="async"></a><figcaption>ESP32 s rádiovým modulem CC1101 a originální ovladač, ze kterého jsem signál odposlechl.</figcaption></figure></div>
+    </div></section>
+    <section class="psection" id="vysledek"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Výsledek</p><h2>Co to umí</h2></div>
+      <div class="finds"><div class="panel find"><b>3</b><h3>Automatizace</h3><p>Klimatizace naskočí, žaluzie stíní. Slunce klesne pod 10°, vyjedou nahoru. Televize běží a svítí slunce, přivřou se.</p></div><div class="panel find"><b class="amber">25 %</b><h3>Komfortní poloha</h3><p>Náhrada za zavřeno. Klimatizace pod žaluzií dýchá a v pokoji je stín.</p></div><div class="panel find"><b>1</b><h3>Krabička pro celý dům</h3><p>Každá žaluzie má vlastní kód. Stačí ho zachytit a přidat další roletu.</p></div></div>
+    </div></section>
+    <section class="psection" id="co-jsem-se-naucil"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co jsem se naučil</p><h2>Tři věci, na které jsem narazil</h2></div>
+      <div class="lessons"><div class="panel lesson"><i>01</i><div><h3>Aluprof není Somfy</h3><p>Párování přes Somfy ani Enjoy nesedlo, pod kapotou je Dooya. Nejdřív poslouchat, co ovladač opravdu vysílá.</p></div></div><div class="panel lesson"><i>02</i><div><h3>Nahoru a dolů jedou různě dlouho</h3><p>Nahoru 21,3 s, dolů 19 s. Bez samostatného měření se poloha rozjede po pár jízdách.</p></div></div><div class="panel lesson"><i>03</i><div><h3>Flash se nepovedl napoprvé</h3><p>ESP32 chce při nahrávání držet BOOT. Na Windows kompilovat z lokálního disku s UTF-8, jinak build padá.</p></div></div></div>
+    </div></section>
+    <section class="psection" id="pro-zvedave"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Technické detaily</h2></div>
+      <div><details class="panel tech" open><summary>Hardware a konfigurace <small>ESP32 · CC1101 · ESPHome</small></summary><div class="body"><dl class="kv"><div><dt>Hardware</dt><dd>ESP32 NodeMCU-32S + RF modul EBYTE E07-M1101D (čip CC1101) se SMA anténou, propojení přes SPI. Umí vysílat i přijímat, na rozdíl od levných pevně laděných modulů. Napájení výhradně 3,3 V. Dohromady cca 300 Kč.</dd></div><div><dt>ESPHome</dt><dd>Oficiální komponenta <code>cc1101</code> (od verze 2026.5). Na odposlech <code>remote_receiver</code> s dumpem Dooya, na ovládání <code>remote_transmitter</code>. Cover entita přes platformu <code>time_based</code> s <code>device_class: shutter</code> a <code>has_built_in_endstop: true</code>.</dd></div><div><dt>Protokol a kalibrace</dt><dd>433,92 MHz, OOK/ASK, statický kód bez rolling code. Rámec 40 bitů: 24bit adresa + 8bit kanál + 4bit příkaz + 4bit kontrola; UP / STOP / DOWN = 1 / 5 / 3. Preambule ~4820 µs, sync ~1470 µs, pulsy ~720 / ~360 µs, rámec se několikrát opakuje. Doba jízdy změřená stopkami: 21 330 ms nahoru, 19 000 ms dolů. Drift polohy srovná jízda na doraz.</dd></div><div><dt>Automatizace</dt><dd>Klimatizace zapnuta: skript <code>set_cover_position: 25</code>. Elevace slunce pod 10°: open na doraz, zároveň reset driftu. TV zapnutá a slunce z jihu (podle počasí a polohy slunce, lux čidlo z tabletu bylo nestabilní): přivřít. Navíc Zigbee tlačítko Sonoff SNZB-01P: krátce dolů, dvojklik stop, dlouze nahoru.</dd></div></dl></div></details><details class="panel tech"><summary>ESPHome cover entita <small>time_based · YAML</small></summary><div class="body"><p>Poloha 0 až 100 % se dopočítává z doby jízdy, proto se <code>open_duration</code> a <code>close_duration</code> liší. Funkce <code>transmit_dooya()</code> odešle zachycený rámec s daným příkazem.</p><pre><code>cover:
   - platform: time_based
     name: "Žaluzie obývák"
     id: zaluzie_obyvak
@@ -176,74 +94,17 @@
       - lambda: 'transmit_dooya(DOWN);'
     close_duration: 19000ms     # dolů to jede o kus rychleji
     stop_action:
-      - lambda: 'transmit_dooya(STOP);'</div>
-                <p>Všimněte si, že <span class="zal-inline">open_duration</span> a <span class="zal-inline">close_duration</span> se liší — motor má jiný rozjezd/dojezd nahoru a dolů. Tohle je potřeba opravdu změřit stopkami.</p>
-                <div class="zal-note zal-note--warn"><strong>Dvě pasti, co mě zdržely:</strong> ESP nešel do download módu sám — při flashi je potřeba <strong>držet tlačítko BOOT</strong>. A na Windows je nutné mít <span class="zal-inline">PYTHONUTF8=1</span> a kompilovat z lokálního disku (ne ze síťového share), jinak build padá.</div>
-            </div>
-        </section>
+      - lambda: 'transmit_dooya(STOP);'</code></pre></div></details><details class="panel tech"><summary>Zapojení a pasti <small>SPI · 3,3 V · BOOT</small></summary><div class="body"><table class="t"><thead><tr><th>CC1101</th><th>ESP32 GPIO</th></tr></thead><tbody><tr><td>VCC</td><td>3V3 (nikdy 5 V)</td></tr><tr><td>GND</td><td>GND</td></tr><tr><td>SCK</td><td>GPIO18</td></tr><tr><td>MISO</td><td>GPIO19</td></tr><tr><td>MOSI</td><td>GPIO23</td></tr><tr><td>CSN</td><td>GPIO5</td></tr><tr><td>GDO0</td><td>GPIO13</td></tr></tbody></table><p class="note">CC1101 není 5V tolerantní, z 5 V ho odpálíš. Při flashi ESP32 držet BOOT. Na Windows nastavit <code>PYTHONUTF8=1</code> a kompilovat z lokálního disku, ne ze síťového sdílení. Adresa a kanál ovladače jsou pro každý kus jiné, cizí zachycený rámec nepomůže.</p></div></details></div>
+    </div></section>
+    <section class="psection" id="dal"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dál</p><h2>Související</h2></div>
+      <div><div class="links"><a class="button" href="../../../pages/homeassistant/">Přehled: Home Assistant</a><a class="button button-quiet" href="../../../pages/blog/">Článek na blogu</a></div><div class="panel privacy" style="margin-top:18px"><strong>Soukromí.</strong> Adresu a kanál svého ovladače tu nezveřejňuju: kód je statický a kdo ho má, žaluzie ovládá.</div></div>
+    </div></section>
+  </main>
 
-        <!-- Kalibrace -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">Kalibrace a „komfort“ pozice</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>U <span class="zal-inline">time_based</span> krytu se poloha počítá z času, takže při opakovaném popojíždění se procenta pomalu rozcházejí s realitou (drift). Řešení: <span class="zal-inline">has_built_in_endstop: true</span> a občas dojet úplně na doraz (0 nebo 100&nbsp;%), čímž se počítadlo srovná.</p>
-                <p>Druhá vychytávka je vlastní <strong>komfortní poloha 25&nbsp;%</strong>. Za roletou mám vývod klimatizace, takže žaluzie <strong>nikdy nesmí dojet úplně dolů</strong> — nechávám ~10&nbsp;cm mezeru. Místo „zavřít na 0&nbsp;%“ proto všechny akce volají skript, který jede na <span class="zal-inline">set_cover_position: 25</span>.</p>
-            </div>
-        </section>
-
-        <!-- Automatizace -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">Tři automatizace, co to dělají užitečným</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>Samotné ovládání z appky je hezké, ale smysl to dostane až automatizacemi. Obývák je na jih, takže solární zisk je velký a stínění dává smysl:</p>
-                <ul>
-                    <li><strong>Klima + slunce → zastínit:</strong> když naskočí klimatizace, žaluzie se stáhnou na komfortní pozici a pomůžou jí chladit.</li>
-                    <li><strong>Večerní roztažení:</strong> když slunce klesne pod 10° (samo se to posouvá podle ročního období), rolety vyjedou nahoru — a protože jedou na doraz, resetuje se tím drift.</li>
-                    <li><strong>Anti-glare na TV:</strong> zapnu televizi a venku svítí slunce z jihu? Žaluzie se přivřou, ať na obrazovce nejsou odlesky. (Lux čidlo z tabletu bylo nestabilní, rozhoduju podle počasí + polohy slunce.)</li>
-                </ul>
-                <p>Bonus: na rolety jsem namapoval i fyzické Zigbee tlačítko (Sonoff SNZB-01P) — krátký stisk dolů, dvojklik stop, dlouhý stisk nahoru. A jeden ESP32 + CC1101 zvládne obsloužit klidně všechny rolety v domě — stačí zachytit kód každé z nich a přidat další <span class="zal-inline">cover</span>.</p>
-            </div>
-        </section>
-
-        <!-- Závěr -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">Co to dalo</h2>
-            </div>
-            <div class="ha-card zal-card">
-                <p>Venkovní žaluzie Aluprof se chovají v Home Assistantu jako plnohodnotné chytré rolety — posuvník polohy, hlasové ovládání, scény i automatizace — a to celé <strong>lokálně, bez cloudu a bez originálního mostu</strong>, za cenu jednoho ESP a RF modulu.</p>
-                <p>Kdybyste řešili to samé (a podle dotazů, co dostávám, vás je dost), nejtěžší část je odposlech protokolu — zbytek je už jen poskládání ESPHome konfigurace. Klidně se ozvěte, rád poradím.</p>
-            </div>
-        </section>
-
-        <!-- Back -->
-        <section class="content-section">
-            <div style="text-align: center;">
-                <a href="../" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--electric-teal); color: var(--midnight); border-radius: 8px; text-decoration: none; font-weight: 600;">
-                    ← Zpět na Home Assistant
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close">&times;</button>
-        <button class="lightbox-prev">&#10094;</button>
-        <button class="lightbox-next">&#10095;</button>
-        <img class="lightbox-image" src="" alt="">
-        <div class="lightbox-caption"></div>
-    </div>
-
-    <script src="../../../js/icons.js"></script>
-    <script src="../../../js/components.js?v=20260912a"></script>
-    <script src="../../../js/main.js"></script>
-    <script src="../../../js/reveal.js"></script>
-    <script src="../../../js/ha-lightbox.js?v=3"></script>
-    <script src="../../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../../app.js?v=11"></script>
+  <script src="../../../analytics.js?v=1"></script>
+  <script src="../../../project.js?v=3"></script>
 </body>
 </html>

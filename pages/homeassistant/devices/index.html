@@ -1,430 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Přehled všech 50+ zařízení a hardware v Home Assistant - RPi5, Zigbee, tablet kiosk, vysavač, 3D tiskárna, senzory">
-    <title>Zařízení & Hardware | Home Assistant | Ongy.cz</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <style>
-        /* Hardware — 4 dlaždice vedle sebe + responsive */
-        .ha-hardware-grid.hw4 { grid-template-columns: repeat(4, 1fr); }
-        @media (max-width: 1100px) { .ha-hardware-grid.hw4 { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .ha-hardware-grid.hw4 { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Na čem doma běží Home Assistant a co všechno na něj poslouchá: Raspberry Pi 5, Zigbee, vlastní most na žaluzie, tablet na zdi a přes padesát zařízení od světel po 3D tiskárnu.">
+  <meta name="theme-color" content="#101312"><title>Zařízení a hardware v Home Assistantu | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/homeassistant/devices/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Zařízení a hardware v Home Assistantu"><meta property="og:description" content="Na čem doma běží Home Assistant a co všechno na něj poslouchá: Raspberry Pi 5, Zigbee, vlastní most na žaluzie, tablet na zdi a přes padesát zařízení od světel po 3D tiskárnu."><meta property="og:url" content="https://ongy.cz/pages/homeassistant/devices/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Zařízení a hardware v Home Assistantu"><meta name="twitter:description" content="Na čem doma běží Home Assistant a co všechno na něj poslouchá: Raspberry Pi 5, Zigbee, vlastní most na žaluzie, tablet na zdi a přes padesát zařízení od světel po 3D tiskárnu."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css?v=7"><link rel="stylesheet" href="../../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <!-- Page Header -->
-        <section class="page-hero page-hero-ha">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="4" width="16" height="16" rx="2"/>
-                    <rect x="9" y="9" width="6" height="6"/>
-                    <line x1="9" y1="1" x2="9" y2="4"/>
-                    <line x1="15" y1="1" x2="15" y2="4"/>
-                    <line x1="9" y1="20" x2="9" y2="23"/>
-                    <line x1="15" y1="20" x2="15" y2="23"/>
-                </svg>
-                <h1>Zařízení & Hardware</h1>
-                <p class="page-subtitle">Co mám a na čem to běží</p>
-                <p class="breadcrumb">
-                    <a href="../">Home Assistant</a> / Zařízení & Hardware
-                </p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../../index.html">Domů</a><a href="../../../pages/3d-print/">3D tisk</a><a class="active" href="../../../pages/homeassistant/">Home Assistant</a><a href="../../../pages/ai/">AI</a><a href="../../../pages/server/">Server &amp; síť</a><a href="../../../pages/deskovky/">Deskovky</a><a href="../../../pages/blog/">Blog</a><a href="../../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Stats -->
-        <section class="content-section">
-            <div class="ha-stats">
-                <div class="ha-stat">
-                    <span class="ha-stat-number">50+</span>
-                    <span class="ha-stat-label">Zařízení</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">11</span>
-                    <span class="ha-stat-label">Světel</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">4</span>
-                    <span class="ha-stat-label">Tapo zásuvky</span>
-                </div>
-                <div class="ha-stat">
-                    <span class="ha-stat-number">~9600</span>
-                    <span class="ha-stat-label">CZK setup</span>
-                </div>
-            </div>
-        </section>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../../pages/homeassistant/">Home Assistant</a><span>/</span><span>Zařízení a hardware</span></p>
+        <h1>Padesát krabiček, <span>jeden mozek.</span></h1>
+        <p class="lead">Světla, zásuvky, klimatizace, vysavač, tiskárna i žaluzie. Každá věc má vlastní aplikaci a vlastní cloud. Home Assistant je dostal pod jednu střechu a většinu z nich ovládá bez internetu.</p>
+        <div class="status-row"><span class="chip"><i></i>běží na Raspberry Pi 5</span><span class="chip amber"><i></i>Zigbee · Wi-Fi · 433 MHz</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Stav domácnosti</span>
+        <ul class="kpis"><li><b>50+</b><small>zařízení</small></li><li><b>11</b><small>světel</small></li><li><b>9,6k</b><small>Kč za jádro</small></li></ul>
+        <p class="note">Raspberry Pi, Zigbee klíčenka, pouzdro a tablet na zdi dohromady pod deset tisíc. Zbytek jsou zařízení, která doma byla stejně, jen se předtím neuměla domluvit.</p>
+      </aside>
+    </section>
 
-        <!-- Hardware Section -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                                <rect x="9" y="9" width="6" height="6"/>
-                                <line x1="9" y1="1" x2="9" y2="4"/>
-                                <line x1="15" y1="1" x2="15" y2="4"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Hardware
-                </h2>
-            </div>
+    <section class="psection" id="o-cem-to-je"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">O čem to je</p><h2>Co mám a na čem to běží</h2></div>
+      <div class="prose"><p>Tahle stránka je inventář. Ne návod, ne recenze, jen přehled toho, co se u mě doma připojuje k Home Assistantu a jakou cestou. Hodí se mně, když něco přidávám, a tobě, když přemýšlíš, jestli se konkrétní krabička dá zapojit bez cloudu.</p><p>Většina zařízení mluví jedním ze čtyř jazyků: Zigbee, Wi-Fi v místní síti, obyčejné rádio na 433 MHz nebo kabel. Pokud jde ovládat lokálně, ovládám ho lokálně. Cloud výrobce používám jen tam, kde to jinak nejde.</p></div>
+    </div></section>
+    <section class="psection" id="jadro"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jádro</p><h2>Na čem to běží</h2></div>
+      <div class="finds two"><div class="panel find item"><h3>Raspberry Pi 5</h3><p>Srdce celé domácnosti. Čtyřjádro, 4 GB paměti a NVMe disk místo SD karty, takže to po roce provozu nezačne umírat. Bydlí v pouzdře, které jsem vytiskl na Bambu Labu, s aktivním chladičem.</p><small class="meta">4 GB RAM · 256 GB NVMe · 3D tištěné pouzdro</small></div><div class="panel find item"><h3>Zigbee koordinátor</h3><p>Sonoff Zigbee 3.0 USB Dongle Plus. Jedna klíčenka, přes kterou jde všechno Zigbee: senzory, tlačítka, relé a IKEA světla. Bez cloudu, bez hubu od každé značky zvlášť.</p><small class="meta">Sonoff Dongle Plus-E · ZHA / Zigbee2MQTT</small></div><div class="panel find item"><h3>ESP32 + CC1101, vlastní most</h3><p>Venkovní žaluzie mluví jen rádiem na 433 MHz a originální most výrobce jsem nechtěl. Tak jsem si postavil vlastní: ESP32, rádiový modul a anténa. Odposlechl jsem, co posílá dálkový ovladač, a přehrávám to.</p><small class="meta">ESPHome · 433 MHz · 523 Kč</small></div><div class="panel find item"><h3>Tablet na zdi</h3><p>Xiaomi Redmi Pad 2 v tištěném držáku. Běží na něm Home Assistant v kiosk režimu, po půl minutě zhasne a probudí ho pohyb. Světla, klima a vysavač na jedno klepnutí u dveří.</p><small class="meta">11" IPS · Fully Kiosk Browser · vlastní držák</small></div></div>
+    </div></section>
+    <section class="psection" id="zarizeni"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Zařízení</p><h2>Co všechno poslouchá</h2></div>
+      <div class="finds"><div class="panel find item"><h3>Osvětlení</h3><p>LED pásky u PC, za panelem a pod postelí, dvě lampy u televize, lustry v obýváku a v ložnici, IKEA světla v kuchyni a osvětlení komory 3D tiskárny.</p><small class="meta">11 světel · Zigbee · Wi-Fi</small></div><div class="panel find item"><h3>Klima a vzduch</h3><p>Klimatizace Midea přes místní síť, čistička Philips s měřením prachu, zvlhčovač v ložnici řízený podle vlhkosti a venkovní žaluzie, které stíní podle slunce.</p><small class="meta">4 zařízení · LAN · 433 MHz</small></div><div class="panel find item"><h3>Senzory a ovladače</h3><p>Teploměry v pokoji a na balkoně, tři senzory vlhkosti u filamentu, tlačítko na probuzení PC, IKEA ovladač v kuchyni, dvě relé ve zdi a chytrá váha.</p><small class="meta">10 zařízení · Zigbee · Bluetooth</small></div><div class="panel find item"><h3>Zásuvky a energie</h3><p>Čtyři měřicí zásuvky Tapo na PC, televizi, lednici a kuchyni. Spotřebu přepočítávám na koruny, takže vím, kolik stojí měsíc tisku nebo hraní.</p><small class="meta">4 zásuvky · Wi-Fi · měření kWh</small></div><div class="panel find item"><h3>3D tisk</h3><p>Bambu Lab X1 Carbon se čtyřslotovým AMS. V Home Assistantu vidím stav tisku, průběh, teploty a živý obraz z komory, na vlastních kartách.</p><small class="meta">1 tiskárna · LAN · kamera</small></div><div class="panel find item"><h3>Média</h3><p>Samsung televize, Chromecast a Android TV box. K tomu telefon a hodinky jako zdroj polohy, aby dům věděl, kdo je doma.</p><small class="meta">6 zařízení · Wi-Fi · sledování přítomnosti</small></div><div class="panel find item"><h3>Vysavač</h3><p>Xiaomi X20 Pro, doma známý jako Darth Sider. Vysává i vytírá, jede každý den v půl jedenácté a sám hlásí, kdy vyměnit filtr, mop nebo vodu.</p><small class="meta">1 robot · Wi-Fi · denní úklid</small></div><div class="panel find item"><h3>F1 a hobby</h3><p>Živá data ze závodů Formule 1 na vlastním panelu. Safety car nebo červená vlajka rozsvítí byt. V plánu je ještě vlastní meteostanice na ESP32.</p><small class="meta">55 entit · 3 pohledy · meteostanice v plánu</small></div></div>
+    </div></section>
+    <section class="psection" id="rozpocet"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Rozpočet</p><h2>Co to stálo</h2></div>
+      <div class="lessons"><div class="panel lesson"><i>01</i><div><h3>Základní sestava</h3><p>Raspberry Pi 5, NVMe disk, Zigbee klíčenka, tištěné pouzdro a tablet na zeď. Bez tabletu je to pod pět tisíc a dá se tím začít.</p><small class="meta">~9 100 Kč</small></div></div><div class="panel lesson"><i>02</i><div><h3>Vlastní most na žaluzie</h3><p>ESP32, rádiový modul CC1101 a anténa. Originální most od výrobce stojí několikanásobek a stejně chodí přes cloud.</p><small class="meta">523 Kč</small></div></div></div>
+    </div></section>
+    <section class="psection" id="pro-zvedave"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Technické detaily</h2></div>
+      <div><details class="panel tech" open><summary>Integrace a protokoly <small>kudy které zařízení mluví</small></summary><div class="body"><dl class="kv"><div><dt>Zigbee</dt><dd>Sonoff SNZB-02P (teploměr), SNZB-01P (tlačítko), 2× ZBMINI-L2 (relé), IKEA STYRBAR (ovladač), IKEA TRÅDFRI a MITTLED (světla). Vše přes jeden Sonoff Dongle Plus-E.</dd></div><div><dt>Lokální Wi-Fi a LAN</dt><dd>LocalTuya pro LED pásky a TV lampy, Tapo P110 zásuvky, Midea klimatizace přes LAN, Philips čistička přes CoAP, Bambu Lab X1C, Samsung TV, Xiaomi vysavač, Chromecast a Android TV.</dd></div><div><dt>Vlastní hardware</dt><dd>ESPHome na ESP32 s CC1101 pro žaluzie Aluprof (Dooya protokol, 433 MHz). Plánovaná meteostanice na ESP32-C3.</dd></div><div><dt>Ostatní</dt><dd>bodymiscale pro chytrou váhu (Bluetooth), F1 Sensor pro závodní data, Fully Kiosk Browser na tabletu, Nabu Casa pro šifrovaný přístup zvenku.</dd></div></dl></div></details><details class="panel tech"><summary>Rozpočet po položkách <small>orientační ceny</small></summary><div class="body"><table class="t"><thead><tr><th>Položka</th><th>Cena</th></tr></thead><tbody><tr><td>Raspberry Pi 5, 4 GB</td><td>~3 000 Kč</td></tr><tr><td>NVMe SSD 256 GB</td><td>~800 Kč</td></tr><tr><td>Sonoff Zigbee Dongle Plus-E</td><td>~600 Kč</td></tr><tr><td>3D tištěné pouzdro (filament)</td><td>~200 Kč</td></tr><tr><td>Xiaomi Redmi Pad 2 (tablet na zeď)</td><td>~4 500 Kč</td></tr><tr><td>ESP32 NodeMCU-32S</td><td>249 Kč</td></tr><tr><td>CC1101 modul 433 MHz (EBYTE E07)</td><td>195 Kč</td></tr><tr><td>Anténa 2 dBi, SMA</td><td>79 Kč</td></tr></tbody></table><p class="note">Celkem ~9 600 Kč za jádro a vlastní most. Zařízení samotná (světla, zásuvky, tiskárna, vysavač) do toho nepočítám, ta by doma byla i bez Home Assistanta.</p></div></details></div>
+    </div></section>
+    <section class="psection" id="dal"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dál</p><h2>Související</h2></div>
+      <div class="links"><a class="button" href="../../../pages/homeassistant/">Přehled: Home Assistant</a><a class="button button-quiet" href="../../../pages/homeassistant/automations/">Automatizace</a><a class="button button-quiet" href="../../../pages/homeassistant/zaluzie/">Žaluzie: vlastní RF most</a></div>
+    </div></section>
 
-            <div class="ha-hardware-grid hw4">
-                <div class="ha-card ha-card-main">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3>Raspberry Pi 5</h3>
-                    <p class="ha-card-desc">Srdce chytré domácnosti v 3D tištěném pouzdře z Bambu Labu</p>
-                    <ul class="ha-specs">
-                        <li>CPU: Broadcom BCM2712 (4× Cortex-A76 @ 2.4GHz)</li>
-                        <li>RAM: 4 GB LPDDR4X</li>
-                        <li>Storage: 256 GB NVMe SSD</li>
-                        <li>Chlazení: Active Cooler</li>
-                    </ul>
-                    <a href="https://makerworld.com/en/search/models?keyword=Raspberry+Pi+5" target="_blank" rel="noopener" class="ha-print-link">
-                        <svg class="ha-inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18h12M12 6v8M8 10l4-4 4 4"/></svg> Case na MakerWorld
-                    </a>
-                </div>
+  </main>
 
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                        </svg>
-                    </div>
-                    <h3>Sonoff Zigbee 3.0</h3>
-                    <p class="ha-card-desc">USB Dongle Plus-E – koordinátor pro všechna Zigbee zařízení přes ZHA/Zigbee2MQTT</p>
-                </div>
-
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12.55a11 11 0 0114 0"/>
-                            <path d="M1.42 9a16 16 0 0121.16 0"/>
-                            <path d="M8.53 16.11a6 6 0 016.95 0"/>
-                            <circle cx="12" cy="20" r="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>LocalTuya</h3>
-                    <p class="ha-card-desc">TP-Link zásuvky, Tuya LED pásky – lokální ovládání bez cloudu</p>
-                </div>
-
-                <div class="ha-card">
-                    <div class="ha-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="7" y="7" width="10" height="10" rx="1"/>
-                            <path d="M9 1v3M12 1v3M15 1v3M9 20v3M12 20v3M15 20v3M1 9h3M1 12h3M1 15h3M20 9h3M20 12h3M20 15h3"/>
-                        </svg>
-                    </div>
-                    <h3>ESP32 + CC1101 <span style="color: var(--electric-teal); font-size: 0.6em;">DIY</span></h3>
-                    <p class="ha-card-desc">Vlastní RF most na 433 MHz pro venkovní žaluzie Aluprof (Dooya) – lokálně, bez originálního mostu</p>
-                    <ul class="ha-specs">
-                        <li>ESP32 NodeMCU-32S + CC1101 (EBYTE E07)</li>
-                        <li>SMA anténa 2 dBi, ESPHome firmware</li>
-                        <li>Odposlech a přehrání Dooya protokolu</li>
-                    </ul>
-                    <a href="../zaluzie/" class="ha-print-link">
-                        <svg class="ha-inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Celý návod, jak na to
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Budget Section -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="1" x2="12" y2="23"/>
-                                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Rozpočet
-                </h2>
-            </div>
-
-            <div class="ha-hardware-grid">
-                <!-- Rozpočet: základní HA setup -->
-                <div class="ha-card ha-card-main">
-                    <h3>Základní HA setup</h3>
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                            <thead>
-                                <tr style="border-bottom: 2px solid var(--card-border);">
-                                    <th style="text-align: left; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Komponenta</th>
-                                    <th style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Cena (CZK)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">Raspberry Pi 5 4GB</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~3,000</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">SSD 256GB</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~800</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">Sonoff Zigbee Dongle</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~600</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">3D tištěné pouzdro</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~200</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">Xiaomi Redmi Pad 2 (wall tablet)</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">~4,500</td>
-                                </tr>
-                                <tr style="border-top: 2px solid var(--electric-teal);">
-                                    <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal);">CELKEM</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal); font-family: var(--font-mono); font-size: 1.1rem;">~9,100</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Rozpočet: DIY žaluzie ESP32 -->
-                <div class="ha-card ha-card-main">
-                    <h3>DIY žaluzie (ESP32 + CC1101)</h3>
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                            <thead>
-                                <tr style="border-bottom: 2px solid var(--card-border);">
-                                    <th style="text-align: left; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Komponenta</th>
-                                    <th style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-heading); color: var(--electric-teal);">Cena (CZK)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">ESP32 Development Board</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">249</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">CC1101 modul 433 MHz</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">195</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                    <td style="padding: 0.6rem 0.75rem;">Waveshare LPWA anténa 2 dBi</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-family: var(--font-mono);">79</td>
-                                </tr>
-                                <tr style="border-top: 2px solid var(--electric-teal);">
-                                    <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal);">CELKEM</td>
-                                    <td style="text-align: right; padding: 0.6rem 0.75rem; font-weight: 700; color: var(--electric-teal); font-family: var(--font-mono); font-size: 1.1rem;">523</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Devices Grid -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                <path d="M13.73 21a2 2 0 01-3.46 0"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Zařízení
-                </h2>
-            </div>
-
-            <div class="ha-devices-grid">
-                <div class="ha-device-category">
-                    <h3>Klimatizace <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
-                    <ul>
-                        <li>Midea – lokální ovládání přes LAN</li>
-                        <li>Bez cloudu, plná kontrola z HA</li>
-                        <li>Spolupracuje se žaluziemi (stínění)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Venkovní žaluzie <span style="color: var(--electric-teal); font-size: 0.7em;">DIY · novinka</span></h3>
-                    <ul>
-                        <li>Aluprof / Dooya, 433 MHz</li>
-                        <li>Vlastní RF most: ESP32 + CC1101</li>
-                        <li>Stínění podle slunce a TV, komfort pozice</li>
-                    </ul>
-                    <a href="../zaluzie/" class="ha-print-link">
-                        <svg class="ha-inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Celý návod, jak na to
-                    </a>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Čistička vzduchu <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
-                    <ul>
-                        <li>Philips PureProtect 2200 (lokální CoAP)</li>
-                        <li>PM2.5 a index alergenů</li>
-                        <li>Hlídání životnosti filtrů</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Zvlhčovač <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
-                    <ul>
-                        <li>Ložnice – řízení podle vlhkosti vzduchu</li>
-                        <li>Noční / tichý režim</li>
-                        <li>Upozornění na prázdnou nádržku</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Chytrá váha <span style="color: var(--electric-teal); font-size: 0.7em;">novinka</span></h3>
-                    <ul>
-                        <li>Tělesné složení: váha, BMI, tuk, voda, svaly</li>
-                        <li>Integrace bodymiscale → data do HA</li>
-                        <li>Dlouhodobé trendy v Grafaně</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Osvětlení</h3>
-                    <ul>
-                        <li>RGB LED pásky (PC stůl, panel, postel)</li>
-                        <li>TV lampy – 2× RGB Tuya</li>
-                        <li>Pohovka lustr</li>
-                        <li>Ložnice lustr + ambilight</li>
-                        <li>IKEA TRÅDFRI + MITTLED (kuchyň)</li>
-                        <li>Bambu Lab chamber light</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Klima & Senzory</h3>
-                    <ul>
-                        <li>Teploměr + vlhkoměr (pokoj PC)</li>
-                        <li>Sonoff SNZB-02P teploměr (balkon)</li>
-                        <li>Sonoff SNZB-01P tlačítko (PC wake/sleep)</li>
-                        <li>3× senzor vlhkosti filamentu</li>
-                        <li>IKEA STYRBAR ovladač (kuchyň)</li>
-                        <li>Senzor počasí</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Zásuvky & Energie</h3>
-                    <ul>
-                        <li>4× Tapo P110 (PC, TV, lednice, kuchyň)</li>
-                        <li>Monitoring spotřeby (kWh × 12.41 CZK)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>3D Tisk</h3>
-                    <ul>
-                        <li>Bambu Lab X1 Carbon</li>
-                        <li>AMS systém (4 sloty)</li>
-                        <li>Print status, progress, teploty</li>
-                        <li>Chamber kamera (live stream)</li>
-                        <li>Custom Lovelace karty</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Média</h3>
-                    <ul>
-                        <li>Samsung Q60 TV</li>
-                        <li>Chromecast</li>
-                        <li>Android TV box</li>
-                        <li>Person tracking (Samsung S23)</li>
-                        <li>Galaxy Watch4, iPad</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Vysavač</h3>
-                    <ul>
-                        <li>Xiaomi X20 Pro ("Darth Sider")</li>
-                        <li>Sweep + Mop režim</li>
-                        <li>Automatický úklid 10:30</li>
-                        <li>Monitoring dílů (filtr, mop, kartáč)</li>
-                        <li>Připomínky výměny vody</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Wall Tablet (Ovládací centrum)</h3>
-                    <div class="filament-photo" style="margin-bottom: 1rem;">
-                        <img src="../../../assets/images/wall-tablet.jpg"
-                             alt="Wall tablet — HA ovládací centrum na zdi"
-                             loading="lazy">
-                        <span class="photo-caption">Redmi Pad 2 s HA dashboardem — 3D tištěný držák na zdi</span>
-                    </div>
-                    <ul>
-                        <li>Xiaomi Redmi Pad 2 (11" IPS) — ~4500 CZK</li>
-                        <li>3D tištěný držák na zeď (vlastní design)</li>
-                        <li>Fully Kiosk Browser — kiosk mode, auto-wake při pohybu</li>
-                        <li>HA dashboard s ovládáním světel, klima, vysavače</li>
-                        <li>Screensaver 30s → probuzení senzorem pohybu</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>Relé & Ovladače</h3>
-                    <ul>
-                        <li>2× Sonoff ZBMIINI-L2 relé (kuchyň, chodba)</li>
-                        <li>IKEA STYRBAR — Zigbee ovladač kuchyně</li>
-                        <li>Sonoff SNZB-01P — Zigbee tlačítko (WoL/Sleep/Lock PC)</li>
-                        <li>Nabu Casa (šifrovaný vzdálený přístup)</li>
-                    </ul>
-                </div>
-
-                <div class="ha-device-category">
-                    <h3>F1 & Hobby</h3>
-                    <ul>
-                        <li>F1 Sensor — live data z závodů</li>
-                        <li>55 entit, 3 dashboard views</li>
-                        <li>Safety Car / Red Flag světelné efekty</li>
-                        <li>DIY meteostanice (ESP32-C3, plánováno)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Back to Main -->
-        <section class="content-section">
-            <div style="text-align: center;">
-                <a href="../" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--electric-teal); color: var(--midnight); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-                    ← Zpět na Home Assistant
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="../../../js/icons.js"></script>
-    <script src="../../../js/components.js?v=20260912a"></script>
-    <script src="../../../js/main.js"></script>
-    <script src="../../../js/reveal.js"></script>
-    <script src="../../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../../app.js?v=11"></script>
+  <script src="../../../analytics.js?v=1"></script>
+  <script src="../../../project.js?v=3"></script>
 </body>
 </html>

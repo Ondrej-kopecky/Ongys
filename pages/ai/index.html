@@ -1,511 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; connect-src 'self' https://ongy.goatcounter.com">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta name="description" content="Ongy AI Lab - experimenty s umělou inteligencí, nástroje a workflow">
-<meta property="og:title" content="AI Lab | Ongy.cz">
-    <meta property="og:description" content="Brain System, multi-agent orchestrace, Claude Code workflow">
-    <meta property="og:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://ongy.cz/pages/ai/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ongy.cz/assets/images/og-image.jpg">
-    <title>AI Lab | Ongy.cz</title>
-    <link rel="stylesheet" href="../../css/style.css?v=20260912a">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <style>
-        /* Nástroje & Stack — vždy 4 vedle sebe (auto-fit jinak láme 4. kartu dolů) */
-        .ha-hardware-grid.ai-stack {
-            grid-template-columns: repeat(4, 1fr);
-        }
-        @media (max-width: 1024px) {
-            .ha-hardware-grid.ai-stack { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 560px) {
-            .ha-hardware-grid.ai-stack { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI v praxi: osobní trenér v Telegramu, bot na GDPR žádosti, AI kolečko nad označeným textem a paměťový systém pro práci s AI. Ne teorie, nástroje, které denně používám.">
+  <meta name="theme-color" content="#101312"><title>AI Lab | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/ai/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="AI Lab"><meta property="og:description" content="AI v praxi: osobní trenér v Telegramu, bot na GDPR žádosti, AI kolečko nad označeným textem a paměťový systém pro práci s AI. Ne teorie, nástroje, které denně používám."><meta property="og:url" content="https://ongy.cz/pages/ai/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Lab"><meta name="twitter:description" content="AI v praxi: osobní trenér v Telegramu, bot na GDPR žádosti, AI kolečko nad označeným textem a paměťový systém pro práci s AI. Ne teorie, nástroje, které denně používám."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=7"><link rel="stylesheet" href="../../project.css?v=6">
 </head>
 <body>
-    <main>
-        <section class="page-hero page-hero-ai">
-            <div class="page-hero-content">
-                <svg class="page-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="8" width="18" height="12" rx="2"/>
-                    <circle cx="9" cy="14" r="2"/>
-                    <circle cx="15" cy="14" r="2"/>
-                    <path d="M9 8V6a3 3 0 016 0v2"/>
-                    <path d="M12 3v1"/>
-                </svg>
-                <h1>AI Lab</h1>
-                <p class="page-subtitle">Lokální AI systémy, agenti a workflow — ne hračky, ale nástroje</p>
-            </div>
-        </section>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../index.html"><img src="../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><a href="../../index.html">Domů</a><a href="../../pages/3d-print/">3D tisk</a><a href="../../pages/homeassistant/">Home Assistant</a><a class="active" href="../../pages/ai/">AI</a><a href="../../pages/server/">Server &amp; síť</a><a href="../../pages/deskovky/">Deskovky</a><a href="../../pages/blog/">Blog</a><a href="../../pages/about/">O mně</a></nav>
+  </div></header>
 
-        <!-- Intro -->
-        <section class="content-section">
-            <div class="ha-intro">
-                <p class="intro-text">
-                    AI není budoucnost — je to teď. Používám ji denně ve všech projektech.
-                    Od vývoje tohoto webu přes konfiguraci Home Assistantu až po 3D tisk workflow.
-                    Tenhle web je z velké části vytvořený s Claude Code.
-                </p>
-            </div>
-        </section>
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../index.html">Dílna</a><span>/</span><span>AI Lab</span></p>
+        <h1>Malé nástroje pro <span>skutečné úkoly.</span></h1>
+        <p class="lead">AI nepřidávám, aby tam byla. Používám ji tam, kde reálně ušetří práci: v kapse jako trenéra, nad označeným textem, při vymáhání vlastních dat. A když to jde, běží doma na vlastní grafice.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="now-label"><span class="pulse" style="background:var(--purple)"></span>AI v provozu</span>
+        <ul class="kpis"><li><b>4</b><small>projekty</small></li><li><b>75 Kč</b><small>měsíčně za Coache</small></li><li><b>0 Kč</b><small>za lokální model</small></li></ul>
+        <p class="note">Claude na to, co potřebuje přesnost. Lokální Gemma na to, co má zůstat doma.</p>
+      </aside>
+    </section>
 
-        <!-- Jak používám AI -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/><path d="M9 14h6"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Jak používám AI
-                </h2>
-            </div>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">O čem to je</p><h2>Ne hype, jen praxe</h2></div>
+      <div class="prose"><p>Většina věcí tady vznikla stejně: něco mě štvalo, postavil jsem první verzi za den a pak ji ladil podle skutečného používání. Claude Code je můj hlavní vývojový nástroj, Brain System mu dává paměť mezi sezeními.</p><p>Každý projekt má stránku ve stejné osnově: k čemu to je, proč vznikl, jak funguje, co jsem se naučil. Technické detaily jsou v rozbalovacích blocích pro ty, kdo to chtějí postavit taky.</p></div>
+    </div></section>
 
-            <div class="about-interests">
-                <div class="interest-card">
-                    <div class="interest-icon" style="background: rgba(167, 139, 250, 0.12); color: #a78bfa;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                    </div>
-                    <h3>Vývoj & Kódování</h3>
-                    <p>
-                        Claude Code je můj hlavní vývojový nástroj. Tento web, Gloomhaven Tracker,
-                        Home Assistant konfigurace — všechno vzniká v dialogu s AI. Není to copy-paste,
-                        je to spolupráce kde AI rozumí kontextu celého projektu.
-                    </p>
-                </div>
+    <section class="psection"><div class="shell">
+      <div class="section-intro-inline"><p class="eyebrow">Projekty a stránky</p><h2>Projekty</h2></div>
+      <div class="archive-grid"><a class="archive-card" data-status="running" href="../../pages/ai/coach/"><span class="tag teal">BĚŽÍ DENNĚ</span><h2>AI Coach</h2><p>Osobní trenér v Telegramu. Vyfotíš jídlo, řekneš, co jsi jedl, a ráno ti připomene cvičení.</p><small>Claude · Whisper · Home Assistant</small><b>Detail →</b></a><a class="archive-card" data-status="building" href="../../pages/ai/hotkey/"><span class="tag amber">WINDOWS MVP</span><h2>ai-hotkey</h2><p>AI kolečko nad označeným textem v jakémkoli programu. Opravit, přeložit, shrnout. Model běží doma na grafice.</p><small>Tauri · Rust · Ollama</small><b>Detail →</b></a><a class="archive-card" data-status="running" href="../../pages/ai/gdpr/"><span class="tag teal">V PROVOZU</span><h2>GDPR Broker Bot</h2><p>Mapuje, kdo drží moje data, posílá žádosti data brokerům a hlídá lhůty. Nic neodejde bez mého souhlasu.</p><small>Python stdlib · Claude · SQLite</small><b>Detail →</b></a><a class="archive-card" data-status="running" href="../../pages/ai/brain/"><span class="tag teal">9+ PROJEKTŮ</span><h2>Brain System</h2><p>Paměť, která přežije konec session. Changelog, úkoly a rozhodnutí v každém projektu.</p><small>Markdown · skills · hooks</small><b>Detail →</b></a></div>
+    </div></section>
 
-                <div class="interest-card">
-                    <div class="interest-icon" style="background: rgba(46, 232, 196, 0.12); color: #2EE8C4;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
-                        </svg>
-                    </div>
-                    <h3>Multi-Agent Orchestrace</h3>
-                    <p>
-                        Nepoužívám jen jednoho agenta. Pracuji s více agenty současně — jeden
-                        researchuje, druhý kóduje, třetí validuje. Synchronizace přes Brain System
-                        zajišťuje, že všichni sdílejí kontext.
-                    </p>
-                </div>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Z deníku</p><h2>Zápisky k tématu</h2></div>
+      <div class="row-list"><a class="row-link" href="../../pages/ai/hotkey/"><span class="hex-mini purple">AI</span><span><strong>AI kolečko nad označeným textem</strong><small>18. srpna 2026 · ai-hotkey</small></span><b>→</b></a><a class="row-link" href="../../pages/ai/gdpr/"><span class="hex-mini purple">GD</span><span><strong>Bot, který vymáhá moje data od brokerů</strong><small>26. června 2026 · GDPR Broker Bot</small></span><b>→</b></a><a class="row-link" href="../../pages/ai/coach/"><span class="hex-mini purple">AC</span><span><strong>AI Coach umí být i přísný</strong><small>3. června 2026 · AI Coach</small></span><b>→</b></a></div>
+    </div></section>
+    <section class="psection"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Z čeho se to skládá</h2></div>
+      <div class="panel privacy"><dl class="kv"><div><dt>Modely</dt><dd>Claude Opus na odhad jídla z fotek, Sonnet na záměr a texty, lokální Gemma přes Ollama pro věci, které mají zůstat doma.</dd></div><div><dt>Vývoj</dt><dd>Claude Code s Brain Systemem v každém projektu. Multi-agent orchestrace tam, kde se práce dá rozdělit.</dd></div><div><dt>Provoz</dt><dd>Telegram jako rozhraní, SQLite na data, cron na rutinu. Všechno na home serveru.</dd></div><div><dt>Náklady</dt><dd>Coach kolem 75 Kč měsíčně, každé volání API se loguje. Lokální model zadarmo.</dd></div></dl></div>
+    </div></section>
+  </main>
 
-                <div class="interest-card">
-                    <div class="interest-icon" style="background: rgba(255, 169, 77, 0.12); color: #ffa94d;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 20v-6h6v6"/>
-                        </svg>
-                    </div>
-                    <h3>Smart Home + AI</h3>
-                    <p>
-                        Extended OpenAI Conversation v Home Assistantu — AI rozumí senzorům
-                        a může ovládat zařízení. Automatické generování automatizací z popisu,
-                        AI notifikace na základě dat.
-                    </p>
-                </div>
-
-                <div class="interest-card">
-                    <div class="interest-icon" style="background: rgba(255, 107, 107, 0.12); color: #ff6b6b;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-                        </svg>
-                    </div>
-                    <h3>AI na mobilu</h3>
-                    <p>
-                        Claude a ChatGPT na telefonu — brainstorming na cestě, rychlé odpovědi,
-                        generování obrázků (avatar na tomhle webu je z ChatGPT).
-                        AI je vždy po ruce.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Brain System -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-teal">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a8 8 0 018 8c0 3-1.5 5-3 6.5V18a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1.5C5.5 15 4 13 4 10a8 8 0 018-8z"/><path d="M10 22h4"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Brain System v2.0
-                </h2>
-            </div>
-
-            <div class="filament-section">
-                <div class="filament-text">
-                    <p>
-                        Každý projekt má vlastní <code>.brain/</code> složku — persistentní paměť,
-                        která přežívá mezi sessions. AI si pamatuje co jsme dělali, jaká rozhodnutí
-                        jsme udělali a proč, a kde jsme skončili.
-                    </p>
-                    <div class="filament-features">
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Changelog & Kontext</strong>
-                                <p>Automatický log co se v každé session udělalo. Kontextové soubory s architekturou a rozhodnutími.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Skills & Automatizace</strong>
-                                <p>Custom slash příkazy pro opakované úkoly — /commit, /brain-status, /brain-finish. Šetří čas a tokenový budget.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>9+ projektů propojených</strong>
-                                <p>ongy.cz, Home Assistant, Gloomhaven Tracker, brain-vault a další — všechny sdílí stejný Brain System.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filament-gallery">
-                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); line-height: 1.8;">
-                        <span style="color: var(--electric-teal);">.brain/</span><br>
-                        ├── memory/<br>
-                        │   ├── changelog/<br>
-                        │   │   └── <span style="color: #ffa94d;">2026-03.md</span><br>
-                        │   ├── context/<br>
-                        │   │   ├── <span style="color: #ffa94d;">DEVICES.md</span><br>
-                        │   │   └── <span style="color: #ffa94d;">DASHBOARD.md</span><br>
-                        │   ├── tasks/<br>
-                        │   │   └── <span style="color: #a78bfa;">tablet_kiosk.md</span><br>
-                        │   ├── learned/<br>
-                        │   │   └── <span style="color: #a78bfa;">GRAFANA_TIME.md</span><br>
-                        │   └── <span style="color: #2EE8C4;">NEXT_SESSION_TODO.md</span><br>
-                        └── <span style="color: #2EE8C4;">CLAUDE.md</span>
-                    </div>
-                    <a href="brain/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
-                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🧠 Brain System v2.0 — Detailní dokumentace</span>
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">Architektura, skills, lifecycle, příklady →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ai-hotkey -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3.5"/><path d="M12 2v6.5M12 15.5V22M2 12h6.5M15.5 12H22"/>
-                            </svg>
-                        </span>
-                    </span>
-                    ai-hotkey
-                </h2>
-            </div>
-
-            <div class="filament-section">
-                <div class="filament-text">
-                    <p>
-                        Malá aplikace pro Windows: označíš text kdekoli, stiskneš <code>Ctrl+Shift+Space</code>
-                        a u kurzoru vyskočí <strong>kolečko AI akcí</strong> — opravit gramatiku, přeložit, shrnout,
-                        vysvětlit, upravit styl nebo cokoli vlastního. Výsledek přijde do panelu s porovnáním „před / po"
-                        a teprve po odsouhlasení nahradí původní text. AI běží <strong>u mě doma na grafice</strong>,
-                        jen na překlady si přepnu Claude.
-                    </p>
-                    <div class="filament-features">
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Jedna zkratka, jakýkoli program</strong>
-                                <p>Funguje v prohlížeči, v editoru i v chatu — appka si text vezme přes schránku, takže nepotřebuje s ničím spolupracovat.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>AI doma, ne v cloudu</strong>
-                                <p>Model Gemma 4 běží na mé grafické kartě — zadarmo, bez internetu, nic neodchází. Claude jen na překlady, přepnutí jedním kliknutím.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Porovnání a potvrzení</strong>
-                                <p>Barevně vidím, co AI změnila — nic se nepřepíše, dokud to neodsouhlasím.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filament-gallery">
-                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
-                        <span style="color: var(--soft-purple);">výběr&nbsp;›</span> „…šetřit cas… misto v cloudu…"<br>
-                        <span style="color: var(--soft-purple);">Ctrl+Shift+Space&nbsp;›</span> kolečko<br>
-                        <span style="color: var(--electric-teal);">Gemma 4&nbsp;›</span> <span style="color: #ff6b6b; text-decoration: line-through;">cas</span> časem · <span style="color: #ff6b6b; text-decoration: line-through;">misto</span> místo<br>
-                        <span style="color: #ffa94d;">Sonnet 5&nbsp;›</span> „…save time… instead of the cloud…"<br>
-                        <span style="color: var(--soft-purple);">Enter&nbsp;›</span> nahradit výběr<br>
-                        <br>
-                        <span style="color: var(--electric-teal);">Tauri v2</span> · <span style="color: #ffa94d;">Rust</span> · <span style="color: #ff6b6b;">Ollama</span> · <span style="color: var(--electric-teal);">Claude</span>
-                    </div>
-                    <a href="hotkey/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
-                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🎯 ai-hotkey — jak je postavený</span>
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">Jak to funguje, proč zrovna takhle a na co jsem narazil →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Coach -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                            </svg>
-                        </span>
-                    </span>
-                    AI Coach
-                </h2>
-            </div>
-
-            <div class="filament-section">
-                <div class="filament-text">
-                    <p>
-                        Telegram bot, který funguje jako <strong>osobní trenér v kapse</strong>. Vyfotíš jídlo
-                        a Claude vision odhadne kalorie a makra. Řekneš do mikrofonu, co jsi jedl, a je to zapsané.
-                        Ráno a večer připomene cvičení, váhu i složení těla si bere sám z chytré váhy přes Home Assistant.
-                    </p>
-                    <div class="filament-features">
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Foto → kalorie</strong>
-                                <p>Opus vision odhadne porci a makra, oprava jde přes odpověď na zprávu.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Hlasovka i text</strong>
-                                <p>Whisper přepíše, Sonnet rozpozná záměr — mluvíš na bota jako na trenéra.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Automatické vážení</strong>
-                                <p>Chytrá váha přes Bluetooth → Home Assistant → bot. Žádné ruční zapisování.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filament-gallery">
-                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
-                        <span style="color: var(--soft-purple);">foto jídla&nbsp;›</span> kalorie + makra<br>
-                        <span style="color: var(--soft-purple);">hlasovka&nbsp;›</span> zápis<br>
-                        <span style="color: var(--soft-purple);">7:00 / 19:00&nbsp;›</span> cvičení<br>
-                        <span style="color: var(--soft-purple);">chytrá váha&nbsp;›</span> trend<br>
-                        <br>
-                        <span style="color: var(--electric-teal);">Opus</span> vision · <span style="color: #ffa94d;">Sonnet</span> intent · <span style="color: #ff6b6b;">SQLite</span>
-                    </div>
-                    <a href="coach/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
-                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🏋️ AI Coach — jak je postavený</span>
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">Architektura, modely, funkce, integrace váhy →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- GDPR Broker Bot -->
-        <section class="content-section section-alt">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
-                            </svg>
-                        </span>
-                    </span>
-                    GDPR Broker Bot
-                </h2>
-            </div>
-
-            <div class="filament-section">
-                <div class="filament-text">
-                    <p>
-                        Lokální GDPR agent, který mapuje, kdo drží moje data, a systematicky je vymáhá zpět od
-                        <strong>data brokerů</strong> — firem, co sbírají a přeprodávají osobní data. Posílá žádosti
-                        o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte odpovědi, hlídá lhůty,
-                        počítá <strong>skóre rizika</strong> a skládá <strong>důkazní balíček pro ÚOOÚ</strong>. Celé
-                        běží <strong>bez jediné externí knihovny</strong> — čistá Python standardní knihovna.
-                    </p>
-                    <div class="filament-features">
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 4h16v16H4z" opacity="0"/><path d="M22 7l-10 5L2 7"/><path d="M2 7v10a2 2 0 002 2h16a2 2 0 002-2V7l-10 5z"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Pošle i přečte sám</strong>
-                                <p>SMTP odešle žádosti, IMAP stáhne odpovědi, pozná potvrzení i nedoručení (bounce) a spáruje je k žádosti.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 8l2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Řetězí příjemce (Sonnet)</strong>
-                                <p>Z odpovědi vytáhne, komu broker data prodal — a každou přiznanou firmu sám přidá jako nový cíl. Síť se rozrůstá sama.</p>
-                            </div>
-                        </div>
-                        <div class="filament-feature">
-                            <span class="icon icon-sm icon-teal">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M9 10h.01M13 10h.01"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <strong>Telegram approval gate</strong>
-                                <p>Nic neodejde bez mého souhlasu. Bot pošle souhrn dávky do Telegramu a čeká na „ANO". Eskalace na ÚOOÚ jen ručně.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filament-gallery">
-                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.9;">
-                        <span style="color: var(--soft-purple);">žádost čl.15&nbsp;›</span> „kdo má moje data?"<br>
-                        <span style="color: var(--soft-purple);">odpověď&nbsp;›</span> „předali jsme to firmě X"<br>
-                        <span style="color: #ffa94d;">Sonnet&nbsp;›</span> firma X = nový cíl<br>
-                        <span style="color: var(--soft-purple);">čl.17&nbsp;›</span> žádost o výmaz<br>
-                        <span style="color: #ff6b6b;">po lhůtě&nbsp;›</span> follow-up → ÚOOÚ<br>
-                        <br>
-                        <span style="color: var(--electric-teal);">Python stdlib</span> · <span style="color: #ffa94d;">Sonnet</span> · <span style="color: #ff6b6b;">SQLite</span> · <span style="color: var(--electric-teal);">cron</span>
-                    </div>
-                    <a href="gdpr/" style="display: block; margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--electric-teal); text-decoration: none; transition: all 0.3s ease; text-align: center;">
-                        <span style="display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--electric-teal); margin-bottom: 0.25rem;">🛡️ GDPR Broker Bot — jak je postavený</span>
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">Architektura, řetězení příjemců, lhůty, eskalace →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nástroje -->
-        <section class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">
-                        <span class="icon icon-lg icon-amber">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
-                            </svg>
-                        </span>
-                    </span>
-                    Nástroje & Stack
-                </h2>
-            </div>
-
-            <div class="ha-hardware-grid ai-stack">
-                <div class="ha-card">
-                    <h3>Claude Code</h3>
-                    <ul class="ha-specs">
-                        <li>Hlavní vývojový nástroj</li>
-                        <li>Brain System v každém projektu</li>
-                        <li>Multi-agent orchestrace</li>
-                        <li>Custom skills & hooks</li>
-                    </ul>
-                </div>
-                <div class="ha-card">
-                    <h3>ChatGPT</h3>
-                    <ul class="ha-specs">
-                        <li>Brainstorming & nápady</li>
-                        <li>Generování obrázků (DALL-E)</li>
-                        <li>Rychlé prototypy</li>
-                        <li>Mobilní asistent</li>
-                    </ul>
-                </div>
-                <div class="ha-card">
-                    <h3>GitHub Copilot</h3>
-                    <ul class="ha-specs">
-                        <li>Code completion</li>
-                        <li>Code review</li>
-                        <li>Inline suggestions</li>
-                    </ul>
-                </div>
-                <div class="ha-card">
-                    <h3>Automatizace</h3>
-                    <ul class="ha-specs">
-                        <li>GitHub Actions (CI/CD)</li>
-                        <li>Cloudflare Tunnel (hosting)</li>
-                        <li>Node-RED (HA reporty)</li>
-                        <li>MakerWorld (3D tisk profily)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="../../js/icons.js"></script>
-    <script src="../../js/components.js?v=20260912a"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/reveal.js"></script>
-    <script src="../../js/analytics.js"></script>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../app.js?v=11"></script>
+  <script src="../../analytics.js?v=1"></script>
+  <script src="../../project.js?v=3"></script>
 </body>
 </html>

@@ -1,0 +1,105 @@
+{
+ "path": "pages/deskovky/",
+ "nav": "games",
+ "name": "Deskovky",
+ "color": "ice",
+ "title": "Deskovky",
+ "description": "Gloomhaven a Frosthaven Tracker: vlastní nástroje pro dlouhé kampaně, které používají i ostatní hráči. Scénáře, postavy, předměty, mapa a příběh v češtině.",
+ "h1": "Kampaň bez <span>papírového chaosu.</span>",
+ "lead": "Dlouhé kampaně jako Gloomhaven mají stovky scénářů, událostí a předmětů. Postavil jsem si trackery, které to drží pohromadě, a otevřel je ostatním hráčům.",
+ "kpi_label": "Trackery",
+ "kpis": [
+  {
+   "b": "5.4",
+   "small": "verze Gloomhaven"
+  },
+  {
+   "b": "105",
+   "small": "testů"
+  },
+  {
+   "b": "beta",
+   "small": "Frosthaven"
+  }
+ ],
+ "kpi_note": "České názvy karet, mapa s achievement stickery, sdílení kampaně mezi hráči, PWA na mobil.",
+ "intro_h2": "Nástroje, ne jen hraní",
+ "intro": [
+  "Gloomhaven Tracker vznikl, protože papírová mapa a sešit u stolu prostě nestíhaly. Dnes umí scénáře s větvením příběhu, postavy, obchod, události, sdílení kampaně mezi hráči a české překlady. Frosthaven Tracker jde stejnou cestou a je v betě.",
+  "K tomu 3D tištěné hexové pole na magnety, aby se dungeon skládal rychle a nerozjížděl."
+ ],
+ "projects_h2": "Nástroje",
+ "projects": [
+  {
+   "href": "https://gloomhaven.ongy.cz",
+   "tag": "VERZE 5.4",
+   "tagColor": "ice",
+   "name": "Gloomhaven Tracker",
+   "text": "Kompletní správa kampaně v češtině včetně DLC Forgotten Circles. Zdarma, funguje i offline.",
+   "meta": "Vue · FastAPI · PWA",
+   "cta": "Otevřít ↗"
+  },
+  {
+   "href": "https://frosthaven.ongy.cz",
+   "tag": "BETA",
+   "tagColor": "amber",
+   "status": "building",
+   "name": "Frosthaven Tracker",
+   "text": "Flowchart, mapa, budovy, alchymie a cloud sync. Dolaďuju podle vlastní kampaně.",
+   "meta": "Vue · FastAPI · SQLite",
+   "cta": "Otevřít ↗"
+  },
+  {
+   "href": "https://ongy.cz/pages/3d-print/",
+   "tag": "3D TISK",
+   "tagColor": "amber",
+   "name": "Magnetické hexové pole",
+   "text": "Modulární dungeon pro Gloomhaven, hexy na magnety vytištěné na X1C.",
+   "meta": "PLA · magnety",
+   "cta": "Otevřít →"
+  }
+ ],
+ "notes": [
+  {
+   "href": "https://ongy.cz/pages/blog/",
+   "mark": "GH",
+   "title": "Gloomhaven Tracker v5.4: Forgotten Circles, ability karty a achievement stickery",
+   "date": "24. března 2026"
+  },
+  {
+   "href": "https://ongy.cz/pages/blog/",
+   "mark": "GH",
+   "title": "Gloomhaven Tracker v4.0: příběhy, bezpečnost a SEO",
+   "date": "22. března 2026"
+  }
+ ],
+ "stack": [
+  [
+   "Frontend",
+   "Vue 3, PWA na mobil, offline režim, lightbox karet s českými názvy."
+  ],
+  [
+   "Backend",
+   "FastAPI, JWT přihlášení, e-mail verifikace, cloud sync a sdílení kampaně šestimístným kódem."
+  ],
+  [
+   "Data",
+   "379 ability karet, 150 událostí, 151 předmětů s fotkami, 95 scénářů s českým souhrnem."
+  ],
+  [
+   "Provoz",
+   "Docker na home serveru, Cloudflare Tunnel, 105 automatických testů."
+  ]
+ ],
+ "media": {
+  "h2": "Tracker v prohlížeči",
+  "items": [
+   {
+    "src": "../../assets/gloomhaven.jpg",
+    "alt": "Úvodní obrazovka Gloomhaven Trackeru",
+    "caption": "Gloomhaven Tracker: mapa scénářů, postavy a obchod v češtině, zdarma a offline.",
+    "wide": true
+   }
+  ]
+ }
+}
