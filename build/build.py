@@ -71,8 +71,8 @@ def social_meta(c):
     t = e(c["title"]); d = e(c["description"])
     return (f'{CSP}\n  <meta name="referrer" content="strict-origin-when-cross-origin">\n  <link rel="canonical" href="{url}">\n'
             f'  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">\n'
-            f'  <meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">\n'
-            f'  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">')
+            f'  <meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg?v=2">\n'
+            f'  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg?v=2">')
 
 def paras(ps): return "".join(f"<p>{p}</p>" for p in ps)
 
