@@ -1,214 +1,225 @@
 [
- {
-  "date": "13. září 2026",
-  "tag": "Server &amp; síť",
-  "tagcls": "tag-net",
-  "title": "Bezpečnostní audit domácnosti v pěti krocích",
-  "paragraphs": [
-   "Po přidání VPN a přístupu do domácí sítě jsem si položil otázku, kterou si klade každý, kdo má doma server: je to dost bezpečné? Odpověď jsem hledal systematicky. Co poslouchá ven, kdo se dostane dovnitř, co odchází ven, jak jsou na tom účty a jak se aktualizuje.",
-   "Výsledek: veřejně neposlouchá nic, tři věci jsem vypnul a jediné riziko, které zbylo, je fyzické. Sepsal jsem to jako <a href=\"../server/audit/\">checklist, který si můžeš projít u sebe →</a>"
-  ]
- },
- {
-  "date": "13. září 2026",
-  "tag": "Server &amp; síť",
-  "tagcls": "tag-net",
-  "title": "Záloha bez testu obnovy není záloha",
-  "paragraphs": [
-   "Na jaře jsem zjistil, že moje záloha byla dva měsíce mrtvá. Přišlo se na to až ve chvíli, kdy jsem omylem smazal projekt. Od té doby se zálohuje i celý zdrojový kód, druhá kopie leží jinde a hlídač mi napíše, když se zálohování zasekne.",
-   "Dnes jsem konečně udělal to, co jsem odkládal: skutečnou obnovu ze zálohy a porovnání se živými soubory. Čísla, postup a tři lekce jsou v <a href=\"../server/backups/\">dílu o zálohách →</a>"
-  ]
- },
- {
-  "date": "13. září 2026",
-  "tag": "Server &amp; síť",
-  "tagcls": "tag-net",
-  "title": "Domů odkudkoli, bez otevřeného portu",
-  "paragraphs": [
-   "Chtěl jsem z mobilu na Home Assistant, na server i na router, ale nechtěl jsem na internetu otevírat jediný port. Řešením je VPN typu mesh: Tailscale. Server dělá bránu do domácí sítě a pravidla říkají, které zařízení tam smí.",
-   "Cestou jsem dva dny podezříval Docker z něčeho, co dělal překlad adres ve VPN. Jak je to postavené a na co si dát pozor: <a href=\"../server/tailscale/\">Tailscale, domů bez otevřeného portu →</a>"
-  ]
- },
- {
-  "date": "13. září 2026",
-  "tag": "Server &amp; síť",
-  "tagcls": "tag-net",
-  "title": "Krabičky mají vlastní Wi-Fi, a je to tak dobře",
-  "paragraphs": [
-   "Nový router, alternativní firmware a oddělená síť pro chytré zásuvky, světla a tiskárnu. Hlavní síť je nevidí, Home Assistant se k nim dostane přes router a DNS pro obě sítě dělá AdGuard.",
-   "Plus 2Gb optika, 2,5GbE kabel k serveru a jedno měření, které ukázalo, že python speedtest lže. <a href=\"../server/router-iot/\">Router a oddělená IoT síť →</a>"
-  ]
- },
- {
-  "date": "12. září 2026",
-  "tag": "Server &amp; síť",
-  "tagcls": "tag-net",
-  "title": "Co moje zařízení posílají domů — týden s AdGuard Home jako DNS pro celý byt",
-  "paragraphs": [
-   "Přes padesát chytrých krabiček doma a u žádné jsem přesně nevěděl, co, jak často a komu posílá. Tak jsem na home server nasadil <strong>AdGuard Home</strong>: každé zařízení se před spojením musí zeptat „kde je ten server?“, a když tu otázku odpovídám já, vidím v jednom logu úplně všechno — a můžu říct „takový server neexistuje“. Za první týden 360 tisíc dotazů, <strong>pětina zablokovaná</strong>, nula rozbitých zařízení.",
-   "Zjištění stojí za to: chytré zásuvky hlásí výrobci každých dvacet minut, spouštěč aplikací na mobilu volal domů <strong>každou minutu i v noci</strong>, televize sbírá logy, Jira z počítače po zablokování vystřelila 1 700 dotazů za minutu a hlásí se i samotný router. Naopak tiskárna, čistička nebo vysavač jsou slušné. Plus šest pastí, na které jsem šlápl — od zálohy, která se točila v kruhu, po pravidlo, které „nefungovalo“ jen proto, že jsem testoval dřív, než ho server načetl. Otevírá to novou sekci webu: <a href=\"../server/adguard/\">AdGuard Home — co moje zařízení posílají domů →</a>"
-  ]
- },
- {
-  "date": "18. srpna 2026",
-  "tag": "AI",
-  "tagcls": "tag-ai",
-  "title": "Postavil jsem si AI kolečko nad označený text — Tauri, Rust a lokální Gemma",
-  "paragraphs": [
-   "Označíš text v libovolném programu, stiskneš <code>Ctrl+Shift+Space</code> a u kurzoru vyskočí kolečko: <strong>Opravit gramatiku, Přeložit, Shrnout, Vysvětlit, Upravit styl</strong> — nebo vlastní akce, kterou si napíšeš vlastními slovy. Výsledek přijde do panelu i s barevným <strong>porovnáním „před / po\"</strong>, a teprve když ho odsouhlasíš, nahradí původní text. Konec kopírování do chatu s AI a zpátky.",
-   "Podobné nástroje existují, ale posílají všechno, co označíš, na cizí server. Já jsem to chtěl <strong>doma</strong>: umělá inteligence běží na grafické kartě v mém PC, zadarmo a bez internetu; jen na překlady si jedním kliknutím přepnu Claude. První použitelná verze vznikla za jeden den a po cestě jsem šlápl na pár pěkných pastí — třeba na model, který si nad jednou větou „přemýšlel\" několik minut. Jak to funguje, proč je to udělané takhle a na co jsem narazil: <a href=\"../ai/hotkey/\">ai-hotkey — jak je postavený →</a>"
-  ]
- },
- {
-  "date": "26. června 2026",
-  "tag": "AI",
-  "tagcls": "tag-ai",
-  "title": "Postavil jsem si bota, který za mě vymáhá moje data od data brokerů",
-  "paragraphs": [
-   "Existují stovky <em>data brokerů</em> — firem, co tiše sbírají a přeprodávají osobní data — a nikde není seznam „kdo má zrovna ta moje\". Tak jsem si napsal Python bota, který rozesílá GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. Nic neodejde bez mého „ANO\" — bot pošle souhrn dávky do Telegramu a čeká na schválení.",
-   "Nejhezčí část je <strong>samorozšiřování</strong>: žádost podle čl. 15 nutí brokera přiznat, komu data prodal dál. Tu odpověď přečte <strong>Claude (Sonnet)</strong>, vytáhne příjemce a každou přiznanou firmu sám přidá jako nový cíl — síť žádostí se tak rozrůstá bez mého zásahu. Celé to běží <strong>bez jediné externí knihovny</strong>, čistá Python stdlib. Jak je bot postavený jsem sepsal samostatně: <a href=\"../ai/gdpr/\">GDPR Broker Bot — architektura, řetězení a eskalace →</a>."
-  ]
- },
- {
-  "date": "3. června 2026",
-  "tag": "AI",
-  "tagcls": "tag-ai",
-  "title": "AI Coach umí být i přísný — adaptivní koučink a kolik to celé stojí",
-  "paragraphs": [
-   "Můj Telegram trenér na Claude povyrostl. Nově mění tón podle toho, jak se mi daří: když držím režim, je v pohodě; když třikrát za týden vynechám cvičení, přitvrdí a žádné výmluvy; a když nahlásím, že mě něco bolí, sám vyřadí rizikové cviky a přepne na lehčí verzi. Při opakované bolesti připomene odbornou kontrolu.",
-   "Přidal jsem i metriky z Galaxy Watch (kroky, tep, HRV) přímo do denního přehledu, inline grafy váhy a kalorií, a hlavně <strong>transparentní účet</strong> — bot si loguje každé volání Claude API, takže přesně vím, že mě celý provoz stojí kolem <strong>75&nbsp;Kč měsíčně</strong> (levnější než kafe). Sepsal jsem to do stránky o&nbsp;<a href=\"../ai/coach/\">AI Coachi — módy, hodinky a náklady →</a>."
-  ]
- },
- {
-  "date": "31. května 2026",
-  "tag": "AI",
-  "tagcls": "tag-ai",
-  "title": "AI Coach: osobní trenér v Telegramu postavený na Claude",
-  "paragraphs": [
-   "Postavil jsem si Telegram bota, který funguje jako osobní trenér. Vyfotíš jídlo a Claude vision odhadne kalorie a makra, řekneš do mikrofonu co jsi jedl a je to zapsané, ráno a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy přes Home Assistant — žádné ruční zapisování.",
-   "Zajímavá byla lekce z provozu: levnější model systematicky podhodnocoval české porce o čtvrtinu, tak teď běží na dvou modelech — <strong>Opus</strong> na přesný odhad jídla z fotek a <strong>Sonnet</strong> na rozpoznání záměru a dotazy. Jak je celý bot postavený jsem sepsal samostatně: <a href=\"../ai/coach/\">AI Coach — architektura, modely a funkce →</a>."
-  ]
- },
- {
-  "date": "31. května 2026",
-  "tag": "Home Assistant",
-  "tagcls": "tag-ha",
-  "title": "Aluprof žaluzie do Home Assistant přes vlastní ESP32 + CC1101",
-  "paragraphs": [
-   "Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta do Home Assistantu prakticky neexistuje. Postavil jsem si vlastní RF most z ESP32 a čipu CC1101 — zachytil RF protokol původního ovladače, přehrál ho a v ESPHome z toho udělal plnohodnotnou <em>cover</em> entitu s posuvníkem polohy. Řeší to spousta lidí v ČR úplně stejně.",
-   "Sepsal jsem celý postup jako samostatný návod — zapojení, odposlech protokolu, ESPHome konfiguraci, kalibraci i tři automatizace (stínění podle slunce, večerní roztažení, anti-glare na TV): <a href=\"../homeassistant/zaluzie/\">Aluprof žaluzie přes ESP32 + CC1101 →</a>."
-  ]
- },
- {
-  "date": "24. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Gloomhaven Tracker v5.4: Forgotten Circles, ability karty a achievement stickery",
-  "paragraphs": [
-   "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> poskočil z v4.0 na v5.4. Největší novinka: <strong>Forgotten Circles DLC</strong> — 20 nových scénářů s vlastním flowchartem, které se dají zapnout/vypnout v nastavení.",
-   "Ability karty dostaly kompletní české názvy pro všech 17 tříd (379 karet). Lightbox zobrazí kartu ve velkém s českým názvem. Karty jsou seřazené podle iniciativy a namapované na fotky z české edice. Na mapě se objevily české achievement stickery s cyklováním upgrade levelů na klik. Autentické PNG ikony z hry nahradily SVG v popisech předmětů i slotů.",
-   "Další vylepšení: flip-card animace eventů, toast notifikace, undo dokončení scénáře, class unlock systém (auto odemknutí při retirement), automatické snapshot zálohy, Info stránka s changelogem a smazání postavy. Celkem 105 testů."
-  ]
- },
- {
-  "date": "22. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Gloomhaven Tracker v4.0: příběhy, bezpečnost a SEO",
-  "paragraphs": [
-   "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> vyrostl na verzi 4.0. Největší novinka: kompletní české překlady — 95 scénářů má český souhrn příběhu a 60 questových linií je přeloženo s progresivním odhalováním podle checkpointů. Nová stránka Příběh v navigaci.",
-   "Attack Modifier deck vizualizuje balíček karet se statistikami (miss%, krit%, rolling) a přepočítává se v reálném čase při zaškrtnutí talentu. Retirement flow s potvrzovacím dialogem ukáže, co se odemkne. Zapečetěné obálky (A, B, ☀, ☾, X) jsou spoiler-safe s varováním před otevřením. 151 předmětů má upscalované fotky (JPG, 587×900).",
-   "Security audit: heslo min. 8 znaků, API docs skryté v produkci, HSTS a security headers, timing-safe verifikační kódy, Docker non-root. SEO: meta tagy, Open Graph, sitemap, robots.txt a ověření v Google Search Console. Feedback notifikace na email s rozšířenými daty. Celkem 105 testů."
-  ]
- },
- {
-  "date": "22. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Gloomhaven Tracker v3.0: sdílení kampaně",
-  "paragraphs": [
-   "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> je ve verzi 3.0. Nová hlavní funkce: sdílení kampaně mezi hráči. Vlastník kampaně vygeneruje 6-místný kód, ostatní hráči se s ním připojí a sdílejí společný postup — scénáře, blahobyt, reputaci, úspěchy, události i postavy.",
-   "Vše se synchronizuje přes cloud. Správa členů (přidání, odebrání, opuštění) je přímo v nastavení kampaně."
-  ]
- },
- {
-  "date": "22. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Gloomhaven Tracker: eventy, spoilery a donate",
-  "paragraphs": [
-   "Masivní update <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Trackeru</a> na základě feedbacku od uživatele. Event systém se 150 událostmi (městské + cestovní), A/B výběr s auto-apply efektů na kampaň — reputace, blahobyt, odemčení scénářů i předmětů.",
-   "Scénáře mají automatický výpočet úrovně, podmínky pro zahrání a spoiler ochranu odměn. Random reward pickery pro předměty (#71-95) i vedlejší scénáře. Item dostupnost opravena — náhodné předměty se ukazují jen po vylosování.",
-   "Donate sekce kompletně přepracovaná — Buy Me a Coffee, Revolut a Bitcoin QR. Nový zlatý scrollbar, aktivní kampaň v headeru a 105 testů."
-  ]
- },
- {
-  "date": "20. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Gloomhaven Tracker: mobilní view a login",
-  "paragraphs": [
-   "Velký update <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Trackeru</a>. Celý flowchart scénářů teď funguje na mobilu — pinch-to-zoom, tap na scénář otevře detail jako bottom sheet. Přidal jsem login s email verifikací a automatickou synchronizaci kampaní do cloudu.",
-   "Další novinky: možnost ručně odemknout scénáře, nový branding (GLOOMHAVEN zlatě + TRACKER šedě), kompaktnější legenda a responzivní breakpointy pro tablety."
-  ]
- },
- {
-  "date": "20. března 2026",
-  "tag": "Web",
-  "tagcls": "tag-web",
-  "title": "Ongy.cz: velký update",
-  "paragraphs": [
-   "Celý web dostal pořádnou péči. Nová stránka O mně se stylizovaným avatarem a 3D tisk timeline. Fotky tiskáren lokálně místo Cloudinary. Blog posty mají barevné SVG ikony podle kategorie. AI sekce kompletně přepsaná s popisem Brain System a workflow.",
-   "Technicky: scroll reveal animace, Open Graph tagy pro sdílení, 2×2 grid na homepage, hex-heart footer ikona, a spousta mobilních fixů. Home Assistant sekce aktualizována na reálný stav — 50+ zařízení včetně wall tabletu s 3D tištěným držákem."
-  ]
- },
- {
-  "date": "5. března 2026",
-  "tag": "Deskovky",
-  "tagcls": "tag-deskovky",
-  "title": "Deskovky a Gloomhaven Tracker",
-  "paragraphs": [
-   "Sekce Frosthaven se přerodila v plnohodnotnou sekci Deskovky. Kromě Frosthavenu tam teď najdete i Gloomhaven a propojení na nový projekt – <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a>, webovou appku na sledování kampaní.",
-   "Tracker běží na vlastní subdoméně a nasazuje se automaticky přes GitHub Actions. Sekce Deskovky dostala taky nový layout s kartami pro jednotlivé hry."
-  ]
- },
- {
-  "date": "29. ledna 2026",
-  "tag": "AI",
-  "tagcls": "tag-ai",
-  "title": "AI Brain System má vlastní stránku",
-  "paragraphs": [
-   "Přidal jsem podstránku do sekce AI Lab, která dokumentuje Brain System v2.0 – systém, kterým si Claude Code udržuje paměť mezi sessions. Najdete tam popis architektury, jak fungují kontextové soubory, úkoly a changelog."
-  ]
- },
- {
-  "date": "24. ledna 2026",
-  "tag": "Home Assistant",
-  "tagcls": "tag-ha",
-  "title": "Home Assistant: 9 podstránek a CSS refaktoring",
-  "paragraphs": [
-   "Sekce Home Assistant vyrostla natolik, že jsem ji rozdělil na 9 samostatných podstránek – přehled, zařízení, dashboardy, automatizace, Floor3D, data a reporting, hardware, integrace a timeline.",
-   "Zároveň jsem rozsekl monolitický CSS soubor do modulů, aby se v tom dalo lépe orientovat."
-  ]
- },
- {
-  "date": "15. ledna 2026",
-  "tag": "Home Assistant",
-  "tagcls": "tag-ha",
-  "title": "Home Assistant sekce je na světě",
-  "paragraphs": [
-   "Konečně jsem přidal kompletní sekci o mém Home Assistant setupu. Jsou tam reálná data – seznam zařízení, screenshoty z dashboardů a Grafany, interaktivní Floor3D karta bytu a popis celého data stacku (InfluxDB, Grafana, Node-RED).",
-   "Screenshoty jdou zvětšit přes lightbox a dashboardy mají carousel. Taky jsem přešel na čisté URL bez .html koncovek."
-  ]
- },
- {
-  "date": "10. prosince 2025",
-  "tag": "Web",
-  "tagcls": "tag-web",
-  "title": "Web je live!",
-  "paragraphs": [
-   "První verze ongy.cz je na světě. Dlouho jsem přemýšlel, jestli mít vlastní web, a nakonec jsem se rozhodl to zkusit. Plánuju sem dávat věci kolem 3D tisku, deskovek a různých tech experimentů.",
-   "Postupně budu přidávat obsah – fotky z tisku, zápisky z Frosthavenu, možná nějaké AI experimenty. Uvidíme kam to povede."
-  ]
- }
+  {
+    "date": "14. září 2026",
+    "tag": "Web",
+    "tagcls": "tag-web",
+    "title": "Redesign ongy.cz: jedno pozadí, sklo a síť projektů",
+    "paragraphs": [
+      "Web se mi za rok rozrostl z pár stránek na pět sekcí a přestal držet pohromadě. Každý projekt měl vlastní vzhled, pozadí se při scrollu střídalo z černé do modré, sem tam vykouklo emoji a nejdelší stránky měly skoro tisíc řádků. Přesně to, co jsem nikdy nechtěl. Tak jsem to za dva večery přestavěl od základu.",
+      "Inspiraci jsem vzal z webů jako Raycast nebo Supabase: jedno tmavé pozadí, tenké okraje, hodně vzduchu a jeden akcent. Karty a panely jsou teď ze skla, každý projekt má svou barvu, která se táhne od karty v přehledu přes záři na jeho stránce až po ikonu v menu. Obsah projektů leží v JSON souborech a stránky z nich generuje malý skript, takže změna šablony se propíše všude najednou. Každý projekt má stejnou osnovu: k čemu to je, proč vzniklo, jak to funguje, co jsem se naučil. Technika je až na konci v rozbalovacích blocích.",
+      "Nejvíc mě baví nová mapa dílny na úvodní stránce. Místo pěti tlačítek je to živá síť jako v Obsidianu: sekce, projekty a technologie propojené hranami, po kterých putují signály. Když na uzel najedeš, sousedi se k němu stáhnou a zbytek ustoupí. Na telefonu klepnutí uzel vybere a druhé ho otevře. K tomu nové logo a obrázek pro sdílení. Celé to vznikalo ve dvou prototypech, jednom od Claude a jednom od Codexu, a nakonec jsem je sloučil. Každou stránku jsem před nasazením prohnal Playwrightem na emulovaném telefonu, protože menu i zvětšování obrázků na desktopu fungovaly a na mobilu byly k ničemu. <a href=\"../../\">Mapu dílny najdeš na úvodní stránce →</a>"
+    ]
+  },
+  {
+    "date": "13. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Bezpečnostní audit domácnosti v pěti krocích",
+    "paragraphs": [
+      "Po přidání VPN a přístupu do domácí sítě jsem si položil otázku, kterou si klade každý, kdo má doma server: je to dost bezpečné? Odpověď jsem hledal systematicky. Co poslouchá ven, kdo se dostane dovnitř, co odchází ven, jak jsou na tom účty a jak se aktualizuje.",
+      "Výsledek: veřejně neposlouchá nic, tři věci jsem vypnul a jediné riziko, které zbylo, je fyzické. Sepsal jsem to jako <a href=\"../server/audit/\">checklist, který si můžeš projít u sebe →</a>"
+    ]
+  },
+  {
+    "date": "13. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Záloha bez testu obnovy není záloha",
+    "paragraphs": [
+      "Na jaře jsem zjistil, že moje záloha byla dva měsíce mrtvá. Přišlo se na to až ve chvíli, kdy jsem omylem smazal projekt. Od té doby se zálohuje i celý zdrojový kód, druhá kopie leží jinde a hlídač mi napíše, když se zálohování zasekne.",
+      "Dnes jsem konečně udělal to, co jsem odkládal: skutečnou obnovu ze zálohy a porovnání se živými soubory. Čísla, postup a tři lekce jsou v <a href=\"../server/backups/\">dílu o zálohách →</a>"
+    ]
+  },
+  {
+    "date": "13. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Domů odkudkoli, bez otevřeného portu",
+    "paragraphs": [
+      "Chtěl jsem z mobilu na Home Assistant, na server i na router, ale nechtěl jsem na internetu otevírat jediný port. Řešením je VPN typu mesh: Tailscale. Server dělá bránu do domácí sítě a pravidla říkají, které zařízení tam smí.",
+      "Cestou jsem dva dny podezříval Docker z něčeho, co dělal překlad adres ve VPN. Jak je to postavené a na co si dát pozor: <a href=\"../server/tailscale/\">Tailscale, domů bez otevřeného portu →</a>"
+    ]
+  },
+  {
+    "date": "13. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Krabičky mají vlastní Wi-Fi, a je to tak dobře",
+    "paragraphs": [
+      "Nový router, alternativní firmware a oddělená síť pro chytré zásuvky, světla a tiskárnu. Hlavní síť je nevidí, Home Assistant se k nim dostane přes router a DNS pro obě sítě dělá AdGuard.",
+      "Plus 2Gb optika, 2,5GbE kabel k serveru a jedno měření, které ukázalo, že python speedtest lže. <a href=\"../server/router-iot/\">Router a oddělená IoT síť →</a>"
+    ]
+  },
+  {
+    "date": "12. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Co moje zařízení posílají domů — týden s AdGuard Home jako DNS pro celý byt",
+    "paragraphs": [
+      "Přes padesát chytrých krabiček doma a u žádné jsem přesně nevěděl, co, jak často a komu posílá. Tak jsem na home server nasadil <strong>AdGuard Home</strong>: každé zařízení se před spojením musí zeptat „kde je ten server?“, a když tu otázku odpovídám já, vidím v jednom logu úplně všechno — a můžu říct „takový server neexistuje“. Za první týden 360 tisíc dotazů, <strong>pětina zablokovaná</strong>, nula rozbitých zařízení.",
+      "Zjištění stojí za to: chytré zásuvky hlásí výrobci každých dvacet minut, spouštěč aplikací na mobilu volal domů <strong>každou minutu i v noci</strong>, televize sbírá logy, Jira z počítače po zablokování vystřelila 1 700 dotazů za minutu a hlásí se i samotný router. Naopak tiskárna, čistička nebo vysavač jsou slušné. Plus šest pastí, na které jsem šlápl — od zálohy, která se točila v kruhu, po pravidlo, které „nefungovalo“ jen proto, že jsem testoval dřív, než ho server načetl. Otevírá to novou sekci webu: <a href=\"../server/adguard/\">AdGuard Home — co moje zařízení posílají domů →</a>"
+    ]
+  },
+  {
+    "date": "18. srpna 2026",
+    "tag": "AI",
+    "tagcls": "tag-ai",
+    "title": "Postavil jsem si AI kolečko nad označený text — Tauri, Rust a lokální Gemma",
+    "paragraphs": [
+      "Označíš text v libovolném programu, stiskneš <code>Ctrl+Shift+Space</code> a u kurzoru vyskočí kolečko: <strong>Opravit gramatiku, Přeložit, Shrnout, Vysvětlit, Upravit styl</strong> — nebo vlastní akce, kterou si napíšeš vlastními slovy. Výsledek přijde do panelu i s barevným <strong>porovnáním „před / po\"</strong>, a teprve když ho odsouhlasíš, nahradí původní text. Konec kopírování do chatu s AI a zpátky.",
+      "Podobné nástroje existují, ale posílají všechno, co označíš, na cizí server. Já jsem to chtěl <strong>doma</strong>: umělá inteligence běží na grafické kartě v mém PC, zadarmo a bez internetu; jen na překlady si jedním kliknutím přepnu Claude. První použitelná verze vznikla za jeden den a po cestě jsem šlápl na pár pěkných pastí — třeba na model, který si nad jednou větou „přemýšlel\" několik minut. Jak to funguje, proč je to udělané takhle a na co jsem narazil: <a href=\"../ai/hotkey/\">ai-hotkey — jak je postavený →</a>"
+    ]
+  },
+  {
+    "date": "26. června 2026",
+    "tag": "AI",
+    "tagcls": "tag-ai",
+    "title": "Postavil jsem si bota, který za mě vymáhá moje data od data brokerů",
+    "paragraphs": [
+      "Existují stovky <em>data brokerů</em> — firem, co tiše sbírají a přeprodávají osobní data — a nikde není seznam „kdo má zrovna ta moje\". Tak jsem si napsal Python bota, který rozesílá GDPR žádosti o <strong>přístup (čl. 15)</strong> a <strong>výmaz (čl. 17)</strong>, čte příchozí odpovědi, hlídá 30denní lhůty a u mlčících připraví stížnost na ÚOOÚ. Nic neodejde bez mého „ANO\" — bot pošle souhrn dávky do Telegramu a čeká na schválení.",
+      "Nejhezčí část je <strong>samorozšiřování</strong>: žádost podle čl. 15 nutí brokera přiznat, komu data prodal dál. Tu odpověď přečte <strong>Claude (Sonnet)</strong>, vytáhne příjemce a každou přiznanou firmu sám přidá jako nový cíl — síť žádostí se tak rozrůstá bez mého zásahu. Celé to běží <strong>bez jediné externí knihovny</strong>, čistá Python stdlib. Jak je bot postavený jsem sepsal samostatně: <a href=\"../ai/gdpr/\">GDPR Broker Bot — architektura, řetězení a eskalace →</a>."
+    ]
+  },
+  {
+    "date": "3. června 2026",
+    "tag": "AI",
+    "tagcls": "tag-ai",
+    "title": "AI Coach umí být i přísný — adaptivní koučink a kolik to celé stojí",
+    "paragraphs": [
+      "Můj Telegram trenér na Claude povyrostl. Nově mění tón podle toho, jak se mi daří: když držím režim, je v pohodě; když třikrát za týden vynechám cvičení, přitvrdí a žádné výmluvy; a když nahlásím, že mě něco bolí, sám vyřadí rizikové cviky a přepne na lehčí verzi. Při opakované bolesti připomene odbornou kontrolu.",
+      "Přidal jsem i metriky z Galaxy Watch (kroky, tep, HRV) přímo do denního přehledu, inline grafy váhy a kalorií, a hlavně <strong>transparentní účet</strong> — bot si loguje každé volání Claude API, takže přesně vím, že mě celý provoz stojí kolem <strong>75&nbsp;Kč měsíčně</strong> (levnější než kafe). Sepsal jsem to do stránky o&nbsp;<a href=\"../ai/coach/\">AI Coachi — módy, hodinky a náklady →</a>."
+    ]
+  },
+  {
+    "date": "31. května 2026",
+    "tag": "AI",
+    "tagcls": "tag-ai",
+    "title": "AI Coach: osobní trenér v Telegramu postavený na Claude",
+    "paragraphs": [
+      "Postavil jsem si Telegram bota, který funguje jako osobní trenér. Vyfotíš jídlo a Claude vision odhadne kalorie a makra, řekneš do mikrofonu co jsi jedl a je to zapsané, ráno a večer ti připomene cvičení. Váhu i složení těla si bere sám z chytré váhy přes Home Assistant — žádné ruční zapisování.",
+      "Zajímavá byla lekce z provozu: levnější model systematicky podhodnocoval české porce o čtvrtinu, tak teď běží na dvou modelech — <strong>Opus</strong> na přesný odhad jídla z fotek a <strong>Sonnet</strong> na rozpoznání záměru a dotazy. Jak je celý bot postavený jsem sepsal samostatně: <a href=\"../ai/coach/\">AI Coach — architektura, modely a funkce →</a>."
+    ]
+  },
+  {
+    "date": "31. května 2026",
+    "tag": "Home Assistant",
+    "tagcls": "tag-ha",
+    "title": "Aluprof žaluzie do Home Assistant přes vlastní ESP32 + CC1101",
+    "paragraphs": [
+      "Venkovní žaluzie Aluprof jezdí na motoru Dooya po 433&nbsp;MHz a oficiální cesta do Home Assistantu prakticky neexistuje. Postavil jsem si vlastní RF most z ESP32 a čipu CC1101 — zachytil RF protokol původního ovladače, přehrál ho a v ESPHome z toho udělal plnohodnotnou <em>cover</em> entitu s posuvníkem polohy. Řeší to spousta lidí v ČR úplně stejně.",
+      "Sepsal jsem celý postup jako samostatný návod — zapojení, odposlech protokolu, ESPHome konfiguraci, kalibraci i tři automatizace (stínění podle slunce, večerní roztažení, anti-glare na TV): <a href=\"../homeassistant/zaluzie/\">Aluprof žaluzie přes ESP32 + CC1101 →</a>."
+    ]
+  },
+  {
+    "date": "24. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Gloomhaven Tracker v5.4: Forgotten Circles, ability karty a achievement stickery",
+    "paragraphs": [
+      "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> poskočil z v4.0 na v5.4. Největší novinka: <strong>Forgotten Circles DLC</strong> — 20 nových scénářů s vlastním flowchartem, které se dají zapnout/vypnout v nastavení.",
+      "Ability karty dostaly kompletní české názvy pro všech 17 tříd (379 karet). Lightbox zobrazí kartu ve velkém s českým názvem. Karty jsou seřazené podle iniciativy a namapované na fotky z české edice. Na mapě se objevily české achievement stickery s cyklováním upgrade levelů na klik. Autentické PNG ikony z hry nahradily SVG v popisech předmětů i slotů.",
+      "Další vylepšení: flip-card animace eventů, toast notifikace, undo dokončení scénáře, class unlock systém (auto odemknutí při retirement), automatické snapshot zálohy, Info stránka s changelogem a smazání postavy. Celkem 105 testů."
+    ]
+  },
+  {
+    "date": "22. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Gloomhaven Tracker v4.0: příběhy, bezpečnost a SEO",
+    "paragraphs": [
+      "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> vyrostl na verzi 4.0. Největší novinka: kompletní české překlady — 95 scénářů má český souhrn příběhu a 60 questových linií je přeloženo s progresivním odhalováním podle checkpointů. Nová stránka Příběh v navigaci.",
+      "Attack Modifier deck vizualizuje balíček karet se statistikami (miss%, krit%, rolling) a přepočítává se v reálném čase při zaškrtnutí talentu. Retirement flow s potvrzovacím dialogem ukáže, co se odemkne. Zapečetěné obálky (A, B, ☀, ☾, X) jsou spoiler-safe s varováním před otevřením. 151 předmětů má upscalované fotky (JPG, 587×900).",
+      "Security audit: heslo min. 8 znaků, API docs skryté v produkci, HSTS a security headers, timing-safe verifikační kódy, Docker non-root. SEO: meta tagy, Open Graph, sitemap, robots.txt a ověření v Google Search Console. Feedback notifikace na email s rozšířenými daty. Celkem 105 testů."
+    ]
+  },
+  {
+    "date": "22. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Gloomhaven Tracker v3.0: sdílení kampaně",
+    "paragraphs": [
+      "<a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a> je ve verzi 3.0. Nová hlavní funkce: sdílení kampaně mezi hráči. Vlastník kampaně vygeneruje 6-místný kód, ostatní hráči se s ním připojí a sdílejí společný postup — scénáře, blahobyt, reputaci, úspěchy, události i postavy.",
+      "Vše se synchronizuje přes cloud. Správa členů (přidání, odebrání, opuštění) je přímo v nastavení kampaně."
+    ]
+  },
+  {
+    "date": "22. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Gloomhaven Tracker: eventy, spoilery a donate",
+    "paragraphs": [
+      "Masivní update <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Trackeru</a> na základě feedbacku od uživatele. Event systém se 150 událostmi (městské + cestovní), A/B výběr s auto-apply efektů na kampaň — reputace, blahobyt, odemčení scénářů i předmětů.",
+      "Scénáře mají automatický výpočet úrovně, podmínky pro zahrání a spoiler ochranu odměn. Random reward pickery pro předměty (#71-95) i vedlejší scénáře. Item dostupnost opravena — náhodné předměty se ukazují jen po vylosování.",
+      "Donate sekce kompletně přepracovaná — Buy Me a Coffee, Revolut a Bitcoin QR. Nový zlatý scrollbar, aktivní kampaň v headeru a 105 testů."
+    ]
+  },
+  {
+    "date": "20. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Gloomhaven Tracker: mobilní view a login",
+    "paragraphs": [
+      "Velký update <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Trackeru</a>. Celý flowchart scénářů teď funguje na mobilu — pinch-to-zoom, tap na scénář otevře detail jako bottom sheet. Přidal jsem login s email verifikací a automatickou synchronizaci kampaní do cloudu.",
+      "Další novinky: možnost ručně odemknout scénáře, nový branding (GLOOMHAVEN zlatě + TRACKER šedě), kompaktnější legenda a responzivní breakpointy pro tablety."
+    ]
+  },
+  {
+    "date": "20. března 2026",
+    "tag": "Web",
+    "tagcls": "tag-web",
+    "title": "Ongy.cz: velký update",
+    "paragraphs": [
+      "Celý web dostal pořádnou péči. Nová stránka O mně se stylizovaným avatarem a 3D tisk timeline. Fotky tiskáren lokálně místo Cloudinary. Blog posty mají barevné SVG ikony podle kategorie. AI sekce kompletně přepsaná s popisem Brain System a workflow.",
+      "Technicky: scroll reveal animace, Open Graph tagy pro sdílení, 2×2 grid na homepage, hex-heart footer ikona, a spousta mobilních fixů. Home Assistant sekce aktualizována na reálný stav — 50+ zařízení včetně wall tabletu s 3D tištěným držákem."
+    ]
+  },
+  {
+    "date": "5. března 2026",
+    "tag": "Deskovky",
+    "tagcls": "tag-deskovky",
+    "title": "Deskovky a Gloomhaven Tracker",
+    "paragraphs": [
+      "Sekce Frosthaven se přerodila v plnohodnotnou sekci Deskovky. Kromě Frosthavenu tam teď najdete i Gloomhaven a propojení na nový projekt – <a href=\"https://gloomhaven.ongy.cz\">Gloomhaven Tracker</a>, webovou appku na sledování kampaní.",
+      "Tracker běží na vlastní subdoméně a nasazuje se automaticky přes GitHub Actions. Sekce Deskovky dostala taky nový layout s kartami pro jednotlivé hry."
+    ]
+  },
+  {
+    "date": "29. ledna 2026",
+    "tag": "AI",
+    "tagcls": "tag-ai",
+    "title": "AI Brain System má vlastní stránku",
+    "paragraphs": [
+      "Přidal jsem podstránku do sekce AI Lab, která dokumentuje Brain System v2.0 – systém, kterým si Claude Code udržuje paměť mezi sessions. Najdete tam popis architektury, jak fungují kontextové soubory, úkoly a changelog."
+    ]
+  },
+  {
+    "date": "24. ledna 2026",
+    "tag": "Home Assistant",
+    "tagcls": "tag-ha",
+    "title": "Home Assistant: 9 podstránek a CSS refaktoring",
+    "paragraphs": [
+      "Sekce Home Assistant vyrostla natolik, že jsem ji rozdělil na 9 samostatných podstránek – přehled, zařízení, dashboardy, automatizace, Floor3D, data a reporting, hardware, integrace a timeline.",
+      "Zároveň jsem rozsekl monolitický CSS soubor do modulů, aby se v tom dalo lépe orientovat."
+    ]
+  },
+  {
+    "date": "15. ledna 2026",
+    "tag": "Home Assistant",
+    "tagcls": "tag-ha",
+    "title": "Home Assistant sekce je na světě",
+    "paragraphs": [
+      "Konečně jsem přidal kompletní sekci o mém Home Assistant setupu. Jsou tam reálná data – seznam zařízení, screenshoty z dashboardů a Grafany, interaktivní Floor3D karta bytu a popis celého data stacku (InfluxDB, Grafana, Node-RED).",
+      "Screenshoty jdou zvětšit přes lightbox a dashboardy mají carousel. Taky jsem přešel na čisté URL bez .html koncovek."
+    ]
+  },
+  {
+    "date": "10. prosince 2025",
+    "tag": "Web",
+    "tagcls": "tag-web",
+    "title": "Web je live!",
+    "paragraphs": [
+      "První verze ongy.cz je na světě. Dlouho jsem přemýšlel, jestli mít vlastní web, a nakonec jsem se rozhodl to zkusit. Plánuju sem dávat věci kolem 3D tisku, deskovek a různých tech experimentů.",
+      "Postupně budu přidávat obsah – fotky z tisku, zápisky z Frosthavenu, možná nějaké AI experimenty. Uvidíme kam to povede."
+    ]
+  }
 ]

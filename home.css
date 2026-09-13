@@ -136,6 +136,13 @@
   .principle-grid{grid-template-columns:1fr;gap:10px}.principle-grid article{min-height:165px}.principle-grid h3{margin-top:18px}.notes-grid{display:flex;gap:12px;overflow-x:auto;padding:2px 30px 14px 1px;scroll-padding-inline:1px;scroll-snap-type:x mandatory;scrollbar-width:none}.notes-grid>a{flex:0 0 calc(100% - 42px);scroll-snap-align:start}.home-about{grid-template-columns:66px 1fr;margin-bottom:65px;padding:25px 21px}.about-avatar{width:64px}.home-about>a{grid-column:1/-1}.home-page .footer-inner{grid-template-columns:1fr;gap:11px}.visitor-count{grid-row:2}.social-links{grid-row:3;justify-self:start;flex-wrap:wrap}}
 
 /* GDPR zápisek: jantarová varianta AI vizuálu */
+.note-web { background:radial-gradient(circle at 55% 50%,rgba(46,232,196,.14),transparent 55%),#0c1210; }
+.note-web svg { position:absolute; inset:0; width:100%; height:100%; }
+.note-web .nw-lines path { fill:none; stroke:rgba(179,187,181,.28); stroke-width:1; }
+.note-web .nw-dots circle { stroke:rgba(255,255,255,.3); stroke-width:1; }
+.note-web .c0 { fill:#2ee8c4; filter:drop-shadow(0 0 8px rgba(46,232,196,.7)); } .note-web .c1 { fill:#7dd3fc; } .note-web .c2 { fill:#a78bfa; } .note-web .c3 { fill:#bcecff; } .note-web .c4 { fill:#ffa94d; } .note-web .c5 { fill:#ff7a6e; }
+.note-web>span { position:absolute; top:34px; left:31px; color:#5b7a70; font:700 .48rem "JetBrains Mono","Cascadia Code",monospace; letter-spacing:.08em; }
+.note-web>b { position:absolute; top:53px; left:31px; color:#9ffbe6; font:800 2.2rem Montserrat,sans-serif; letter-spacing:-.04em; }
 .note-gdpr{background:radial-gradient(circle at 70% 35%,rgba(255,169,77,.12),transparent 47%),#12100d}.note-gdpr>b{color:#ffc27a;background:rgba(255,169,77,.14)}.note-gdpr>em{color:#b08a5a}
 
 /* ===== Skleněné destičky (glass) ===== */
