@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tailscale jako soukromá síť mezi mými zařízeními: subnet router do domácí sítě, pravidla kdo smí dál, DNS přes VPN a tři pasti, na které jsem narazil.">
+  <meta name="theme-color" content="#101312"><title>Domů bez otevřeného portu — Tailscale | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/server/tailscale/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Domů bez otevřeného portu — Tailscale"><meta property="og:description" content="Tailscale jako soukromá síť mezi mými zařízeními: subnet router do domácí sítě, pravidla kdo smí dál, DNS přes VPN a tři pasti, na které jsem narazil."><meta property="og:url" content="https://ongy.cz/pages/server/tailscale/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Domů bez otevřeného portu — Tailscale"><meta name="twitter:description" content="Tailscale jako soukromá síť mezi mými zařízeními: subnet router do domácí sítě, pravidla kdo smí dál, DNS přes VPN a tři pasti, na které jsem narazil."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css?v=10"><link rel="stylesheet" href="../../../project.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><div class="nav-item"><a href="../../../index.html">Domů</a></div><div class="nav-item"><a href="../../../pages/3d-print/">3D tisk</a></div><div class="nav-item has-sub"><a href="../../../pages/homeassistant/">Home Assistant</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/homeassistant/devices/">Zařízení a hardware</a><a href="../../../pages/homeassistant/automations/">Automatizace</a><a href="../../../pages/homeassistant/monitoring/">Data a monitoring</a><a href="../../../pages/homeassistant/tips/">Tipy a triky</a><a href="../../../pages/homeassistant/zaluzie/">Aluprof žaluzie</a></div></div><div class="nav-item has-sub"><a href="../../../pages/ai/">AI</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/ai/coach/">AI Coach</a><a href="../../../pages/ai/hotkey/">ai-hotkey</a><a href="../../../pages/ai/gdpr/">GDPR Broker Bot</a><a href="../../../pages/ai/brain/">Brain System</a></div></div><div class="nav-item has-sub"><a class="active" href="../../../pages/server/">Server &amp; síť</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/server/adguard/">AdGuard Home</a><a href="../../../pages/server/router-iot/">Router a IoT síť</a><a class="active" aria-current="page" href="../../../pages/server/tailscale/">Tailscale</a><a href="../../../pages/server/backups/">Zálohy</a><a href="../../../pages/server/audit/">Bezpečnostní audit</a></div></div><div class="nav-item"><a href="../../../pages/deskovky/">Deskovky</a></div><div class="nav-item"><a href="../../../pages/blog/">Blog</a></div><div class="nav-item"><a href="../../../pages/about/">O mně</a></div></nav>
+  </div></header>
+
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../../pages/server/">Server &amp; síť</a><span>/</span><span>Tailscale</span></p>
+        <h1>Domů odkudkoli, <span>bez otevřeného portu.</span></h1>
+        <p class="lead">Mobil, počítač a server se vidí, ať jsem kdekoli. Na routeru není otevřený jediný port. Veřejný web jde jinudy a domácí síť vidí jen moje zařízení.</p>
+        <div class="status-row"><span class="chip"><i></i>běží od srpna 2026</span><span class="chip amber"><i></i>Server &amp; síť · díl 3</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="motif"><svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M80 42l32 18v36L80 114 48 96V60z"/><circle cx="22" cy="78" r="9"/><circle cx="138" cy="78" r="9"/><path d="M31 78h17M112 78h17" stroke-dasharray="4 5" opacity=".6"/><path d="M22 69V56M138 69V56" opacity=".5"/><rect x="70" y="78" width="20" height="16" rx="3"/><path d="M74 78v-5a6 6 0 0 1 12 0v5"/><circle cx="80" cy="86" r="1.6" fill="currentColor" stroke="none"/></svg></span>
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Stav sítě</span>
+        <ul class="kpis"><li><b>0</b><small>otevřených portů</small></li><li><b>4</b><small>zařízení v síti</small></li><li><b>2</b><small>smí do domácí sítě</small></li></ul>
+        <p class="note">Server se připojuje jen ven. Veřejný web jde přes Cloudflare Tunnel, všechno ostatní vidí jen zařízení, která mám v ruce.</p>
+      </aside>
+    </section>
+
+    <section class="psection" id="k-cemu-to-je"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">K čemu to je</p><h2>Soukromá síť mezi mými zařízeními</h2></div>
+      <div class="prose"><p>Tailscale je VPN, ale jiná, než na jakou jsi zvyklý. Není to jeden server, ke kterému se všichni připojují. Každé moje zařízení dostane vlastní adresu v rozsahu VPN a mluví s ostatními napřímo, šifrovaně přes WireGuard. Firma Tailscale jen pomůže zařízením se najít. Samotný provoz přes ni neteče.</p><p>Klasická cesta domů je otevřít port na routeru a doufat. Tím vystavíš službu celému internetu a musíš ji hlídat. Tady se naopak nic neotevírá. Server se sám přihlásí ven a čeká na zařízení, která znají jeho klíč. Pro všechny ostatní neexistuje.</p><p>Lidsky řečeno: moje zařízení jsou pořád v jednom bytě, i když sedím v tramvaji.</p></div>
+    </div></section>
+    <section class="psection" id="proc"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Proč</p><h2>Přestalo mi stačit ovládat světla</h2></div>
+      <div class="prose"><p>Home Assistant jsem zvenku ovládal přes placený cloud výrobce. Fungovalo to, ale jen pro Home Assistant. Na server, na admin rozhraní ani na vlastní DNS jsem se zvenku nedostal vůbec.</p><p>Otevřít port jsem nechtěl. Domácí adresa by byla na očích a každou službu bych musel zabezpečit zvlášť. Chtěl jsem jednu bránu, kterou vidí jen moje zařízení, a zbytek nechat zavřený.</p></div>
+    </div></section>
+    <section class="psection" id="jak-to-funguje"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jak to funguje</p><h2>Jedna brána a pravidla, kdo smí dál</h2></div>
+      <div><div class="panel diagram"><svg viewBox="0 0 760 300" role="img" aria-label="Cesta z mobilu venku přes Tailscale na server doma a dál do domácí sítě; veřejný web jde zvlášť přes Cloudflare Tunnel">
+          <g font-family="Inter, sans-serif" font-size="12" text-anchor="middle">
+            <rect x="395" y="26" width="20" height="16" rx="3" fill="none" stroke="#2ee8c4"/><path d="M399 26v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#2ee8c4"/><text x="405" y="62" fill="#7c8780" font-size="11">žádný port otevřený zvenku</text>
+            <rect x="20" y="90" width="130" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="85" y="110" fill="#edf1ed" font-weight="600">Mobil venku</text><text x="85" y="126" fill="#7c8780" font-size="11">mobilní data</text>
+            <path d="M150 113 L215 113" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4"/>
+            <path d="M245 78 L275 95 L275 131 L245 148 L215 131 L215 95 Z" fill="rgba(46,232,196,.10)" stroke="#2ee8c4"/><text x="245" y="117" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="12" font-weight="700">Tailscale</text><text x="245" y="166" fill="#7c8780" font-size="11">WireGuard · šifrováno</text>
+            <path d="M275 113 L330 113" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4"/>
+            <rect x="330" y="90" width="150" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="405" y="110" fill="#edf1ed" font-weight="600">Server doma</text><text x="405" y="126" fill="#7c8780" font-size="11">subnet router</text>
+            <path d="M480 113 L530 113" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4"/><text x="505" y="104" fill="#7c8780" font-size="10">pravidla</text>
+            <rect x="530" y="30" width="210" height="200" rx="12" fill="none" stroke="#354039" stroke-dasharray="5 5"/><text x="635" y="50" fill="#7c8780" font-size="11">Domácí síť</text>
+            <rect x="550" y="62" width="170" height="38" rx="9" fill="#1c211f" stroke="#354039"/><text x="635" y="85" fill="#edf1ed" font-weight="600">Home Assistant</text>
+            <rect x="550" y="112" width="170" height="38" rx="9" fill="#1c211f" stroke="#354039"/><text x="635" y="135" fill="#edf1ed" font-weight="600">Router</text>
+            <rect x="550" y="162" width="170" height="38" rx="9" fill="#1c211f" stroke="#354039"/><text x="635" y="185" fill="#edf1ed" font-weight="600">AdGuard DNS</text>
+            <path d="M405 136 L405 240" stroke="rgba(255,169,77,.6)" stroke-dasharray="4 4"/><text x="440" y="192" fill="#7c8780" font-size="10">jen ven</text>
+            <rect x="330" y="240" width="150" height="46" rx="10" fill="rgba(255,169,77,.08)" stroke="rgba(255,169,77,.5)"/><text x="405" y="260" fill="#ffa94d" font-weight="600">Cloudflare Tunnel</text><text x="405" y="276" fill="#7c8780" font-size="11">odchozí spojení</text>
+            <path d="M330 263 L210 263" stroke="rgba(255,169,77,.6)" stroke-dasharray="4 4"/>
+            <rect x="40" y="240" width="170" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="125" y="260" fill="#edf1ed" font-weight="600">Veřejný web</text><text x="125" y="276" fill="#7c8780" font-size="11">kdokoli z internetu</text>
+          </g></svg></div><ul class="bullets"><li><b>Server dělá subnet router.</b> Inzeruje domácí síť do VPN. Z mobilu venku se dostanu na Home Assistant, router i AdGuard, jako bych seděl doma.</li><li><b>Pravidla říkají, kdo smí do domácí sítě.</b> Všechna zařízení se vidí navzájem. Do domácí sítě přes server smí jen počítač a mobil, nic dalšího.</li><li><b>DNS jde přes VPN na AdGuard.</b> Mobil venku má stejný filtr jako doma. Reklamy a telemetrie padají i na mobilních datech.</li><li><b>SSH poslouchá jen na VPN adrese.</b> Z domácí sítě ani z internetu se k němu nikdo nedostane. Veřejný web běží zvlášť přes Cloudflare Tunnel, ten také nic neotevírá.</li></ul></div>
+    </div></section>
+    <section class="psection" id="co-jsem-zjistil"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co jsem zjistil</p><h2>Co se ukázalo</h2></div>
+      <div class="finds"><div class="panel find"><b>4</b><h3>Zařízení v síti</h3><p>Server, počítač, mobil a Home Assistant. Ten má vlastního klienta, protože běží na jiném stroji než server.</p></div><div class="panel find"><b class="amber">2</b><h3>Smí do domácí sítě</h3><p>Jen počítač a mobil. Když se některé ztratí, smažu ho v konzoli a přístup končí. Ostatní vidí jen sebe navzájem.</p></div><div class="panel find"><b>0</b><h3>Portů otevřených zvenku</h3><p>Server se připojuje ven, nic nečeká na příchozí spojení. Audit po nastavení to potvrdil: bez exit node, bez veřejného sdílení.</p></div></div>
+    </div></section>
+    <section class="psection" id="co-jsem-se-naucil"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co jsem se naučil</p><h2>Tři věci, které v návodech nejsou</h2></div>
+      <div class="lessons"><div class="panel lesson"><i>01</i><div><h3>SNAT schoval, kdo se ptá</h3><p>V logu AdGuardu se všechny dotazy z VPN slévaly do jedné adresy. Dva dny jsem podezříval Docker. Mohl za to překlad adres v Tailscale, který provoz z VPN maskuje za server. Po vypnutí vidím každé zařízení jménem.</p></div></div><div class="panel lesson"><i>02</i><div><h3>Zařízení s vlastním Tailscale neodpoví na domácí adresu</h3><p>Home Assistant má vlastního klienta. Když na něj z VPN jdu přes domácí adresu, paket dojde, ale odpověď se vydá jinou cestou a zahodí se. Z VPN na něj chodím jeho VPN adresou.</p></div></div><div class="panel lesson"><i>03</i><div><h3>Routa musí být schválená v konzoli</h3><p>Server inzeroval domácí síť už dřív, ale v konzoli jsem ji nikdy nepotvrdil. Štítek Subnets svítil žlutě a z mobilu šel jen server. Jeden klik v konzoli, hotovo.</p></div></div></div>
+    </div></section>
+    <section class="psection" id="pro-zvedave"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Technické detaily</h2></div>
+      <div><details class="panel tech" open><summary>Nastavení <small>subnet router · grants · DNS</small></summary><div class="body"><dl class="kv"><div><dt>Subnet router</dt><dd>Server inzeruje domácí síť, routa schválená v konzoli, forwarding zapnutý. Na routeru statická routa pro rozsah VPN zpět na server, jinak zařízení v domácí síti nemají kudy odpovědět.</dd></div><div><dt>Přístup</dt><dd>Politika v grants syntaxi. První grant: všechna zařízení se vidí navzájem. Druhý: do domácí sítě přes routu smí jen dvě vyjmenovaná zařízení. Nové zařízení se přidává ručně.</dd></div><div><dt>SNAT</dt><dd>Vypnutý (<code>--snat-subnet-routes=false</code>). Klienti z VPN chodí do domácí sítě pod svou VPN adresou a AdGuard je rozezná jako samostatné klienty.</dd></div><div><dt>DNS</dt><dd>V konzoli globální nameserver = server s AdGuardem, override zapnutý. Server sám DNS z VPN nepřebírá, aby nezávisel na vlastním kontejneru.</dd></div></dl></div></details><details class="panel tech"><summary>Pasti <small>pro ty, kdo to staví taky</small></summary><div class="body"><p>Bez statické routy na routeru vypadá subnet router jako funkční a přitom z domácí sítě nic neodpovídá. Zařízení s vlastním klientem Tailscale kontaktovat jen jeho VPN adresou, <code>rp_filter</code> zahodí odpověď po domácí síti. Na počítači, který je fyzicky doma, přijímání rout vypnout, jinak jde i router tunelem a při výpadku serveru počítač ztratí domácí síť. Bez exit node a bez Funnel: VPN slouží jen k přístupu dovnitř, ne jako cesta na internet. Expirace klíčů vypnutá vědomě, ztracené zařízení se maže ručně.</p></div></details></div>
+    </div></section>
+    <section class="psection" id="dal"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dál</p><h2>Související</h2></div>
+      <div><div class="links"><a class="button" href="../../../pages/blog/">Článek na blogu</a><a class="button button-quiet" href="../../../pages/server/">Přehled: Server &amp; síť</a><a class="button button-quiet" href="../../../pages/server/adguard/">Díl 1: AdGuard Home</a></div><div class="panel privacy" style="margin-top:18px"><strong>Soukromí.</strong> Žádné adresy, jména zařízení ani konkrétní pravidla přístupu tu nejsou. Popisuju princip, ne svoji konfiguraci. Kdo ví, jak je to postavené, se dovnitř stejně nedostane bez mého zařízení a jeho klíče.</div></div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../../app.js?v=12"></script>
+  <script src="../../../analytics.js?v=1"></script>
+  <script src="../../../project.js?v=4"></script>
+</body>
+</html>

@@ -1,5 +1,45 @@
 [
  {
+  "date": "13. září 2026",
+  "tag": "Server &amp; síť",
+  "tagcls": "tag-net",
+  "title": "Bezpečnostní audit domácnosti v pěti krocích",
+  "paragraphs": [
+   "Po přidání VPN a přístupu do domácí sítě jsem si položil otázku, kterou si klade každý, kdo má doma server: je to dost bezpečné? Odpověď jsem hledal systematicky. Co poslouchá ven, kdo se dostane dovnitř, co odchází ven, jak jsou na tom účty a jak se aktualizuje.",
+   "Výsledek: veřejně neposlouchá nic, tři věci jsem vypnul a jediné riziko, které zbylo, je fyzické. Sepsal jsem to jako <a href=\"../server/audit/\">checklist, který si můžeš projít u sebe →</a>"
+  ]
+ },
+ {
+  "date": "13. září 2026",
+  "tag": "Server &amp; síť",
+  "tagcls": "tag-net",
+  "title": "Záloha bez testu obnovy není záloha",
+  "paragraphs": [
+   "Na jaře jsem zjistil, že moje záloha byla dva měsíce mrtvá. Přišlo se na to až ve chvíli, kdy jsem omylem smazal projekt. Od té doby se zálohuje i celý zdrojový kód, druhá kopie leží jinde a hlídač mi napíše, když se zálohování zasekne.",
+   "Dnes jsem konečně udělal to, co jsem odkládal: skutečnou obnovu ze zálohy a porovnání se živými soubory. Čísla, postup a tři lekce jsou v <a href=\"../server/backups/\">dílu o zálohách →</a>"
+  ]
+ },
+ {
+  "date": "13. září 2026",
+  "tag": "Server &amp; síť",
+  "tagcls": "tag-net",
+  "title": "Domů odkudkoli, bez otevřeného portu",
+  "paragraphs": [
+   "Chtěl jsem z mobilu na Home Assistant, na server i na router, ale nechtěl jsem na internetu otevírat jediný port. Řešením je VPN typu mesh: Tailscale. Server dělá bránu do domácí sítě a pravidla říkají, které zařízení tam smí.",
+   "Cestou jsem dva dny podezříval Docker z něčeho, co dělal překlad adres ve VPN. Jak je to postavené a na co si dát pozor: <a href=\"../server/tailscale/\">Tailscale, domů bez otevřeného portu →</a>"
+  ]
+ },
+ {
+  "date": "13. září 2026",
+  "tag": "Server &amp; síť",
+  "tagcls": "tag-net",
+  "title": "Krabičky mají vlastní Wi-Fi, a je to tak dobře",
+  "paragraphs": [
+   "Nový router, alternativní firmware a oddělená síť pro chytré zásuvky, světla a tiskárnu. Hlavní síť je nevidí, Home Assistant se k nim dostane přes router a DNS pro obě sítě dělá AdGuard.",
+   "Plus 2Gb optika, 2,5GbE kabel k serveru a jedno měření, které ukázalo, že python speedtest lže. <a href=\"../server/router-iot/\">Router a oddělená IoT síť →</a>"
+  ]
+ },
+ {
   "date": "12. září 2026",
   "tag": "Server &amp; síť",
   "tagcls": "tag-net",

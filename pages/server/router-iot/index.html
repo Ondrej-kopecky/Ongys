@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nový router s Wi-Fi 7 a firmwarem Asuswrt-Merlin, 2Gb optika a oddělená síť pro chytré zásuvky, světla a tiskárnu. Proč krabičky nemají vidět na počítač a co se při přechodu ukázalo.">
+  <meta name="theme-color" content="#101312"><title>Router a oddělená IoT síť — Asuswrt-Merlin na 2Gb optice | Ongy.cz</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com data:; media-src 'self'; connect-src 'self' https://ongy.goatcounter.com">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://ongy.cz/pages/server/router-iot/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Ongy.cz"><meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Router a oddělená IoT síť — Asuswrt-Merlin na 2Gb optice"><meta property="og:description" content="Nový router s Wi-Fi 7 a firmwarem Asuswrt-Merlin, 2Gb optika a oddělená síť pro chytré zásuvky, světla a tiskárnu. Proč krabičky nemají vidět na počítač a co se při přechodu ukázalo."><meta property="og:url" content="https://ongy.cz/pages/server/router-iot/"><meta property="og:image" content="https://ongy.cz/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Router a oddělená IoT síť — Asuswrt-Merlin na 2Gb optice"><meta name="twitter:description" content="Nový router s Wi-Fi 7 a firmwarem Asuswrt-Merlin, 2Gb optika a oddělená síť pro chytré zásuvky, světla a tiskárnu. Proč krabičky nemají vidět na počítač a co se při přechodu ukázalo."><meta name="twitter:image" content="https://ongy.cz/assets/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css?v=10"><link rel="stylesheet" href="../../../project.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/logo-mark.svg" alt="" width="38" height="38"><span>ongy<span>.cz</span></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="mb-open">Menu</span><span class="mb-close">Zavřít</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Hlavní navigace"><div class="nav-item"><a href="../../../index.html">Domů</a></div><div class="nav-item"><a href="../../../pages/3d-print/">3D tisk</a></div><div class="nav-item has-sub"><a href="../../../pages/homeassistant/">Home Assistant</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/homeassistant/devices/">Zařízení a hardware</a><a href="../../../pages/homeassistant/automations/">Automatizace</a><a href="../../../pages/homeassistant/monitoring/">Data a monitoring</a><a href="../../../pages/homeassistant/tips/">Tipy a triky</a><a href="../../../pages/homeassistant/zaluzie/">Aluprof žaluzie</a></div></div><div class="nav-item has-sub"><a href="../../../pages/ai/">AI</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/ai/coach/">AI Coach</a><a href="../../../pages/ai/hotkey/">ai-hotkey</a><a href="../../../pages/ai/gdpr/">GDPR Broker Bot</a><a href="../../../pages/ai/brain/">Brain System</a></div></div><div class="nav-item has-sub"><a class="active" href="../../../pages/server/">Server &amp; síť</a><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><div class="sub"><a href="../../../pages/server/adguard/">AdGuard Home</a><a class="active" aria-current="page" href="../../../pages/server/router-iot/">Router a IoT síť</a><a href="../../../pages/server/tailscale/">Tailscale</a><a href="../../../pages/server/backups/">Zálohy</a><a href="../../../pages/server/audit/">Bezpečnostní audit</a></div></div><div class="nav-item"><a href="../../../pages/deskovky/">Deskovky</a></div><div class="nav-item"><a href="../../../pages/blog/">Blog</a></div><div class="nav-item"><a href="../../../pages/about/">O mně</a></div></nav>
+  </div></header>
+
+  <main id="obsah">
+    <section class="project-hero shell">
+      <div>
+        <p class="crumbs"><a href="../../../pages/server/">Server &amp; síť</a><span>/</span><span>Router a IoT síť</span></p>
+        <h1>Krabičky mají vlastní Wi-Fi, <span>a je to tak dobře.</span></h1>
+        <p class="lead">Nový router, 2Gb optika a oddělená síť pro chytré zásuvky, světla a tiskárnu. Do hlavní sítě nevidí, Home Assistant na ně přesto dosáhne. Nic se nerozbilo.</p>
+        <div class="status-row"><span class="chip"><i></i>běží od září 2026</span><span class="chip amber"><i></i>Server &amp; síť · díl 2</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Klíčová čísla">
+        <span class="motif"><svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M80 62l26 15v30L80 122 54 107V77z"/><path d="M62 44a26 26 0 0 1 36 0" opacity=".7"/><path d="M52 32a40 40 0 0 1 56 0" opacity=".4"/><path d="M54 92H30M106 92h24" stroke-dasharray="4 5" opacity=".6"/><circle cx="22" cy="78" r="4"/><circle cx="22" cy="106" r="4"/><circle cx="14" cy="92" r="4"/><path d="M22 82v20M18 92h4" opacity=".5"/><circle cx="138" cy="78" r="4" stroke-dasharray="2 2"/><circle cx="138" cy="106" r="4" stroke-dasharray="2 2"/><circle cx="146" cy="92" r="4" stroke-dasharray="2 2"/><path d="M138 82v20M138 92h4" opacity=".5"/><circle cx="80" cy="92" r="3" fill="currentColor" stroke="none"/></svg></span>
+        <span class="now-label"><span class="pulse" style="background:var(--teal)"></span>Stav sítě</span>
+        <ul class="kpis"><li><b>2 Gbit/s</b><small>linka do bytu</small></li><li><b>2,5 GbE</b><small>kabel k serveru</small></li><li><b>13</b><small>zařízení v IoT síti</small></li></ul>
+        <p class="note">Reálné měření 2027 Mbit/s dolů a 1081 nahoru. Router s Wi-Fi 7, firmware Asuswrt-Merlin.</p>
+      </aside>
+    </section>
+
+    <section class="psection" id="k-cemu-to-je"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">K čemu to je</p><h2>Zásuvka nemusí vidět na počítač</h2></div>
+      <div class="prose"><p>Chytrá zásuvka za dvě stovky má uvnitř malý počítač s firmwarem, který výrobce možná nikdy neopraví. Když sedí ve stejné síti jako notebook s bankovnictvím, sdílí s ním víc, než by měla.</p><p>Oddělená síť to řeší. Krabičky spolu a s internetem mluvit můžou, do hlavní sítě ne. Kdyby některá z nich někdy přestala být důvěryhodná, nemá kam jít.</p><p>Home Assistant je jediná výjimka. Router mu dovolí do IoT sítě sáhnout, takže ovládání světel a zásuvek funguje jako dřív.</p></div>
+    </div></section>
+    <section class="psection" id="proc"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Proč</p><h2>Router od operátora to neuměl</h2></div>
+      <div class="prose"><p>Do letoška jsem měl router od poskytovatele. Gigabit, dvě Wi-Fi, hotovo. Hostovskou síť sice měl, ale zařízení v ní neviděla jedno druhé a Home Assistant do ní nedosáhl. Takže všechno viselo v jedné síti, tiskárna vedle notebooku.</p><p>Přechod na 2Gb optiku byl záminka. Nový ASUS RT-BE92U s Wi-Fi 7 a 2,5GbE portem, a hlavně alternativní firmware Asuswrt-Merlin, který umí oddělenou síť nastavit tak, jak jsem chtěl.</p></div>
+    </div></section>
+    <section class="psection" id="jak-to-funguje"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Jak to funguje</p><h2>Dvě sítě, jeden router, jedno DNS</h2></div>
+      <div><div class="panel diagram"><svg viewBox="0 0 760 300" role="img" aria-label="Hlavní síť a oddělená IoT síť se sbíhají v routeru, pod ním AdGuard jako DNS pro obě; Home Assistant má výjimku do IoT sítě">
+          <g font-family="Inter, sans-serif" font-size="12" text-anchor="middle">
+            <rect x="20" y="40" width="250" height="110" rx="12" fill="#1c211f" stroke="#354039"/><text x="145" y="60" fill="#edf1ed" font-weight="600">Hlavní síť</text>
+            <rect x="32" y="72" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="86" y="89" fill="#edf1ed" font-size="11">PC</text>
+            <rect x="150" y="72" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="204" y="89" fill="#edf1ed" font-size="11">mobil</text>
+            <rect x="32" y="108" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="86" y="125" fill="#edf1ed" font-size="11">TV</text>
+            <rect x="150" y="108" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="204" y="125" fill="#edf1ed" font-size="11">server · Home Assistant</text>
+            <rect x="490" y="40" width="250" height="110" rx="12" fill="rgba(255,169,77,.06)" stroke="rgba(255,169,77,.5)"/><text x="615" y="60" fill="#ffa94d" font-weight="600">IoT síť</text>
+            <rect x="502" y="72" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="556" y="89" fill="#edf1ed" font-size="11">zásuvky</text>
+            <rect x="620" y="72" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="674" y="89" fill="#edf1ed" font-size="11">světla</text>
+            <rect x="502" y="108" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="556" y="125" fill="#edf1ed" font-size="11">tiskárna</text>
+            <rect x="620" y="108" width="108" height="26" rx="7" fill="#101312" stroke="#354039"/><text x="674" y="125" fill="#edf1ed" font-size="11">čistička · klima</text>
+            <path d="M270 100 L336 100" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4"/><text x="303" y="116" fill="#7c8780" font-size="10">plný přístup</text>
+            <path d="M424 100 L490 100" stroke="rgba(255,169,77,.6)" stroke-dasharray="4 4"/><text x="457" y="116" fill="#7c8780" font-size="10">jen internet</text>
+            <path d="M380 62 L424 84 L424 116 L380 138 L336 116 L336 84 Z" fill="rgba(46,232,196,.10)" stroke="#2ee8c4"/><text x="380" y="97" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">Router</text><text x="380" y="113" fill="#2ee8c4" font-family="Montserrat, sans-serif" font-size="11" font-weight="700">Merlin</text>
+            <path d="M258 40 C 330 4 430 4 502 40" stroke="rgba(255,169,77,.7)" stroke-dasharray="4 4" fill="none"/><path d="M502 40 L490 38 L496 30 Z" fill="#ffa94d"/><text x="380" y="20" fill="#ffa94d" font-size="11" font-weight="600">Home Assistant vidí do IoT sítě</text>
+            <path d="M380 138 L380 212" stroke="rgba(46,232,196,.5)" stroke-dasharray="4 4"/>
+            <text x="380" y="178" fill="#7c8780" font-size="11">IoT do hlavní sítě nevidí · obě sítě mají stejné DNS</text>
+            <rect x="270" y="212" width="220" height="46" rx="10" fill="#1c211f" stroke="#354039"/><text x="380" y="231" fill="#edf1ed" font-weight="600">AdGuard Home</text><text x="380" y="247" fill="#7c8780" font-size="11">DNS pro obě sítě · díl 1</text>
+            <text x="380" y="286" fill="#7c8780" font-size="11">2Gb optika do routeru · 2,5GbE kabel k serveru · IPv6 DNS vypnuto</text>
+          </g></svg></div><ul class="bullets"><li><b>Dvě Wi-Fi, dva světy.</b> Hlavní síť pro lidi a server. Oddělená síť (Guest Network Pro) pro všechno chytré. Krabičky vidí jen na internet a na sebe.</li><li><b>Home Assistant má výjimku.</b> Router ho pustí do IoT sítě, takže lokální ovládání zůstalo. Opačným směrem to nejde.</li><li><b>DNS pro obě sítě je AdGuard.</b> Router nabízí oběma sítím stejný DNS, takže filtr z minulého dílu platí i na krabičky.</li><li><b>IPv6 DNS je vypnuté.</b> Jinak se většina zařízení hlásila jako router a v logu nebylo poznat, kdo se ptá.</li></ul></div>
+    </div></section>
+    <section class="psection" id="co-jsem-zjistil"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co jsem zjistil</p><h2>Co se ukázalo</h2></div>
+      <div class="finds"><div class="panel find"><b>2027</b><h3>Mbit/s dolů, reálně</h3><p>Měřeno oficiálním nástrojem Ookla proti pražskému serveru. Nahoru 1081. Kabel k serveru běží na 2,5 GbE.</p></div><div class="panel find"><b>0</b><h3>Zařízení přestalo fungovat</h3><p>Přejmenoval jsem starou síť na novou a krabičky se přihlásily samy. Home Assistant je našel tam, kde byly.</p></div><div class="panel find"><b class="amber">1</b><h3>Router hlásil výrobci</h3><p>Router sám posílal telemetrii do cloudové služby výrobce. AdGuard to blokuje, notifikace z routeru chodí dál.</p></div><div class="panel find"><b>80 %</b><h3>Dotazů první noc jako router</h3><p>Zařízení šla přes IPv6 na router a ten je přeposílal. V logu byl jeden klient. Vypnutí IPv6 DNS to spravilo.</p></div><div class="panel find"><b>13</b><h3>Krabiček v IoT síti</h3><p>Zásuvky, světla, tiskárna, čistička, zvlhčovač, klima, žaluzie, vysavač. Každá mluví jen se svým cloudem.</p></div><div class="panel find"><b class="amber">2</b><h3>Hodiny bez internetu</h3><p>Restarty routeru při ladění vzaly celému bytu spojení. Nic nespadlo, jen monitoring poslal zprávy do Telegramu.</p></div></div>
+    </div></section>
+    <section class="psection" id="co-jsem-se-naucil"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Co jsem se naučil</p><h2>Tři věci, které v návodech nejsou</h2></div>
+      <div class="lessons"><div class="panel lesson"><i>01</i><div><h3>Speedtest z Pythonu lhal</h3><p>Python speedtest-cli mě poslal na server v Pobaltí a měřil jedním vláknem. Výsledek byl poloviční. Oficiální Ookla CLI s ručně vybraným pražským serverem ukázal 2027.</p></div></div><div class="panel lesson"><i>02</i><div><h3>IPv6 DNS schovalo, kdo se ptá</h3><p>Router klientům nabízel i IPv6 DNS. Dotazy šly na něj a AdGuard viděl jen router. Vypnout to jde jen skriptem po startu dnsmasq, a ten musí volbu vyprázdnit, ne smazat. Jinak router inzeruje sám sebe.</p></div></div><div class="panel lesson"><i>03</i><div><h3>Merlin umí víc, ale nic není zadarmo</h3><p>Alternativní firmware dal oddělenou síť, skripty a SSH. Zároveň každý restart při ladění znamená chvíli bez internetu pro celý byt. Ladit dopoledne, ne večer u seriálu.</p></div></div></div>
+    </div></section>
+    <section class="psection" id="pro-zvedave"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Pro zvědavé</p><h2>Technické detaily</h2></div>
+      <div><details class="panel tech" open><summary>Nastavení routeru <small>WAN · IoT · DNS · IPv6</small></summary><div class="body"><dl class="kv"><div><dt>WAN</dt><dd>2Gb optika, veřejná adresa za CGNAT poskytovatele. Z internetu dovnitř nic, vše ven jde přes Cloudflare Tunnel a Tailscale.</dd></div><div><dt>Oddělená síť</dt><dd>Guest Network Pro v Asuswrt-Merlin jako IoT síť. Izolace od hlavní sítě, přístup jen na internet, výjimka pro Home Assistant.</dd></div><div><dt>DNS</dt><dd>DHCP obou sítí nabízí AdGuard jako primární DNS a router jako záložní. Router sám dotazy posílá nejdřív do AdGuardu, teprve pak ven.</dd></div><div><dt>IPv6 DNS</dt><dd>Skript <code>dnsmasq.postconf</code> vyprázdní volbu, kterou dnsmasq inzeruje IPv6 DNS server. Řádek nemazat, jen vyprázdnit, jinak se dnsmasq nabídne sám.</dd></div></dl></div></details><details class="panel tech"><summary>Co je odložené <small>DNS Director · past se smyčkou</small></summary><div class="body"><p>DNS Director v Merlinu umí přesměrovat i zařízení, která mají DNS natvrdo a router ignorují (Chromecast, Alexa, některé klimatizace). Zatím není potřeba, všechno aktivní chodí přes AdGuard samo. Až ho zapnu: cíl nastavit na vlastní adresu AdGuardu, ne na volbu „Router“, jinak AdGuard vidí všechno jako router a pravidla per zařízení přestanou platit. Server a Home Assistant z přesměrování vyjmout, jinak vznikne smyčka: záložní DNS AdGuardu by se vracelo zpátky do AdGuardu a po vypršení cache by DNS v bytě zhaslo. Šifrované DNS v aplikacích (Private Relay, Private DNS) to stejně nechytí.</p></div></details></div>
+    </div></section>
+    <section class="psection" id="dal"><div class="shell psection-grid">
+      <div class="psection-head"><p class="eyebrow">Dál</p><h2>Související</h2></div>
+      <div><div class="links"><a class="button" href="../../../pages/blog/">Článek na blogu</a><a class="button button-quiet" href="../../../pages/server/">Přehled: Server &amp; síť</a><a class="button button-quiet" href="../../../pages/server/adguard/">Díl 1: AdGuard Home</a></div><div class="panel privacy" style="margin-top:18px"><strong>Soukromí.</strong> Žádné adresy, názvy sítí, rozsahy ani vnitřní uspořádání tu nejsou, popisuju princip, ne svou konkrétní konfiguraci. Router je z internetu nedosažitelný a správa jde jen z domácí sítě.</div></div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2025–2026 ongy.cz</span><span class="visitor-count" title="Celkový počet zobrazení webu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg><b id="visitor-count-number">—</b> zobrazení</span><div class="social-links"><a href="https://github.com/Ondrej-kopecky" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg><span>GitHub</span></a><a href="https://www.youtube.com/@bonggy23" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7.2a2.8 2.8 0 0 0-2-2C18.3 4.7 12 4.7 12 4.7s-6.3 0-8 .5a2.8 2.8 0 0 0-2 2 29 29 0 0 0-.4 4.8 29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8 .5 8 .5s6.3 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-4.8 29 29 0 0 0-.4-4.8Z"/><path d="m10 15.3 5-3.3-5-3.3Z"/></svg><span>YouTube</span></a><a href="https://www.instagram.com/_ongy_/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>Instagram</span></a><a href="mailto:o.kopecky@seznam.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>E-mail</span></a></div></div></footer>
+  <script src="../../../app.js?v=12"></script>
+  <script src="../../../analytics.js?v=1"></script>
+  <script src="../../../project.js?v=4"></script>
+</body>
+</html>

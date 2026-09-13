@@ -6,7 +6,7 @@
  "title": "Server & síť",
  "description": "Home server ze starého notebooku, DNS filtr pro celý byt, oddělená IoT síť, VPN místo otevřených portů a šifrované zálohy. Jak to stavím a proč.",
  "h1": "Vlastní služby pod <span>vlastní střechou.</span>",
- "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň.",
+ "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň. Pět dílů: DNS filtr, router a IoT síť, VPN, zálohy, audit.",
  "kpi_label": "Stav dílny",
  "kpis": [
   {
@@ -32,62 +32,78 @@
  "projects": [
   {
    "href": "https://ongy.cz/pages/server/adguard/",
-   "tag": "BĚŽÍ · DÍL 1",
+   "tag": "DÍL 1 · BĚŽÍ",
    "name": "AdGuard Home",
    "text": "Co moje zařízení posílají domů a jak jsem to utnul, aniž by něco přestalo fungovat.",
    "meta": "Docker · DoH · 4 seznamy",
    "cta": "Číst →"
   },
   {
-   "href": "https://ongy.cz/pages/server/",
-   "tag": "PŘIPRAVUJI · DÍL 2",
-   "tagColor": "amber",
-   "status": "building",
+   "href": "https://ongy.cz/pages/server/router-iot/",
+   "tag": "DÍL 2 · BĚŽÍ",
    "name": "Router a oddělená IoT síť",
    "text": "Proč mají chytré krabičky vlastní Wi-Fi a jak se z ní dostane Home Assistant k zařízením.",
    "meta": "Asuswrt-Merlin · 2,5 GbE",
-   "cta": "Brzy"
+   "cta": "Číst →"
   },
   {
-   "href": "https://ongy.cz/pages/server/",
-   "tag": "PŘIPRAVUJI · DÍL 3",
-   "tagColor": "amber",
-   "status": "building",
+   "href": "https://ongy.cz/pages/server/tailscale/",
+   "tag": "DÍL 3 · BĚŽÍ",
    "name": "Tailscale, domů bez otevřeného portu",
    "text": "Jak se dostanu na všechno doma odkudkoli, aniž by na internetu něco poslouchalo.",
-   "meta": "subnet router · ACL",
-   "cta": "Brzy"
+   "meta": "subnet router · pravidla přístupu",
+   "cta": "Číst →"
   },
   {
-   "href": "https://ongy.cz/pages/server/",
-   "tag": "PŘIPRAVUJI · DÍL 4",
-   "tagColor": "amber",
-   "status": "building",
-   "name": "Zálohy, které jsem nikdy neobnovil",
-   "text": "Šifrované zálohy do cloudu každou noc a proč záloha bez zkoušky obnovy není záloha.",
+   "href": "https://ongy.cz/pages/server/backups/",
+   "tag": "DÍL 4 · OBNOVA OVĚŘENA",
+   "name": "Zálohy, které jsem konečně obnovil",
+   "text": "Šifrované zálohy do cloudu každou noc a test obnovy, bez kterého záloha není záloha.",
    "meta": "restic · Cloudflare R2",
-   "cta": "Brzy"
+   "cta": "Číst →"
+  },
+  {
+   "href": "https://ongy.cz/pages/server/audit/",
+   "tag": "DÍL 5 · CHECKLIST",
+   "name": "Bezpečnostní audit domácnosti",
+   "text": "Co doma poslouchá, kdo se dostane dovnitř a jediné riziko, které zbylo. Checklist i pro tebe.",
+   "meta": "5 kroků",
+   "cta": "Číst →"
   },
   {
    "href": "https://ongy.cz/pages/homeassistant/monitoring/",
    "tag": "BĚŽÍ",
    "name": "Monitoring a dashboardy",
    "text": "Grafana, InfluxDB a Uptime Kuma. Co sleduju a co mi chodí do Telegramu.",
-   "meta": "zatím v sekci Home Assistant",
+   "meta": "v sekci Home Assistant",
    "cta": "Otevřít →"
-  },
-  {
-   "href": "https://ongy.cz/pages/server/",
-   "tag": "PŘIPRAVUJI · DÍL 5",
-   "tagColor": "amber",
-   "status": "building",
-   "name": "Bezpečnostní audit domácnosti",
-   "text": "Co doma poslouchá na jakém portu, co jsem vypnul a jediné riziko, které zbylo.",
-   "meta": "checklist",
-   "cta": "Brzy"
   }
  ],
  "notes": [
+  {
+   "href": "https://ongy.cz/pages/server/backups/",
+   "mark": "BKP",
+   "title": "Záloha, kterou jsem konečně obnovil",
+   "date": "13. září 2026 · Zálohy"
+  },
+  {
+   "href": "https://ongy.cz/pages/server/audit/",
+   "mark": "SEC",
+   "title": "Co doma poslouchá a kdo se může dostat dovnitř",
+   "date": "13. září 2026 · Bezpečnostní audit"
+  },
+  {
+   "href": "https://ongy.cz/pages/server/tailscale/",
+   "mark": "VPN",
+   "title": "Domů odkudkoli, bez otevřeného portu",
+   "date": "13. září 2026 · Tailscale"
+  },
+  {
+   "href": "https://ongy.cz/pages/server/router-iot/",
+   "mark": "NET",
+   "title": "Krabičky mají vlastní Wi-Fi",
+   "date": "13. září 2026 · Router a IoT síť"
+  },
   {
    "href": "https://ongy.cz/pages/server/adguard/",
    "mark": "DNS",

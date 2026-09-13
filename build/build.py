@@ -9,7 +9,7 @@ NAV = [
     ("3D tisk", "{r}pages/3d-print/", "3d", []),
     ("Home Assistant", "{r}pages/homeassistant/", "ha", [("Zařízení a hardware","{r}pages/homeassistant/devices/"),("Automatizace","{r}pages/homeassistant/automations/"),("Data a monitoring","{r}pages/homeassistant/monitoring/"),("Tipy a triky","{r}pages/homeassistant/tips/"),("Aluprof žaluzie","{r}pages/homeassistant/zaluzie/")]),
     ("AI", "{r}pages/ai/", "ai", [("AI Coach","{r}pages/ai/coach/"),("ai-hotkey","{r}pages/ai/hotkey/"),("GDPR Broker Bot","{r}pages/ai/gdpr/"),("Brain System","{r}pages/ai/brain/")]),
-    ("Server & síť", "{r}pages/server/", "server", [("AdGuard Home","{r}pages/server/adguard/")]),
+    ("Server & síť", "{r}pages/server/", "server", [("AdGuard Home","{r}pages/server/adguard/"),("Router a IoT síť","{r}pages/server/router-iot/"),("Tailscale","{r}pages/server/tailscale/"),("Zálohy","{r}pages/server/backups/"),("Bezpečnostní audit","{r}pages/server/audit/")]),
     ("Deskovky", "{r}pages/deskovky/", "games", []),
     ("Blog", "{r}pages/blog/", "blog", []),
     ("O mně", "{r}pages/about/", "about", []),
