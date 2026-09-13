@@ -15,12 +15,13 @@ NAV = [
     ("O mně", "{r}pages/about/", "about", []),
 ]
 CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
-def nav_html(r, active):
+def nav_html(r, active, path=""):
+    cur = path.strip("/") + "/" if path.strip("/") else ""
     out = []
     for label, href, key, subs in NAV:
         a = f'<a{" class=\"active\"" if key == active else ""} href="{href.format(r=r)}">{e(label)}</a>'
         if subs:
-            sub = "".join(f'<a href="{h.format(r=r)}">{e(l)}</a>' for l, h in subs)
+            sub = "".join(f'<a{" class=\"active\" aria-current=\"page\"" if h.format(r="") == cur else ""} href="{h.format(r=r)}">{e(l)}</a>' for l, h in subs)
             out.append(f'<div class="nav-item has-sub">{a}{CHEV}<div class="sub">{sub}</div></div>')
         else:
             out.append(f'<div class="nav-item">{a}</div>')
@@ -62,7 +63,7 @@ def section(eyebrow, h2, inner):
 def render(c):
     depth = c["path"].strip("/").count("/") + 1
     r = "../" * depth
-    nav = nav_html(r, c.get("nav"))
+    nav = nav_html(r, c.get("nav"), c["path"])
     chips = "".join(f'<span class="chip{" amber" if ch.get("amber") else ""}"><i></i>{ch["text"]}</span>' for ch in c["chips"])
     kpis = "".join(f'<li><b>{k["b"]}</b><small>{e(k["small"])}</small></li>' for k in c["kpis"])
     out = []
@@ -95,7 +96,7 @@ def render(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -146,7 +147,7 @@ def render_generic(c, body):
     """Obecná stránka: chrome (hlavička, nav, patička) + libovolné tělo."""
     depth = c["path"].strip("/").count("/") + 1 if c["path"].strip("/") else 0
     r = "../" * depth
-    nav = nav_html(r, c.get("nav"))
+    nav = nav_html(r, c.get("nav"), c["path"])
     page = f'''<!doctype html>
 <html lang="cs">
 <head>
@@ -156,7 +157,7 @@ def render_generic(c, body):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -242,7 +243,7 @@ if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "catalog":
 def render_section_page(c):
     depth = c["path"].strip("/").count("/") + 1
     r = "../" * depth
-    nav = nav_html(r, c.get("nav"))
+    nav = nav_html(r, c.get("nav"), c["path"])
     color = c.get("color","teal")
     cards = ""
     for p in c["projects"]:
@@ -275,7 +276,7 @@ def render_section_page(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=9"><link rel="stylesheet" href="{r}project.css?v=7">
+  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>

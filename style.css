@@ -42,6 +42,7 @@ button { font: inherit; }
 .has-sub:hover .sub, .has-sub:focus-within .sub { display: grid; }
 .sub a { padding: 9px 12px; border-radius: 9px; color: var(--soft); font-weight: 600; white-space: nowrap; }
 .sub a:hover, .sub a:focus-visible { color: var(--text); background: var(--panel-2); }
+.sub a.active { color: var(--teal); background: rgba(46, 232, 196, .10); }
 .menu-button { display: none; color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; background: transparent; font-size: .82rem; font-weight: 650; }
 .menu-button .mb-close { display: none; }
 .menu-button[aria-expanded="true"] .mb-open { display: none; }
@@ -205,8 +206,9 @@ body {
   .site-nav.open { display: flex; }
   .nav-item { display: block; border-bottom: 1px solid var(--line); }
   .nav-item > a { display: block; padding: 15px 0; color: var(--text); }
-  .nav-item > a.active { color: var(--teal); }
-  .nav-item > a.active::after { display: none; }
+  .nav-item > a.active { color: var(--teal); padding-left: 12px; }
+  .nav-item > a.active::after { display: block; top: 14px; bottom: 14px; left: 0; right: auto; width: 3px; height: auto; border-radius: 3px; }
+  .sub a.active { color: var(--teal); background: rgba(46, 232, 196, .10); border-radius: 8px; }
   .chev { display: none; }
   .sub { position: static; display: grid; grid-template-columns: 1fr; gap: 2px; min-width: 0; margin: 0 0 12px; padding: 0 0 0 14px; border: 0; border-left: 2px solid var(--line); border-radius: 0; background: none; box-shadow: none; }
   .sub a { padding: 8px 10px; color: var(--muted); font-size: .92rem; font-weight: 500; white-space: normal; }
