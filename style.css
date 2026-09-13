@@ -234,7 +234,10 @@ body {
   .archive { padding-block: 48px 64px; }
   .archive-grid { grid-template-columns: 1fr; }
   .archive-card { min-height: 200px; }
-  .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 8px; padding-block: 18px; }
+  .footer-inner { align-items: center; flex-direction: column; justify-content: center; gap: 14px; padding-block: 26px 30px; text-align: center; }
+  .footer-inner .social-links { order: 1; justify-content: center; gap: 8px 18px; }
+  .footer-inner .visitor-count { order: 2; }
+  .footer-inner > span:first-child { order: 3; font-size: .74rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

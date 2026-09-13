@@ -19,7 +19,9 @@
   tracker.dataset.goatcounter = 'https://ongy.goatcounter.com/count';
   document.head.appendChild(tracker);
 
-  fetch('https://ongy.goatcounter.com/counter/TOTAL.json')
+  const wrap = counter.closest('.visitor-count');
+  fetch('/stats/total.json')
+    .catch(() => fetch('https://ongy.goatcounter.com/counter/TOTAL.json'))
     .then((response) => response.ok ? response.json() : Promise.reject())
     .then((data) => {
       if (!data.count) return;
@@ -29,6 +31,6 @@
         : data.count;
     })
     .catch(() => {
-      counter.textContent = '—';
+      if (wrap) wrap.hidden = true;
     });
 })();

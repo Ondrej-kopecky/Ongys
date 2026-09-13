@@ -96,7 +96,7 @@ def render(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -126,7 +126,7 @@ def render(c):
 
   {FOOTER}
   <script src="{r}app.js?v=12"></script>
-  <script src="{r}analytics.js?v=1"></script>
+  <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
 </html>
@@ -157,7 +157,7 @@ def render_generic(c, body):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -173,7 +173,7 @@ def render_generic(c, body):
 
   {FOOTER}
   <script src="{r}app.js?v=12"></script>
-  <script src="{r}analytics.js?v=1"></script>
+  <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
 </html>
@@ -276,7 +276,7 @@ def render_section_page(c):
   {social_meta(c)}
   <link rel="icon" type="image/svg+xml" href="{r}assets/logo-mark.svg">
   {FONTS}
-  <link rel="stylesheet" href="{r}style.css?v=10"><link rel="stylesheet" href="{r}project.css?v=8">
+  <link rel="stylesheet" href="{r}style.css?v=11"><link rel="stylesheet" href="{r}project.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -314,7 +314,7 @@ def render_section_page(c):
 
   {FOOTER}
   <script src="{r}app.js?v=12"></script>
-  <script src="{r}analytics.js?v=1"></script>
+  <script src="{r}analytics.js?v=2"></script>
   <script src="{r}project.js?v=5"></script>
 </body>
 </html>
