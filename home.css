@@ -212,8 +212,9 @@
 .graph-status.open:hover { border-color:var(--teal); }
 .hero-graph.compact.has-active .graph-kicker { opacity:0; }
 .graph-kicker { transition:opacity .2s ease; }
-.graph-legend { position:absolute; z-index:3; left:18px; right:18px; bottom:12px; display:flex; flex-wrap:wrap; gap:6px 14px; font:600 .6rem "JetBrains Mono","Cascadia Code",monospace; letter-spacing:.06em; text-transform:uppercase; color:#7c8780; pointer-events:none; }
-.graph-legend span::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; background:var(--c); vertical-align:1px; box-shadow:0 0 8px var(--c); }
+.graph-legend { position:absolute; z-index:3; left:14px; right:14px; bottom:12px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; pointer-events:none; }
+.graph-legend span { display:inline-flex; align-items:center; gap:7px; padding:5px 10px; border:1px solid rgba(255,255,255,.10); border-radius:999px; background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); font:600 .58rem "JetBrains Mono","Cascadia Code",monospace; letter-spacing:.06em; text-transform:uppercase; color:#b3bbb5; box-shadow:inset 0 1px 0 rgba(255,255,255,.10); }
+.graph-legend span::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--c); box-shadow:0 0 8px var(--c); }
 .graph .links line { stroke:rgba(179,187,181,.22); stroke-width:1; transition:stroke .25s ease, stroke-width .25s ease, opacity .25s ease; }
 @keyframes graph-flow { to { stroke-dashoffset:-28; } }
 @keyframes graph-pulse { 0% { transform:scale(.9); opacity:.35; } 100% { transform:scale(2.1); opacity:0; } }
@@ -246,9 +247,9 @@
 .graph .node.is-active .label, .graph .node.hi .label { fill:#fff; }
 .graph .node .core-hex { fill:#101715; stroke:url(#nope); stroke:rgba(46,232,196,.55); stroke-width:1.5; filter:drop-shadow(0 0 18px rgba(46,232,196,.35)); }
 .graph .node[data-id="ongy"] .label { font:700 .62rem "JetBrains Mono", monospace; letter-spacing:.12em; text-transform:uppercase; fill:#7c8780; }
-@media (max-width:900px) {.hero-graph { min-height:460px; } .graph .node .label { font-size:10px; } .graph-legend { display:none; }}
-.hero-graph.compact .graph .node .label { opacity:0; }
+@media (max-width:900px) { .hero-graph { min-height:620px; } .graph .node .label { font-size:9.5px; } .graph-legend { left:10px; right:10px; bottom:10px; gap:5px; } .graph-legend span { padding:4px 8px; font-size:.52rem; gap:6px; } }
+.hero-graph.compact .graph .node .label { opacity:.85; font-size:9px; }
 .hero-graph.compact .graph .node.hi .label, .hero-graph.compact .graph .node.is-active .label, .hero-graph.compact .graph .node[data-id="ha"] .label, .hero-graph.compact .graph .node[data-id="print"] .label, .hero-graph.compact .graph .node[data-id="ai"] .label, .hero-graph.compact .graph .node[data-id="server"] .label, .hero-graph.compact .graph .node[data-id="games"] .label, .hero-graph.compact .graph .node[data-id="ongy"] .label { opacity:1; }
-.hero-graph.compact .graph .node.dim .label { opacity:0; }
+.hero-graph.compact .graph .node.dim .label { opacity:.15; }
 
 @media (prefers-reduced-motion: reduce) {.graph .links line.lit { animation:none; stroke-dasharray:none; } .graph .node.is-active .pulse { animation:none; }}

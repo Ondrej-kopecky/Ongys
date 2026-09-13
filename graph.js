@@ -77,20 +77,20 @@
   secs.forEach((id, i) => { const a = -Math.PI/2 + i * 2*Math.PI/5; byId[id].x = W/2 + Math.cos(a)*Math.min(W,H)*.3; byId[id].y = H/2 + Math.sin(a)*Math.min(W,H)*.3; });
   nodes.forEach(n => { if (n.x) return; const p = links.find(l => l.b === n || l.a === n); const par = p ? (p.a === n ? p.b : p.a) : core; n.x = par.x + (Math.random()-.5)*60; n.y = par.y + (Math.random()-.5)*60; });
 
-  const rest = l => (narrow ? .62 : 1) * (l.a.g==='core'||l.b.g==='core') ? (l.a.r>=12||l.b.r>=12 ? 170 : 120) : ((l.a.r>=12&&l.b.r>=12) ? 150 : (l.a.g==='tech'||l.b.g==='tech') ? 64 : 84);
+  const rest = l => (narrow ? .66 : 1) * (l.a.g==='core'||l.b.g==='core') ? (l.a.r>=12||l.b.r>=12 ? 170 : 120) : ((l.a.r>=12&&l.b.r>=12) ? 150 : (l.a.g==='tech'||l.b.g==='tech') ? 64 : 84);
   const tick = (alpha) => {
     // odpuzování
     for (let i = 0; i < nodes.length; i++) for (let j = i+1; j < nodes.length; j++) {
       const a = nodes[i], b = nodes[j]; let dx = b.x-a.x, dy = b.y-a.y; let d2 = dx*dx+dy*dy; if (d2 < 1) { dx = Math.random()-.5; dy = Math.random()-.5; d2 = 1; }
-      const d = Math.sqrt(d2); const min = a.r + b.r + 14; const f = ((narrow ? 1500 : 3400) + (d < min ? (min-d)*50 : 0)) / d2 * alpha;
+      const d = Math.sqrt(d2); const min = a.r + b.r + 14; const f = ((narrow ? 1900 : 3400) + (d < min ? (min-d)*50 : 0)) / d2 * alpha;
       const fx = dx/d*f, fy = dy/d*f; a.vx -= fx; a.vy -= fy; b.vx += fx; b.vy += fy;
     }
     // pružiny
     links.forEach(l => { const dx = l.b.x-l.a.x, dy = l.b.y-l.a.y; const d = Math.max(1, Math.hypot(dx,dy)); const f = (d - rest(l)) * .05 * alpha; const fx = dx/d*f, fy = dy/d*f; l.a.vx += fx; l.a.vy += fy; l.b.vx -= fx; l.b.vy -= fy; });
     // gravitace ke středu
-    nodes.forEach(n => { n.vx += (W/2 - n.x) * .006 * alpha; n.vy += (H/2 - n.y) * .007 * alpha; });
+    nodes.forEach(n => { n.vx += (W/2 - n.x) * .006 * alpha; n.vy += (H/2 - n.y) * (narrow ? .013 : .007) * alpha; });
     core.vx = core.vy = 0; core.x = W/2; core.y = H/2 + 6;
-    nodes.forEach(n => { if (n.fixed) { n.vx = n.vy = 0; return; } n.vx *= .55; n.vy *= .55; n.x += n.vx; n.y += n.vy; const m = n.r + 30; const mx = n.r + (n.r >= 9 ? Math.min(90, n.label.length * 4 + 20) : 30); n.x = Math.min(W-mx, Math.max(mx, n.x)); n.y = Math.min(H-m-48, Math.max(m+40, n.y)); });
+    nodes.forEach(n => { if (n.fixed) { n.vx = n.vy = 0; return; } n.vx *= .55; n.vy *= .55; n.x += n.vx; n.y += n.vy; const m = n.r + 30; const mx = n.r + (n.r >= 9 ? Math.min(90, n.label.length * 4 + 20) : Math.min(60, n.label.length * 2.6 + 14)); n.x = Math.min(W-mx, Math.max(mx, n.x)); n.y = Math.min(H-m-(narrow ? 92 : 48), Math.max(m+44, n.y)); });
   };
   for (let i = 0; i < 320; i++) tick(1 - i/340);
 
