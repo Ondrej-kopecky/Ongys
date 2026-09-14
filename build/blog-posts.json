@@ -1,6 +1,17 @@
 [
   {
     "date": "14. září 2026",
+    "tag": "Server &amp; síť",
+    "tagcls": "tag-net",
+    "title": "Starý iPhone hlídá teploty počítače",
+    "paragraphs": [
+      "Na PromptLabu vyšel návod, jak ze starého Androidu udělat přístrojovou desku počítače: teploty, zátěž, paměť a zbývající limity Claude Code na displeji ve stojánku. Android tam jede po USB kabelu s vlastní aplikací. Já měl v šuplíku iPhone, který nic z toho nedovolí, tak jsem to postavil jinak.",
+      "Místo kabelu jde všechno po domácí Wi-Fi a místo aplikace je to webová stránka přidaná na plochu. Data nesbírá nic nového na Windows: agent, který už do Home Assistanta hlásí zátěž a poslední aktivitu, dostal k ruce čtečku čidel s teplotou procesoru, příkonem a pamětí grafiky. Server z toho skládá jednu odpověď, jednou za pět minut přidá limity AI asistenta, a telefon jen kreslí. Po třech minutách nečinnosti počítače obsah ztmavne a bloudí po displeji, po pěti zčerná, pohyb myši ho probudí.",
+      "Nejvíc času mi vzaly dvě iPhone drobnosti: hodiny StandBy, které znamenaly, že se telefon prostě zamkl, a dvě funkce se skoro stejným jménem, Asistivní a Asistovaný přístup. Celý postup včetně toho, co na iPhonu nastavit, je v <a href=\"../server/telemetry/\">novém dílu sekce Server &amp; síť</a>."
+    ]
+  },
+  {
+    "date": "14. září 2026",
     "tag": "Web",
     "tagcls": "tag-web",
     "title": "Redesign ongy.cz: jedno pozadí, sklo a síť projektů",

@@ -6,7 +6,7 @@
   "title": "Server & síť",
   "description": "Home server ze starého notebooku, DNS filtr pro celý byt, oddělená IoT síť, VPN místo otevřených portů a šifrované zálohy. Jak to stavím a proč.",
   "h1": "Vlastní služby pod <span>vlastní střechou.</span>",
-  "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň. Pět dílů: DNS filtr, router a IoT síť, VPN, zálohy, audit.",
+  "lead": "Všechno, co na tomhle webu najdeš, běží na jednom vysloužilém notebooku v Dockeru. Bez otevřeného portu do internetu, s baterií jako záložním zdrojem a s cílem, aby cizí cloud viděl z mojí domácnosti co nejmíň. Šest dílů: DNS filtr, router a IoT síť, VPN, zálohy, audit a telefon jako přístrojová deska počítače.",
   "kpi_label": "Stav dílny",
   "kpis": [
     {
@@ -76,6 +76,15 @@
       "tint": "coral"
     },
     {
+      "href": "https://ongy.cz/pages/server/telemetry/",
+      "tag": "DÍL 6 · BĚŽÍ",
+      "name": "Telemetrie na iPhonu",
+      "text": "Starý iPhone ve stojánku hlídá teploty počítače a limity AI asistenta. Bez kabelu, bez aplikace.",
+      "meta": "Home Assistant · FastAPI · PWA",
+      "cta": "Číst →",
+      "tint": "ice"
+    },
+    {
       "href": "https://ongy.cz/pages/homeassistant/monitoring/",
       "tag": "BĚŽÍ",
       "name": "Monitoring a dashboardy",
@@ -86,6 +95,12 @@
     }
   ],
   "notes": [
+    {
+      "href": "https://ongy.cz/pages/server/telemetry/",
+      "mark": "TEL",
+      "title": "Telefon, který hlídá počítač",
+      "date": "14. září 2026 · Telemetrie"
+    },
     {
       "href": "https://ongy.cz/pages/server/backups/",
       "mark": "BKP",
