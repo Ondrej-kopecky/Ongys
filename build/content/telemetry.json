@@ -81,6 +81,12 @@
     "h2": "Jak to vypadá",
     "items": [
       {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1600,q_auto,f_auto/monitor_nglwpb",
+        "alt": "iPhone na šířku ve stojánku pod monitorem, vedle reproduktoru, na displeji běžný board s teplotami procesoru a grafiky, limity AI asistenta a údaji z domácnosti",
+        "caption": "Takhle to stojí na stole: iPhone na šířku ve stojánku pod monitorem, kabel je jen napájení. Displej nezhasíná, dokud se u počítače něco děje.",
+        "wide": true
+      },
+      {
         "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-09-14_163646_ex79qw",
         "alt": "Běžný board: teploty procesoru a grafiky v kruhových stupnicích, zátěž, paměť, takt, příkon, VRAM, ventilátor, tři okna limitů AI asistenta a údaje z domácnosti",
         "caption": "Běžný board. Nahoře procesor a grafika s teplotou uprostřed stupnice, dole tři okna limitů AI asistenta a pár čísel z domácnosti. Stav je vždy barva i slovo, nikdy jen barva.",
