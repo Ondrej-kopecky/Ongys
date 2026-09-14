@@ -72,6 +72,11 @@ table.t th { padding: 8px 10px; text-align: left; color: var(--muted); border-bo
 table.t td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 table.t td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
 table.t td:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Rozbalený blok nesmí roztáhnout stránku: potomci mřížky smí být užší než obsah
+   a tabulka se v kartě posouvá do stran (14. 9. 2026, hlášeno na mobilu). */
+.psection-grid > * { min-width: 0; }
+details.tech .body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 700px) { table.t td:first-child, table.t td:last-child { white-space: normal; } table.t td:last-child { text-align: left; } }
 .note { margin: 14px 0 0; color: var(--muted); font-size: .85rem; }
 
 .links { display: flex; flex-wrap: wrap; gap: 10px; }
