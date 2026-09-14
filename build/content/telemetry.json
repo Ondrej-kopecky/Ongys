@@ -4,13 +4,13 @@
   "tint": "ice",
   "name": "Telemetrie na iPhonu",
   "title": "Starý iPhone hlídá teploty počítače — Telemetrie",
-  "description": "iPhone ve stojánku jako přístrojová deska počítače: teploty, zátěž, paměť, příkon a zbývající limity AI asistenta. Bez kabelu, bez aplikace, data bere z Home Assistanta.",
+  "description": "iPhone ve stojánku jako přístrojová deska počítače: teploty, zátěž, paměť, příkon a zbývající limity AI asistenta. Při hře se přepne na herní board s FPS a pingem. Bez kabelu, bez aplikace, data bere z Home Assistanta.",
   "section": {
     "label": "Server & síť",
     "href": "https://ongy.cz/pages/server/"
   },
   "h1": "Telefon, který <span>hlídá počítač.</span>",
-  "lead": "iPhone ve stojánku vedle monitoru ukazuje teploty a zátěž procesoru i grafiky, paměť, příkon a kolik mi zbývá z limitů AI asistenta. Po pěti minutách nečinnosti zhasne, po návratu k myši se sám probudí.",
+  "lead": "iPhone ve stojánku vedle monitoru ukazuje teploty a zátěž procesoru i grafiky, paměť, příkon a kolik mi zbývá z limitů AI asistenta. Když spustím hru, sám se přepne na herní board s FPS a pingem. Po pěti minutách nečinnosti zhasne, po návratu k myši se probudí.",
   "chips": [
     {
       "text": "běží od září 2026"
@@ -27,15 +27,15 @@
       "small": "obnova čidel"
     },
     {
-      "b": "3",
-      "small": "okna limitů AI"
+      "b": "2",
+      "small": "boardy: běžný a herní"
     },
     {
       "b": "0",
-      "small": "otevřených portů"
+      "small": "portů do internetu"
     }
   ],
-  "kpi_note": "Jedna stránka bez knihoven, data tečou z Home Assistanta. Z internetu není vidět, je jen pro doma.",
+  "kpi_note": "Jedna stránka bez knihoven, data tečou z Home Assistanta. Port je jen na domácí adrese, z internetu není vidět.",
   "kcemu": {
     "h2": "Pohled na stroj, aniž bych něco otevíral",
     "p": [
@@ -53,7 +53,7 @@
   },
   "jak": {
     "h2": "Kudy tečou čísla",
-    "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Tok dat z počítače přes Home Assistant a server do telefonu\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"20\" y=\"20\" width=\"220\" height=\"62\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"130\" y=\"41\" fill=\"#edf1ed\" font-weight=\"600\">Počítač (Windows)</text><text x=\"130\" y=\"58\" fill=\"#7c8780\" font-size=\"11\">agent: zátěž, poslední aktivita</text><text x=\"130\" y=\"72\" fill=\"#7c8780\" font-size=\"11\">čidla: teploty, příkon, VRAM</text>\n            <path d=\"M240 51 L270 51\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"270\" y=\"20\" width=\"220\" height=\"62\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"41\" fill=\"#edf1ed\" font-weight=\"600\">Home Assistant</text><text x=\"380\" y=\"58\" fill=\"#7c8780\" font-size=\"11\">ptá se čidel každých 10 s</text><text x=\"380\" y=\"72\" fill=\"#7c8780\" font-size=\"11\">plus teplota v pokoji, spotřeba</text>\n            <path d=\"M380 82 L380 128\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/><text x=\"450\" y=\"109\" fill=\"#7c8780\" font-size=\"11\">změny hned (push)</text>\n            <path d=\"M380 128 L430 149 L430 191 L380 212 L330 191 L330 149 Z\" fill=\"rgba(125,211,252,.10)\" stroke=\"#7dd3fc\"/><text x=\"380\" y=\"166\" fill=\"#7dd3fc\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Server</text><text x=\"380\" y=\"182\" fill=\"#7dd3fc\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">telemetry</text>\n            <path d=\"M330 170 L240 170\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"20\" y=\"138\" width=\"220\" height=\"64\" rx=\"12\" fill=\"#1c211f\" stroke=\"#7dd3fc\"/><text x=\"130\" y=\"160\" fill=\"#edf1ed\" font-weight=\"600\">iPhone ve stojánku</text><text x=\"130\" y=\"177\" fill=\"#7c8780\" font-size=\"11\">stránka z plochy, obnova každé 2 s</text><text x=\"130\" y=\"191\" fill=\"#7c8780\" font-size=\"11\">zamčený v jedné aplikaci</text>\n            <path d=\"M430 170 L520 170\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"520\" y=\"138\" width=\"220\" height=\"64\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"630\" y=\"160\" fill=\"#ffa94d\" font-weight=\"600\">Limity AI asistenta</text><text x=\"630\" y=\"177\" fill=\"#7c8780\" font-size=\"11\">5 hodin · týden · týden pro model</text><text x=\"630\" y=\"191\" fill=\"#7c8780\" font-size=\"11\">dotaz jednou za 5 minut</text>\n            <text x=\"380\" y=\"232\" fill=\"#7c8780\" font-size=\"11\">jedna odpověď pro telefon · jen domácí síť</text>\n            <rect x=\"180\" y=\"246\" width=\"400\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Nečinnost počítače hlásí agent, ne telefon</text><text x=\"380\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">3 min ztlumit · 5 min černá · pohyb myši probudí</text>\n          </g></svg>",
+    "visual": "<svg viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"Tok dat z počítače přes Home Assistant a server do telefonu\">\n          <g font-family=\"Inter, sans-serif\" font-size=\"12\" text-anchor=\"middle\">\n            <rect x=\"20\" y=\"20\" width=\"220\" height=\"62\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"130\" y=\"41\" fill=\"#edf1ed\" font-weight=\"600\">Počítač (Windows)</text><text x=\"130\" y=\"58\" fill=\"#7c8780\" font-size=\"11\">agent: zátěž, poslední aktivita</text><text x=\"130\" y=\"72\" fill=\"#7c8780\" font-size=\"11\">čidla: teploty, příkon, VRAM</text>\n            <path d=\"M240 51 L270 51\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"270\" y=\"20\" width=\"220\" height=\"62\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"41\" fill=\"#edf1ed\" font-weight=\"600\">Home Assistant</text><text x=\"380\" y=\"58\" fill=\"#7c8780\" font-size=\"11\">ptá se čidel každých 10 s</text><text x=\"380\" y=\"72\" fill=\"#7c8780\" font-size=\"11\">plus teplota v pokoji, spotřeba</text>\n            <path d=\"M380 82 L380 128\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/><text x=\"450\" y=\"109\" fill=\"#7c8780\" font-size=\"11\">změny hned (push)</text>\n            <path d=\"M380 128 L430 149 L430 191 L380 212 L330 191 L330 149 Z\" fill=\"rgba(125,211,252,.10)\" stroke=\"#7dd3fc\"/><text x=\"380\" y=\"166\" fill=\"#7dd3fc\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">Server</text><text x=\"380\" y=\"182\" fill=\"#7dd3fc\" font-family=\"Montserrat, sans-serif\" font-size=\"13\" font-weight=\"700\">telemetry</text>\n            <path d=\"M330 170 L240 170\" stroke=\"rgba(125,211,252,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"20\" y=\"138\" width=\"220\" height=\"64\" rx=\"12\" fill=\"#1c211f\" stroke=\"#7dd3fc\"/><text x=\"130\" y=\"160\" fill=\"#edf1ed\" font-weight=\"600\">iPhone ve stojánku</text><text x=\"130\" y=\"177\" fill=\"#7c8780\" font-size=\"11\">stránka z plochy, obnova každé 2 s</text><text x=\"130\" y=\"191\" fill=\"#7c8780\" font-size=\"11\">zamčený v jedné aplikaci</text>\n            <path d=\"M430 170 L520 170\" stroke=\"rgba(255,169,77,.6)\" stroke-dasharray=\"4 4\"/>\n            <rect x=\"520\" y=\"138\" width=\"220\" height=\"64\" rx=\"10\" fill=\"rgba(255,169,77,.08)\" stroke=\"rgba(255,169,77,.5)\"/><text x=\"630\" y=\"160\" fill=\"#ffa94d\" font-weight=\"600\">Limity AI asistenta</text><text x=\"630\" y=\"177\" fill=\"#7c8780\" font-size=\"11\">5 hodin · týden · týden pro model</text><text x=\"630\" y=\"191\" fill=\"#7c8780\" font-size=\"11\">dotaz jednou za 5 minut</text>\n            <text x=\"380\" y=\"232\" fill=\"#7c8780\" font-size=\"11\">jedna odpověď pro telefon · jen domácí síť</text>\n            <rect x=\"180\" y=\"246\" width=\"400\" height=\"44\" rx=\"10\" fill=\"#1c211f\" stroke=\"#354039\"/><text x=\"380\" y=\"265\" fill=\"#edf1ed\" font-weight=\"600\">Nečinnost hlásí agent, hru pozná server</text><text x=\"380\" y=\"281\" fill=\"#7c8780\" font-size=\"11\">3 min ztlumit · 5 min černá · zátěž grafiky nebo FPS přepne herní board</text>\n          </g></svg>",
     "bullets": [
       {
         "b": "Počítač hlásí do Home Assistanta.",
@@ -68,6 +68,10 @@
         "t": "Jedna stránka bez knihoven, obnovuje se každé dvě sekundy. Přidaná na plochu, zamčená v kiosku, displej nezhasíná."
       },
       {
+        "b": "Hra má přednost.",
+        "t": "Když zátěž grafiky drží půl minuty nad 60 %, nebo přijde FPS z počítače, server přepne stránku na herní board: FPS, 1 % low, frametime, ping na dvě linky, teploty a příkon. Vypne se až minutu po konci hry."
+      },
+      {
         "b": "Šetří displej.",
         "t": "Po třech minutách nečinnosti počítače ztlumí a nechá obsah pomalu bloudit, po pěti minutách zčerná. Návrat k myši ji probudí."
       }
@@ -77,9 +81,15 @@
     "h2": "Jak to vypadá",
     "items": [
       {
-        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-09-14_111936_c3kixt",
-        "alt": "Dashboard s teplotami procesoru a grafiky, zátěží, pamětí, příkonem, limity AI asistenta a údaji z domácnosti",
-        "caption": "Nahoře procesor a grafika, dole limity AI asistenta a pár čísel z domácnosti. Stav je vždy barva i slovo, nikdy jen barva.",
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-09-14_163646_ex79qw",
+        "alt": "Běžný board: teploty procesoru a grafiky v kruhových stupnicích, zátěž, paměť, takt, příkon, VRAM, ventilátor, tři okna limitů AI asistenta a údaje z domácnosti",
+        "caption": "Běžný board. Nahoře procesor a grafika s teplotou uprostřed stupnice, dole tři okna limitů AI asistenta a pár čísel z domácnosti. Stav je vždy barva i slovo, nikdy jen barva.",
+        "wide": true
+      },
+      {
+        "src": "https://res.cloudinary.com/dwuteqscm/image/upload/w_1600,q_auto,f_auto/Sn%C3%ADmek_obrazovky_2026-09-14_163748_wpp3r2",
+        "alt": "Herní board: velké FPS se stavem Plynulé, 1 % low, frametime, ping na internet a Frankfurt, vedle teploty, zátěž, paměť, VRAM, hot spot a příkon procesoru a grafiky",
+        "caption": "Herní board. Vlevo FPS, 1 % low, frametime a ping na dvě linky, vpravo teploty a zátěž. Nahoře název hry a jak dlouho hraju. Přepne se sám, jakmile grafika začne makat.",
         "wide": true
       }
     ]
@@ -118,6 +128,21 @@
         "amber": true,
         "h": "Nastavení, bez kterého to nejde",
         "p": "Webová stránka na iPhonu displej neudrží, i když o to požádá. Automatický zámek nastavený na Nikdy je jediná spolehlivá cesta."
+      },
+      {
+        "num": "30 s",
+        "h": "Hra se pozná podle grafiky",
+        "p": "Zátěž grafiky nad 60 % po dobu půl minuty zapne herní board, pod 30 % po dobu minuty ho vypne. Díky hysterezi neblikají boardy při načítání úrovně."
+      },
+      {
+        "num": "225",
+        "h": "FPS jdou přes Home Assistant",
+        "p": "Skript na počítači čte sdílenou paměť RTSS a posílá FPS, 1 % low a název hry jako tři senzory. Když dorazí FPS větší než nula, herní board naskočí hned."
+      },
+      {
+        "num": "3 s",
+        "h": "Ping měří server, ne telefon",
+        "p": "Server zkouší TCP spojení na dva cíle každé tři sekundy a z posledních deseti vzorků počítá průměr, rozptyl a ztrátu. Telefon jen ukáže číslo."
       }
     ]
   },
@@ -135,31 +160,31 @@
       {
         "h": "Ještě to jede? Ne, to je záložka na počítači",
         "p": "Po přesunu na domácí adresu stará adresa dál vypadala živě. Byla to jen zapomenutá záložka v prohlížeči na počítači. Kdo se opravdu připojuje, poznáš jedině na serveru."
+      },
+      {
+        "h": "Ovladač nehýbe myší",
+        "p": "Nečinnost počítače poznávám podle klávesnice a myši. S ovladačem v ruce by tak dashboard uprostřed hry ztmavl a po pěti minutách zčernal. Proto má herní režim přednost před nečinností."
       }
     ]
   },
   "tech": [
     {
       "summary": "Stack a tok dat",
-      "hint": "FastAPI · WebSocket · PWA",
-      "body": "<dl class=\"kv\"><div><dt>Počítač</dt><dd>HASS.Agent posílá do Home Assistanta zátěž, paměť a poslední aktivitu (MQTT, cca 30 s). LibreHardwareMonitor vystaví čidla po HTTP a čte je oficiální integrace Home Assistanta každých 10 s: teplota procesoru, příkon, paměť grafiky, ventilátor.</dd></div><div><dt>Server</dt><dd>FastAPI v Dockeru. Počáteční stav přes REST, dál WebSocket na změny stavu, žádný polling. Mapování klíčů na entity v JSON souboru, který se načítá za běhu. Odpověď pro telefon na jedné adrese, port jen na domácí a VPN adrese.</dd></div><div><dt>Limity AI</dt><dd>Token Claude Code ze serveru a jeho rozhraní pro využití předplatného. Dotaz jednou za 5 minut, při odmítnutí se respektuje požadovaná pauza a drží poslední hodnoty.</dd></div><div><dt>Telefon</dt><dd>Jedna HTML stránka, návrhová plocha ve velikosti displeje na šířku, transformem přeškálovaná a na výšku otočená. Dvojité klepnutí ji převrátí, když je zamčené otáčení. Wake Lock API se zkouší, spoléhá se ale na Automatický zámek: Nikdy.</dd></div></dl>"
+      "hint": "FastAPI · WebSocket · PWA · RTSS",
+      "body": "<dl class=\"kv\"><div><dt>Počítač</dt><dd>HASS.Agent posílá do Home Assistanta zátěž, paměť a poslední aktivitu (MQTT, cca 30 s). LibreHardwareMonitor vystaví čidla po HTTP a čte je oficiální integrace Home Assistanta každých 10 s: teplota procesoru, příkon, paměť grafiky, ventilátor.</dd></div><div><dt>Server</dt><dd>FastAPI v Dockeru. Počáteční stav přes REST, dál WebSocket na změny stavu, žádný polling. Mapování klíčů na entity v JSON souboru, který se načítá za běhu. Odpověď pro telefon na jedné adrese, port jen na domácí a VPN adrese.</dd></div><div><dt>Limity AI</dt><dd>Token Claude Code ze serveru a jeho rozhraní pro využití předplatného. Dotaz jednou za 5 minut, při odmítnutí se respektuje požadovaná pauza a drží poslední hodnoty.</dd></div><div><dt>Telefon</dt><dd>Jedna HTML stránka, návrhová plocha ve velikosti displeje na šířku, transformem přeškálovaná a na výšku otočená. Dvojité klepnutí ji převrátí, když je zamčené otáčení. Wake Lock API se zkouší, spoléhá se ale na Automatický zámek: Nikdy.</dd></div><div><dt>Hra</dt><dd>Detekce na serveru: zátěž grafiky nad prahem po zadanou dobu, nebo FPS z RTSS přes HASS.Agent (PowerShell čte sdílenou paměť RTSS, tři senzory: FPS, 1 % low, název hry). Ping jako TCP connect ze serveru na dva cíle, průměr, rozptyl a ztráta z deseti vzorků. Prahy a cíle jsou v proměnných prostředí.</dd></div></dl>"
     },
     {
       "summary": "Režimy a prahy",
       "hint": "kdy co svítí",
-      "body": "<table class=\"t\"><thead><tr><th>Režim</th><th>Kdy</th><th>Co dělá</th></tr></thead><tbody><tr><td>Živě</td><td>počítač aktivní</td><td>plný dashboard</td></tr><tr><td>Klid</td><td>3 min bez vstupu</td><td>42 % krytí, obsah pomalu bloudí</td></tr><tr><td>Černá</td><td>5 min bez vstupu nebo počítač spí</td><td>čistá černá, jen slabý čas, displej dál svítí</td></tr><tr><td>Spí</td><td>agent přestal hlásit</td><td>„Systém spí“, po minutě černá</td></tr><tr><td>Bez spojení</td><td>server neodpovídá</td><td>oranžová obrazovka, pokus každé 2 s</td></tr></tbody></table><p class=\"note\">Teploty: procesor v normě do 70 °C, zvýšená do 85, vysoká do 95, pak kritická. Grafika o pár stupňů přísněji. Limity: v pořádku do 70 % využití, docházejí od 70 %, kritické od 90 %. Každý stav nese barvu i slovo.</p>"
+      "body": "<table class=\"t\"><thead><tr><th>Režim</th><th>Kdy</th><th>Co dělá</th></tr></thead><tbody><tr><td>Živě</td><td>počítač aktivní</td><td>plný dashboard</td></tr><tr><td>Klid</td><td>3 min bez vstupu</td><td>42 % krytí, obsah pomalu bloudí</td></tr><tr><td>Černá</td><td>5 min bez vstupu nebo počítač spí</td><td>čistá černá, jen slabý čas, displej dál svítí</td></tr><tr><td>Hra</td><td>grafika nad 60 % půl minuty, nebo FPS z RTSS</td><td>herní board, přednost před nečinností, konec minutu po hře</td></tr><tr><td>Spí</td><td>agent přestal hlásit</td><td>„Systém spí“, po minutě černá</td></tr><tr><td>Bez spojení</td><td>server neodpovídá</td><td>oranžová obrazovka, pokus každé 2 s</td></tr></tbody></table><p class=\"note\">Teploty: procesor v normě do 70 °C, zvýšená do 85, vysoká do 95, pak kritická. Grafika o pár stupňů přísněji. Limity: v pořádku do 70 % využití, docházejí od 70 %, kritické od 90 %. FPS: plynulé od 60, slabší od 30, pod 30 se trhá. Každý stav nese barvu i slovo.</p>"
     },
     {
       "summary": "Pasti a jejich řešení",
       "hint": "pro ty, kdo to staví taky",
-      "body": "<p>Kontejner s vlastním uživatelem nepřečte soubor s tokenem (práva jen pro vlastníka), musí běžet pod stejným uživatelem. Bind mount jednoho souboru zestárne, když ho program přepisuje atomicky, mountuje se celý adresář. Rozhraní s limity vrací 429 už při dotazu jednou za minutu. Windows firewall: přes VPN adaptér byl port čidel otevřený i bez pravidla, po LAN ne. Headless Chromium nedovolí okno užší než 500 px, takže screenshot na výšku vypadal jako chyba v otáčení. A ve Windows se HASS.Agent hodí na detekci spánku: jakmile zmizí, jeho entity jsou hned nedostupné, integrace čidel to pozná až po neúspěšném dotazu.</p>"
+      "body": "<p>Kontejner s vlastním uživatelem nepřečte soubor s tokenem (práva jen pro vlastníka), musí běžet pod stejným uživatelem. Bind mount jednoho souboru zestárne, když ho program přepisuje atomicky, mountuje se celý adresář. Rozhraní s limity vrací 429 už při dotazu jednou za minutu. Windows firewall: přes VPN adaptér byl port čidel otevřený i bez pravidla, po LAN ne. Headless Chromium nedovolí okno užší než 500 px, takže screenshot na výšku vypadal jako chyba v otáčení. A ve Windows se HASS.Agent hodí na detekci spánku: jakmile zmizí, jeho entity jsou hned nedostupné, integrace čidel to pozná až po neúspěšném dotazu. Herní board na šířku má okraj jen na straně s výřezem kamery, podle toho, jak je telefon otočený.</p>"
     }
   ],
   "links": [
-    {
-      "text": "Původní návod na PromptLab (Android)",
-      "href": "https://promptlab.cz/tutorial/stary-telefon-ti-pohlida-teploty-pocitace-i-limity-vibe-coding-agentu"
-    },
     {
       "text": "Díl 1: AdGuard Home",
       "href": "https://ongy.cz/pages/server/adguard/"
@@ -169,6 +194,6 @@
       "href": "https://ongy.cz/pages/server/"
     }
   ],
-  "privacy": "Dashboard běží jen v domácí síti, z internetu není dostupný a nic neovládá, jen zobrazuje. Na stránce nejsou adresy, jména zařízení ani tokeny. Screenshot ukazuje totéž, co vidím na displeji: teploty, zátěž a procenta.",
+  "privacy": "Dashboard běží jen v domácí síti, z internetu není dostupný a nic neovládá, jen zobrazuje. Na stránce nejsou adresy, jména zařízení ani tokeny. Screenshoty ukazují totéž, co vidím na displeji: teploty, zátěž, procenta, FPS a název hry.",
   "motif": "<svg viewBox=\"0 0 160 160\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"18\" y=\"44\" width=\"124\" height=\"72\" rx=\"12\"/><rect x=\"28\" y=\"54\" width=\"104\" height=\"52\" rx=\"5\" opacity=\".6\"/><path d=\"M50 92a16 16 0 1 1 22 0\" opacity=\".8\"/><path d=\"M61 84l7-9\"/><path d=\"M88 70h32M88 80h24M88 90h30\" stroke-dasharray=\"3 4\" opacity=\".6\"/><path d=\"M80 116v14M64 130h32\" opacity=\".5\"/><circle cx=\"61\" cy=\"86\" r=\"2.5\" fill=\"currentColor\" stroke=\"none\"/></svg>"
 }
